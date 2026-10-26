@@ -90,4 +90,4 @@ _(date — decision — why)_
 
 ## Notes for Claude
 - `poppler` isn't installed, so the Read tool can't render PDF pages. To read the slides, use a small Swift/PDFKit script: `PDFDocument(...).page(at:).string` gives the text, and `thumbnail(of:for:)` saved as PNG gives page images. Diagram slides (6, 8, 9, 10) need the images.
-- Git repo on `main`, remote is the private GitHub repo https://github.com/ankit-bhade/lying-comments (owned by Ankit; teammates are added as collaborators). Commit or push only when asked.
+- Git repo on `main`, remote is the private GitHub repo https://github.com/ankit-bhade/misleading-comments (owned by Ankit; teammates are added as collaborators). Commit or push only when asked.
