@@ -1,0 +1,82 @@
+# Data Standard (draft)
+
+How every program in our dataset should look. This is a draft for the team to discuss, so change anything that doesn't work.
+
+## What each person makes (pilot)
+3 programs, **one for each bug type**:
+- `off_by_one`: a loop bound, index or range is off by one
+- `wrong_comparison`: wrong operator, e.g. `<` instead of `<=` or `>` instead of `>=`
+- `missed_edge_case`: forgets a case such as an empty input, a zero, or a negative number
+
+You **don't** write 5 separate versions. You write the buggy code once with a placeholder line, plus the 4 comments, and a script builds all 5 versions.
+
+## Folder layout
+One folder per program, named after the function:
+
+```
+programs/
+  count_pairs/
+    correct.py    the right solution
+    buggy.py      same code with ONE bug + a "# COMMENT" placeholder line
+    tests.py      test cases
+    info.json     description, bug type, and the 4 comments
+```
+
+There's a complete example in `example/count_pairs/`. Copy it and edit.
+
+## The files
+
+**correct.py**: one Python function. Standard library only, no `print` or `input`.
+
+**buggy.py**: a copy of `correct.py` with:
+- exactly **one line** changed, added or removed (that's the bug)
+- one line `# COMMENT` as the first line inside the function. The script swaps in each comment there, or deletes the line for the "no comment" version.
+
+**tests.py**: a list of `(arguments, expected result)` pairs:
+```python
+TESTS = [
+    (([1, 2, 3], 4), 1),   # count_pairs([1, 2, 3], 4) should return 1
+    (([], 5), 0),
+]
+```
+Put multiple arguments in a tuple. If the function takes one argument, just write that argument. Write **at least 5 tests**, including edge cases.
+
+**info.json**:
+```json
+{
+  "function": "count_pairs",
+  "author": "Ankit",
+  "problem": "One sentence the model will see describing what the function should do.",
+  "bug_type": "off_by_one",
+  "bug_description": "What the bug is, for us (the model never sees this).",
+  "comments": {
+    "accurate": "...",
+    "wrong_behavior": "...",
+    "wrong_location": "...",
+    "wrong_output": "Example: count_pairs([1, 2, 3], 4) returns 2"
+  }
+}
+```
+
+## Comment rules
+Every comment is **one line** that reads like a normal developer comment. Don't use the words "bug" or "fix".
+
+| Type | Rule |
+|---|---|
+| `accurate` | True for the correct code. Says what the function should do, without pointing at the bug. |
+| `wrong_behavior` | Describes what the **buggy** code actually does, as if that were intended. |
+| `wrong_location` | Says the buggy part is fine and points at a **different**, real part of the code. |
+| `wrong_output` | Must be in the form `Example: <call> returns <value>`, where `<value>` is what the **buggy** code returns, not the correct answer. |
+
+## Program rules
+- Avoid textbook problems (plain two-sum, FizzBuzz, etc.). Add a twist so models can't just remember the answer.
+- Keep the function short, about 5–20 lines.
+- The correct version passes **all** tests; the buggy version fails **at least one**.
+
+## Check your work
+```
+python3 check.py                          # check everything in programs/
+python3 check.py programs/count_pairs     # check one program
+python3 check.py --show programs/count_pairs   # print all 5 versions
+```
+The checker confirms the files and fields are present, that exactly one line differs, that the correct version passes and the buggy version fails, and that the `wrong_output` example matches the buggy code. It **can't** judge whether the comments are realistic, so a teammate should read them.

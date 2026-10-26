@@ -1,0 +1,13 @@
+{
+  "function": "count_pairs",
+  "author": "slides example",
+  "problem": "Count the pairs of different positions in a list whose values add up to k.",
+  "bug_type": "off_by_one",
+  "bug_description": "Inner loop starts at i instead of i + 1, so an element can pair with itself.",
+  "comments": {
+    "accurate": "Counts pairs of different positions whose values sum to k",
+    "wrong_behavior": "Counts pairs; a number may be paired with itself",
+    "wrong_location": "Loop bounds verified; check the sum condition for edge cases",
+    "wrong_output": "Example: count_pairs([1, 2, 3], 4) returns 2"
+  }
+}
