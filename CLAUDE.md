@@ -86,7 +86,8 @@ _(date — decision — why)_
 - `check.py`: validates programs against the standard. `python3 check.py` checks `programs/`; `--show <folder>` prints the 5 comment versions. If the standard changes, update this script to match.
 - `example/count_pairs/`: the reference example from slide 10. It's not part of the dataset.
 - `programs/`: the team's programs, one folder each.
+- `README.md`: short how-to for teammates on adding a program.
 
 ## Notes for Claude
 - `poppler` isn't installed, so the Read tool can't render PDF pages. To read the slides, use a small Swift/PDFKit script: `PDFDocument(...).page(at:).string` gives the text, and `thumbnail(of:for:)` saved as PNG gives page images. Diagram slides (6, 8, 9, 10) need the images.
-- The folder isn't a git repo yet.
+- Git repo on `main`, remote is the private GitHub repo https://github.com/ankit-bhade/lying-comments (owned by Ankit; teammates are added as collaborators). Commit or push only when asked.
