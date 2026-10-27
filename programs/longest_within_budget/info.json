@@ -1,0 +1,13 @@
+{
+  "function": "longest_within_budget",
+  "author": "Ankit",
+  "problem": "Return the length of the longest run of consecutive days whose spending did not go over the budget.",
+  "bug_type": "wrong_comparison",
+  "bug_description": "Uses amount < budget instead of amount <= budget, so a day that spends exactly the budget breaks the run.",
+  "comments": {
+    "accurate": "Longest run of consecutive days with spending at or below the budget",
+    "wrong_behavior": "Longest run of consecutive days with spending under the budget",
+    "wrong_location": "Budget check verified; make sure the streak resets after an over-budget day",
+    "wrong_output": "Example: longest_within_budget([5, 10, 10, 3, 12], 10) returns 1"
+  }
+}

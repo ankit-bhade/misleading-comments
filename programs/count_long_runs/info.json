@@ -1,0 +1,13 @@
+{
+  "function": "count_long_runs",
+  "author": "Ankit",
+  "problem": "Given a list of sensor readings, count the stretches of identical consecutive readings that are at least min_len long.",
+  "bug_type": "missed_edge_case",
+  "bug_description": "The final run is never appended after the loop, so a stretch that reaches the end of the list is not counted.",
+  "comments": {
+    "accurate": "Counts runs of equal consecutive readings whose length is at least min_len",
+    "wrong_behavior": "Counts runs of equal readings of length >= min_len; the trailing run is still open and not counted",
+    "wrong_location": "Run splitting verified; check the min_len filter for off-by-one",
+    "wrong_output": "Example: count_long_runs([1, 1, 2, 3, 3, 3], 2) returns 1"
+  }
+}

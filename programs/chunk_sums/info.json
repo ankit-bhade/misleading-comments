@@ -1,0 +1,13 @@
+{
+  "function": "chunk_sums",
+  "author": "Ankit",
+  "problem": "Split the list into consecutive groups of size items (the last group may be shorter) and return the sum of each group.",
+  "bug_type": "off_by_one",
+  "bug_description": "The loop runs to len(nums) - 1 instead of len(nums), so a last group with only one item is skipped.",
+  "comments": {
+    "accurate": "Returns the sum of each consecutive group of size items; the last group may be shorter",
+    "wrong_behavior": "Sums each group of size items; a single leftover item at the end is dropped",
+    "wrong_location": "Range bounds checked; the slice end may overrun on the final group",
+    "wrong_output": "Example: chunk_sums([1, 2, 3, 4, 5], 2) returns [3, 7]"
+  }
+}
