@@ -1,9 +1,9 @@
-"""Check that programs follow DATA_STANDARD.md.
+"""Check that programs follow DATA_STANDARD.md, and save the 5 versions of each
+program that passes to its versions/ folder.
 
 Usage:
-  python3 check.py                         check every folder in programs/
-  python3 check.py programs/foo ...        check specific folders
-  python3 check.py --show programs/foo     print the 5 comment versions
+  python3 check.py                   check every folder in programs/
+  python3 check.py programs/foo ...  check specific folders
 """
 import difflib
 import json
@@ -161,22 +161,23 @@ def versions(folder):
     """Build the 5 versions of the buggy code, one per comment type."""
     info = json.loads((folder / "info.json").read_text())
     lines = (folder / "buggy.py").read_text().splitlines()
-    out = {"none": "\n".join(l for l in lines if l.strip() != PLACEHOLDER)}
+    out = {"none": "\n".join(l for l in lines if l.strip() != PLACEHOLDER) + "\n"}
     for key in COMMENT_KEYS:
         out[key] = "\n".join(
             l[: len(l) - len(l.lstrip())] + "# " + info["comments"][key] if l.strip() == PLACEHOLDER else l
             for l in lines
-        )
+        ) + "\n"
     return out
 
 
-def main(argv):
-    if argv and argv[0] == "--show":
-        for folder in argv[1:]:
-            for key, code in versions(Path(folder)).items():
-                print(f"--- {key} ---\n{code}\n")
-        return 0
+def write_versions(folder):
+    out_dir = folder / "versions"
+    out_dir.mkdir(exist_ok=True)
+    for key, code in versions(folder).items():
+        (out_dir / f"{key}.py").write_text(code)
 
+
+def main(argv):
     folders = [Path(a) for a in argv] or sorted(p for p in (ROOT / "programs").glob("*") if p.is_dir())
     if not folders:
         print("No programs found in programs/.")
@@ -191,7 +192,8 @@ def main(argv):
             for p in problems:
                 print(f"      - {p}")
         else:
-            print(f"PASS  {folder.name}  ({summary})")
+            write_versions(folder)
+            print(f"PASS  {folder.name}  ({summary}; saved 5 versions to versions/)")
     print(f"\n{len(folders) - failed}/{len(folders)} passed")
     return 1 if failed else 0
 
