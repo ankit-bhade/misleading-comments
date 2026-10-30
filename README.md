@@ -18,8 +18,4 @@ The plan is in `Project Proposal.pdf`.
 No git? On GitHub, open the `programs` folder, choose **Add file → Upload files**, and drag in your folder.
 
 ## Running the model on your programs
-Read `EXPERIMENT.md` for setup (Ollama + the exact model), then:
-```
-python3 run.py programs/<your_function_1> programs/<your_function_2> programs/<your_function_3>
-```
-Results are saved to `results/`. Commit and push them.
+We run the model on Google Colab with `colab_run.ipynb`. Steps are in `EXPERIMENT.md`. Results go in `results/`; commit and push them.

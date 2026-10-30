@@ -23,6 +23,7 @@ MODEL = "qwen2.5-coder:7b-instruct-q4_K_M"
 TEMPERATURE = 0
 SEED = 0
 MAX_TOKENS = 1024
+CONTEXT = 4096  # pinned: Ollama's default depends on the machine's GPU memory
 OLLAMA_URL = "http://localhost:11434/api/chat"
 
 ROOT = Path(__file__).resolve().parent
@@ -35,7 +36,7 @@ def ask_model(prompt):
         "model": MODEL,
         "messages": [{"role": "user", "content": prompt}],
         "stream": False,
-        "options": {"temperature": TEMPERATURE, "seed": SEED, "num_predict": MAX_TOKENS},
+        "options": {"temperature": TEMPERATURE, "seed": SEED, "num_predict": MAX_TOKENS, "num_ctx": CONTEXT},
     }).encode()
     request = urllib.request.Request(OLLAMA_URL, data=body, headers={"Content-Type": "application/json"})
     try:
@@ -103,6 +104,7 @@ def run_program(folder):
                 "temperature": TEMPERATURE,
                 "seed": SEED,
                 "max_tokens": MAX_TOKENS,
+                "context": CONTEXT,
                 "time": datetime.now(timezone.utc).isoformat(timespec="seconds"),
                 "prompt_text": prompt,
                 "reply": reply,
