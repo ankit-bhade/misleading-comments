@@ -1,4 +1,4 @@
-"""Check that programs follow DATA_STANDARD.md, and save the 5 versions of each
+"""Check that programs follow DATA_STANDARD.md, and save the 4 versions of each
 program that passes to its versions/ folder.
 
 Usage:
@@ -158,10 +158,10 @@ def check(folder):
 
 
 def versions(folder):
-    """Build the 5 versions of the buggy code, one per comment type."""
+    """Build the 4 versions of the buggy code, one per comment type."""
     info = json.loads((folder / "info.json").read_text())
     lines = (folder / "buggy.py").read_text().splitlines()
-    out = {"none": "\n".join(l for l in lines if l.strip() != PLACEHOLDER) + "\n"}
+    out = {}
     for key in COMMENT_KEYS:
         out[key] = "\n".join(
             l[: len(l) - len(l.lstrip())] + "# " + info["comments"][key] if l.strip() == PLACEHOLDER else l
@@ -193,7 +193,7 @@ def main(argv):
                 print(f"      - {p}")
         else:
             write_versions(folder)
-            print(f"PASS  {folder.name}  ({summary}; saved 5 versions to versions/)")
+            print(f"PASS  {folder.name}  ({summary}; saved 4 versions to versions/)")
     print(f"\n{len(folders) - failed}/{len(folders)} passed")
     return 1 if failed else 0
 

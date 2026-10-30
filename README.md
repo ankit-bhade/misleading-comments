@@ -9,7 +9,7 @@ The plan is in `Project Proposal.pdf`.
 ## Adding a program
 1. Read `DATA_STANDARD.md`.
 2. Copy `example/count_pairs/` to `programs/<your_function_name>/` and edit it.
-3. Check it (this also saves the 5 versions to `versions/`):
+3. Check it (this also saves the 4 versions to `versions/`):
    ```
    python3 check.py programs/<your_function_name>
    ```
