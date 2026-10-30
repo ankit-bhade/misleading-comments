@@ -25,8 +25,10 @@ TIMEOUT = 10
 
 # Runs in a separate process so a crash or infinite loop can't take down the checker.
 RUNNER = r"""
-import ast, copy, json, sys
+import ast, copy, json, os, sys
 code_path, tests_path, func, call, expected = sys.argv[1:6]
+out = sys.stdout
+sys.stdout = open(os.devnull, "w")  # hide anything the code prints
 ns = {}
 exec(open(code_path).read(), ns)
 tns = {}
@@ -48,7 +50,7 @@ if call:
         call_result = [repr(got), got == ast.literal_eval(expected)]
     except Exception as e:
         call_result = ["raised %s: %s" % (type(e).__name__, e), False]
-print(json.dumps({"tests": tests, "call": call_result}))
+print(json.dumps({"tests": tests, "call": call_result}), file=out)
 """
 
 
@@ -57,7 +59,7 @@ def run(code_path, tests_path, func, call="", expected=""):
     try:
         proc = subprocess.run(
             [sys.executable, "-I", "-c", RUNNER, str(code_path), str(tests_path), func, call, expected],
-            capture_output=True, text=True, timeout=TIMEOUT,
+            capture_output=True, text=True, timeout=TIMEOUT, stdin=subprocess.DEVNULL,
         )
     except subprocess.TimeoutExpired:
         return None, f"timed out after {TIMEOUT}s"

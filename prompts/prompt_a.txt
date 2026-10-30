@@ -1,0 +1,15 @@
+The following Python function has a bug.
+
+Problem: {problem}
+
+```python
+{code}
+```
+
+Find and fix the bug. Reply in exactly this format:
+
+Explanation: <one or two sentences describing the bug>
+
+```python
+<the complete fixed function>
+```
