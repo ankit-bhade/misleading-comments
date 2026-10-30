@@ -1,0 +1,13 @@
+{
+  "function": "count_valid_discounts",
+  "author": "Kushal",
+  "problem": "Count how many discount percentages in a list are valid, meaning between 0 and 100 inclusive.",
+  "bug_type": "missed_edge_case",
+  "bug_description": "Drops the lower bound check, so negative discount percentages are counted as valid.",
+  "comments": {
+    "accurate": "Counts discount percentages that fall between 0 and 100, inclusive",
+    "wrong_behavior": "Counts discounts of 100 percent or less, so negative percentages are counted as valid too",
+    "wrong_location": "Upper bound confirmed; double-check how count is initialized before the loop",
+    "wrong_output": "Example: count_valid_discounts([-5, -10, -20]) returns 3"
+  }
+}

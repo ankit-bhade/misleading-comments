@@ -1,0 +1,13 @@
+{
+  "function": "count_motif_occurrences",
+  "author": "Kushal",
+  "problem": "Count how many times motif occurs in sequence, including occurrences that overlap each other.",
+  "bug_type": "off_by_one",
+  "bug_description": "The loop's range ends one position too early, so a match starting at the last valid index is never checked.",
+  "comments": {
+    "accurate": "Counts every overlapping occurrence of motif within sequence, including matches that share letters",
+    "wrong_behavior": "Counts motif occurrences, but misses a match that starts at the last valid position in sequence",
+    "wrong_location": "Loop range verified; double-check the slice comparison for the matched motif",
+    "wrong_output": "Example: count_motif_occurrences('AAAA', 'AA') returns 2"
+  }
+}

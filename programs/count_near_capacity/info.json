@@ -1,0 +1,13 @@
+{
+  "function": "count_near_capacity",
+  "author": "Kushal",
+  "problem": "Count how many loads in a list are at least 90 percent of a given capacity.",
+  "bug_type": "wrong_comparison",
+  "bug_description": "Uses > instead of >=, so a load exactly at 90 percent of capacity is not counted as near-capacity.",
+  "comments": {
+    "accurate": "Counts loads that reach at least 90 percent of capacity",
+    "wrong_behavior": "Counts loads that exceed 90 percent of capacity, so a load exactly at the threshold is left out",
+    "wrong_location": "Threshold math confirmed; double-check how zero-load entries move through the loop",
+    "wrong_output": "Example: count_near_capacity([90], 100) returns 0"
+  }
+}
