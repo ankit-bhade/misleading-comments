@@ -1,0 +1,13 @@
+{
+  "function": "judge_total",
+  "author": "Arnav",
+  "problem": "Total the judges' scores after dropping one highest and one lowest score; with fewer than 3 scores, keep them all.",
+  "bug_type": "missed_edge_case",
+  "bug_description": "The fewer-than-3 guard is missing, so short lists lose scores they should keep (and an empty list raises).",
+  "comments": {
+    "accurate": "Sum after dropping one top and one bottom score; under 3 scores, keep them all",
+    "wrong_behavior": "Always drops the highest and lowest score before summing",
+    "wrong_location": "Small inputs handled; check max and min drop only one copy each",
+    "wrong_output": "Example: judge_total([5, 7]) returns 0"
+  }
+}
