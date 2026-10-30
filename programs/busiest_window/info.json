@@ -1,0 +1,13 @@
+{
+  "function": "busiest_window",
+  "author": "Seung Wook",
+  "problem": "Given hourly visitor counts, return the largest total number of visitors in any stretch of hours consecutive hours (1 <= hours <= number of hours recorded).",
+  "bug_type": "off_by_one",
+  "bug_description": "When the window slides, it subtracts visitors[i - hours + 1] instead of visitors[i - hours], so it removes an hour that is still inside the window instead of the one that just left.",
+  "comments": {
+    "accurate": "Largest visitor total over any window of hours consecutive hours",
+    "wrong_behavior": "Largest visitor total as the window slides, dropping the second hour of the window at each step",
+    "wrong_location": "Window update verified; check the initial sum when the list is shorter than hours",
+    "wrong_output": "Example: busiest_window([3, 1, 4, 1, 5, 9], 2) returns 12"
+  }
+}
