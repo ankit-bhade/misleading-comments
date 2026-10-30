@@ -1,0 +1,13 @@
+{
+  "function": "best_streak_profit",
+  "author": "Seung Wook",
+  "problem": "Given each day's profit (negative for a loss), return the largest total over any run of one or more consecutive days.",
+  "bug_type": "missed_edge_case",
+  "bug_description": "best starts at 0 instead of daily[0], so when every day is a loss it returns 0 even though at least one day must be chosen.",
+  "comments": {
+    "accurate": "Largest total profit over any run of at least one consecutive day",
+    "wrong_behavior": "Largest total profit over any run of consecutive days, or 0 if every day is a loss",
+    "wrong_location": "Starting value verified; check that current restarts when a run turns negative",
+    "wrong_output": "Example: best_streak_profit([-5, -2, -8]) returns 0"
+  }
+}
