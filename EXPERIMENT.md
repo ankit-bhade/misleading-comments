@@ -59,6 +59,7 @@ One JSON file per program, containing a list of 8 results. Each result has:
 | `version` | `accurate`, `wrong_behavior`, `wrong_location` or `wrong_output` |
 | `prompt` | `A` or `B` |
 | `model`, `temperature`, `seed`, `max_tokens`, `context`, `time` | How and when it was run |
+| `ollama_version`, `gpu` | What it ran on (e.g. `Tesla T4`), so we can confirm everyone used the same setup. Results from before 2026-10-30 don't have these fields |
 | `prompt_text` | Exactly what the model was sent |
 | `reply` | The model's full reply |
 | `fixed_code` | The last code block in the reply (`null` if there wasn't one) |

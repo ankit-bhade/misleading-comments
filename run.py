@@ -9,6 +9,7 @@ Usage:
 """
 import json
 import re
+import subprocess
 import sys
 import tempfile
 import urllib.error
@@ -51,6 +52,22 @@ def ask_model(prompt):
         sys.exit("Can't reach Ollama. Open the Ollama app (or run `ollama serve`) and try again.")
 
 
+def machine_info():
+    """Return (ollama_version, gpu) so results show what they were run on."""
+    try:
+        url = OLLAMA_URL.replace("/api/chat", "/api/version")
+        with urllib.request.urlopen(url, timeout=10) as response:
+            version = json.loads(response.read())["version"]
+    except Exception:
+        version = None
+    try:
+        gpu = subprocess.run(["nvidia-smi", "--query-gpu=name", "--format=csv,noheader"],
+                             capture_output=True, text=True, timeout=10).stdout.strip() or None
+    except (OSError, subprocess.SubprocessError):
+        gpu = None  # no NVIDIA GPU, e.g. a Mac
+    return version, gpu
+
+
 def split_reply(reply):
     """Return (fixed_code, explanation). The fix is the last code block in the reply."""
     blocks = CODE_BLOCK.findall(reply)
@@ -81,6 +98,7 @@ def run_program(folder):
         print(f"SKIP  {folder.name}: fails check.py; run python3 check.py {folder} first")
         return False
     check.write_versions(folder)
+    ollama_version, gpu = machine_info()
 
     info = json.loads((folder / "info.json").read_text())
     records = []
@@ -105,6 +123,8 @@ def run_program(folder):
                 "seed": SEED,
                 "max_tokens": MAX_TOKENS,
                 "context": CONTEXT,
+                "ollama_version": ollama_version,
+                "gpu": gpu,
                 "time": datetime.now(timezone.utc).isoformat(timespec="seconds"),
                 "prompt_text": prompt,
                 "reply": reply,
@@ -129,7 +149,8 @@ def main(argv):
     if not argv:
         print(__doc__.strip())
         return 1
-    print(f"Model: {MODEL}, temperature {TEMPERATURE}, seed {SEED}")
+    ollama_version, gpu = machine_info()
+    print(f"Model: {MODEL}, temperature {TEMPERATURE}, seed {SEED}, Ollama {ollama_version}, GPU {gpu}")
     ok = [run_program(Path(a)) for a in argv]
     return 0 if all(ok) else 1
 
