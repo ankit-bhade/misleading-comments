@@ -66,8 +66,9 @@ def machine_info():
     except Exception:
         version = None
     try:
-        gpu = subprocess.run(["nvidia-smi", "--query-gpu=name", "--format=csv,noheader"],
-                             capture_output=True, text=True, timeout=10).stdout.strip() or None
+        names = subprocess.run(["nvidia-smi", "--query-gpu=name", "--format=csv,noheader"],
+                               capture_output=True, text=True, timeout=10).stdout.strip().splitlines()
+        gpu = ", ".join(n.strip() for n in names) or None  # e.g. "Tesla T4, Tesla T4" on Kaggle
     except (OSError, subprocess.SubprocessError):
         gpu = None  # no NVIDIA GPU, e.g. a Mac
     return version, gpu
