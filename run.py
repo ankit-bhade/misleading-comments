@@ -52,6 +52,11 @@ def ask_model(prompt):
         sys.exit("Can't reach Ollama. Open the Ollama app (or run `ollama serve`) and try again.")
 
 
+def results_dir():
+    """Where this model's results go, e.g. results/qwen2.5-coder-7b."""
+    return ROOT / "results" / MODEL.split("-instruct")[0].replace(":", "-")
+
+
 def machine_info():
     """Return (ollama_version, gpu) so results show what they were run on."""
     try:
@@ -136,7 +141,7 @@ def run_program(folder):
                 "error": error,
             })
 
-    out_dir = ROOT / "results" / MODEL.split("-instruct")[0].replace(":", "-")
+    out_dir = results_dir()
     out_dir.mkdir(parents=True, exist_ok=True)
     out_path = out_dir / f"{folder.name}.json"
     out_path.write_text(json.dumps(records, indent=2) + "\n")

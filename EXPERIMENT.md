@@ -1,9 +1,9 @@
-# Experiment Standard (pilot)
+# Experiment Standard
 
 How we all run our programs on the model, so everyone's results are comparable. Don't change the settings or prompts on your own. If something should change, raise it with the team first.
 
 ## What each person does
-Run **your own 3 programs** on Qwen2.5-Coder 7B. The 32B round comes later.
+Run **your own programs** on Qwen2.5-Coder 7B: your 3 pilot programs (already done) and your 27 new ones. The 32B round comes later.
 
 Each program gets **8 runs**: 4 comment versions × 2 prompts.
 
@@ -13,7 +13,7 @@ Laptops are too slow for this (an 8 GB Mac took over 10 minutes for one prompt),
 1. On GitHub, click **Code → Download ZIP**.
 2. Go to https://colab.research.google.com, choose **File → Upload notebook**, and pick `colab_run.ipynb` from the ZIP.
 3. **Runtime → Change runtime type → T4 GPU**.
-4. In step 5 of the notebook, list your programs in `PROGRAMS` (or leave it empty to run all of them).
+4. In step 5 of the notebook, set `AUTHOR` to your name as it appears in your `info.json` files (e.g. `"Ankit"`). It runs all your programs that don't have results yet, about 15 minutes for 27.
 5. **Runtime → Run all**. When asked, upload the ZIP from step 1.
 6. At the end, `results.zip` downloads. Add its files to the repo's `results/` folder and push (or upload them on GitHub).
 
