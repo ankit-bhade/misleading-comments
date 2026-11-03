@@ -1,6 +1,7 @@
 {
   "function": "chunk_sums",
   "author": "Ankit",
+  "generated_by": "Claude (Claude Code)",
   "problem": "Split the list into consecutive groups of size items (the last group may be shorter) and return the sum of each group.",
   "bug_type": "off_by_one",
   "bug_description": "The loop runs to len(nums) - 1 instead of len(nums), so a last group with only one item is skipped.",

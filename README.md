@@ -17,5 +17,8 @@ The plan is in `Project Proposal.pdf`.
 
 No git? On GitHub, open the `programs` folder, choose **Add file → Upload files**, and drag in your folder.
 
+## Generating the main set (27 programs each)
+Follow `GENERATING.md`. It has the prompt to paste into your AI coding tool.
+
 ## Running the model on your programs
 We run the model on Google Colab with `colab_run.ipynb`. Steps are in `EXPERIMENT.md`. Results go in `results/`; commit and push them.

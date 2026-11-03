@@ -1,6 +1,7 @@
 {
   "function": "count_valid_discounts",
   "author": "Kushal",
+  "generated_by": "not recorded (pilot)",
   "problem": "Count how many discount percentages in a list are valid, meaning between 0 and 100 inclusive.",
   "bug_type": "missed_edge_case",
   "bug_description": "Drops the lower bound check, so negative discount percentages are counted as valid.",

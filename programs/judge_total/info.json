@@ -1,6 +1,7 @@
 {
   "function": "judge_total",
   "author": "Arnav",
+  "generated_by": "not recorded (pilot)",
   "problem": "Total the judges' scores after dropping one highest and one lowest score; with fewer than 3 scores, keep them all.",
   "bug_type": "missed_edge_case",
   "bug_description": "The fewer-than-3 guard is missing, so short lists lose scores they should keep (and an empty list raises).",

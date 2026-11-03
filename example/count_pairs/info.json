@@ -1,6 +1,7 @@
 {
   "function": "count_pairs",
   "author": "slides example",
+  "generated_by": "by hand (slide 10 example)",
   "problem": "Count the pairs of different positions in a list whose values add up to k.",
   "bug_type": "off_by_one",
   "bug_description": "Inner loop starts at i instead of i + 1, so an element can pair with itself.",

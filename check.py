@@ -14,7 +14,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 FILES = ["correct.py", "buggy.py", "tests.py", "info.json"]
-INFO_KEYS = ["function", "author", "problem", "bug_type", "bug_description", "comments"]
+INFO_KEYS = ["function", "author", "generated_by", "problem", "bug_type", "bug_description", "comments"]
 BUG_TYPES = ["off_by_one", "wrong_comparison", "missed_edge_case"]
 COMMENT_KEYS = ["accurate", "wrong_behavior", "wrong_location", "wrong_output"]
 BANNED_WORDS = ["bug", "fix"]

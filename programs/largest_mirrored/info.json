@@ -1,6 +1,7 @@
 {
   "function": "largest_mirrored",
   "author": "Seung Wook",
+  "generated_by": "not recorded (pilot)",
   "problem": "Given a non-empty list of non-negative integers, return the one whose digits read backwards make the largest number (leading zeros are dropped; on a tie keep the earliest).",
   "bug_type": "wrong_comparison",
   "bug_description": "The reversed digits are compared as strings instead of integers, so for numbers of different lengths '9' beats '21'.",

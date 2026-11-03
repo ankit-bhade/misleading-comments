@@ -1,6 +1,7 @@
 {
   "function": "busiest_window",
   "author": "Seung Wook",
+  "generated_by": "not recorded (pilot)",
   "problem": "Given hourly visitor counts, return the largest total number of visitors in any stretch of hours consecutive hours (1 <= hours <= number of hours recorded).",
   "bug_type": "off_by_one",
   "bug_description": "When the window slides, it subtracts visitors[i - hours + 1] instead of visitors[i - hours], so it removes an hour that is still inside the window instead of the one that just left.",

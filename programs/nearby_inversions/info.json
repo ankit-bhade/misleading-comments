@@ -1,6 +1,7 @@
 {
   "function": "nearby_inversions",
   "author": "Arnav",
+  "generated_by": "not recorded (pilot)",
   "problem": "Count pairs of positions i < j with j - i at most d where the earlier value is larger than the later one.",
   "bug_type": "off_by_one",
   "bug_description": "Inner loop stops at i + d instead of i + d + 1, so pairs exactly d apart are never checked.",

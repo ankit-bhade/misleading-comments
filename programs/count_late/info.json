@@ -1,6 +1,7 @@
 {
   "function": "count_late",
   "author": "Arnav",
+  "generated_by": "not recorded (pilot)",
   "problem": "Given submission times in minutes, count how many came in after the deadline plus the grace period; submitting exactly at the end of the grace period is on time.",
   "bug_type": "wrong_comparison",
   "bug_description": "Uses t >= cutoff instead of t > cutoff, so a submission exactly at the end of the grace period is counted late.",

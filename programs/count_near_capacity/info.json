@@ -1,6 +1,7 @@
 {
   "function": "count_near_capacity",
   "author": "Kushal",
+  "generated_by": "not recorded (pilot)",
   "problem": "Count how many loads in a list are at least 90 percent of a given capacity.",
   "bug_type": "wrong_comparison",
   "bug_description": "Uses > instead of >=, so a load exactly at 90 percent of capacity is not counted as near-capacity.",

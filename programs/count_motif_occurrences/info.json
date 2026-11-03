@@ -1,6 +1,7 @@
 {
   "function": "count_motif_occurrences",
   "author": "Kushal",
+  "generated_by": "not recorded (pilot)",
   "problem": "Count how many times motif occurs in sequence, including occurrences that overlap each other.",
   "bug_type": "off_by_one",
   "bug_description": "The loop's range ends one position too early, so a match starting at the last valid index is never checked.",

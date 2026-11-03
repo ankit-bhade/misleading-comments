@@ -48,6 +48,7 @@ Put multiple arguments in a tuple. If the function takes one argument, just writ
 {
   "function": "count_pairs",
   "author": "Ankit",
+  "generated_by": "Claude (Claude Code)",
   "problem": "One sentence the model will see describing what the function should do.",
   "bug_type": "off_by_one",
   "bug_description": "What the bug is, for us (the model never sees this).",
@@ -59,6 +60,7 @@ Put multiple arguments in a tuple. If the function takes one argument, just writ
   }
 }
 ```
+`generated_by` is the AI model (and tool) that wrote the program, or `"by hand"`.
 
 ## Comment rules
 Every comment is **one line** that reads like a normal developer comment. Don't use the words "bug" or "fix".
@@ -74,6 +76,16 @@ Every comment is **one line** that reads like a normal developer comment. Don't 
 - Avoid textbook problems (plain two-sum, FizzBuzz, etc.). Add a twist so models can't just remember the answer.
 - Keep the function short, about 5–20 lines.
 - The correct version passes **all** tests; the buggy version fails **at least one**.
+
+## Making bugs hard enough
+In the pilot, the model fixed 10 of 12 programs no matter what the comment said, so those programs can't show any effect. The 2 programs that fooled it had these things in common:
+
+- **The problem description states the goal, not the edge case.** Write "count the days that did not go over the budget", not "a day exactly at the budget counts". The description must still fully define the right answer; just don't single out the input the bug breaks.
+- **Comments don't point at the edge case either.** Write them like a normal docstring: "Counts days under the budget", not "...so a day exactly at the budget is left out".
+- **The buggy line looks like reasonable code.** Natural idioms (`<` vs `<=`, comparing as strings, a slightly wrong loop bound) work. A line that looks odd on its own gets noticed.
+- **The bug only shows up on some inputs**, so the code works for typical cases.
+
+Don't keep or throw away a program based on how the model does on it. That would bias the results. Follow these guidelines when writing, then keep every program that passes `check.py`.
 
 ## Check your work
 ```
