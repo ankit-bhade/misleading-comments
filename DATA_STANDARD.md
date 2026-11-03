@@ -1,12 +1,15 @@
-# Data Standard (draft)
+# Data Standard
 
-How every program in our dataset should look. This is a draft for the team to discuss, so change anything that doesn't work.
+How every program in our dataset should look.
 
-## What each person makes (pilot)
-3 programs, **one for each bug type**:
+## Bug types
+Every program has exactly **one** bug, of one of these types:
 - `off_by_one`: a loop bound, index or range is off by one
 - `wrong_comparison`: wrong operator, e.g. `<` instead of `<=` or `>` instead of `>=`
 - `missed_edge_case`: forgets a case such as an empty input, a zero, or a negative number
+- `other`: any other single-change bug, made as subtle as possible: a wrong variable, a wrong formula, `and` vs `or`, a misused library call, a state update in the wrong place, and so on. The first three types are all boundary bugs; `other` is for bugs where the code alone doesn't reveal the intent.
+
+The pilot used one program per person for each of the first three types. The main set is in `GENERATING.md`.
 
 Each program has 4 versions: accurate, and the 3 misleading ones. You **don't** write them by hand. You write the buggy code once with a placeholder line, plus the 4 comments, and `check.py` saves all 4 versions into a `versions/` folder.
 
@@ -84,6 +87,7 @@ In the pilot, the model fixed 10 of 12 programs no matter what the comment said,
 - **Comments don't point at the edge case either.** Write them like a normal docstring: "Counts days under the budget", not "...so a day exactly at the budget is left out".
 - **The buggy line looks like reasonable code.** Natural idioms (`<` vs `<=`, comparing as strings, a slightly wrong loop bound) work. A line that looks odd on its own gets noticed.
 - **The bug only shows up on some inputs**, so the code works for typical cases.
+- **Subtle, but still fixable.** Aim for the hardest bug that can still be fixed from the problem description and an honest comment. A bug nobody could fix is as useless as one everybody fixes: the experiment needs the accurate comment to lead to a fix and the misleading ones to get in the way.
 
 Don't keep or throw away a program based on how the model does on it. That would bias the results. Follow these guidelines when writing, then keep every program that passes `check.py`.
 
