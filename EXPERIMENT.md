@@ -3,12 +3,15 @@
 How we all run our programs on the model, so everyone's results are comparable. Don't change the settings or prompts on your own. If something should change, raise it with the team first.
 
 ## What each person does
-Run **your own programs** on Qwen2.5-Coder 7B: your 3 pilot programs (already done) and your 27 new ones. The 32B round comes later.
+Run **your own 30 programs** (3 pilot + 27 new) on both models:
+1. **Qwen2.5-Coder 7B** on Google Colab (`colab_run.ipynb`)
+2. **Qwen2.5-Coder 32B** on Kaggle (`kaggle_run.ipynb`), after your 7B run
 
-Each program gets **8 runs**: 4 comment versions × 2 prompts.
+Each program gets **8 runs per model**: 4 comment versions × 2 prompts.
 
-## Run on Google Colab
-Laptops are too slow for this (an 8 GB Mac took over 10 minutes for one prompt), so we use Colab's free GPU.
+Laptops are too slow for this (an 8 GB Mac took over 10 minutes for one prompt), so we use free cloud GPUs.
+
+## 7B: run on Google Colab
 
 1. On GitHub, click **Code → Download ZIP**.
 2. Go to https://colab.research.google.com, choose **File → Upload notebook**, and pick `colab_run.ipynb` from the ZIP.
@@ -21,12 +24,25 @@ The notebook installs Ollama, downloads the exact model build (`qwen2.5-coder:7b
 
 Running locally also works on a machine with 16 GB+ of memory: install Ollama, `ollama pull qwen2.5-coder:7b-instruct-q4_K_M`, then `python3 run.py programs/<name> ...`.
 
+## 32B: run on Kaggle
+The 32B model needs about 20 GB of GPU memory, more than Colab's free T4 has. Kaggle's free **GPU T4 x2** (two T4s) fits it. 30 programs take about 50 minutes, including the model download.
+
+1. Make a Kaggle account and verify your phone number (**Settings → Phone Verification**). Kaggle needs this before it allows GPUs and internet.
+2. On GitHub, click **Code → Download ZIP**.
+3. On Kaggle, choose **Create → New Notebook**, then **File → Import Notebook**, and pick `kaggle_run.ipynb` from the ZIP.
+4. In the right-hand panel, set **Accelerator** to **GPU T4 x2** (not P100, which is a single GPU) and turn **Internet** on. Then **Add Input → Upload** and add the ZIP.
+5. In step 5 of the notebook, set `AUTHOR` to your name as it appears in your `info.json` files.
+6. Click **Save Version → Save & Run All (Commit) → Save**. It runs in the background, so stop the interactive session (power icon, top right) to save GPU hours, and close the tab.
+7. When the version says **Successful**, open its **Output** tab and download `results.zip`. Add its files to the repo's `results/` folder and push.
+
+The notebook installs Ollama the same way as the Colab notebook, downloads `qwen2.5-coder:32b-instruct-q4_K_M`, and runs `run.py` with that model. All other settings are the same. To test first, set `PROGRAMS = ["one_program"]` and run the cells by hand; step 5 prints how long each program takes.
+
 ## What run.py does
 For each program, the script:
 1. makes sure it passes `check.py`
 2. builds the 8 prompts from `prompts/` and sends them to the model
 3. takes the fixed function out of each reply and runs the program's tests on it
-4. saves everything to `results/qwen2.5-coder-7b/<program>.json`
+4. saves everything to `results/qwen2.5-coder-7b/<program>.json` (or `results/qwen2.5-coder-32b/` for the 32B)
 
 Then commit and push your `results/` files. Don't edit them by hand.
 
@@ -35,12 +51,12 @@ Set in `run.py`, the same for everyone:
 
 | Setting | Value | Why |
 |---|---|---|
-| Model | `qwen2.5-coder:7b-instruct-q4_K_M` | One exact build for everyone |
+| Model | `qwen2.5-coder:7b-instruct-q4_K_M` and `qwen2.5-coder:32b-instruct-q4_K_M` | One exact build of each size for everyone; same family, so size is the only difference |
 | Temperature | 0 | The model gives the same answer every time, so 1 run per version is enough |
 | Seed | 0 | Extra safety for repeatable answers |
 | Max reply length | 1024 tokens | Plenty for a short function + explanation |
 | Context window | 4096 tokens | Pinned, because Ollama's default changes with the machine's GPU memory |
-| Runs | 1 per version per prompt | Deterministic at temperature 0 |
+| Runs | 1 per version per prompt | Deterministic at temperature 0 (the 32B, split across two GPUs, can reword a reply slightly between runs; in our test the fix and result stayed the same) |
 
 ## Prompts
 The exact text is in `prompts/prompt_a.txt` and `prompts/prompt_b.txt`. The script fills in the program's problem description and one comment version of the buggy code.
@@ -59,7 +75,7 @@ One JSON file per program, containing a list of 8 results. Each result has:
 | `version` | `accurate`, `wrong_behavior`, `wrong_location` or `wrong_output` |
 | `prompt` | `A` or `B` |
 | `model`, `temperature`, `seed`, `max_tokens`, `context`, `time` | How and when it was run |
-| `ollama_version`, `gpu` | What it ran on (e.g. `Tesla T4`), so we can confirm everyone used the same setup. Results from before 2026-10-30 don't have these fields |
+| `ollama_version`, `gpu` | What it ran on (e.g. `Tesla T4` on Colab, `Tesla T4, Tesla T4` on Kaggle), so we can confirm everyone used the same setup. Results from before 2026-10-30 don't have these fields |
 | `prompt_text` | Exactly what the model was sent |
 | `reply` | The model's full reply |
 | `fixed_code` | The last code block in the reply (`null` if there wasn't one) |

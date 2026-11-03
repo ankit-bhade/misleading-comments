@@ -6,7 +6,7 @@ We're growing the dataset from 12 to **120 programs**: each person adds **27**: 
 
 > Read GENERATING.md and make my 27 programs. My name is [YOUR NAME].
 
-When it's done, skim the comments, then pull and push. Then run your programs on the 7B model with the Colab notebook (see `EXPERIMENT.md`).
+When it's done, skim the comments, then pull and push. Then run your programs on the 7B model with the Colab notebook, and on the 32B model with the Kaggle notebook (see `EXPERIMENT.md`).
 
 ---
 

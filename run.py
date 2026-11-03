@@ -20,7 +20,7 @@ from pathlib import Path
 import check
 
 # Experiment settings. Change these only if the team agrees (see EXPERIMENT.md).
-MODEL = "qwen2.5-coder:7b-instruct-q4_K_M"
+MODEL = "qwen2.5-coder:7b-instruct-q4_K_M"  # kaggle_run.ipynb switches this to the 32B build
 TEMPERATURE = 0
 SEED = 0
 MAX_TOKENS = 1024

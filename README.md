@@ -21,4 +21,4 @@ No git? On GitHub, open the `programs` folder, choose **Add file → Upload file
 Open your AI coding tool in the repo and say: "Read GENERATING.md and make my 27 programs. My name is ___."
 
 ## Running the model on your programs
-We run the model on Google Colab with `colab_run.ipynb`. Steps are in `EXPERIMENT.md`. Results go in `results/`; commit and push them.
+We run the 7B model on Google Colab with `colab_run.ipynb`, and the 32B model on Kaggle with `kaggle_run.ipynb`. Steps are in `EXPERIMENT.md`. Results go in `results/`; commit and push them.
