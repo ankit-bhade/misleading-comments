@@ -1,0 +1,14 @@
+{
+  "function": "survey_report",
+  "author": "Ankit",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "tally maps each species on a bird-survey sheet to how many birds were counted. Return the report as a list of lines: one 'species: count' line for each species that was seen, in alphabetical order, followed by a final 'Total: N' line.",
+  "bug_type": "missed_edge_case",
+  "bug_description": "Copies the whole tally instead of keeping only species with a count above zero, so species that weren't seen get a 'species: 0' line.",
+  "comments": {
+    "accurate": "Report of the species that were seen, in alphabetical order, with a total",
+    "wrong_behavior": "Report listing every species on the survey sheet, in alphabetical order, with a total",
+    "wrong_location": "Species filtering verified; check that the total counts birds, not species",
+    "wrong_output": "Example: survey_report({'wren': 2, 'owl': 0}) returns ['owl: 0', 'wren: 2', 'Total: 2']"
+  }
+}

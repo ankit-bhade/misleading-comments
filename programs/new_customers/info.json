@@ -1,0 +1,14 @@
+{
+  "function": "new_customers",
+  "author": "Ankit",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "orders lists the customer name for each order placed today, and regulars lists customers seen before today. Return how many different new customers ordered today.",
+  "bug_type": "missed_edge_case",
+  "bug_description": "Never adds a new customer to the seen set, so a new customer with several orders is counted once per order.",
+  "comments": {
+    "accurate": "Number of different first-time customers in today's orders",
+    "wrong_behavior": "Number of today's orders placed by customers who aren't regulars",
+    "wrong_location": "Regulars lookup verified; make sure names are compared exactly as given",
+    "wrong_output": "Example: new_customers(['kim', 'kim', 'lee'], ['lee']) returns 2"
+  }
+}

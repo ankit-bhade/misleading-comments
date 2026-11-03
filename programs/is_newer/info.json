@@ -1,0 +1,14 @@
+{
+  "function": "is_newer",
+  "author": "Ankit",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Software versions look like '1.4.2'. Return True if version a is newer than version b.",
+  "bug_type": "wrong_comparison",
+  "bug_description": "Compares the version parts as strings, so '10' sorts before '9' and 1.10 looks older than 1.9.",
+  "comments": {
+    "accurate": "True if version a is newer than version b",
+    "wrong_behavior": "True if version a sorts after version b, comparing part by part",
+    "wrong_location": "Part comparison verified; check versions that have a different number of parts",
+    "wrong_output": "Example: is_newer('1.10.0', '1.9.0') returns False"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "function": "split_teams",
+  "author": "Ankit",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Split the players, in list order, into two teams as evenly as possible, where the first team is never smaller than the second. Return (first_team, second_team).",
+  "bug_type": "off_by_one",
+  "bug_description": "Uses len(players) // 2 for the first team's size, so with an odd number of players the second team gets the extra player.",
+  "comments": {
+    "accurate": "Splits players in order into two near-equal teams; the first team is never the smaller one",
+    "wrong_behavior": "Splits players in order into two near-equal teams; the second team takes any extra player",
+    "wrong_location": "Team size checked; make sure the slices don't drop or repeat a player",
+    "wrong_output": "Example: split_teams(['a', 'b', 'c']) returns (['a'], ['b', 'c'])"
+  }
+}

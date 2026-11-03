@@ -1,0 +1,14 @@
+{
+  "function": "first_price_drop",
+  "author": "Ankit",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Given a stock's daily closing prices in order, return the index of the first day whose price is lower than the day before, or -1 if the price never drops.",
+  "bug_type": "off_by_one",
+  "bug_description": "The loop stops at len(prices) - 1, so a drop on the last day is never seen.",
+  "comments": {
+    "accurate": "Index of the first day the price falls below the day before; -1 if it never does",
+    "wrong_behavior": "First price drop among the settled days (today's close isn't final yet); -1 if none",
+    "wrong_location": "Loop range verified; check the comparison direction for equal prices",
+    "wrong_output": "Example: first_price_drop([5, 6, 7, 4]) returns -1"
+  }
+}

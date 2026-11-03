@@ -1,0 +1,14 @@
+{
+  "function": "in_date_order",
+  "author": "Ankit",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "A journal is a list of (date, note) entries with dates written as 'YYYY-MM-DD'. Return True if no entry is dated earlier than the entry before it.",
+  "bug_type": "wrong_comparison",
+  "bug_description": "Uses <= when comparing neighbouring dates, so two notes on the same day are reported as out of order.",
+  "comments": {
+    "accurate": "True if the journal never goes back in time from one entry to the next",
+    "wrong_behavior": "True if each entry is dated after the one before it",
+    "wrong_location": "Date comparison verified; make sure the first entry isn't compared with anything",
+    "wrong_output": "Example: in_date_order([('2026-01-05', 'a'), ('2026-01-05', 'b')]) returns False"
+  }
+}

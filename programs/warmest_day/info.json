@@ -1,0 +1,14 @@
+{
+  "function": "warmest_day",
+  "author": "Ankit",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Given a week of daily high temperatures, return the index of the earliest day that reached the week's highest temperature.",
+  "bug_type": "wrong_comparison",
+  "bug_description": "Uses >= when updating the best day, so on a tie the latest day wins instead of the earliest.",
+  "comments": {
+    "accurate": "Index of the earliest day with the highest temperature",
+    "wrong_behavior": "Index of the most recent day with the highest temperature",
+    "wrong_location": "Comparison verified; make sure day 0 is considered as a candidate",
+    "wrong_output": "Example: warmest_day([20, 25, 25]) returns 2"
+  }
+}

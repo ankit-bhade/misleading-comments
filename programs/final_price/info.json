@@ -1,0 +1,14 @@
+{
+  "function": "final_price",
+  "author": "Ankit",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "An item costing price is on sale for sale_percent off, and the customer also has a coupon for coupon_percent off the sale price. Return the amount paid, rounded to cents.",
+  "bug_type": "other",
+  "bug_description": "Adds the two percentages into one discount instead of applying the coupon to the already reduced price.",
+  "comments": {
+    "accurate": "Amount the customer pays after the sale and the coupon",
+    "wrong_behavior": "Amount paid, with the sale and coupon percentages combined into one discount",
+    "wrong_location": "Discount math verified; check the rounding to cents",
+    "wrong_output": "Example: final_price(100, 20, 10) returns 70.0"
+  }
+}

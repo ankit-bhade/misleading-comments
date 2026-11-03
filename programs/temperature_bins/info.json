@@ -1,0 +1,14 @@
+{
+  "function": "temperature_bins",
+  "author": "Ankit",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Group whole-degree temperature readings into 10-degree bins, where each bin is named by the lowest temperature it contains (so 23 goes in bin 20). Return a dict mapping each bin to how many readings fell in it.",
+  "bug_type": "other",
+  "bug_description": "Uses int(t / 10) instead of t // 10, which rounds toward zero, so negative readings land in the wrong bin.",
+  "comments": {
+    "accurate": "Counts readings per 10-degree bin, keyed by the bin's lowest temperature",
+    "wrong_behavior": "Counts readings per 10-degree bin, rounding each reading toward zero",
+    "wrong_location": "Bin calculation verified; make sure each reading is counted exactly once",
+    "wrong_output": "Example: temperature_bins([-3]) returns {0: 1}"
+  }
+}

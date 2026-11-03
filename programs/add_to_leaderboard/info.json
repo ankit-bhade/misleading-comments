@@ -1,0 +1,14 @@
+{
+  "function": "add_to_leaderboard",
+  "author": "Ankit",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "board is a list of (name, score) pairs sorted from highest to lowest score. Return a new board with the player added in score order, where players who reached a score earlier stay ahead of newcomers with the same score.",
+  "bug_type": "wrong_comparison",
+  "bug_description": "The position search uses > instead of >=, so a newcomer is placed ahead of existing players with the same score.",
+  "comments": {
+    "accurate": "Adds the player in score order; players already on the board keep their place on ties",
+    "wrong_behavior": "Adds the player in score order, ahead of anyone with the same score",
+    "wrong_location": "Position search verified; make sure the original board list isn't modified",
+    "wrong_output": "Example: add_to_leaderboard([('ann', 50)], 'bo', 50) returns [('bo', 50), ('ann', 50)]"
+  }
+}

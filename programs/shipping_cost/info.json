@@ -1,0 +1,14 @@
+{
+  "function": "shipping_cost",
+  "author": "Ankit",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Express shipping always costs 15. Otherwise, shipping is free for members and for orders totalling 50 or more, and costs 5 for everyone else. Return the shipping cost.",
+  "bug_type": "other",
+  "bug_description": "Uses 'and' instead of 'or' in the free-shipping rule, so only members with orders of 50 or more ship free.",
+  "comments": {
+    "accurate": "Express costs 15; standard shipping is free for members and for orders of 50 or more, otherwise 5",
+    "wrong_behavior": "Express costs 15; standard shipping is free for members spending 50 or more, otherwise 5",
+    "wrong_location": "Free-shipping rule verified; check that express orders are always charged",
+    "wrong_output": "Example: shipping_cost(20, True, False) returns 5"
+  }
+}

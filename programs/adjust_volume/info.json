@@ -1,0 +1,14 @@
+{
+  "function": "adjust_volume",
+  "author": "Ankit",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Return a speaker's volume after the volume buttons are pressed: change is added to current, and the volume always stays within its 0 to 100 range.",
+  "bug_type": "missed_edge_case",
+  "bug_description": "Only caps the volume at 100, so turning it down past 0 gives a negative volume.",
+  "comments": {
+    "accurate": "New volume after the change, kept within 0 to 100",
+    "wrong_behavior": "New volume after the change, capped at 100",
+    "wrong_location": "Range limits verified; check that change is added to the volume rather than replacing it",
+    "wrong_output": "Example: adjust_volume(10, -30) returns -20"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "function": "pages_needed",
+  "author": "Ankit",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "A photo album holds per_page photos on each page. Return how many pages are needed to hold num_photos photos.",
+  "bug_type": "off_by_one",
+  "bug_description": "Uses num_photos // per_page + 1, which adds an empty extra page whenever the photos exactly fill the pages.",
+  "comments": {
+    "accurate": "Number of album pages needed to hold all the photos",
+    "wrong_behavior": "Number of full pages plus one page for the remaining photos",
+    "wrong_location": "Page arithmetic checked; the empty-album case is the one to watch",
+    "wrong_output": "Example: pages_needed(20, 10) returns 3"
+  }
+}

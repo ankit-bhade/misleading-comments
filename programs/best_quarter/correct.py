@@ -1,0 +1,6 @@
+def best_quarter(results):
+    best = results[0]
+    for r in results:
+        if r > best:
+            best = r
+    return best

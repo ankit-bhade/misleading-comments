@@ -1,0 +1,14 @@
+{
+  "function": "minutes_for",
+  "author": "Ankit",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "entries is a gym log of (name, minutes) workouts. Return the total minutes logged by person.",
+  "bug_type": "off_by_one",
+  "bug_description": "Loops over entries[1:], skipping the first workout as if it were a header row.",
+  "comments": {
+    "accurate": "Total workout minutes logged by the given person",
+    "wrong_behavior": "Total minutes for the person, skipping the header entry at the top of the log",
+    "wrong_location": "Entry loop verified; check that names are matched with the right capitalization",
+    "wrong_output": "Example: minutes_for([('ana', 30), ('bo', 20), ('ana', 15)], 'ana') returns 15"
+  }
+}

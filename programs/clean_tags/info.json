@@ -1,0 +1,14 @@
+{
+  "function": "clean_tags",
+  "author": "Ankit",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Normalize user-entered tags: return the distinct non-blank tags, trimmed and lowercased, in sorted order.",
+  "bug_type": "missed_edge_case",
+  "bug_description": "Lowercases but never strips the tags, so ' go' and 'go' stay separate and whitespace-only tags slip through.",
+  "comments": {
+    "accurate": "Distinct non-blank tags, trimmed and lowercased, in sorted order",
+    "wrong_behavior": "Distinct non-blank tags, lowercased, in sorted order",
+    "wrong_location": "Normalization verified; make sure blank tags are skipped",
+    "wrong_output": "Example: clean_tags(['Go', ' go']) returns [' go', 'go']"
+  }
+}

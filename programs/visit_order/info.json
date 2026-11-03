@@ -1,0 +1,14 @@
+{
+  "function": "visit_order",
+  "author": "Ankit",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "badge_scans lists the room numbers where a visitor's badge was scanned, in time order (None means a failed scan). Return the distinct rooms in the order the visitor first entered them.",
+  "bug_type": "other",
+  "bug_description": "Removes duplicates with set(), which throws away the order of first visits.",
+  "comments": {
+    "accurate": "Distinct rooms in the order they were first visited, ignoring failed scans",
+    "wrong_behavior": "Distinct rooms the visitor went to, ignoring failed scans",
+    "wrong_location": "Duplicate removal verified; check that failed scans are filtered out",
+    "wrong_output": "Example: visit_order([3, 1, 3, 2]) returns [1, 2, 3]"
+  }
+}

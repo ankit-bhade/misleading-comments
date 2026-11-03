@@ -1,0 +1,14 @@
+{
+  "function": "lines_needed",
+  "author": "Ankit",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Words are placed on lines left to right with one space between neighbouring words, and a line holds at most width characters. Every word fits on a line by itself. Return how many lines the words need.",
+  "bug_type": "off_by_one",
+  "bug_description": "The fit check leaves out the space before the next word, so a line can end up one character over the width.",
+  "comments": {
+    "accurate": "Number of lines needed to wrap the words at the given width",
+    "wrong_behavior": "Wraps words at the width; the spaces between words don't count toward it",
+    "wrong_location": "Line-fit check verified; make sure the first word always starts a line",
+    "wrong_output": "Example: lines_needed(['ab', 'cd'], 4) returns 1"
+  }
+}

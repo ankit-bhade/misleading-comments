@@ -1,0 +1,14 @@
+{
+  "function": "in_season",
+  "author": "Ankit",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Months are numbered 1 to 12. A ski season runs from month start through month end and may wrap past December (for example 11 to 2). Return whether month is in the season.",
+  "bug_type": "wrong_comparison",
+  "bug_description": "For seasons that wrap past December, uses month > start instead of month >= start, so the season's first month is left out.",
+  "comments": {
+    "accurate": "True if month falls in the season from start through end, which may wrap past December",
+    "wrong_behavior": "True if month is in the season; a season that wraps past December opens after its start month",
+    "wrong_location": "Wrap-around check verified; make sure seasons within one year include both end months",
+    "wrong_output": "Example: in_season(11, 11, 2) returns False"
+  }
+}

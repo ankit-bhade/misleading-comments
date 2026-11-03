@@ -1,0 +1,14 @@
+{
+  "function": "average_rating",
+  "author": "Ankit",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Return the average of a product's star ratings rounded to one decimal place, or 0.0 if it has no ratings.",
+  "bug_type": "other",
+  "bug_description": "Divides with // instead of /, so the average is rounded down to a whole number before rounding to one decimal.",
+  "comments": {
+    "accurate": "Average star rating, rounded to one decimal place",
+    "wrong_behavior": "Average star rating, rounded down to a whole number of stars",
+    "wrong_location": "Averaging verified; check that the no-ratings case returns a float",
+    "wrong_output": "Example: average_rating([4, 5]) returns 4"
+  }
+}

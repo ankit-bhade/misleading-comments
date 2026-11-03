@@ -1,0 +1,14 @@
+{
+  "function": "minutes_until",
+  "author": "Ankit",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Times are 'HH:MM' strings on a 24-hour clock. Return how many minutes from now until the alarm next goes off.",
+  "bug_type": "missed_edge_case",
+  "bug_description": "Doesn't wrap around midnight, so an alarm time earlier than now gives a negative number instead of the time until tomorrow's alarm.",
+  "comments": {
+    "accurate": "Minutes from now until the alarm next rings",
+    "wrong_behavior": "Minutes from now until the alarm time today; negative if that time has already passed",
+    "wrong_location": "Time arithmetic verified; check that 'HH:MM' strings are split into hours then minutes",
+    "wrong_output": "Example: minutes_until('23:00', '07:00') returns -960"
+  }
+}

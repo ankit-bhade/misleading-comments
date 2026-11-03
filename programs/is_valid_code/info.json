@@ -1,0 +1,14 @@
+{
+  "function": "is_valid_code",
+  "author": "Ankit",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "allowed is a comma-separated list of promo codes such as 'SAVE10,WELCOME'. Return whether the code a customer typed is one of them, ignoring capitalization and surrounding spaces.",
+  "bug_type": "other",
+  "bug_description": "Checks whether the code appears anywhere in the allowed text instead of in the list of codes, so partial codes like 'SAVE' are accepted.",
+  "comments": {
+    "accurate": "True if the typed code matches one of the allowed promo codes",
+    "wrong_behavior": "True if the typed code appears in the allowed promo-code text",
+    "wrong_location": "Code lookup verified; check that an empty code is rejected",
+    "wrong_output": "Example: is_valid_code('SAVE', 'SAVE10,WELCOME') returns True"
+  }
+}

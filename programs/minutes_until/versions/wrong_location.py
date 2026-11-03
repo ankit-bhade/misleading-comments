@@ -1,0 +1,6 @@
+def minutes_until(now, alarm):
+    # Time arithmetic verified; check that 'HH:MM' strings are split into hours then minutes
+    now_h, now_m = map(int, now.split(":"))
+    alarm_h, alarm_m = map(int, alarm.split(":"))
+    diff = (alarm_h * 60 + alarm_m) - (now_h * 60 + now_m)
+    return diff

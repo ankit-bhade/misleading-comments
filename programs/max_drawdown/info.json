@@ -1,0 +1,14 @@
+{
+  "function": "max_drawdown",
+  "author": "Ankit",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Given a portfolio's values over time (at least one), return the largest fall from an earlier high point to any later value, or 0 if it never falls.",
+  "bug_type": "other",
+  "bug_description": "Sets the reference point to the previous value instead of the highest value so far, so it only finds the largest one-step fall.",
+  "comments": {
+    "accurate": "Largest fall from an earlier high to a later value",
+    "wrong_behavior": "Largest fall from one value to the next",
+    "wrong_location": "Running reference verified; check that the result never goes negative",
+    "wrong_output": "Example: max_drawdown([10, 8, 6]) returns 2"
+  }
+}

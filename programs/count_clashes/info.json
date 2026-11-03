@@ -1,0 +1,14 @@
+{
+  "function": "count_clashes",
+  "author": "Ankit",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Each meeting is a (start, end) pair of hours, where end is when it finishes. Return how many pairs of meetings would need the same room at the same moment.",
+  "bug_type": "wrong_comparison",
+  "bug_description": "Uses <= in the overlap test, so a meeting that ends exactly when another starts is counted as a clash.",
+  "comments": {
+    "accurate": "Counts pairs of meetings that would need the room at the same time",
+    "wrong_behavior": "Counts pairs of meetings whose times touch or overlap",
+    "wrong_location": "Overlap test verified; check that each pair of meetings is counted only once",
+    "wrong_output": "Example: count_clashes([(9, 10), (10, 11)]) returns 1"
+  }
+}

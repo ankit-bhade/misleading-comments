@@ -1,0 +1,14 @@
+{
+  "function": "shorten",
+  "author": "Ankit",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Shorten a chat preview to fit within limit characters: if the message is too long, cut it and end it with '...' so the whole preview, dots included, fits in limit characters.",
+  "bug_type": "off_by_one",
+  "bug_description": "Keeps limit - 2 characters before adding '...', so shortened previews are one character too long.",
+  "comments": {
+    "accurate": "Cuts long messages and adds '...' so the preview fits in limit characters",
+    "wrong_behavior": "Keeps the first limit - 2 characters of a long message, then adds '...'",
+    "wrong_location": "Slice length verified; check the length test for messages right at the limit",
+    "wrong_output": "Example: shorten('hello world', 8) returns 'hello ...'"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "function": "task_order",
+  "author": "Ankit",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "tasks are (name, priority, due_day) triples. Return the task names in the order to work on them: higher priority first, and among equal priorities the one due sooner first.",
+  "bug_type": "other",
+  "bug_description": "Sorts by (priority, due_day) with reverse=True, which also reverses the due days, so among equal priorities the latest-due task comes first.",
+  "comments": {
+    "accurate": "Task names ordered by priority, highest first, then by the soonest due day",
+    "wrong_behavior": "Task names ordered by priority, then by due day, both from highest to lowest",
+    "wrong_location": "Sort order verified; check that only the names are returned, in that order",
+    "wrong_output": "Example: task_order([('a', 1, 5), ('b', 1, 2)]) returns ['a', 'b']"
+  }
+}

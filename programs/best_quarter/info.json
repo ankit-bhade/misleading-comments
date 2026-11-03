@@ -1,0 +1,14 @@
+{
+  "function": "best_quarter",
+  "author": "Ankit",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Given a non-empty list of quarterly profit figures, return the best one.",
+  "bug_type": "missed_edge_case",
+  "bug_description": "Starts the running best at 0, so when every quarter lost money it returns 0 instead of the smallest loss.",
+  "comments": {
+    "accurate": "Returns the highest of the quarterly results",
+    "wrong_behavior": "Returns the highest quarterly result, or 0 if no quarter made a profit",
+    "wrong_location": "Starting value verified; check that the comparison keeps the larger result",
+    "wrong_output": "Example: best_quarter([-5, -2, -8]) returns 0"
+  }
+}

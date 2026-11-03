@@ -1,0 +1,14 @@
+{
+  "function": "seat_map",
+  "author": "Ankit",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "A theater has rows x cols seats. booked lists the (row, col) seats that are taken. Return the seat map as a list of strings, one per row, with 'X' for a booked seat and '.' for a free one.",
+  "bug_type": "other",
+  "bug_description": "Builds the grid with [['.'] * cols] * rows, so every row is the same list and booking one seat marks that column in every row.",
+  "comments": {
+    "accurate": "One string per row, with X for booked seats and . for free ones",
+    "wrong_behavior": "Seat map with X marking every column that has a booking, repeated on each row",
+    "wrong_location": "Grid setup verified; check that booked seats are given as (row, col), not (col, row)",
+    "wrong_output": "Example: seat_map(2, 3, [(0, 1)]) returns ['.X.', '.X.']"
+  }
+}
