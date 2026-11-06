@@ -1,0 +1,14 @@
+{
+  "function": "last_entry",
+  "author": "Arnav",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "A car park camera logs the plate of each car entering, in time order. Return the position in the log of the most recent entry by the given plate, or -1 if it never entered.",
+  "bug_type": "off_by_one",
+  "bug_description": "The backwards loop is range(len(plates) - 1, 0, -1), which stops before index 0, so an entry at the start of the log is never found.",
+  "comments": {
+    "accurate": "Scans the log from the newest entry back for this plate, or -1 if it never entered",
+    "wrong_behavior": "Scans back through the log for this plate; the first line is the camera's start-up record",
+    "wrong_location": "Reverse scan verified; check the plate comparison and the -1 fallback",
+    "wrong_output": "Example: last_entry([\"NC-482\", \"VA-119\", \"SC-730\"], \"NC-482\") returns -1"
+  }
+}

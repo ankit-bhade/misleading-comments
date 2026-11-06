@@ -1,0 +1,14 @@
+{
+  "function": "shopping_list",
+  "author": "Arnav",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "needed maps each grocery item (a singular noun that takes 's' in the plural) to how many to buy. Return one shopping-list line per item, in the dict's order, written as in English, like '3 eggs' or '1 lemon'.",
+  "bug_type": "missed_edge_case",
+  "bug_description": "Adds the 's' only when count > 1, so a count of 0 gets the singular ('0 onion').",
+  "comments": {
+    "accurate": "One line per item: the count, then the item name in singular or plural to match",
+    "wrong_behavior": "One line per item, adding an 's' to the name when more than one is needed",
+    "wrong_location": "Plural choice verified; check the count and item name are written in the right order",
+    "wrong_output": "Example: shopping_list({\"carrot\": 6, \"onion\": 0}) returns ['6 carrots', '0 onion']"
+  }
+}

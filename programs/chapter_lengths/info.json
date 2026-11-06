@@ -1,0 +1,14 @@
+{
+  "function": "chapter_lengths",
+  "author": "Arnav",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "starts lists the page each chapter of a book begins on, in order, and the book's last page is last_page. Return how many pages each chapter has.",
+  "bug_type": "off_by_one",
+  "bug_description": "Takes a chapter's end as the next chapter's start page instead of the page before it, so every chapter except the last is one page too long.",
+  "comments": {
+    "accurate": "Counts the pages in each chapter; the last chapter runs to the end of the book",
+    "wrong_behavior": "Counts each chapter's pages through the page where the next chapter opens",
+    "wrong_location": "Chapter ends verified; check the length formula end - start + 1",
+    "wrong_output": "Example: chapter_lengths([1, 15, 32], 50) returns [15, 18, 19]"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "function": "parse_record",
+  "author": "Arnav",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "A fixed-width bank record is split into fields; layout maps each field name to its (first, last) column, with columns numbered from 1. Return a dict of each field's text with the padding spaces removed.",
+  "bug_type": "off_by_one",
+  "bug_description": "Slices line[first - 1:last - 1], converting both column numbers to 0-based, so the last column of every field is cut off (hidden when that column is padding).",
+  "comments": {
+    "accurate": "Pulls each named field out of the record by its column range and trims the padding",
+    "wrong_behavior": "Converts each field's first and last column to 0-based offsets and slices between them",
+    "wrong_location": "Column slicing verified; strip() may also remove spaces that belong to the field",
+    "wrong_output": "Example: parse_record(\"SMITH     JOHN      0001250\", {\"amount\": (21, 27)}) returns {'amount': '000125'}"
+  }
+}

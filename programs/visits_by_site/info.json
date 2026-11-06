@@ -1,0 +1,14 @@
+{
+  "function": "visits_by_site",
+  "author": "Arnav",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "hosts lists the host name of the referring site for each visit to a blog, such as 'www.example.com'. Return how many visits came from each site, ignoring capitalization and a leading 'www.'.",
+  "bug_type": "other",
+  "bug_description": "Uses lstrip('www.'), which strips any leading 'w' and '.' characters rather than the 'www.' prefix, so 'www.wired.com' becomes 'ired.com'.",
+  "comments": {
+    "accurate": "Counts visits per site, ignoring case and a leading www.",
+    "wrong_behavior": "Counts visits per site, trimming leading w's and dots so www., ww. and w. prefixes all match",
+    "wrong_location": "Prefix handling verified; check each site's count starts from the right value",
+    "wrong_output": "Example: visits_by_site([\"www.wired.com\", \"wired.com\", \"www.bbc.co.uk\"]) returns {'ired.com': 2, 'bbc.co.uk': 1}"
+  }
+}

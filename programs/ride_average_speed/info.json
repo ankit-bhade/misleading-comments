@@ -1,0 +1,14 @@
+{
+  "function": "ride_average_speed",
+  "author": "Arnav",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "A cycling club ride is split into legs, each a (km, hours) pair. Return the average speed over the whole ride in km/h, rounded to one decimal place, or 0.0 if there are no legs.",
+  "bug_type": "other",
+  "bug_description": "Averages the speeds of the legs instead of dividing total distance by total time, which is only the same when every leg takes equally long.",
+  "comments": {
+    "accurate": "Overall average speed of the ride in km/h",
+    "wrong_behavior": "Average of the speeds ridden on each leg, in km/h",
+    "wrong_location": "Speed formula verified; check whether an empty ride should really return 0.0",
+    "wrong_output": "Example: ride_average_speed([(36, 1.5), (18, 1.5), (40, 2)]) returns 18.7"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "function": "flights_before_curfew",
+  "author": "Arnav",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "flights is a list of (flight code, (hour, minute)) scheduled departures and curfew is an (hour, minute) time. Return the codes of the flights that depart before the curfew, in list order.",
+  "bug_type": "wrong_comparison",
+  "bug_description": "Compares only the hours (dep[0] < curfew[0]) instead of the whole time, so a flight leaving in the curfew's hour but before its minute is dropped.",
+  "comments": {
+    "accurate": "Keeps the flights whose departure time is earlier than the curfew",
+    "wrong_behavior": "Keeps the flights that leave before the curfew hour begins",
+    "wrong_location": "Departure check verified; check each flight's code and time are unpacked in the right order",
+    "wrong_output": "Example: flights_before_curfew([(\"BA117\", (22, 5)), (\"AA92\", (22, 55))], (22, 30)) returns []"
+  }
+}

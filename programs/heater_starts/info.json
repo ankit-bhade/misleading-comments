@@ -1,0 +1,14 @@
+{
+  "function": "heater_starts",
+  "author": "Arnav",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "A greenhouse heater switches on when the temperature drops below low and then stays on until the temperature rises above high. Given temperature readings in order, return how many times the heater switched on.",
+  "bug_type": "other",
+  "bug_description": "Switches off when the temperature rises above low instead of high, so readings between low and high turn the heater off and it restarts too often.",
+  "comments": {
+    "accurate": "Counts switch-ons: on below low, then staying on until the temperature is above high",
+    "wrong_behavior": "Counts how often the heater kicks in; it switches off as soon as the greenhouse is back above low",
+    "wrong_location": "Switch-off test verified; a reading exactly at low may need to start the heater too",
+    "wrong_output": "Example: heater_starts([6, 3, 7, 4, 8, 15, 2], 5, 12) returns 3"
+  }
+}

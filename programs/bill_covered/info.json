@@ -1,0 +1,14 @@
+{
+  "function": "bill_covered",
+  "author": "Arnav",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Friends each paid part of a restaurant bill; all amounts are in dollars and cents. Return whether their payments together cover the bill.",
+  "bug_type": "other",
+  "bug_description": "Compares the raw floating-point sum with the bill instead of rounding it to cents first, so totals like 0.7 + 0.1 = 0.7999999999999999 fall just short.",
+  "comments": {
+    "accurate": "True when the payments add up to at least the bill",
+    "wrong_behavior": "True when the running total of the payments reaches the bill exactly or goes over it",
+    "wrong_location": "Total verified; the bill may need rounding to cents before the comparison",
+    "wrong_output": "Example: bill_covered([12.10, 12.20], 24.30) returns False"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "function": "setlist_length",
+  "author": "Arnav",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "songs lists a band's track lengths as 'M:SS' strings. Return the total length of the setlist in the same 'M:SS' format.",
+  "bug_type": "missed_edge_case",
+  "bug_description": "Formats the seconds without zero-padding, so totals with fewer than 10 leftover seconds come out like '8:6' instead of '8:06'.",
+  "comments": {
+    "accurate": "Adds up the track lengths and returns the total as M:SS",
+    "wrong_behavior": "Adds up the track lengths and returns total minutes and leftover seconds joined by a colon",
+    "wrong_location": "Output format verified; check each song's minutes and seconds are parsed in the right order",
+    "wrong_output": "Example: setlist_length([\"3:41\", \"4:25\"]) returns '8:6'"
+  }
+}

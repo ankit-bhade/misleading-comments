@@ -1,0 +1,14 @@
+{
+  "function": "longest_growth_run",
+  "author": "Arnav",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "downloads gives how many times each podcast episode was downloaded, in release order. Return the length of the longest stretch of consecutive episodes in which each episode was downloaded more than the one before it (a single episode is a stretch of 1).",
+  "bug_type": "wrong_comparison",
+  "bug_description": "Uses cur >= prev instead of cur > prev, so episodes with equal downloads keep the stretch going.",
+  "comments": {
+    "accurate": "Longest stretch of episodes where each one beat the previous episode's downloads",
+    "wrong_behavior": "Longest stretch of episodes where downloads never dropped from one episode to the next",
+    "wrong_location": "Growth check verified; make sure best is updated when the list ends mid-stretch",
+    "wrong_output": "Example: longest_growth_run([120, 150, 150, 180, 90]) returns 4"
+  }
+}

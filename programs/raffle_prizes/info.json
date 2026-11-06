@@ -1,0 +1,14 @@
+{
+  "function": "raffle_prizes",
+  "author": "Arnav",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Raffle tickets were sold in books, each covering the consecutive ticket numbers from first to last. Every ticket whose number is a multiple of k wins a prize. Return how many prizes will be given out.",
+  "bug_type": "off_by_one",
+  "bug_description": "Uses last // k - first // k instead of last // k - (first - 1) // k, so a book whose first ticket is a multiple of k loses that prize.",
+  "comments": {
+    "accurate": "Counts the tickets in every book whose number is a multiple of k",
+    "wrong_behavior": "Counts multiples of k in each book; a book's first ticket is the seller's stub and isn't entered",
+    "wrong_location": "Per-book count verified; check that the prizes total starts from the right value",
+    "wrong_output": "Example: raffle_prizes([(100, 200)], 10) returns 10"
+  }
+}

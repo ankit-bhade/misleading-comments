@@ -1,0 +1,14 @@
+{
+  "function": "stadium_seats",
+  "author": "Arnav",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "In a stadium section, the front row has first_row seats and each row behind it has extra more seats than the row in front of it. Return the total number of seats in a section with rows rows.",
+  "bug_type": "off_by_one",
+  "bug_description": "Loops r over range(1, rows + 1) instead of range(rows), so every row gets one extra step of seats (the front row has first_row + extra).",
+  "comments": {
+    "accurate": "Adds up the seats row by row, starting from the front row's count",
+    "wrong_behavior": "Sums rows 1 through rows, where row r has first_row plus r * extra seats",
+    "wrong_location": "Row loop verified; check that a negative extra can't give a row fewer than zero seats",
+    "wrong_output": "Example: stadium_seats(10, 24, 2) returns 350"
+  }
+}

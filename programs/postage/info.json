@@ -1,0 +1,14 @@
+{
+  "function": "postage",
+  "author": "Arnav",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Letters up to 100 g cost 1.20, up to 250 g cost 2.00, up to 500 g cost 3.10 and up to 1000 g cost 4.50; anything heavier can't be posted. Return the postage for a letter of weight_g grams, or None if it can't be posted.",
+  "bug_type": "wrong_comparison",
+  "bug_description": "Uses bisect_right instead of bisect_left, so a letter weighing exactly a tier's limit is charged at the next tier (and 1000 g can't be posted).",
+  "comments": {
+    "accurate": "Looks up the price tier that covers the letter's weight",
+    "wrong_behavior": "Each tier covers weights below its limit; a letter at the limit moves up a tier",
+    "wrong_location": "Tier lookup verified; prices may need rounding to cents before they're returned",
+    "wrong_output": "Example: postage(500) returns 4.5"
+  }
+}

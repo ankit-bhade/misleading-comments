@@ -1,0 +1,14 @@
+{
+  "function": "roster_order",
+  "author": "Arnav",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "attendance maps each student's name to whether they were present today. Return the names of the present students, spelled as given, in dictionary order.",
+  "bug_type": "other",
+  "bug_description": "Uses sorted() without key=str.lower, so capitalized names all come before names that start with a lowercase letter ('Wu' before 'van Dijk').",
+  "comments": {
+    "accurate": "Present students in alphabetical order, keeping each name's spelling",
+    "wrong_behavior": "Present students sorted by name, with capitalized names listed first",
+    "wrong_location": "Sorting verified; absent students may be stored as None rather than False",
+    "wrong_output": "Example: roster_order({\"Liam\": True, \"da Silva\": True, \"Emma\": True, \"Noah\": False}) returns ['Emma', 'Liam', 'da Silva']"
+  }
+}

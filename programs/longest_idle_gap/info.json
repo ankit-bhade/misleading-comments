@@ -1,0 +1,14 @@
+{
+  "function": "longest_idle_gap",
+  "author": "Arnav",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "jobs lists the (start, end) minute of each print job a printer handled today; jobs never overlap. Return the longest time the printer sat idle between two jobs, or 0 if there was no gap.",
+  "bug_type": "missed_edge_case",
+  "bug_description": "The jobs are never sorted by start time, so when they're listed out of order the neighbouring pairs aren't neighbours in time.",
+  "comments": {
+    "accurate": "Longest idle stretch between one print job ending and the next one starting",
+    "wrong_behavior": "Longest idle stretch between consecutive jobs, in the order the printer logged them",
+    "wrong_location": "Gap between neighbouring jobs verified; check whether idle time should be end - start",
+    "wrong_output": "Example: longest_idle_gap([(600, 630), (420, 450), (480, 500)]) returns 30"
+  }
+}

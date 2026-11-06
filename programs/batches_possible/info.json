@@ -1,0 +1,14 @@
+{
+  "function": "batches_possible",
+  "author": "Arnav",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "pantry maps each ingredient to how many grams a bakery has, and recipe maps each ingredient to the grams one batch of the recipe needs. Return how many whole batches the bakery can make.",
+  "bug_type": "other",
+  "bug_description": "Returns max of the per-ingredient batch counts instead of min, so it ignores the ingredient that runs out first.",
+  "comments": {
+    "accurate": "Number of complete batches the pantry has enough of every ingredient for",
+    "wrong_behavior": "Number of batches the pantry supports, going by its best-stocked ingredient",
+    "wrong_location": "Per-ingredient count verified; ingredients missing from the pantry may need to be skipped",
+    "wrong_output": "Example: batches_possible({\"flour\": 2000, \"butter\": 300, \"sugar\": 800}, {\"flour\": 400, \"butter\": 100, \"sugar\": 200}) returns 5"
+  }
+}

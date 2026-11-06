@@ -1,0 +1,14 @@
+{
+  "function": "tote_bag_winners",
+  "author": "Arnav",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "A museum gives a free tote bag to every n-th visitor through the door, but no one gets more than one bag. visitors lists names in arrival order. Return the winners in the order they won.",
+  "bug_type": "off_by_one",
+  "bug_description": "Slices visitors[::n], which picks the 1st, (n+1)-th, ... visitors instead of the n-th, 2n-th, ...",
+  "comments": {
+    "accurate": "Gives a bag to each n-th visitor, skipping anyone who already has one",
+    "wrong_behavior": "Gives a bag to the first visitor and every n-th one after that, one bag per person",
+    "wrong_location": "Winner selection verified; the duplicate check is linear and may need a set",
+    "wrong_output": "Example: tote_bag_winners([\"Ana\", \"Ben\", \"Cal\", \"Dee\", \"Eli\"], 2) returns ['Ana', 'Cal', 'Eli']"
+  }
+}

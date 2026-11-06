@@ -1,0 +1,14 @@
+{
+  "function": "average_rainfall",
+  "author": "Arnav",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "readings gives each day's rainfall in mm from a rain gauge, with None for days the gauge failed to report. Return the average rainfall over the days it reported, rounded to one decimal place, or None if it never reported.",
+  "bug_type": "other",
+  "bug_description": "Filters with `if r` instead of `if r is not None`, so dry days (0.0 mm) are thrown out along with the missing ones.",
+  "comments": {
+    "accurate": "Average rainfall over the days the gauge reported, skipping missing readings",
+    "wrong_behavior": "Average rainfall over the days the gauge recorded some rain",
+    "wrong_location": "Missing readings filtered; rounding may need to happen before averaging",
+    "wrong_output": "Example: average_rainfall([12.5, 0.0, None, 0.0, 7.5]) returns 10.0"
+  }
+}

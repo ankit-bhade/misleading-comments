@@ -1,0 +1,14 @@
+{
+  "function": "allowed_requests",
+  "author": "Arnav",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "An API rate limiter sees requests at the given times (seconds, in order). It accepts a request only if at least gap seconds have passed since the last request it accepted. Return the times of the accepted requests.",
+  "bug_type": "wrong_comparison",
+  "bug_description": "Uses t - last > gap instead of >=, so a request exactly gap seconds after the last accepted one is rejected.",
+  "comments": {
+    "accurate": "Accepts a request once gap seconds have passed since the last accepted one",
+    "wrong_behavior": "Accepts a request only when more than gap seconds have passed since the last accepted one",
+    "wrong_location": "Gap check verified; last should probably also move forward on rejected requests",
+    "wrong_output": "Example: allowed_requests([0, 30, 45, 60, 95], 30) returns [0, 45, 95]"
+  }
+}

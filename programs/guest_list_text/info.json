@@ -1,0 +1,14 @@
+{
+  "function": "guest_list_text",
+  "author": "Arnav",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Write the guests' names as one phrase for a wedding invitation in the usual English style, like 'Ann, Bo and Cy'.",
+  "bug_type": "missed_edge_case",
+  "bug_description": "Only returns early for an empty list, so a single guest comes out as ' and Ann'.",
+  "comments": {
+    "accurate": "Joins the guests' names with commas, with 'and' before the last name",
+    "wrong_behavior": "Joins the names as 'A, B and C', always putting 'and' before the last name",
+    "wrong_location": "Empty list handled; check the comma placement for long guest lists",
+    "wrong_output": "Example: guest_list_text([\"Grandma Rose\"]) returns ' and Grandma Rose'"
+  }
+}

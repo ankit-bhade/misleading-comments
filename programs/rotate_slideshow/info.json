@@ -1,0 +1,14 @@
+{
+  "function": "rotate_slideshow",
+  "author": "Arnav",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Return the slideshow reordered so it starts k slides later than before, with the skipped slides moved to the end in their original order.",
+  "bug_type": "missed_edge_case",
+  "bug_description": "Never reduces k modulo the number of slides, so when k is at least the number of slides the slices return the show unchanged.",
+  "comments": {
+    "accurate": "Rotates the slides so the show begins k slides later",
+    "wrong_behavior": "Rotates the slides left by k; a shift past the end of the show leaves the order as it is",
+    "wrong_location": "Rotation verified; check that a negative k moves the show the right way",
+    "wrong_output": "Example: rotate_slideshow([\"intro\", \"agenda\", \"demo\", \"q&a\"], 5) returns ['intro', 'agenda', 'demo', 'q&a']"
+  }
+}

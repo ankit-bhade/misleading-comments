@@ -1,0 +1,14 @@
+{
+  "function": "motion_passes",
+  "author": "Arnav",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Condo board members vote 'yes', 'no' or 'abstain' on a motion. It passes when more than half of the yes and no votes are yes; abstentions don't count. Return whether it passes.",
+  "bug_type": "wrong_comparison",
+  "bug_description": "Uses yes * 2 >= yes + no instead of >, so a tied vote (or no votes at all) passes.",
+  "comments": {
+    "accurate": "Passes when a majority of the yes/no votes are yes; abstentions are ignored",
+    "wrong_behavior": "Passes when yes votes make up at least half of the yes/no votes; abstentions are ignored",
+    "wrong_location": "Vote threshold verified; ballots may need lowercasing before they're counted",
+    "wrong_output": "Example: motion_passes([\"yes\", \"no\", \"abstain\", \"yes\", \"no\"]) returns True"
+  }
+}

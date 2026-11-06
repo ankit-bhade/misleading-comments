@@ -1,0 +1,14 @@
+{
+  "function": "telegram_cost",
+  "author": "Arnav",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "A telegram office charges per_word for every word in a message. Return the cost of sending the message, rounded to cents.",
+  "bug_type": "missed_edge_case",
+  "bug_description": "Splits on a single space instead of any whitespace, so doubled, leading or trailing spaces (and an empty message) produce empty 'words' that are charged.",
+  "comments": {
+    "accurate": "Charges per_word for each word in the message, rounded to cents",
+    "wrong_behavior": "Charges per_word for each space-separated piece of the message, rounded to cents",
+    "wrong_location": "Word split verified; rounding may need to happen per word rather than on the total",
+    "wrong_output": "Example: telegram_cost(\"MEET AT  NOON\", 0.75) returns 3.0"
+  }
+}

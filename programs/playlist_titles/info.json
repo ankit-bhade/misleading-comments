@@ -1,0 +1,14 @@
+{
+  "function": "playlist_titles",
+  "author": "Arnav",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Format each playlist name so that every space-separated word starts with a capital letter and the rest of the word is lowercase. Return the formatted names in the same order.",
+  "bug_type": "other",
+  "bug_description": "Uses str.title(), which also capitalizes letters after apostrophes, hyphens and digits ('Don'T', '90S', 'K-Pop').",
+  "comments": {
+    "accurate": "Capitalizes the first letter of each word in every playlist name and lowercases the rest",
+    "wrong_behavior": "Puts every playlist name in title case",
+    "wrong_location": "Title-casing verified; check the titles come back in the same order as the names",
+    "wrong_output": "Example: playlist_titles([\"it's friday\"]) returns [\"It'S Friday\"]"
+  }
+}

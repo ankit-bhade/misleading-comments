@@ -1,0 +1,14 @@
+{
+  "function": "top_stall",
+  "author": "Arnav",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "sales lists a (stall, amount) pair for every sale at a farmers market, with at least one sale. Return the stall that took the most money in total.",
+  "bug_type": "other",
+  "bug_description": "Uses max(totals), which compares the stall names, instead of max(totals, key=totals.get), so it returns the alphabetically last stall.",
+  "comments": {
+    "accurate": "Stall with the highest total takings across all its sales",
+    "wrong_behavior": "Totals each stall's sales and returns the top entry in the totals table",
+    "wrong_location": "Stall selection verified; check each sale is added to the right stall's total",
+    "wrong_output": "Example: top_stall([(\"honey\", 60), (\"tea\", 25), (\"honey\", 40), (\"cider\", 30)]) returns 'tea'"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "function": "spelling_bee_place",
+  "author": "Arnav",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "scores maps each spelling-bee contestant to their score. Return the given contestant's place: one more than the number of contestants who scored higher than them.",
+  "bug_type": "wrong_comparison",
+  "bug_description": "Counts other contestants with score >= mine instead of score > mine, so contestants tied with this one push them down a place.",
+  "comments": {
+    "accurate": "Place is 1 plus the number of contestants who outscored this one",
+    "wrong_behavior": "Place is 1 plus the number of other contestants who scored at least as much as this one",
+    "wrong_location": "Score comparison verified; make sure the contestant is never compared with themselves",
+    "wrong_output": "Example: spelling_bee_place({\"Mia\": 18, \"Leo\": 15, \"Ava\": 15, \"Sam\": 12}, \"Ava\") returns 3"
+  }
+}
