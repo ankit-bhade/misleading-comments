@@ -1,0 +1,14 @@
+{
+  "function": "scan_titles",
+  "author": "Seung Wook",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "files lists the file names of an archive's scanned film negatives. Return each name with its extension (the part from the last '.' on) removed, in the same order.",
+  "bug_type": "missed_edge_case",
+  "bug_description": "Always cuts at name.rfind('.'), which is -1 for a name with no extension, so such names lose their last character.",
+  "comments": {
+    "accurate": "Scan file names with their extensions removed, in the same order",
+    "wrong_behavior": "Strips everything from the last dot, since every scan is saved with an extension",
+    "wrong_location": "Extension cut verified; check names with several dots keep everything before the last one",
+    "wrong_output": "Example: scan_titles(['roll1.tif', 'contact_sheet']) returns ['roll1', 'contact_shee']"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "function": "attendance_growth",
+  "author": "Seung Wook",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "A regional fair had last_year visitors last year and this_year visitors this year (last_year > 0). Return the percentage change in attendance from last year to this year, rounded to one decimal place.",
+  "bug_type": "other",
+  "bug_description": "Divides the change by this_year instead of last_year, so the percentage is measured against the wrong year.",
+  "comments": {
+    "accurate": "Percentage change in attendance from last year to this year",
+    "wrong_behavior": "Percentage change in attendance, as a share of this year's crowd",
+    "wrong_location": "Percentage formula verified; check the rounding keeps one decimal place",
+    "wrong_output": "Example: attendance_growth(1000, 1200) returns 16.7"
+  }
+}

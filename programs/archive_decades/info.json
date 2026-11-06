@@ -1,0 +1,14 @@
+{
+  "function": "archive_decades",
+  "author": "Seung Wook",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "years lists the years in which a jazz club's archived recordings were made (at least one). Return how many decades (the 1970s, the 1980s, ...) there are from the decade of the earliest recording through the decade of the latest.",
+  "bug_type": "other",
+  "bug_description": "Uses (last - first) // 10 + 1, which measures ten-year spans from the first year instead of counting calendar decades, so 1975 to 1984 gives 1 instead of 2.",
+  "comments": {
+    "accurate": "Number of calendar decades from the earliest recording's to the latest's",
+    "wrong_behavior": "Number of decades covered, measured in ten-year spans from the first recording",
+    "wrong_location": "Decade arithmetic verified; check the earliest and latest years are picked correctly",
+    "wrong_output": "Example: archive_decades([1975, 1984]) returns 1"
+  }
+}

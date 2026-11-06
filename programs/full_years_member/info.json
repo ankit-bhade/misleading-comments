@@ -1,0 +1,14 @@
+{
+  "function": "full_years_member",
+  "author": "Seung Wook",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Dates are (year, month, day) tuples. Return how many full years a member has belonged to a rowing club, from the date they joined until today.",
+  "bug_type": "wrong_comparison",
+  "bug_description": "Uses <= when comparing (month, day), so on the anniversary itself the year that has just been completed isn't counted.",
+  "comments": {
+    "accurate": "Completed years of club membership as of today",
+    "wrong_behavior": "Completed membership years; a year counts once its anniversary day has passed",
+    "wrong_location": "Anniversary check verified; check the year difference subtracts the joining year",
+    "wrong_output": "Example: full_years_member((2020, 3, 15), (2024, 3, 15)) returns 3"
+  }
+}

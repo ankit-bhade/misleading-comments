@@ -1,0 +1,14 @@
+{
+  "function": "flour_shop_pick",
+  "author": "Seung Wook",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "offers lists (shop, price, bag size in kg) for bags of bread flour (at least one offer). Return the shop whose flour is cheapest per kilogram (the first such offer on a tie).",
+  "bug_type": "other",
+  "bug_description": "Compares the bag prices (o[1]) instead of price per kilogram (o[1] / o[2]), so a small cheap bag beats a bigger bag that is better value.",
+  "comments": {
+    "accurate": "Shop offering the lowest price per kilogram of flour",
+    "wrong_behavior": "Shop with the cheapest bag of flour on offer",
+    "wrong_location": "Price comparison verified; check the shop name, not the whole offer, is returned",
+    "wrong_output": "Example: flour_shop_pick([('Mill', 4.0, 2), ('Corner', 3.0, 1)]) returns 'Corner'"
+  }
+}

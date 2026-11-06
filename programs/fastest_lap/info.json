@@ -1,0 +1,14 @@
+{
+  "function": "fastest_lap",
+  "author": "Seung Wook",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "lap_times lists a kart driver's lap times in seconds, in the order driven, with laps numbered from 1. Return the number of the fastest lap (the earlier lap on a tie), or None if no laps were driven.",
+  "bug_type": "off_by_one",
+  "bug_description": "Uses enumerate(lap_times) instead of enumerate(lap_times, 1), so it returns the 0-based position rather than the lap number.",
+  "comments": {
+    "accurate": "Number of the quickest lap, keeping the earlier lap on a tie",
+    "wrong_behavior": "Position of the quickest lap in lap_times, earliest on a tie",
+    "wrong_location": "Lap numbering verified; check a tie keeps the earlier lap",
+    "wrong_output": "Example: fastest_lap([61.2, 59.8, 60.4]) returns 1"
+  }
+}

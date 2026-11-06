@@ -1,0 +1,14 @@
+{
+  "function": "radio_messages",
+  "author": "Seung Wook",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Each line of a coastguard radio log looks like 'CALLSIGN: message'. Return a dict mapping each callsign to its messages, in log order.",
+  "bug_type": "other",
+  "bug_description": "Uses rpartition(':') instead of partition(':'), so a message containing a colon (like a time '14:30') is split at the wrong place.",
+  "comments": {
+    "accurate": "Groups each callsign's messages in log order",
+    "wrong_behavior": "Groups messages by callsign, splitting each line at its last colon",
+    "wrong_location": "Line split verified; check repeated callsigns add to the same list",
+    "wrong_output": "Example: radio_messages(['ALPHA: ETA 14:30']) returns {'ALPHA: ETA 14': ['30']}"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "function": "coins_within_tolerance",
+  "author": "Seung Wook",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "weights lists the weights in milligrams of coins from a mint's production line. A coin passes inspection if it is no more than tol milligrams heavier or lighter than target. Return how many coins pass.",
+  "bug_type": "wrong_comparison",
+  "bug_description": "Uses abs(w - target) < tol instead of <= tol, so a coin that is off by exactly the tolerance is rejected.",
+  "comments": {
+    "accurate": "Coins whose weight is within the tolerance of the target",
+    "wrong_behavior": "Coins weighing strictly inside the tolerance band around the target",
+    "wrong_location": "Tolerance check verified; check that both heavy and light coins are measured by their distance from target",
+    "wrong_output": "Example: coins_within_tolerance([5000, 5020, 4975], 5000, 20) returns 1"
+  }
+}

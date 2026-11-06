@@ -1,0 +1,14 @@
+{
+  "function": "knockout_rounds",
+  "author": "Seung Wook",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "A chess club runs a single-elimination tournament: each round halves the field, and a player without an opponent gets a bye. Return how many rounds it takes to find a winner among players entrants (players >= 1).",
+  "bug_type": "wrong_comparison",
+  "bug_description": "The loop runs while slots <= players instead of slots < players, so when the entry count is a power of two it plays one round too many.",
+  "comments": {
+    "accurate": "Rounds needed until one player is left in a knockout bracket",
+    "wrong_behavior": "Rounds in the bracket, which is sized to the next power of two above the entry count",
+    "wrong_location": "Loop condition verified; check the bracket doubles in size each round",
+    "wrong_output": "Example: knockout_rounds(8) returns 4"
+  }
+}

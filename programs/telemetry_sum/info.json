@@ -1,0 +1,14 @@
+{
+  "function": "telemetry_sum",
+  "author": "Seung Wook",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "lines are the lines of a weather balloon's radio packet. Each data line holds one whole-number reading, blank lines are padding, and the line 'END' marks the end of the packet; anything after it is noise. Return the sum of the readings.",
+  "bug_type": "other",
+  "bug_description": "Uses break instead of continue on a blank line, so padding in the middle of a packet cuts it short.",
+  "comments": {
+    "accurate": "Sum of the readings in the packet, up to its END line",
+    "wrong_behavior": "Sum of the readings up to the first gap or END line",
+    "wrong_location": "End-of-packet check verified; check each line is stripped before it is read",
+    "wrong_output": "Example: telemetry_sum(['4', '', '5', 'END']) returns 4"
+  }
+}

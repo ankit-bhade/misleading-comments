@@ -1,0 +1,14 @@
+{
+  "function": "lighthouse_log_tail",
+  "author": "Seung Wook",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "entries is a lighthouse keeper's log, oldest first. Return the n most recent entries (n >= 0), oldest first, with surrounding spaces removed.",
+  "bug_type": "missed_edge_case",
+  "bug_description": "Slices entries[-n:], which returns the whole log when n is 0 because -0 is 0.",
+  "comments": {
+    "accurate": "The n latest log entries, trimmed, oldest first",
+    "wrong_behavior": "Last n log entries taken with a negative slice, trimmed",
+    "wrong_location": "Slice start verified; check each entry is stripped of surrounding spaces",
+    "wrong_output": "Example: lighthouse_log_tail(['Fog', 'Calm', 'Gale'], 0) returns ['Fog', 'Calm', 'Gale']"
+  }
+}

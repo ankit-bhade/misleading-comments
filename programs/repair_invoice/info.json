@@ -1,0 +1,14 @@
+{
+  "function": "repair_invoice",
+  "author": "Seung Wook",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "A bike shop's bill is the cost of parts plus hours of labour at rate per hour, and 20% VAT is added to the bill. Return the total to pay, rounded to cents.",
+  "bug_type": "other",
+  "bug_description": "Leaves out the parentheses, so VAT is added only to the labour and the parts are charged without it.",
+  "comments": {
+    "accurate": "Bill total for parts and labour with 20% VAT added",
+    "wrong_behavior": "Bill total: parts at cost, plus labour charged with 20% VAT",
+    "wrong_location": "VAT calculation verified; check the labour charge multiplies hours by the rate",
+    "wrong_output": "Example: repair_invoice(50, 2, 30) returns 122.0"
+  }
+}

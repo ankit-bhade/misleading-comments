@@ -1,0 +1,14 @@
+{
+  "function": "floors_travelled",
+  "author": "Seung Wook",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "In a hotel the floors above ground are numbered 1, 2, 3, ... and the basement floors -1, -2, ..., with no floor 0. Return how many floors the lift moves going from floor start to floor end.",
+  "bug_type": "missed_edge_case",
+  "bug_description": "Only allows for the missing floor 0 when going up (start < 0 < end), so a trip down from above ground into the basement counts one floor too many.",
+  "comments": {
+    "accurate": "Floors the lift moves between start and end in a building with no floor 0",
+    "wrong_behavior": "Floors moved, with one taken off for the missing floor 0 when the lift leaves the basement",
+    "wrong_location": "Ground-floor check verified; check the distance is taken as an absolute value",
+    "wrong_output": "Example: floors_travelled(2, -2) returns 4"
+  }
+}

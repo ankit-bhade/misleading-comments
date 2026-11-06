@@ -1,0 +1,14 @@
+{
+  "function": "cable_car_boarding",
+  "author": "Seung Wook",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "queue lists (name, weight in kg) for the people waiting for a cable car, in order. People board in queue order until the next person would take the total weight over limit. Return the names of the people who board.",
+  "bug_type": "wrong_comparison",
+  "bug_description": "Stops when total + weight >= limit instead of > limit, so a person who would bring the car exactly to its limit is left behind.",
+  "comments": {
+    "accurate": "People who board in queue order while the car stays within its weight limit",
+    "wrong_behavior": "People who board in queue order while the load stays below the weight limit",
+    "wrong_location": "Weight check verified; check boarding stops at the first person who doesn't fit",
+    "wrong_output": "Example: cable_car_boarding([('Ana', 70), ('Ben', 80), ('Cy', 50)], 200) returns ['Ana', 'Ben']"
+  }
+}

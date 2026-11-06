@@ -1,0 +1,14 @@
+{
+  "function": "photo_albums",
+  "author": "Seung Wook",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "times lists, in order, the minute of the day each photo at a wedding was taken. A new album starts whenever more than gap minutes pass between two consecutive photos. Return how many albums the photos fill.",
+  "bug_type": "off_by_one",
+  "bug_description": "Starts the album count at 0 instead of 1, so it counts the breaks between albums rather than the albums themselves.",
+  "comments": {
+    "accurate": "Number of albums, starting a new one after each long pause between photos",
+    "wrong_behavior": "Number of album breaks: one for each long pause between photos",
+    "wrong_location": "Album count verified; check a pause exactly gap minutes long stays in the same album",
+    "wrong_output": "Example: photo_albums([600, 605, 700, 702], 30) returns 1"
+  }
+}

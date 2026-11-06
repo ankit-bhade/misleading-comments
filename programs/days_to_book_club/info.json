@@ -1,0 +1,14 @@
+{
+  "function": "days_to_book_club",
+  "author": "Seung Wook",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "A library book club met on day start and meets again every every days after that. Given a day today with today >= start, return how many days there are until the next meeting held on today or later.",
+  "bug_type": "missed_edge_case",
+  "bug_description": "Uses every - (today - start) % every, without the check for a meeting falling on today itself, so that case gives every instead of 0.",
+  "comments": {
+    "accurate": "Days until the club's next meeting",
+    "wrong_behavior": "Days until the club's following meeting, counting forward from today",
+    "wrong_location": "Cycle arithmetic verified; check elapsed counts days from the first meeting",
+    "wrong_output": "Example: days_to_book_club(10, 7, 17) returns 7"
+  }
+}

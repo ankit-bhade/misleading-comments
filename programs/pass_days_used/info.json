@@ -1,0 +1,14 @@
+{
+  "function": "pass_days_used",
+  "author": "Seung Wook",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "A ski pass is valid from day pass_start through day pass_end, and a visitor stays from day arrive through day leave. Return how many days of the stay the pass covers.",
+  "bug_type": "missed_edge_case",
+  "bug_description": "Adds the + 1 outside max(0, ...), so when the stay and the pass don't overlap at all it returns 1 instead of 0.",
+  "comments": {
+    "accurate": "Days of the stay that fall on days the pass is valid",
+    "wrong_behavior": "Days the pass covers; a stay always gets at least its first day on the pass",
+    "wrong_location": "Day count verified; check the overlap takes the later start and the earlier end",
+    "wrong_output": "Example: pass_days_used(1, 7, 8, 12) returns 1"
+  }
+}

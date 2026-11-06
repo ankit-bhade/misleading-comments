@@ -1,0 +1,14 @@
+{
+  "function": "copy_shop_pages",
+  "author": "Seung Wook",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "A print order lists pages like '1-3,7,10-12', where 'a-b' means pages a through b; no page is listed twice. Return how many pages will be printed.",
+  "bug_type": "off_by_one",
+  "bug_description": "A range adds last - first instead of last - first + 1, so each range is one page short (single pages are counted correctly).",
+  "comments": {
+    "accurate": "Number of pages the order prints",
+    "wrong_behavior": "Pages to print: each single page counts once and each range adds its span",
+    "wrong_location": "Range arithmetic verified; check single pages without a dash are counted",
+    "wrong_output": "Example: copy_shop_pages('1-3,7,10-12') returns 5"
+  }
+}

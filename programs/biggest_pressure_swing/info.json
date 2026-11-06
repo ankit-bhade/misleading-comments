@@ -1,0 +1,14 @@
+{
+  "function": "biggest_pressure_swing",
+  "author": "Seung Wook",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "readings are a barometer's hourly air-pressure readings in hPa. Return the largest change between two consecutive readings in either direction, or 0 if there are fewer than two readings.",
+  "bug_type": "other",
+  "bug_description": "Takes after - before without abs(), so drops in pressure are never counted and only the biggest rise is found.",
+  "comments": {
+    "accurate": "Largest hour-to-hour change in pressure, up or down",
+    "wrong_behavior": "Largest hour-to-hour rise in pressure seen in the readings",
+    "wrong_location": "Change calculation verified; check each reading is paired with the next one",
+    "wrong_output": "Example: biggest_pressure_swing([1010, 1003, 1005]) returns 2"
+  }
+}

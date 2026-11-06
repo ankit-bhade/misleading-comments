@@ -1,0 +1,14 @@
+{
+  "function": "kth_longest_jump",
+  "author": "Seung Wook",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "jumps lists the distance in metres of every attempt at a long-jump meet, and k is between 1 and the number of attempts. Return the k-th longest distance.",
+  "bug_type": "off_by_one",
+  "bug_description": "Returns ranked[k] instead of ranked[k - 1], treating k as a 0-based index, so it gives the jump one place lower (and crashes for the shortest).",
+  "comments": {
+    "accurate": "The k-th longest jump of the meet",
+    "wrong_behavior": "Distance of the jump ranked k places below the longest",
+    "wrong_location": "Ranking index verified; check the sort puts the longest jumps first",
+    "wrong_output": "Example: kth_longest_jump([6.1, 7.2, 5.9], 1) returns 6.1"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "function": "dance_pairs",
+  "author": "Seung Wook",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "dancers lists a ballroom class in line order. Pair the 1st with the 2nd, the 3rd with the 4th, and so on; a dancer left over gets None as a partner. Return the pairs as tuples.",
+  "bug_type": "missed_edge_case",
+  "bug_description": "zip() stops at the shorter list, so with an odd number of dancers the last one is dropped instead of being paired with None.",
+  "comments": {
+    "accurate": "Partners the dancers two at a time in line order",
+    "wrong_behavior": "Partners dancers two at a time in line order; only complete couples are returned",
+    "wrong_location": "Pairing slices verified; check the result is a list of tuples rather than a zip object",
+    "wrong_output": "Example: dance_pairs(['Ann', 'Bo', 'Cy']) returns [('Ann', 'Bo')]"
+  }
+}

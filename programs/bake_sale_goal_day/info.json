@@ -1,0 +1,14 @@
+{
+  "function": "bake_sale_goal_day",
+  "author": "Seung Wook",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "donations lists the money a school bake sale raised on each day, starting with day 0. Return the first day by which the total raised so far had reached the goal, or -1 if it never did.",
+  "bug_type": "wrong_comparison",
+  "bug_description": "Checks raised == goal instead of raised >= goal, so a day that takes the total past the goal without landing on it exactly is missed.",
+  "comments": {
+    "accurate": "First day the running total reached the goal, or -1",
+    "wrong_behavior": "Day the takings hit the goal amount, or -1 if they never do",
+    "wrong_location": "Goal check verified; check the running total is updated before it is compared",
+    "wrong_output": "Example: bake_sale_goal_day([20, 30, 50], 60) returns -1"
+  }
+}

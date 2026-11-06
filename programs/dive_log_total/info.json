@@ -1,0 +1,14 @@
+{
+  "function": "dive_log_total",
+  "author": "Seung Wook",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "A diver's log is a comma-separated string of depth changes in whole metres, such as '5,3,x,2'; entries that aren't whole numbers were smudged by water. Return the sum of the readable entries.",
+  "bug_type": "other",
+  "bug_description": "Filters with isdigit(), which is False for '-2', so negative depth changes are treated as smudged and skipped.",
+  "comments": {
+    "accurate": "Sum of the readable whole-number depth changes in the log",
+    "wrong_behavior": "Sum of the entries made only of digits; anything else counts as smudged",
+    "wrong_location": "Entry filter verified; check entries are split on commas",
+    "wrong_output": "Example: dive_log_total('5,-2,x,3') returns 8"
+  }
+}

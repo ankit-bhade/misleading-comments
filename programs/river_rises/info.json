@@ -1,0 +1,14 @@
+{
+  "function": "river_rises",
+  "author": "Seung Wook",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "levels are a river gauge's daily water levels in cm. Return on how many days the level was higher than on the day before.",
+  "bug_type": "other",
+  "bug_description": "previous = level is indented inside the if, so the reference level only moves on a rise and later days are compared with an old peak.",
+  "comments": {
+    "accurate": "Days the river was higher than on the day before",
+    "wrong_behavior": "Days the river rose above the last level it climbed to",
+    "wrong_location": "Day-to-day comparison verified; check the first reading starts the comparison",
+    "wrong_output": "Example: river_rises([50, 48, 49]) returns 0"
+  }
+}

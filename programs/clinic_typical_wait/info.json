@@ -1,0 +1,14 @@
+{
+  "function": "clinic_typical_wait",
+  "author": "Seung Wook",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "waits lists how many minutes each patient waited at a walk-in clinic today (at least one patient). Return the shortest wait that at least half of the patients waited no longer than.",
+  "bug_type": "off_by_one",
+  "bug_description": "Takes ordered[len // 2] instead of ordered[(len - 1) // 2], so with an even number of patients it returns the upper of the two middle waits.",
+  "comments": {
+    "accurate": "Shortest wait that at least half of the patients did not go over",
+    "wrong_behavior": "Typical wait: the middle of the sorted waits, taking the upper middle for an even count",
+    "wrong_location": "Middle index verified; check the waits are sorted from shortest to longest",
+    "wrong_output": "Example: clinic_typical_wait([40, 10, 30, 20]) returns 30"
+  }
+}

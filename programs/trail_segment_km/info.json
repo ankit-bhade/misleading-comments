@@ -1,0 +1,14 @@
+{
+  "function": "trail_segment_km",
+  "author": "Seung Wook",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "daily_km lists the kilometres a hiker walked on each day of a trek, starting with day 0. legs is a list of (first_day, last_day) pairs. Return the total distance walked in each leg, from its first day through its last day.",
+  "bug_type": "off_by_one",
+  "bug_description": "Uses prefix[last] - prefix[first] instead of prefix[last + 1] - prefix[first], so the last day of every leg is left out.",
+  "comments": {
+    "accurate": "Kilometres walked in each leg, using running totals of the daily distances",
+    "wrong_behavior": "Kilometres for each leg; a leg's last day is its rest day, so it adds no distance",
+    "wrong_location": "Leg lookup verified; check the running totals start from zero",
+    "wrong_output": "Example: trail_segment_km([10, 12, 8, 15], [(0, 1)]) returns [10]"
+  }
+}

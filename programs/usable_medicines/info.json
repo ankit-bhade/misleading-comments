@@ -1,0 +1,14 @@
+{
+  "function": "usable_medicines",
+  "author": "Seung Wook",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "stock lists (medicine, expiry date) pairs at a pharmacy, with dates written as 'YYYY-MM-DD'. Return the names of the medicines whose expiry date has not passed as of the date today, in stock order.",
+  "bug_type": "wrong_comparison",
+  "bug_description": "Keeps expiry > today instead of expiry >= today, so medicine expiring today is thrown out a day early.",
+  "comments": {
+    "accurate": "Medicines that can still be dispensed today, in stock order",
+    "wrong_behavior": "Medicines whose expiry date is still ahead of today, in stock order",
+    "wrong_location": "Expiry comparison verified; check the names come back in stock order",
+    "wrong_output": "Example: usable_medicines([('Insulin', '2026-11-06')], '2026-11-06') returns []"
+  }
+}
