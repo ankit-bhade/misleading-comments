@@ -1,0 +1,14 @@
+{
+  "function": "shortest_checkout",
+  "author": "Kushal",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "lanes lists (people waiting, lane name) for a supermarket's open checkouts, ordered from the entrance (at least one lane). Return the name of the lane with the fewest people waiting, picking the one nearest the entrance if several tie.",
+  "bug_type": "other",
+  "bug_description": "Uses min(lanes) without a key, so ties on the queue length are broken by comparing lane names instead of keeping the lane nearest the entrance.",
+  "comments": {
+    "accurate": "Returns the lane with the shortest queue",
+    "wrong_behavior": "Returns the lane with the shortest queue, going by lane name when queues are equal",
+    "wrong_location": "Queue comparison verified; lanes with nobody waiting may be skipped",
+    "wrong_output": "Example: shortest_checkout([(3, 'Lane 5'), (3, 'Lane 2')]) returns 'Lane 2'"
+  }
+}

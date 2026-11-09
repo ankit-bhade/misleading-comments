@@ -1,0 +1,14 @@
+{
+  "function": "fuel_receipt_total",
+  "author": "Kushal",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "lines lists (litres, price per litre) for each fill-up on a delivery van's fuel receipt. Each line is charged to the nearest cent, and the receipt total is the sum of those line charges. Return the total.",
+  "bug_type": "other",
+  "bug_description": "Adds the unrounded line costs and only rounds the final sum, so the total can differ by a cent or more from the sum of the charged lines.",
+  "comments": {
+    "accurate": "Total of the receipt, with each line charged to the nearest cent",
+    "wrong_behavior": "Total fuel cost across all fill-ups, rounded to the nearest cent",
+    "wrong_location": "Line charges verified; the final round may hide a float error in the total",
+    "wrong_output": "Example: fuel_receipt_total([(3, 1.239), (3, 1.239)]) returns 7.43"
+  }
+}

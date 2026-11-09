@@ -1,0 +1,14 @@
+{
+  "function": "waitlist_withdraw",
+  "author": "Kushal",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "waitlist is a yoga studio's waitlist in order, one entry per spot someone is waiting for. Return the waitlist with every entry for name removed, keeping everyone else in the same order.",
+  "bug_type": "other",
+  "bug_description": "Uses if instead of while, so only the first of name's entries is removed.",
+  "comments": {
+    "accurate": "Removes every waitlist entry for name, keeping the others in order",
+    "wrong_behavior": "Removes name's earliest entry from the waitlist, keeping the others in order",
+    "wrong_location": "Membership check verified; copying the list first may lose the original order",
+    "wrong_output": "Example: waitlist_withdraw(['Ana', 'Ben', 'Ana'], 'Ana') returns ['Ben', 'Ana']"
+  }
+}

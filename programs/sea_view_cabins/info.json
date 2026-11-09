@@ -1,0 +1,14 @@
+{
+  "function": "sea_view_cabins",
+  "author": "Kushal",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "heights lists the heights of holiday cabins on a hillside, starting with the cabin nearest the sea. A cabin has a sea view if it is taller than every cabin in front of it (closer to the sea). Return the positions of the cabins with a sea view.",
+  "bug_type": "wrong_comparison",
+  "bug_description": "Uses h >= tallest instead of h > tallest, so a cabin exactly as tall as the tallest one in front of it is wrongly given a view.",
+  "comments": {
+    "accurate": "Returns positions of cabins taller than every cabin closer to the sea",
+    "wrong_behavior": "Returns positions of cabins at least as tall as every cabin closer to the sea",
+    "wrong_location": "Height comparison verified; tallest may need to start at 0 rather than None",
+    "wrong_output": "Example: sea_view_cabins([5, 5, 6]) returns [0, 1, 2]"
+  }
+}

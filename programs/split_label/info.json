@@ -1,0 +1,14 @@
+{
+  "function": "split_label",
+  "author": "Kushal",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "A rowing machine reports a split time in seconds, possibly with a fraction. Return it as 'M:SS', rounded to the nearest whole second.",
+  "bug_type": "missed_edge_case",
+  "bug_description": "Rounds only the leftover seconds after taking whole minutes, so a time like 119.6 comes out as '1:60' instead of carrying to '2:00'.",
+  "comments": {
+    "accurate": "Formats the split as minutes and zero-padded seconds, to the nearest second",
+    "wrong_behavior": "Formats the whole minutes, then the leftover seconds rounded to the nearest second",
+    "wrong_location": "Rounding checked; the f-string may drop the zero padding for single-digit seconds",
+    "wrong_output": "Example: split_label(119.6) returns '1:60'"
+  }
+}

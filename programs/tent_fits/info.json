@@ -1,0 +1,14 @@
+{
+  "function": "tent_fits",
+  "author": "Kushal",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "tent and pitch are (length, width) sizes in metres. Return whether the tent can be put up on the pitch, turned either way, without going over the pitch's edges.",
+  "bug_type": "wrong_comparison",
+  "bug_description": "Compares sides with t < p instead of t <= p, so a tent whose side exactly matches the pitch is said not to fit.",
+  "comments": {
+    "accurate": "True if the tent fits on the pitch in either orientation",
+    "wrong_behavior": "True if the tent fits on the pitch in either orientation with room to spare on every side",
+    "wrong_location": "Side comparison checked; sorting the sizes may pair the wrong sides together",
+    "wrong_output": "Example: tent_fits((3, 3), (3, 4)) returns False"
+  }
+}

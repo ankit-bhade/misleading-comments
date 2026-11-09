@@ -1,0 +1,14 @@
+{
+  "function": "quiz_average",
+  "author": "Kushal",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "A pub quiz scoreboard shows each team's average round score as a whole number, rounding halves up. Return the number shown for a team's round scores (at least one round, no negative scores).",
+  "bug_type": "other",
+  "bug_description": "Uses round(), which rounds halves to the nearest even number, so averages like 6.5 show as 6 instead of 7.",
+  "comments": {
+    "accurate": "Returns the team's mean round score as a whole number for the scoreboard",
+    "wrong_behavior": "Returns the mean round score as a whole number, with exact halves going to the even neighbour",
+    "wrong_location": "Rounding checked; the mean may be skewed if a round's score was entered twice",
+    "wrong_output": "Example: quiz_average([6, 7]) returns 6"
+  }
+}

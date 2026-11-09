@@ -1,0 +1,14 @@
+{
+  "function": "belt_grade",
+  "author": "Kushal",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "A karate club grades students on a score out of 100. Each belt needs at least a minimum score: black 90, brown 75, green 60 and yellow 40; anyone below 40 stays on white. Return the highest belt a student's score earns.",
+  "bug_type": "wrong_comparison",
+  "bug_description": "Uses score > minimum instead of score >= minimum, so a score exactly on a belt's minimum gets the belt below.",
+  "comments": {
+    "accurate": "Returns the highest belt whose minimum score the student reached",
+    "wrong_behavior": "Returns the highest belt whose minimum score the student beat",
+    "wrong_location": "Threshold test verified; the grade list may need sorting from lowest to highest",
+    "wrong_output": "Example: belt_grade(75) returns 'green'"
+  }
+}

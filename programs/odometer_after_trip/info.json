@@ -1,0 +1,14 @@
+{
+  "function": "odometer_after_trip",
+  "author": "Kushal",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "A car's odometer shows six digits and rolls back to 000000 after 999999. Given the reading before a trip and the kilometres driven, return the number it shows after the trip.",
+  "bug_type": "off_by_one",
+  "bug_description": "Takes the total modulo 999999 instead of 1000000, so the display wraps one step early: 999999 shows as 0 and every reading after a rollover is one too high.",
+  "comments": {
+    "accurate": "Returns the six-digit reading after the trip, rolling over past 999999",
+    "wrong_behavior": "Returns the reading after the trip, wrapped around the display maximum of 999999",
+    "wrong_location": "Rollover modulus checked; the addition may need to handle trips longer than a full cycle",
+    "wrong_output": "Example: odometer_after_trip(999990, 20) returns 11"
+  }
+}

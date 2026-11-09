@@ -1,0 +1,14 @@
+{
+  "function": "board_numbers",
+  "author": "Kushal",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "bibs lists marathon finishers' bib codes in finishing order; codes are digit strings that may be padded with leading zeros, like '0042'. Return the bib numbers as they should appear on the results board, in the same order, without the padding.",
+  "bug_type": "missed_edge_case",
+  "bug_description": "Strips the leading zeros without the `or \"0\"` fallback, so a bib that is all zeros (the number 0) becomes an empty string.",
+  "comments": {
+    "accurate": "Returns each bib as its plain number, without leading zeros",
+    "wrong_behavior": "Returns each bib code with all of its leading zeros stripped off",
+    "wrong_location": "Zero stripping checked; codes containing letters like 'A12' may slip through",
+    "wrong_output": "Example: board_numbers(['000', '15']) returns ['', '15']"
+  }
+}

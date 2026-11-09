@@ -1,0 +1,14 @@
+{
+  "function": "merge_heats",
+  "author": "Kushal",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "heat_a and heat_b are the results of two swimming heats, each a list of (name, seconds) sorted from fastest to slowest. Return the combined results from fastest to slowest, where a heat A swimmer goes ahead of a heat B swimmer with the same time and each heat keeps its own order.",
+  "bug_type": "wrong_comparison",
+  "bug_description": "Takes from heat A only when its time is < heat B's instead of <=, so on equal times the heat B swimmer is placed first.",
+  "comments": {
+    "accurate": "Merges both heats into one ranking from fastest to slowest",
+    "wrong_behavior": "Merges both heats fastest first; on equal times the heat B swimmer is listed first",
+    "wrong_location": "Time comparison checked; leftover swimmers may be appended in the wrong order",
+    "wrong_output": "Example: merge_heats([('Ann', 30.0)], [('Cy', 30.0)]) returns [('Cy', 30.0), ('Ann', 30.0)]"
+  }
+}

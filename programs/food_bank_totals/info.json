@@ -1,0 +1,14 @@
+{
+  "function": "food_bank_totals",
+  "author": "Kushal",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "deliveries lists (item, kg) for each delivery a food bank received this week. Return a dict with how many kilograms of each item were received in total.",
+  "bug_type": "missed_edge_case",
+  "bug_description": "Stores each delivery's weight instead of adding it to what was already received, so an item delivered more than once only keeps its last delivery.",
+  "comments": {
+    "accurate": "Returns the total kilograms received of each item",
+    "wrong_behavior": "Returns the kilograms of each item from its most recent delivery",
+    "wrong_location": "Weight lookup checked; item names may need lowercasing so 'Rice' and 'rice' match",
+    "wrong_output": "Example: food_bank_totals([('rice', 20), ('beans', 5), ('rice', 12)]) returns {'rice': 12, 'beans': 5}"
+  }
+}

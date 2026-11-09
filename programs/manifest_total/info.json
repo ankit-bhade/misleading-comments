@@ -1,0 +1,14 @@
+{
+  "function": "manifest_total",
+  "author": "Kushal",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "text is a ship's cargo manifest as read from a file, with one 'item,quantity' entry per line. Return the total quantity of cargo.",
+  "bug_type": "missed_edge_case",
+  "bug_description": "Splits on newlines and drops the last piece ([:-1]), which only works when the file ends with a newline; otherwise the last entry is lost.",
+  "comments": {
+    "accurate": "Sums the quantities of every entry in the manifest",
+    "wrong_behavior": "Sums the quantities of every newline-terminated entry in the manifest",
+    "wrong_location": "Line splitting verified; quantities written with spaces like ' 15' may not parse",
+    "wrong_output": "Example: manifest_total('rice,40\\ntea,15') returns 40"
+  }
+}

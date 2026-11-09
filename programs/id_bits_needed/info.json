@@ -1,0 +1,14 @@
+{
+  "function": "id_bits_needed",
+  "author": "Kushal",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "A warehouse gives each of its count crates a different ID written in binary, with every ID using the same number of bits. Return the fewest bits needed (at least 1).",
+  "bug_type": "off_by_one",
+  "bug_description": "Uses count.bit_length() instead of (count - 1).bit_length(), so when count is a power of two (IDs 0 to count - 1) it asks for one bit more than needed.",
+  "comments": {
+    "accurate": "Returns the fewest bits that give every crate its own binary ID",
+    "wrong_behavior": "Returns the number of bits needed to write the crate count itself in binary",
+    "wrong_location": "Bit length checked; a single crate might only need 0 bits rather than 1",
+    "wrong_output": "Example: id_bits_needed(8) returns 4"
+  }
+}

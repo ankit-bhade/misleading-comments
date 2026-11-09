@@ -1,0 +1,14 @@
+{
+  "function": "dye_needed",
+  "author": "Kushal",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "A yarn dyer uses grams of dye for every batch_kg kilograms of wool. Return how many whole grams of dye (rounded down) are needed for wool_kg kilograms of wool.",
+  "bug_type": "other",
+  "bug_description": "Divides before multiplying (grams // batch_kg * wool_kg), so the remainder of grams per kilogram is thrown away before scaling up.",
+  "comments": {
+    "accurate": "Returns the whole grams of dye for the wool, scaled from the recipe",
+    "wrong_behavior": "Works out the whole grams per kilogram of the recipe, then scales that to the wool",
+    "wrong_location": "Scaling formula checked; batch_kg may need to be at least 1 to avoid dividing by zero",
+    "wrong_output": "Example: dye_needed(25, 2, 3) returns 36"
+  }
+}

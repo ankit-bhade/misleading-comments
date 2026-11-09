@@ -1,0 +1,14 @@
+{
+  "function": "harvest_week_counts",
+  "author": "Kushal",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "A vineyard numbers the days of its harvest from 1; week 1 is the first seven days, week 2 the next seven, and so on. picked_days lists the days on which grapes were picked. Return a dict mapping each week to how many picking days it had.",
+  "bug_type": "off_by_one",
+  "bug_description": "Uses day // 7 + 1 instead of (day - 1) // 7 + 1, so the last day of every week (7, 14, ...) is put in the following week.",
+  "comments": {
+    "accurate": "Counts picking days in each harvest week, seven days to a week starting from day 1",
+    "wrong_behavior": "Counts picking days per week, where a day's week is its number of completed weeks plus one",
+    "wrong_location": "Week calculation checked; weeks with no picking days may be missing from the result",
+    "wrong_output": "Example: harvest_week_counts([1, 7, 8]) returns {1: 1, 2: 2}"
+  }
+}

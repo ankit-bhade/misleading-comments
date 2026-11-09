@@ -1,0 +1,14 @@
+{
+  "function": "carpool_riders",
+  "author": "Kushal",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "signups is the text of a carpool sign-up sheet: riders' names separated by commas, like 'Ana,Ben,Cho'. People sometimes sign up twice, with different capitals or spacing. Return how many different riders signed up.",
+  "bug_type": "missed_edge_case",
+  "bug_description": "Splits the text without checking for an empty sheet, and ''.split(',') gives [''], so an empty sheet counts one rider.",
+  "comments": {
+    "accurate": "Counts the different riders on the sheet, ignoring case and spaces",
+    "wrong_behavior": "Counts the different comma-separated entries on the sheet, ignoring case and spaces",
+    "wrong_location": "Splitting checked; names with a middle space like 'Ana Li' may be counted twice",
+    "wrong_output": "Example: carpool_riders('') returns 1"
+  }
+}

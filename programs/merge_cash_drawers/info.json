@@ -1,0 +1,14 @@
+{
+  "function": "merge_cash_drawers",
+  "author": "Kushal",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "a and b map each coin value in cents to how many of that coin are in a cafe's two cash drawers (every count is at least 1). Return a dict with how many of each coin there are in both drawers together.",
+  "bug_type": "other",
+  "bug_description": "Uses the | operator on Counters, which keeps the larger of the two counts, instead of +, which adds them.",
+  "comments": {
+    "accurate": "Returns the total count of each coin across both drawers",
+    "wrong_behavior": "Returns each coin's count from whichever drawer holds more of it",
+    "wrong_location": "Counter merge verified; converting back with dict() may reorder the coin values",
+    "wrong_output": "Example: merge_cash_drawers({10: 2, 20: 1}, {10: 3}) returns {10: 3, 20: 1}"
+  }
+}

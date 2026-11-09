@@ -1,0 +1,14 @@
+{
+  "function": "choir_by_surname",
+  "author": "Kushal",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "names lists choir members' full names, like 'Mary Ann Lee'. Return the names sorted by surname (the last word of the name), keeping the original order for equal surnames.",
+  "bug_type": "other",
+  "bug_description": "Sorts by split()[1], the second word, instead of split()[-1], so members with three-part names are sorted by their middle name.",
+  "comments": {
+    "accurate": "Sorts members by the last word of their name, keeping ties in order",
+    "wrong_behavior": "Sorts members by surname, taken as the word after their first name",
+    "wrong_location": "Surname key verified; sorted() may not keep equal surnames in their original order",
+    "wrong_output": "Example: choir_by_surname(['Mary Ann Lee', 'Tom Hart']) returns ['Mary Ann Lee', 'Tom Hart']"
+  }
+}

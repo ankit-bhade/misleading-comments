@@ -1,0 +1,14 @@
+{
+  "function": "same_pier_departures",
+  "author": "Kushal",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "piers lists the pier each of a ferry's sailings left from today, in departure order. Return how many sailings left from the same pier as the sailing before them.",
+  "bug_type": "off_by_one",
+  "bug_description": "The loop starts at 0 instead of 1, so the first sailing is compared with piers[-1] (the day's last sailing) and counts as a repeat when the two piers match.",
+  "comments": {
+    "accurate": "Counts sailings that left from the same pier as the previous sailing",
+    "wrong_behavior": "Counts sailings whose pier matches the one before, treating the day's timetable as a repeating cycle",
+    "wrong_location": "Loop range verified; the pier comparison may treat 'a' and 'A' as different piers",
+    "wrong_output": "Example: same_pier_departures(['A', 'B', 'A']) returns 1"
+  }
+}

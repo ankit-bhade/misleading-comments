@@ -1,0 +1,14 @@
+{
+  "function": "patio_layouts",
+  "author": "Kushal",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "A patio is laid from tiles square tiles of the same size, arranged as a full rectangle. Return how many different rectangle shapes are possible, counting a shape and its rotation once (so 6 tiles give 1x6 and 2x3).",
+  "bug_type": "wrong_comparison",
+  "bug_description": "Loops while w * w < tiles instead of <=, so when tiles is a perfect square the square layout is never counted.",
+  "comments": {
+    "accurate": "Counts the distinct rectangles the tiles can form, ignoring rotation",
+    "wrong_behavior": "Counts the distinct non-square rectangles the tiles can form, ignoring rotation",
+    "wrong_location": "Loop limit checked; the divisibility test may count some shapes twice",
+    "wrong_output": "Example: patio_layouts(16) returns 2"
+  }
+}

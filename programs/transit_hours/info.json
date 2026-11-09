@@ -1,0 +1,14 @@
+{
+  "function": "transit_hours",
+  "author": "Kushal",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "sent and delivered are timestamps like '2026-03-01 14:30' for when a parcel was handed to the courier and when it arrived. Return how many hours it spent in transit.",
+  "bug_type": "other",
+  "bug_description": "Uses timedelta.seconds, which leaves out whole days, instead of total_seconds(), so parcels in transit for a day or more lose 24 hours per day.",
+  "comments": {
+    "accurate": "Returns the total time the parcel spent in transit, in hours",
+    "wrong_behavior": "Returns the hours in transit on top of any full days the parcel spent",
+    "wrong_location": "Elapsed-time conversion verified; fromisoformat may reject the space between date and time",
+    "wrong_output": "Example: transit_hours('2026-03-01 09:00', '2026-03-02 12:00') returns 3.0"
+  }
+}

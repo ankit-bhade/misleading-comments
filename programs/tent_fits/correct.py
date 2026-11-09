@@ -1,0 +1,4 @@
+def tent_fits(tent, pitch):
+    tent_sides = sorted(tent)
+    pitch_sides = sorted(pitch)
+    return all(t <= p for t, p in zip(tent_sides, pitch_sides))

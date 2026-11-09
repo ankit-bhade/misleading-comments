@@ -1,0 +1,14 @@
+{
+  "function": "rain_last_week",
+  "author": "Kushal",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "daily_mm lists the rainfall in mm on each day of a season, starting with day 0, and today is a day number in the list. Return the total rain over the seven days before today, not counting today (fewer days if the season is younger than that).",
+  "bug_type": "off_by_one",
+  "bug_description": "Starts the window at today - 6 instead of today - 7, so once a week has passed it only sums the six days before today.",
+  "comments": {
+    "accurate": "Total rain over the seven days before today, not counting today",
+    "wrong_behavior": "Total rain over the last six full days, not counting today",
+    "wrong_location": "Window start verified; the slice end may need to include today's rain",
+    "wrong_output": "Example: rain_last_week([3, 3, 3, 3, 3, 3, 3, 3, 3, 3], 9) returns 18"
+  }
+}

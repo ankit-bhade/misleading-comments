@@ -1,0 +1,14 @@
+{
+  "function": "sprouts_per_column",
+  "author": "Kushal",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "tray is a seed tray given as a list of rows, each a list of booleans saying whether the seed in that cell has sprouted (at least one row, all rows the same length). Return how many seeds sprouted in each column, from left to right.",
+  "bug_type": "other",
+  "bug_description": "Loops over range(len(tray)), the number of rows, instead of range(len(tray[0])), the number of columns, so it only works for square trays.",
+  "comments": {
+    "accurate": "Counts sprouted seeds in each column of the tray, left to right",
+    "wrong_behavior": "Counts sprouted seeds per column; trays are square, so there is one column per row",
+    "wrong_location": "Column loop checked; the sprout test may miss cells stored as 1 instead of True",
+    "wrong_output": "Example: sprouts_per_column([[True, False, True]]) returns [1]"
+  }
+}

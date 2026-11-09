@@ -1,0 +1,14 @@
+{
+  "function": "shelf_order",
+  "author": "Kushal",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "titles lists the albums in a record shop. Return them in shelf order: alphabetical, but ignoring a leading word 'The', so 'The Wall' is filed under W.",
+  "bug_type": "missed_edge_case",
+  "bug_description": "Checks startswith('The') without the space, so titles that merely begin with those letters ('Theory', 'Theatre Royal') are filed by their fifth character onwards.",
+  "comments": {
+    "accurate": "Sorts titles alphabetically, ignoring a leading 'The'",
+    "wrong_behavior": "Sorts titles alphabetically, skipping the first four characters of any title that begins with 'The'",
+    "wrong_location": "Prefix check verified; the sort is case-sensitive, so lowercase titles may file last",
+    "wrong_output": "Example: shelf_order(['Theory', 'Wolves']) returns ['Wolves', 'Theory']"
+  }
+}

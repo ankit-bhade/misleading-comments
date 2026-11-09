@@ -1,0 +1,14 @@
+{
+  "function": "wind_turbine_hours",
+  "author": "Kushal",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "speeds lists the hourly wind speeds at a wind turbine. The turbine generates power once the wind reaches cut_in, but shuts itself down for safety whenever the wind reaches cut_out. Return how many hours it generated power.",
+  "bug_type": "wrong_comparison",
+  "bug_description": "Uses s <= cut_out instead of s < cut_out, so hours when the wind is exactly at the shutdown speed are counted as generating.",
+  "comments": {
+    "accurate": "Counts the hours the wind was in the turbine's generating range",
+    "wrong_behavior": "Counts the hours with wind speed between cut_in and cut_out, both included",
+    "wrong_location": "Speed range checked; speeds may be in a different unit from cut_in and cut_out",
+    "wrong_output": "Example: wind_turbine_hours([2, 5, 10, 25, 30], 3, 25) returns 3"
+  }
+}

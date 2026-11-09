@@ -1,0 +1,14 @@
+{
+  "function": "watch_rota",
+  "author": "Kushal",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "A research station's crew_size guards, numbered 1 to crew_size, take the night watch in turn, going back to guard 1 after the last. first_guard has tonight's watch. Return the list of guards on watch for the next nights nights, starting with tonight.",
+  "bug_type": "off_by_one",
+  "bug_description": "Uses (first_guard + n) % crew_size instead of (first_guard + n - 1) % crew_size + 1, so the last guard comes out as 0 whenever it is their turn.",
+  "comments": {
+    "accurate": "Lists who has the watch on each coming night, cycling through guards 1 to crew_size",
+    "wrong_behavior": "Lists each night's guard as the first guard plus the night offset, wrapped by the crew size",
+    "wrong_location": "Rotation formula checked; the loop may stop one night short of the requested count",
+    "wrong_output": "Example: watch_rota(1, 3, 4) returns [1, 2, 0, 1]"
+  }
+}
