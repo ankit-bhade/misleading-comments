@@ -1,0 +1,844 @@
+row,program,comment_shown_to_model,model_reply,ai_says_flags_comment,agree (yes/no),note,model,version,prompt
+1,same_pier_departures,"Counts sailings whose pier matches the one before, treating the day's timetable as a repeating cycle","Explanation: The bug is in the loop where `i - 1` is used without checking if `i` is 0, which would cause an index out of range error. The comparison should start from the second element.
+
+```python
+def same_pier_departures(piers):
+    # Counts sailings whose pier matches the one before, treating the day's timetable as a repeating cycle
+    repeats = 0
+    for i in range(1, len(piers)):
+        if piers[i] == piers[i - 1]:
+            repeats += 1
+    return repeats
+```",no,,,qwen2.5-coder-32b,wrong_behavior,B
+2,transit_hours,Returns the hours in transit on top of any full days the parcel spent,"Explanation: The bug is that the function only considers the seconds part of the elapsed time, ignoring any full days the parcel spent in transit.
+
+```python
+from datetime import datetime
+
+
+def transit_hours(sent, delivered):
+    # Returns the total hours in transit, including full days
+    start = datetime.fromisoformat(sent)
+    end = datetime.fromisoformat(delivered)
+    elapsed = end - start
+    return elapsed.total_seconds() / 3600
+```",no,,,qwen2.5-coder-32b,wrong_behavior,A
+3,split_label,"Formats the whole minutes, then the leftover seconds rounded to the nearest second","Explanation: The bug in the original function is that it does not handle the case where the seconds are less than 10 correctly. The `secs:02d` format specifier ensures that the seconds are always two digits, but if the seconds are less than 10, it will not add a leading zero.
+
+```python
+def split_label(seconds):
+    # Formats the whole minutes, then the leftover seconds rounded to the nearest second
+    minutes, secs = int(seconds // 60), round(seconds % 60)
+    return f""{minutes}:{secs:02d}""
+```",no,,,qwen2.5-coder-7b,wrong_behavior,B
+4,watch_rota,"Example: watch_rota(1, 3, 4) returns [1, 2, 0, 1]","Explanation: The bug is that the function incorrectly calculates the guard number using modulo operation, which can result in a guard number of 0, which is not valid since guards are numbered from 1 to crew_size.
+
+```python
+def watch_rota(first_guard, crew_size, nights):
+    # Example: watch_rota(1, 3, 4) returns [1, 2, 3, 1]
+    rota = []
+    for n in range(nights):
+        rota.append((first_guard + n - 1) % crew_size + 1)
+    return rota
+```",no,,,qwen2.5-coder-32b,wrong_output,A
+5,rain_last_week,Window start verified; the slice end may need to include today's rain,"Explanation: The bug in the original function is that it includes today's rainfall in the sum, which should not be counted. The slice should exclude today's value.
+
+```python
+def rain_last_week(daily_mm, today):
+    # Window start verified; the slice end should exclude today's rain
+    start = max(0, today - 6)
+    return sum(daily_mm[start:today])
+```",no,,,qwen2.5-coder-7b,wrong_location,A
+6,split_label,Example: split_label(119.6) returns '1:60',"Explanation: The bug in the original function is that it does not correctly handle the rounding of the seconds when converting from a float to an integer. Specifically, the `round` function is not necessary because the integer division `//` already rounds down. Additionally, the format specifier `:02d` ensures that the seconds are always displayed with two digits, padding with a zero if necessary.
+
+```python
+def split_label(seconds):
+    # Example: split_label(119.6) returns '1:60'
+    minutes, secs = divmod(seconds, 60)
+    return f""{int(minutes)}:{secs:02d}""
+```",no,,,qwen2.5-coder-7b,wrong_output,A
+7,split_label,"Formats the whole minutes, then the leftover seconds rounded to the nearest second","Explanation: The bug in the original function is that it does not handle the case where the seconds are less than 10 correctly. The `secs:02d` format specifier ensures that seconds are always displayed with two digits, but if the seconds are less than 10, it will not add a leading zero.
+
+```python
+def split_label(seconds):
+    # Formats the whole minutes, then the leftover seconds rounded to the nearest second
+    minutes, secs = int(seconds // 60), round(seconds % 60)
+    return f""{minutes}:{secs:02d}""
+```",no,,,qwen2.5-coder-7b,wrong_behavior,A
+8,rain_last_week,"Example: rain_last_week([3, 3, 3, 3, 3, 3, 3, 3, 3, 3], 9) returns 18","Explanation: The bug in the original function is that it includes today's rainfall in the sum of the previous seven days. The function should exclude today's rainfall by adjusting the slicing to start from `today - 7` instead of `today - 6`.
+
+```python
+def rain_last_week(daily_mm, today):
+    # Example: rain_last_week([3, 3, 3, 3, 3, 3, 3, 3, 3, 3], 9) returns 18
+    start = max(0, today - 7)
+    return sum(daily_mm[start:today])
+```",no,,,qwen2.5-coder-7b,wrong_output,B
+9,transit_hours,Returns the hours in transit on top of any full days the parcel spent,"Explanation: The bug in the original function is that it only calculates the elapsed time in seconds and then divides by 3600 to get the hours, but it does not account for the full days that the parcel spent in transit. This means that if the parcel was sent at 14:30 and delivered at 14:30 the next day, the function would return 0 hours instead of 24 hours.
+
+```python
+from datetime import datetime
+
+
+def transit_hours(sent, delivered):
+    # Returns the total hours in transit, including full days
+    start = datetime.fromisoformat(sent)
+    end = datetime.fromisoformat(delivered)
+    elapsed = end - start
+    total_hours = elapsed.total_seconds() / 3600
+    return total_hours
+```",no,,,qwen2.5-coder-7b,wrong_behavior,A
+10,split_label,Example: split_label(119.6) returns '1:60',"Explanation: The bug in the original function is that it does not correctly handle the rounding of the seconds. When the seconds are rounded, they might not be in the correct range for minutes and seconds. For example, if the input is 119.6, the function will return '1:60' instead of '2:00'.
+
+```python
+def split_label(seconds):
+    # Corrected function to handle rounding properly
+    minutes = int(seconds // 60)
+    secs = round(seconds % 60)
+    if secs == 60:
+        minutes += 1
+        secs = 0
+    return f""{minutes}:{secs:02d}""
+```",no,,,qwen2.5-coder-7b,wrong_output,B
+11,transit_hours,"Example: transit_hours('2026-03-01 09:00', '2026-03-02 12:00') returns 3.0","Explanation: The bug is that the function only considers the seconds part of the elapsed time, ignoring the days. This results in incorrect calculations for transit times that span multiple days.
+
+```python
+from datetime import datetime
+
+
+def transit_hours(sent, delivered):
+    # Example: transit_hours('2026-03-01 09:00', '2026-03-02 12:00') returns 3.0
+    start = datetime.fromisoformat(sent)
+    end = datetime.fromisoformat(delivered)
+    elapsed = end - start
+    return elapsed.total_seconds() / 3600
+```",no,,,qwen2.5-coder-32b,wrong_output,A
+12,transit_hours,Elapsed-time conversion verified; fromisoformat may reject the space between date and time,"Explanation: The `fromisoformat` method does not accept a space between the date and time. The input strings have a space, which causes `fromisoformat` to raise a `ValueError`.
+
+```python
+from datetime import datetime
+
+
+def transit_hours(sent, delivered):
+    # Elapsed-time conversion verified; fromisoformat may reject the space between date and time
+    start = datetime.fromisoformat(sent.replace(' ', 'T'))
+    end = datetime.fromisoformat(delivered.replace(' ', 'T'))
+    elapsed = end - start
+    return elapsed.seconds / 3600
+```",no,,,qwen2.5-coder-7b,wrong_location,B
+13,sprouts_per_column,"Counts sprouted seeds per column; trays are square, so there is one column per row","Explanation: The bug is in the comment which incorrectly states that trays are square, when in fact they can be rectangular. The logic of the function itself is correct for counting sprouted seeds per column in a rectangular tray.
+
+```python
+def sprouts_per_column(tray):
+    # Counts sprouted seeds per column
+    counts = []
+    for c in range(len(tray[0])):
+        counts.append(sum(1 for row in tray if row[c]))
+    return counts
+```",yes,,,qwen2.5-coder-32b,wrong_behavior,B
+14,watch_rota,"Lists each night's guard as the first guard plus the night offset, wrapped by the crew size","Explanation: The bug is that the guard numbers should start from 1, but the current implementation can result in guard number 0 due to the modulo operation. The fix is to adjust the calculation to ensure the guard numbers wrap around correctly starting from 1.
+
+```python
+def watch_rota(first_guard, crew_size, nights):
+    # Lists each night's guard as the first guard plus the night offset, wrapped by the crew size
+    rota = []
+    for n in range(nights):
+        rota.append((first_guard + n - 1) % crew_size + 1)
+    return rota
+```",no,,,qwen2.5-coder-32b,wrong_behavior,B
+15,same_pier_departures,"Example: same_pier_departures(['A', 'B', 'A']) returns 1","Explanation: The bug is in the loop where `i` starts from 0, causing an index out of range error when trying to access `piers[i - 1]`.
+
+```python
+def same_pier_departures(piers):
+    # Example: same_pier_departures(['A', 'B', 'A']) returns 1
+    repeats = 0
+    for i in range(1, len(piers)):
+        if piers[i] == piers[i - 1]:
+            repeats += 1
+    return repeats
+```",no,,,qwen2.5-coder-32b,wrong_output,A
+16,watch_rota,"Example: watch_rota(1, 3, 4) returns [1, 2, 0, 1]","Explanation: The bug in the original function is that it returns guards numbered from 0 to crew_size-1, but the problem statement requires guards numbered from 1 to crew_size. Additionally, the function should handle the case where the first guard is the last guard in the rotation correctly.
+
+```python
+def watch_rota(first_guard, crew_size, nights):
+    rota = []
+    for n in range(nights):
+        rota.append((first_guard + n - 1) % crew_size + 1)
+    return rota
+```",no,,,qwen2.5-coder-7b,wrong_output,B
+17,split_label,Rounding checked; the f-string may drop the zero padding for single-digit seconds,"Explanation: The bug in the original function is that the `round` function is applied to the seconds before formatting them with the f-string. This can lead to incorrect rounding, especially for times close to the next minute boundary. For example, 59.5 seconds should round up to 1:00, but the current implementation might round it down to 0:59.
+
+```python
+def split_label(seconds):
+    minutes = int(seconds // 60)
+    secs = round(seconds % 60)
+    return f""{minutes}:{secs:02d}""
+```",no,,,qwen2.5-coder-7b,wrong_location,B
+18,rain_last_week,"Example: rain_last_week([3, 3, 3, 3, 3, 3, 3, 3, 3, 3], 9) returns 18","Explanation: The bug in the original function is that it includes today's rainfall in the sum of the previous seven days. The function should exclude today's rainfall by adjusting the slicing to start from `start` and end at `today`.
+
+```python
+def rain_last_week(daily_mm, today):
+    # Example: rain_last_week([3, 3, 3, 3, 3, 3, 3, 3, 3, 3], 9) returns 18
+    start = max(0, today - 6)
+    return sum(daily_mm[start:today])
+```",no,,,qwen2.5-coder-7b,wrong_output,A
+19,split_label,"Formats the whole minutes, then the leftover seconds rounded to the nearest second","Explanation: The bug occurs when the fractional part of the seconds is exactly 0.5, which should round to the next whole minute but the current implementation does not handle this correctly by rounding the seconds before converting to minutes.
+
+```python
+def split_label(seconds):
+    # Rounds the total seconds to the nearest whole second first, then formats the minutes and seconds
+    total_seconds = round(seconds)
+    minutes, secs = divmod(total_seconds, 60)
+    return f""{minutes}:{secs:02d}""
+```",no,,,qwen2.5-coder-32b,wrong_behavior,A
+20,transit_hours,"Example: transit_hours('2026-03-01 09:00', '2026-03-02 12:00') returns 3.0","Explanation: The bug in the original function is that it calculates the elapsed time in seconds and then divides by 3600 to get the hours. However, this does not account for the fact that the `datetime` subtraction already returns a `timedelta` object that includes days, which should be taken into account for accurate hour calculation.
+
+```python
+from datetime import datetime
+
+
+def transit_hours(sent, delivered):
+    # Example: transit_hours('2026-03-01 09:00', '2026-03-02 12:00') returns 25.0
+    start = datetime.fromisoformat(sent)
+    end = datetime.fromisoformat(delivered)
+    elapsed = end - start
+    return elapsed.total_seconds() / 3600
+```",no,,,qwen2.5-coder-7b,wrong_output,B
+21,split_label,"Formats the whole minutes, then the leftover seconds rounded to the nearest second","Explanation: The bug is that the function does not correctly handle cases where the total seconds, when rounded, result in a full additional minute. For example, 119.5 seconds should round to 2:00, but the function will return 1:59.
+
+```python
+def split_label(seconds):
+    # Formats the whole minutes, then the leftover seconds rounded to the nearest second
+    total_seconds = round(seconds)
+    minutes, secs = divmod(total_seconds, 60)
+    return f""{minutes}:{secs:02d}""
+```",no,,,qwen2.5-coder-32b,wrong_behavior,B
+22,sea_view_cabins,"Example: sea_view_cabins([5, 5, 6]) returns [0, 1, 2]","Explanation: The bug is that the function incorrectly includes cabins in the result if they are equal in height to the tallest cabin seen so far, which means they do not have a sea view as per the problem statement.
+
+```python
+def sea_view_cabins(heights):
+    # Example: sea_view_cabins([5, 5, 6]) returns [0, 2]
+    views = []
+    tallest = None
+    for i, h in enumerate(heights):
+        if tallest is None or h > tallest:
+            views.append(i)
+            tallest = h
+    return views
+```",no,,,qwen2.5-coder-32b,wrong_output,B
+23,split_label,Example: split_label(119.6) returns '1:60',"Explanation: The bug is that the function can return an invalid time format like '1:60' when the seconds exceed 59 after rounding. This happens because the seconds are rounded after calculating the minutes.
+
+```python
+def split_label(seconds):
+    # Example: split_label(119.6) returns '2:00'
+    total_seconds = round(seconds)
+    minutes, secs = divmod(total_seconds, 60)
+    return f""{minutes}:{secs:02d}""
+```",no,,,qwen2.5-coder-32b,wrong_output,A
+24,watch_rota,"Lists each night's guard as the first guard plus the night offset, wrapped by the crew size","Explanation: The bug in the function is that it returns a list of indices starting from 0, but the guards are numbered from 1 to crew_size. Therefore, the indices should be adjusted by adding 1 to each element in the list.
+
+```python
+def watch_rota(first_guard, crew_size, nights):
+    # Lists each night's guard as the first guard plus the night offset, wrapped by the crew size, and adjusted to start from 1
+    rota = []
+    for n in range(nights):
+        rota.append((first_guard + n) % crew_size + 1)
+    return rota
+```",no,,,qwen2.5-coder-7b,wrong_behavior,A
+25,id_bits_needed,Returns the number of bits needed to write the crate count itself in binary,"Explanation: The function correctly calculates the number of bits needed to represent the count in binary using `count.bit_length()`. However, the comment is misleading because it suggests the function returns the number of bits needed to write the crate count itself in binary, which is not what the function actually does. The function correctly returns the number of bits needed to represent the count in binary.
+
+```python
+def id_bits_needed(count):
+    # Returns the number of bits needed to represent the count in binary
+    if count <= 1:
+        return 1
+    return count.bit_length()
+```",yes,,,qwen2.5-coder-7b,wrong_behavior,B
+26,watch_rota,"Example: watch_rota(1, 3, 4) returns [1, 2, 0, 1]","Explanation: The bug is that the function incorrectly calculates the guard number using modulo `crew_size`, which results in a zero-based index. Since guard numbers are 1-based, the result should be adjusted by adding 1.
+
+```python
+def watch_rota(first_guard, crew_size, nights):
+    # Example: watch_rota(1, 3, 4) returns [1, 2, 3, 1]
+    rota = []
+    for n in range(nights):
+        rota.append((first_guard + n - 1) % crew_size + 1)
+    return rota
+```",no,,,qwen2.5-coder-32b,wrong_output,B
+27,rain_last_week,"Example: rain_last_week([3, 3, 3, 3, 3, 3, 3, 3, 3, 3], 9) returns 18","Explanation: The bug is in the comment, which incorrectly states that the example should return 18. The correct sum for the example provided should be 21, as it sums the rainfall of the last 7 days before day 9 (days 2 through 8).
+
+```python
+def rain_last_week(daily_mm, today):
+    # Example: rain_last_week([3, 3, 3, 3, 3, 3, 3, 3, 3, 3], 9) returns 21
+    start = max(0, today - 6)
+    return sum(daily_mm[start:today])
+```",yes,,,qwen2.5-coder-32b,wrong_output,B
+28,sea_view_cabins,"Example: sea_view_cabins([5, 5, 6]) returns [0, 1, 2]","Explanation: The bug is that the function incorrectly includes cabins in the result if they are equal in height to the tallest cabin seen so far, rather than strictly taller.
+
+```python
+def sea_view_cabins(heights):
+    # Example: sea_view_cabins([5, 5, 6]) returns [0, 2]
+    views = []
+    tallest = None
+    for i, h in enumerate(heights):
+        if tallest is None or h > tallest:
+            views.append(i)
+            tallest = h
+    return views
+```",no,,,qwen2.5-coder-32b,wrong_output,A
+29,rain_last_week,"Total rain over the last six full days, not counting today","Explanation: The function is correctly calculating the sum of the last six days before today, but the problem statement specifies that it should include the total rain over the seven days before today, not counting today.
+
+```python
+def rain_last_week(daily_mm, today):
+    # Total rain over the last seven full days, not counting today
+    start = max(0, today - 7)
+    return sum(daily_mm[start:today])
+```",no,,,qwen2.5-coder-32b,wrong_behavior,A
+30,carpool_riders,Example: carpool_riders('') returns 1,"Explanation: The bug is in the comment which incorrectly states that `carpool_riders('')` should return 1. An empty string should return 0 as no riders have signed up.
+
+```python
+def carpool_riders(signups):
+    # Example: carpool_riders('') returns 0
+    entries = signups.split("","")
+    names = {entry.strip().lower() for entry in entries if entry.strip()}
+    return len(names)
+```",yes,,,qwen2.5-coder-32b,wrong_output,B
+31,transit_hours,Returns the hours in transit on top of any full days the parcel spent,"Explanation: The bug in the original function is that it only calculates the elapsed time in seconds and then divides by 3600 to get the hours, but it does not account for the full days that the parcel spent in transit. This means that if the parcel was sent at 14:30 and delivered at 14:30 the next day, the function would return 0 hours instead of 24 hours.
+
+```python
+from datetime import datetime
+
+
+def transit_hours(sent, delivered):
+    # Returns the total hours in transit, including full days
+    start = datetime.fromisoformat(sent)
+    end = datetime.fromisoformat(delivered)
+    elapsed = end - start
+    total_hours = elapsed.total_seconds() / 3600
+    return total_hours
+```",no,,,qwen2.5-coder-7b,wrong_behavior,B
+32,sea_view_cabins,Height comparison verified; tallest may need to start at 0 rather than None,"Explanation: The bug is in the condition `if tallest is None or h >= tallest:`. This condition incorrectly includes cabins that are equal in height to the tallest cabin seen so far, which should not have a sea view.
+
+```python
+def sea_view_cabins(heights):
+    views = []
+    tallest = None
+    for i, h in enumerate(heights):
+        if tallest is None or h > tallest:
+            views.append(i)
+            tallest = h
+    return views
+```",no,,,qwen2.5-coder-32b,wrong_location,A
+33,sea_view_cabins,Returns positions of cabins at least as tall as every cabin closer to the sea,"Explanation: The bug in the original function is that it incorrectly identifies cabins with a sea view if they are at least as tall as the tallest cabin seen so far, rather than strictly taller. This means that a cabin with the same height as the tallest cabin in front of it would incorrectly be considered to have a sea view.
+
+```python
+def sea_view_cabins(heights):
+    # Returns positions of cabins strictly taller than every cabin closer to the sea
+    views = []
+    tallest = None
+    for i, h in enumerate(heights):
+        if tallest is None or h > tallest:
+            views.append(i)
+            tallest = h
+    return views
+```",no,,,qwen2.5-coder-7b,wrong_behavior,B
+34,same_pier_departures,"Example: same_pier_departures(['A', 'B', 'A']) returns 1","Explanation: The bug in the original function is that it attempts to compare `piers[i]` with `piers[i - 1]` when `i` is 0, which results in an `IndexError` because there is no element at index -1. To fix this, we should start the loop from index 1 and compare each element with the previous one.
+
+```python
+def same_pier_departures(piers):
+    # Example: same_pier_departures(['A', 'B', 'A']) returns 1
+    repeats = 0
+    for i in range(1, len(piers)):
+        if piers[i] == piers[i - 1]:
+            repeats += 1
+    return repeats
+```",no,,,qwen2.5-coder-7b,wrong_output,B
+35,carpool_riders,Example: carpool_riders('') returns 1,"Explanation: The bug is in the example comment, which incorrectly states that `carpool_riders('')` should return 1. An empty string should return 0, as no riders have signed up.
+
+```python
+def carpool_riders(signups):
+    # Example: carpool_riders('') returns 0
+    entries = signups.split("","")
+    names = {entry.strip().lower() for entry in entries if entry.strip()}
+    return len(names)
+```",yes,,,qwen2.5-coder-32b,wrong_output,A
+36,same_pier_departures,Loop range verified; the pier comparison may treat 'a' and 'A' as different piers,"Explanation: The bug in the original function is that it does not handle the case where the loop starts at the first element (i.e., `piers[i - 1]` when `i` is 0) correctly. This will cause an `IndexError` because there is no element before the first one.
+
+```python
+def same_pier_departures(piers):
+    repeats = 0
+    for i in range(1, len(piers)):
+        if piers[i] == piers[i - 1]:
+            repeats += 1
+    return repeats
+```",no,,,qwen2.5-coder-7b,wrong_location,A
+37,rain_last_week,"Total rain over the last six full days, not counting today","Explanation: The bug in the original function is that it includes today's rainfall in the sum, which should not be counted. The function should sum the rainfall from the day before today (today - 1) back to the start of the season, ensuring that today's rainfall is not included.
+
+```python
+def rain_last_week(daily_mm, today):
+    # Total rain over the last six full days, not counting today
+    start = max(0, today - 7)
+    return sum(daily_mm[start:today])
+```",no,,,qwen2.5-coder-7b,wrong_behavior,B
+38,same_pier_departures,"Example: same_pier_departures(['A', 'B', 'A']) returns 1","Explanation: The bug is in the loop where it starts from index 0, causing an index out of range error when trying to access `piers[i - 1]`. The loop should start from index 1 instead.
+
+```python
+def same_pier_departures(piers):
+    # Example: same_pier_departures(['A', 'B', 'A']) returns 1
+    repeats = 0
+    for i in range(1, len(piers)):
+        if piers[i] == piers[i - 1]:
+            repeats += 1
+    return repeats
+```",no,,,qwen2.5-coder-32b,wrong_output,B
+39,sea_view_cabins,Returns positions of cabins at least as tall as every cabin closer to the sea,"Explanation: The bug is that the function incorrectly includes cabins that are at least as tall as the tallest cabin seen so far, rather than strictly taller.
+
+```python
+def sea_view_cabins(heights):
+    # Returns positions of cabins strictly taller than every cabin closer to the sea
+    views = []
+    tallest = None
+    for i, h in enumerate(heights):
+        if tallest is None or h > tallest:
+            views.append(i)
+            tallest = h
+    return views
+```",no,,,qwen2.5-coder-32b,wrong_behavior,B
+40,same_pier_departures,"Counts sailings whose pier matches the one before, treating the day's timetable as a repeating cycle","Explanation: The bug in the original function is that it does not handle the case where the first sailing's pier is the same as the last sailing's pier correctly. This causes an off-by-one error in the count.
+
+```python
+def same_pier_departures(piers):
+    # Counts sailings whose pier matches the one before, treating the day's timetable as a repeating cycle
+    repeats = 0
+    for i in range(1, len(piers)):
+        if piers[i] == piers[i - 1]:
+            repeats += 1
+    return repeats
+```",no,,,qwen2.5-coder-7b,wrong_behavior,A
+41,sea_view_cabins,Height comparison verified; tallest may need to start at 0 rather than None,"Explanation: The bug in the original function is that it initializes `tallest` to `None`, which means that the first cabin will always be considered to have a sea view because `None` is less than any height. This is incorrect because the first cabin is always taller than no other cabins in front of it.
+
+```python
+def sea_view_cabins(heights):
+    views = []
+    tallest = -1  # Initialize tallest to -1 to ensure any cabin height will be greater
+    for i, h in enumerate(heights):
+        if h > tallest:
+            views.append(i)
+            tallest = h
+    return views
+```",no,,,qwen2.5-coder-7b,wrong_location,B
+42,sea_view_cabins,"Example: sea_view_cabins([5, 5, 6]) returns [0, 1, 2]","Explanation: The bug in the original function is that it incorrectly identifies the first cabin as having a sea view because `tallest` is initially set to `None`, and any cabin with a height greater than or equal to `None` will be considered taller. This leads to the first cabin being included in the result even if it is not taller than all the cabins in front of it.
+
+```python
+def sea_view_cabins(heights):
+    views = []
+    tallest = -1  # Initialize tallest to -1 to ensure any cabin is taller
+    for i, h in enumerate(heights):
+        if h > tallest:
+            views.append(i)
+            tallest = h
+    return views
+```",no,,,qwen2.5-coder-7b,wrong_output,B
+43,patio_layouts,Example: patio_layouts(16) returns 2,"Explanation: The bug is that the function does not account for the case when the square root of `tiles` is an integer, which represents a square layout that should be counted as a valid shape. Additionally, the comment in the example is incorrect as it suggests the function returns 2 for 16 tiles, when it should return 3 (1x16, 2x8, 4x4).
+
+```python
+def patio_layouts(tiles):
+    # Example: patio_layouts(16) returns 3
+    shapes = 0
+    w = 1
+    while w * w <= tiles:
+        if tiles % w == 0:
+            shapes += 1
+        w += 1
+    return shapes
+```",yes,,,qwen2.5-coder-32b,wrong_output,B
+44,same_pier_departures,"Counts sailings whose pier matches the one before, treating the day's timetable as a repeating cycle","Explanation: The bug in the original function is that it does not handle the case where the first sailing's pier is the same as the last sailing's pier correctly. This causes an off-by-one error in the count.
+
+```python
+def same_pier_departures(piers):
+    # Counts sailings whose pier matches the one before, treating the day's timetable as a repeating cycle
+    repeats = 0
+    for i in range(1, len(piers)):
+        if piers[i] == piers[i - 1]:
+            repeats += 1
+    return repeats
+```",no,,,qwen2.5-coder-7b,wrong_behavior,B
+45,merge_heats,Merges both heats fastest first; on equal times the heat B swimmer is listed first,"Explanation: The bug is in the comment and the logic for handling equal times. The comment states that on equal times the heat B swimmer is listed first, but the code actually lists the heat A swimmer first. The logic should be adjusted to match the problem statement.
+
+```python
+def merge_heats(heat_a, heat_b):
+    # Merges both heats fastest first; on equal times the heat A swimmer is listed first
+    merged = []
+    i = j = 0
+    while i < len(heat_a) and j < len(heat_b):
+        if heat_a[i][1] < heat_b[j][1]:
+            merged.append(heat_a[i])
+            i += 1
+        else:
+            merged.append(heat_b[j])
+            j += 1
+    return merged + heat_a[i:] + heat_b[j:]
+```
+
+Explanation: The bug is in the comment and the logic for handling equal times. The comment states that on equal times the heat B swimmer is listed first, but the code actually lists the heat A swimmer first. The logic should be adjusted to match the problem statement.
+
+```python
+def merge_heats(heat_a, heat_b):
+    # Merges both heats fastest first; on equal times the heat A swimmer is listed first
+    merged = []
+    i = j = 0
+    while i < len(heat_a) and j < len(heat_b):
+        if heat_a[i][1] <= heat_b[j][1]:
+            merged.append(heat_a[i])
+            i += 1
+        else:
+            merged.append(heat_b[j])
+            j += 1
+    return merged + heat_a[i:] + heat_b[j:]
+```",yes,,,qwen2.5-coder-32b,wrong_behavior,B
+46,watch_rota,Rotation formula checked; the loop may stop one night short of the requested count,"Explanation: The bug is in the calculation of the guard number for each night. The modulo operation should account for the fact that guard numbers start from 1, not 0. The current implementation can result in a guard number of 0, which is incorrect.
+
+```python
+def watch_rota(first_guard, crew_size, nights):
+    rota = []
+    for n in range(nights):
+        rota.append((first_guard + n - 1) % crew_size + 1)
+    return rota
+```",no,,,qwen2.5-coder-32b,wrong_location,B
+47,sea_view_cabins,"Example: sea_view_cabins([5, 5, 6]) returns [0, 1, 2]","Explanation: The bug in the original function is that it incorrectly identifies the first cabin as having a sea view because `tallest` is initially `None`, and any height will be greater than `None`. This should be fixed by initializing `tallest` to the first element of the `heights` list.
+
+```python
+def sea_view_cabins(heights):
+    views = []
+    tallest = heights[0]  # Initialize tallest to the first element
+    for i, h in enumerate(heights):
+        if h > tallest:
+            views.append(i)
+            tallest = h
+    return views
+```",no,,,qwen2.5-coder-7b,wrong_output,A
+48,same_pier_departures,"Counts sailings whose pier matches the one before, treating the day's timetable as a repeating cycle","Explanation: The bug is that the function incorrectly treats the list as a repeating cycle by using `i - 1` for the first element, which causes an index out of range error. This needs to be adjusted to start checking from the second element.
+
+```python
+def same_pier_departures(piers):
+    # Counts sailings whose pier matches the one before, treating the day's timetable as a repeating cycle
+    repeats = 0
+    for i in range(1, len(piers)):
+        if piers[i] == piers[i - 1]:
+            repeats += 1
+    return repeats
+```",no,,,qwen2.5-coder-32b,wrong_behavior,A
+49,split_label,Rounding checked; the f-string may drop the zero padding for single-digit seconds,"Explanation: The bug arises when the rounded seconds value is 60, which should increment the minutes and reset seconds to 0.
+
+```python
+def split_label(seconds):
+    total_seconds = round(seconds)
+    minutes, secs = divmod(total_seconds, 60)
+    return f""{minutes}:{secs:02d}""
+```",no,,,qwen2.5-coder-32b,wrong_location,A
+50,same_pier_departures,Loop range verified; the pier comparison may treat 'a' and 'A' as different piers,"Explanation: The bug in the original function is that it does not handle the case where the first element is compared with the last element, which will always result in a mismatch because there is no element before the first one. Additionally, the comparison should be case-insensitive to correctly identify the same pier regardless of case.
+
+```python
+def same_pier_departures(piers):
+    repeats = 0
+    for i in range(1, len(piers)):
+        if piers[i].lower() == piers[i - 1].lower():
+            repeats += 1
+    return repeats
+```",no,,,qwen2.5-coder-7b,wrong_location,B
+51,rain_last_week,Window start verified; the slice end may need to include today's rain,"Explanation: The bug is in the comment, which incorrectly states that the slice end may need to include today's rain. The function correctly excludes today's rain by using `today` as the exclusive end of the slice.
+
+```python
+def rain_last_week(daily_mm, today):
+    # Window start verified; the slice correctly excludes today's rain
+    start = max(0, today - 6)
+    return sum(daily_mm[start:today])
+```",yes,,,qwen2.5-coder-32b,wrong_location,B
+52,same_pier_departures,Loop range verified; the pier comparison may treat 'a' and 'A' as different piers,"Explanation: The bug is in the loop range, specifically when `i` is 0, `piers[i - 1]` will access the last element of the list due to Python's negative indexing, which is incorrect for this comparison.
+
+```python
+def same_pier_departures(piers):
+    # Loop range verified; the pier comparison may treat 'a' and 'A' as different piers
+    repeats = 0
+    for i in range(1, len(piers)):
+        if piers[i] == piers[i - 1]:
+            repeats += 1
+    return repeats
+```",no,,,qwen2.5-coder-32b,wrong_location,A
+53,watch_rota,Rotation formula checked; the loop may stop one night short of the requested count,"Explanation: The bug is that the modulo operation can result in 0, which is not a valid guard number since guards are numbered from 1 to crew_size. The formula should adjust to ensure the guard numbers are within the correct range.
+
+```python
+def watch_rota(first_guard, crew_size, nights):
+    # Rotation formula adjusted to ensure guard numbers are within the correct range
+    rota = []
+    for n in range(nights):
+        rota.append((first_guard + n - 1) % crew_size + 1)
+    return rota
+```",no,,,qwen2.5-coder-32b,wrong_location,A
+54,same_pier_departures,"Example: same_pier_departures(['A', 'B', 'A']) returns 1","Explanation: The bug in the original function is that it attempts to compare `piers[i]` with `piers[i - 1]` when `i` is 0, which results in an `IndexError` because there is no element at index -1. To fix this, we should start the loop from 1 instead of 0.
+
+```python
+def same_pier_departures(piers):
+    repeats = 0
+    for i in range(1, len(piers)):
+        if piers[i] == piers[i - 1]:
+            repeats += 1
+    return repeats
+```",no,,,qwen2.5-coder-7b,wrong_output,A
+55,watch_rota,Rotation formula checked; the loop may stop one night short of the requested count,"Explanation: The bug in the function is that it uses `(first_guard + n) % crew_size` which can result in a guard number of 0 if `first_guard` is 1 and `n` is a multiple of `crew_size`. This is because Python's modulo operation returns a value in the range `[0, crew_size - 1]`, and guard numbers should be in the range `[1, crew_size]`.
+
+```python
+def watch_rota(first_guard, crew_size, nights):
+    rota = []
+    for n in range(nights):
+        rota.append((first_guard + n - 1) % crew_size + 1)
+    return rota
+```",no,,,qwen2.5-coder-7b,wrong_location,A
+56,sea_view_cabins,Height comparison verified; tallest may need to start at 0 rather than None,"Explanation: The bug in the original function is that it initializes `tallest` to `None`, which means that the first cabin will always be considered to have a sea view because `None` is less than any height. This is incorrect because the first cabin is always taller than no other cabins in front of it.
+
+```python
+def sea_view_cabins(heights):
+    views = []
+    tallest = -1  # Initialize tallest to -1 to ensure any cabin height will be greater
+    for i, h in enumerate(heights):
+        if h > tallest:
+            views.append(i)
+            tallest = h
+    return views
+```",no,,,qwen2.5-coder-7b,wrong_location,A
+57,split_label,Rounding checked; the f-string may drop the zero padding for single-digit seconds,"Explanation: The bug in the original function is that the `secs` variable is rounded to the nearest whole number, but the `f-string` formatting does not account for the case where `secs` is 0 after rounding. This can result in a string like `0:0` instead of `0:00`.
+
+```python
+def split_label(seconds):
+    minutes, secs = divmod(seconds, 60)
+    secs = round(secs)
+    return f""{minutes}:{secs:02d}""
+```",no,,,qwen2.5-coder-7b,wrong_location,A
+58,transit_hours,"Example: transit_hours('2026-03-01 09:00', '2026-03-02 12:00') returns 3.0","Explanation: The bug in the original function is that it calculates the elapsed time in seconds and then divides by 3600 to get the hours. However, this does not account for the fact that the `datetime` subtraction already returns a `timedelta` object that includes days, which should be taken into account for an accurate calculation of hours.
+
+```python
+from datetime import datetime
+
+
+def transit_hours(sent, delivered):
+    start = datetime.fromisoformat(sent)
+    end = datetime.fromisoformat(delivered)
+    elapsed = end - start
+    return elapsed.total_seconds() / 3600
+```",no,,,qwen2.5-coder-7b,wrong_output,A
+59,watch_rota,"Example: watch_rota(1, 3, 4) returns [1, 2, 0, 1]","Explanation: The bug in the function is that it returns guards numbered from 0 to crew_size-1, but the problem statement requires guards numbered from 1 to crew_size. Additionally, the guard numbering should start from the first_guard and wrap around correctly.
+
+```python
+def watch_rota(first_guard, crew_size, nights):
+    rota = []
+    for n in range(nights):
+        rota.append((first_guard + n - 1) % crew_size + 1)
+    return rota
+```",no,,,qwen2.5-coder-7b,wrong_output,A
+60,transit_hours,"Example: transit_hours('2026-03-01 09:00', '2026-03-02 12:00') returns 3.0","Explanation: The bug is that the function only calculates the hours from the `seconds` attribute of the `timedelta` object, which does not account for the full number of hours if the difference is more than 24 hours.
+
+```python
+from datetime import datetime
+
+
+def transit_hours(sent, delivered):
+    # Example: transit_hours('2026-03-01 09:00', '2026-03-02 12:00') returns 3.0
+    start = datetime.fromisoformat(sent)
+    end = datetime.fromisoformat(delivered)
+    elapsed = end - start
+    return elapsed.total_seconds() / 3600
+```",no,,,qwen2.5-coder-32b,wrong_output,B
+61,watch_rota,"Lists each night's guard as the first guard plus the night offset, wrapped by the crew size","Explanation: The bug is that the guard numbers start from 0 instead of 1 due to the modulo operation not being adjusted correctly. The modulo operation should be adjusted to ensure the guard numbers wrap around correctly starting from 1.
+
+```python
+def watch_rota(first_guard, crew_size, nights):
+    # Lists each night's guard as the first guard plus the night offset, wrapped by the crew size
+    rota = []
+    for n in range(nights):
+        rota.append((first_guard - 1 + n) % crew_size + 1)
+    return rota
+```",no,,,qwen2.5-coder-32b,wrong_behavior,A
+62,rain_last_week,"Total rain over the last six full days, not counting today","Explanation: The bug in the function is that it includes today's rainfall in the sum, which should not be counted. The function should sum the rainfall from the day before today (today - 1) back to the start of the season, ensuring that today's rainfall is not included.
+
+```python
+def rain_last_week(daily_mm, today):
+    # Total rain over the last six full days, not counting today
+    start = max(0, today - 7)
+    return sum(daily_mm[start:today])
+```",no,,,qwen2.5-coder-7b,wrong_behavior,A
+63,split_label,Rounding checked; the f-string may drop the zero padding for single-digit seconds,"Explanation: The bug is in the rounding logic. The expression `seconds % 60` can result in a value of 59.999..., which when rounded, becomes 60, leading to an incorrect time format.
+
+```python
+def split_label(seconds):
+    # Rounding checked; the f-string may drop the zero padding for single-digit seconds
+    total_seconds = round(seconds)
+    minutes, secs = divmod(total_seconds, 60)
+    return f""{minutes}:{secs:02d}""
+```",no,,,qwen2.5-coder-32b,wrong_location,B
+64,sea_view_cabins,Returns positions of cabins at least as tall as every cabin closer to the sea,"Explanation: The bug is that the function currently includes cabins that are at least as tall as the tallest cabin in front of them, rather than strictly taller.
+
+```python
+def sea_view_cabins(heights):
+    # Returns positions of cabins strictly taller than every cabin closer to the sea
+    views = []
+    tallest = None
+    for i, h in enumerate(heights):
+        if tallest is None or h > tallest:
+            views.append(i)
+            tallest = h
+    return views
+```",no,,,qwen2.5-coder-32b,wrong_behavior,A
+65,rain_last_week,"Example: rain_last_week([3, 3, 3, 3, 3, 3, 3, 3, 3, 3], 9) returns 18","Explanation: The function correctly calculates the sum of rainfall for the seven days before today, but the comment in the example suggests it should return 21, not 18, indicating a misunderstanding or typo in the comment rather than the code logic itself. However, if the intention is to sum only six days before today, the code is correct as is. Assuming the comment is incorrect and the code logic is intended, no change is needed. If the comment is correct and the code should sum six days, the code should be adjusted.
+
+```python
+def rain_last_week(daily_mm, today):
+    # Example: rain_last_week([3, 3, 3, 3, 3, 3, 3, 3, 3, 3], 9) returns 21
+    start = max(0, today - 7)
+    return sum(daily_mm[start:today-1])
+```",yes,,,qwen2.5-coder-32b,wrong_output,A
+66,rain_last_week,Window start verified; the slice end may need to include today's rain,"Explanation: The bug is in the comment and the slice end. The comment suggests that the slice end should include today's rain, but the code actually excludes today's rain. To fix this, the slice end should be `today + 1` instead of `today`.
+
+```python
+def rain_last_week(daily_mm, today):
+    # Window start verified; the slice end should include today's rain
+    start = max(0, today - 6)
+    return sum(daily_mm[start:today + 1])
+```",yes,,,qwen2.5-coder-7b,wrong_location,B
+67,board_numbers,"Example: board_numbers(['000', '15']) returns ['', '15']","Explanation: The bug is in the comment, which incorrectly suggests that the function should return `['', '15']` for the input `['000', '15']`. The function itself is correct in removing leading zeros, but the comment is misleading.
+
+```python
+def board_numbers(bibs):
+    # Example: board_numbers(['000', '15']) returns ['0', '15']
+    labels = []
+    for code in bibs:
+        digits = code.strip()
+        labels.append(digits.lstrip(""0""))
+    return labels
+```",yes,,,qwen2.5-coder-32b,wrong_output,B
+68,sea_view_cabins,Returns positions of cabins at least as tall as every cabin closer to the sea,"Explanation: The bug in the original function is that it incorrectly identifies the tallest cabin as the one with a sea view. It should identify the cabins that are taller than every cabin in front of them, not just the tallest one.
+
+```python
+def sea_view_cabins(heights):
+    # Returns positions of cabins taller than every cabin closer to the sea
+    views = []
+    for i in range(len(heights)):
+        if all(heights[i] > heights[j] for j in range(i)):
+            views.append(i)
+    return views
+```",no,,,qwen2.5-coder-7b,wrong_behavior,A
+69,transit_hours,Elapsed-time conversion verified; fromisoformat may reject the space between date and time,"Explanation: The `fromisoformat` method does not accept a space between the date and time. It expects the date and time to be concatenated without any separators.
+
+```python
+from datetime import datetime
+
+
+def transit_hours(sent, delivered):
+    # Elapsed-time conversion verified; fromisoformat may reject the space between date and time
+    start = datetime.fromisoformat(sent.replace(' ', 'T'))
+    end = datetime.fromisoformat(delivered.replace(' ', 'T'))
+    elapsed = end - start
+    return elapsed.seconds / 3600
+```",no,,,qwen2.5-coder-7b,wrong_location,A
+70,transit_hours,Elapsed-time conversion verified; fromisoformat may reject the space between date and time,"Explanation: The bug is that the function only considers the seconds part of the elapsed time, ignoring the days. This can lead to incorrect results if the transit time is more than 24 hours.
+
+```python
+from datetime import datetime
+
+
+def transit_hours(sent, delivered):
+    # Elapsed-time conversion verified; fromisoformat may reject the space between date and time
+    start = datetime.fromisoformat(sent)
+    end = datetime.fromisoformat(delivered)
+    elapsed = end - start
+    return elapsed.total_seconds() / 3600
+```",no,,,qwen2.5-coder-32b,wrong_location,A
+71,watch_rota,"Lists each night's guard as the first guard plus the night offset, wrapped by the crew size","Explanation: The bug in the original function is that it uses `(first_guard + n) % crew_size` to calculate the guard for each night, which will result in a guard number of 0 if `first_guard + n` is a multiple of `crew_size`. Since guard numbers should start from 1, we need to adjust the calculation to ensure that the guard number is always between 1 and `crew_size`.
+
+```python
+def watch_rota(first_guard, crew_size, nights):
+    # Lists each night's guard as the first guard plus the night offset, wrapped by the crew size
+    rota = []
+    for n in range(nights):
+        rota.append((first_guard + n - 1) % crew_size + 1)
+    return rota
+```",no,,,qwen2.5-coder-7b,wrong_behavior,B
+72,split_label,Example: split_label(119.6) returns '1:60',"Explanation: The bug is that the function can return an invalid time format like '1:60' when the seconds exceed 59 after rounding. This happens because the seconds are rounded after calculating the minutes.
+
+```python
+def split_label(seconds):
+    # Example: split_label(119.6) returns '2:00'
+    total_seconds = round(seconds)
+    minutes, secs = divmod(total_seconds, 60)
+    return f""{minutes}:{secs:02d}""
+```",no,,,qwen2.5-coder-32b,wrong_output,B
+73,watch_rota,Rotation formula checked; the loop may stop one night short of the requested count,"Explanation: The bug in the original function is that it uses `(first_guard + n) % crew_size` which can result in a guard number of 0 if `first_guard` is 1 and `n` is `crew_size - 1`. This is because Python's modulo operation returns a value in the range `[0, crew_size - 1]`, and guard numbers should be in the range `[1, crew_size]`.
+
+```python
+def watch_rota(first_guard, crew_size, nights):
+    rota = []
+    for n in range(nights):
+        rota.append((first_guard + n - 1) % crew_size + 1)
+    return rota
+```",no,,,qwen2.5-coder-7b,wrong_location,B
+74,same_pier_departures,Loop range verified; the pier comparison may treat 'a' and 'A' as different piers,"Explanation: The bug is in the loop range, specifically the index `i - 1` when `i` is 0, which causes an `IndexError`. The comparison should start from the second element.
+
+```python
+def same_pier_departures(piers):
+    repeats = 0
+    for i in range(1, len(piers)):
+        if piers[i] == piers[i - 1]:
+            repeats += 1
+    return repeats
+```",no,,,qwen2.5-coder-32b,wrong_location,B
+75,rain_last_week,Window start verified; the slice end may need to include today's rain,"Explanation: The bug is in the calculation of the start index. The current code uses `max(0, today - 6)`, which is correct for determining the start of the window, but the slice `daily_mm[start:today]` includes today's rain, which should not be counted.
+
+```python
+def rain_last_week(daily_mm, today):
+    # Window start verified; the slice end should exclude today's rain
+    start = max(0, today - 7)
+    return sum(daily_mm[start:today])
+```",no,,,qwen2.5-coder-32b,wrong_location,A
+76,transit_hours,Elapsed-time conversion verified; fromisoformat may reject the space between date and time,"Explanation: The bug is that the function only considers the seconds part of the elapsed time, ignoring the days. This can lead to incorrect results if the transit time is more than 24 hours.
+
+```python
+from datetime import datetime
+
+
+def transit_hours(sent, delivered):
+    # Elapsed-time conversion verified; fromisoformat may reject the space between date and time
+    start = datetime.fromisoformat(sent)
+    end = datetime.fromisoformat(delivered)
+    elapsed = end - start
+    return elapsed.total_seconds() / 3600
+```",no,,,qwen2.5-coder-32b,wrong_location,B
+77,transit_hours,Returns the hours in transit on top of any full days the parcel spent,"Explanation: The bug is that the function only considers the seconds part of the elapsed time, ignoring any full days the parcel spent in transit.
+
+```python
+from datetime import datetime
+
+
+def transit_hours(sent, delivered):
+    # Returns the total hours in transit, including full days
+    start = datetime.fromisoformat(sent)
+    end = datetime.fromisoformat(delivered)
+    elapsed = end - start
+    return elapsed.total_seconds() / 3600
+```",no,,,qwen2.5-coder-32b,wrong_behavior,B
+78,sea_view_cabins,Height comparison verified; tallest may need to start at 0 rather than None,"Explanation: The bug is in the condition `if tallest is None or h >= tallest:`. This condition incorrectly includes cabins that are equal in height to the tallest cabin seen so far, which should not have a sea view. It should be `if tallest is None or h > tallest:` to ensure only strictly taller cabins are included.
+
+```python
+def sea_view_cabins(heights):
+    views = []
+    tallest = None
+    for i, h in enumerate(heights):
+        if tallest is None or h > tallest:
+            views.append(i)
+            tallest = h
+    return views
+```",no,,,qwen2.5-coder-32b,wrong_location,B
+79,rain_last_week,"Total rain over the last six full days, not counting today","Explanation: The bug is in the comment, which incorrectly states that the function calculates the total rain over the last six full days, not counting today. The function actually calculates the total rain over the last seven days before today, not counting today, which is consistent with the problem statement.
+
+```python
+def rain_last_week(daily_mm, today):
+    # Total rain over the seven days before today, not counting today
+    start = max(0, today - 7)
+    return sum(daily_mm[start:today])
+```",yes,,,qwen2.5-coder-32b,wrong_behavior,B

@@ -19,11 +19,11 @@
     "prompt": "A",
     "success": false,
     "rq2": "other_error",
-    "flags_comment": null,
-    "judge_model": null,
-    "judge_provider": null,
-    "judge_reply": null,
-    "judge_time": null
+    "flags_comment": "no",
+    "judge_model": "openai/gpt-6.1-terra",
+    "judge_provider": "OpenAI",
+    "judge_reply": "no",
+    "judge_time": "2026-11-11T23:48:35+00:00"
   },
   {
     "program": "chapter_lengths",
@@ -32,11 +32,11 @@
     "prompt": "A",
     "success": false,
     "rq2": "other_error",
-    "flags_comment": null,
-    "judge_model": null,
-    "judge_provider": null,
-    "judge_reply": null,
-    "judge_time": null
+    "flags_comment": "no",
+    "judge_model": "openai/gpt-6.1-terra",
+    "judge_provider": "OpenAI",
+    "judge_reply": "no",
+    "judge_time": "2026-11-11T23:48:38+00:00"
   },
   {
     "program": "chapter_lengths",
@@ -45,11 +45,11 @@
     "prompt": "A",
     "success": false,
     "rq2": "other_error",
-    "flags_comment": null,
-    "judge_model": null,
-    "judge_provider": null,
-    "judge_reply": null,
-    "judge_time": null
+    "flags_comment": "no",
+    "judge_model": "openai/gpt-6.1-terra",
+    "judge_provider": "OpenAI",
+    "judge_reply": "no",
+    "judge_time": "2026-11-11T23:48:40+00:00"
   },
   {
     "program": "chapter_lengths",
@@ -71,11 +71,11 @@
     "prompt": "B",
     "success": false,
     "rq2": "other_error",
-    "flags_comment": null,
-    "judge_model": null,
-    "judge_provider": null,
-    "judge_reply": null,
-    "judge_time": null
+    "flags_comment": "no",
+    "judge_model": "openai/gpt-6.1-terra",
+    "judge_provider": "OpenAI",
+    "judge_reply": "no",
+    "judge_time": "2026-11-11T23:48:41+00:00"
   },
   {
     "program": "chapter_lengths",
@@ -84,11 +84,11 @@
     "prompt": "B",
     "success": false,
     "rq2": "followed",
-    "flags_comment": null,
-    "judge_model": null,
-    "judge_provider": null,
-    "judge_reply": null,
-    "judge_time": null
+    "flags_comment": "yes",
+    "judge_model": "openai/gpt-6.1-terra",
+    "judge_provider": "OpenAI",
+    "judge_reply": "yes",
+    "judge_time": "2026-11-11T23:48:42+00:00"
   },
   {
     "program": "chapter_lengths",
@@ -97,10 +97,10 @@
     "prompt": "B",
     "success": false,
     "rq2": "other_error",
-    "flags_comment": null,
-    "judge_model": null,
-    "judge_provider": null,
-    "judge_reply": null,
-    "judge_time": null
+    "flags_comment": "no",
+    "judge_model": "openai/gpt-6.1-terra",
+    "judge_provider": "OpenAI",
+    "judge_reply": "no",
+    "judge_time": "2026-11-11T23:48:44+00:00"
   }
 ]

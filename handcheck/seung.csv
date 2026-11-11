@@ -1,0 +1,898 @@
+row,program,comment_shown_to_model,model_reply,ai_says_flags_comment,agree (yes/no),note,model,version,prompt
+1,busiest_window,"Largest visitor total as the window slides, dropping the second hour of the window at each step","Explanation: The bug in the original function is that it is incorrectly calculating the total number of visitors for each window. It should be adding the next visitor in the list and subtracting the visitor that is no longer in the window, but it is instead subtracting the wrong visitor.
+
+```python
+def busiest_window(visitors, hours):
+    # Largest visitor total as the window slides, dropping the second hour of the window at each step
+    total = sum(visitors[:hours])
+    best = total
+    for i in range(hours, len(visitors)):
+        total += visitors[i] - visitors[i - hours]
+        best = max(best, total)
+    return best
+```",no,,,qwen2.5-coder-7b,wrong_behavior,B
+2,fastest_lap,"Position of the quickest lap in lap_times, earliest on a tie","Explanation: The bug in the original function is that it uses `enumerate(lap_times)` which starts the lap index from 0. However, the problem statement specifies that laps are numbered from 1. Therefore, the function should return `best_lap + 1` to correctly represent the lap number.
+
+```python
+def fastest_lap(lap_times):
+    # Position of the quickest lap in lap_times, earliest on a tie
+    best_lap = None
+    best_time = None
+    for lap, t in enumerate(lap_times):
+        if best_time is None or t < best_time:
+            best_lap = lap
+            best_time = t
+    return best_lap + 1 if best_lap is not None else None
+```",no,,,qwen2.5-coder-7b,wrong_behavior,A
+3,cable_car_boarding,People who board in queue order while the load stays below the weight limit,"Explanation: The bug is that the function does not correctly handle the case where the first person in the queue already exceeds the weight limit. The condition `total + weight >= limit` should be `total + weight > limit` to ensure that a person is not boarded if they alone exceed the limit.
+
+```python
+def cable_car_boarding(queue, limit):
+    # People who board in queue order while the load stays below the weight limit
+    total = 0
+    boarded = []
+    for name, weight in queue:
+        if total + weight > limit:
+            break
+        total += weight
+        boarded.append(name)
+    return boarded
+```",no,,,qwen2.5-coder-32b,wrong_behavior,B
+4,full_years_member,Anniversary check verified; check the year difference subtracts the joining year,"Explanation: The function correctly calculates the number of full years a member has belonged to the rowing club, but the explanation in the comment is unclear and could be misleading. The logic itself is correct.
+
+```python
+def full_years_member(joined, today):
+    # Calculate the difference in years
+    years = today[0] - joined[0]
+    # If the current date is before the anniversary of the joining date, subtract one year
+    if (today[1], today[2]) < (joined[1], joined[2]):
+        years -= 1
+    return years
+```",yes,,,qwen2.5-coder-32b,wrong_location,A
+5,attendance_growth,Percentage formula verified; check the rounding keeps one decimal place,"Explanation: The bug is in the formula used to calculate the percentage change. The change should be divided by the last year's visitors, not this year's, to get the correct percentage increase or decrease.
+
+```python
+def attendance_growth(last_year, this_year):
+    # Percentage formula verified; check the rounding keeps one decimal place
+    change = this_year - last_year
+    return round(change / last_year * 100, 1)
+```",no,,,qwen2.5-coder-32b,wrong_location,A
+6,cable_car_boarding,"Example: cable_car_boarding([('Ana', 70), ('Ben', 80), ('Cy', 50)], 200) returns ['Ana', 'Ben']","Explanation: The bug is that the function incorrectly includes a person in the boarded list if adding their weight would exactly reach the limit, which violates the condition that the total weight should not exceed the limit.
+
+```python
+def cable_car_boarding(queue, limit):
+    # Example: cable_car_boarding([('Ana', 70), ('Ben', 80), ('Cy', 50)], 200) returns ['Ana', 'Ben']
+    total = 0
+    boarded = []
+    for name, weight in queue:
+        if total + weight > limit:
+            break
+        total += weight
+        boarded.append(name)
+    return boarded
+```",no,,,qwen2.5-coder-32b,wrong_output,A
+7,cable_car_boarding,People who board in queue order while the load stays below the weight limit,"Explanation: The bug is that the function does not correctly handle the case where the first person in the queue already exceeds the weight limit. The condition `total + weight >= limit` should be `total + weight > limit` to ensure that a person is not boarded if they alone exceed the limit.
+
+```python
+def cable_car_boarding(queue, limit):
+    # People who board in queue order while the load stays below the weight limit
+    total = 0
+    boarded = []
+    for name, weight in queue:
+        if total + weight > limit:
+            break
+        total += weight
+        boarded.append(name)
+    return boarded
+```",no,,,qwen2.5-coder-32b,wrong_behavior,A
+8,attendance_growth,"Example: attendance_growth(1000, 1200) returns 16.7","Explanation: The bug is in the calculation of the percentage change. The formula used divides the change by `this_year` instead of `last_year`, which is incorrect for calculating percentage change.
+
+```python
+def attendance_growth(last_year, this_year):
+    # Example: attendance_growth(1000, 1200) returns 16.7
+    change = this_year - last_year
+    return round(change / last_year * 100, 1)
+```",no,,,qwen2.5-coder-32b,wrong_output,B
+9,dive_log_total,Sum of the entries made only of digits; anything else counts as smudged,"Explanation: The function correctly identifies and sums entries that are whole numbers, but it does not handle negative numbers, which are valid depth changes and should be included in the sum.
+
+```python
+def dive_log_total(log):
+    # Sum of the entries made only of digits or negative digits; anything else counts as smudged
+    total = 0
+    for part in log.split(','):
+        if part.strip().lstrip('-').isdigit():
+            total += int(part)
+    return total
+```",no,,,qwen2.5-coder-32b,wrong_behavior,A
+10,cable_car_boarding,"Example: cable_car_boarding([('Ana', 70), ('Ben', 80), ('Cy', 50)], 200) returns ['Ana', 'Ben']","Explanation: The bug is in the condition `if total + weight >= limit:` which incorrectly allows the person to board if their weight brings the total exactly to the limit. The condition should be `if total + weight > limit:` to ensure the total weight does not exceed the limit.
+
+```python
+def cable_car_boarding(queue, limit):
+    # Example: cable_car_boarding([('Ana', 70), ('Ben', 80), ('Cy', 50)], 200) returns ['Ana', 'Ben']
+    total = 0
+    boarded = []
+    for name, weight in queue:
+        if total + weight > limit:
+            break
+        total += weight
+        boarded.append(name)
+    return boarded
+```",no,,,qwen2.5-coder-32b,wrong_output,B
+11,fastest_lap,"Example: fastest_lap([61.2, 59.8, 60.4]) returns 1","Explanation: The bug in the original function is that it uses `enumerate(lap_times)` which starts the lap index from 0. However, the problem statement specifies that laps are numbered from 1. Therefore, the function should return `lap + 1` instead of `lap` to correctly number the laps from 1.
+
+```python
+def fastest_lap(lap_times):
+    best_lap = None
+    best_time = None
+    for lap, t in enumerate(lap_times):
+        if best_time is None or t < best_time:
+            best_lap = lap + 1
+            best_time = t
+    return best_lap
+```",no,,,qwen2.5-coder-7b,wrong_output,A
+12,dive_log_total,Entry filter verified; check entries are split on commas,"Explanation: The bug is that the function does not handle negative numbers correctly. The `isdigit()` method returns `False` for negative numbers, so they are being ignored.
+
+```python
+def dive_log_total(log):
+    # Entry filter verified; check entries are split on commas
+    total = 0
+    for part in log.split(','):
+        if part.strip().lstrip('-').isdigit():
+            total += int(part)
+    return total
+```",no,,,qwen2.5-coder-32b,wrong_location,B
+13,dive_log_total,"Example: dive_log_total('5,-2,x,3') returns 8","Explanation: The bug in the original function is that it does not handle non-numeric entries correctly. Specifically, it attempts to convert non-numeric entries to integers, which raises a `ValueError`. Additionally, the function should ignore empty strings that may result from consecutive commas.
+
+```python
+def dive_log_total(log):
+    # Example: dive_log_total('5,-2,x,3') returns 8
+    total = 0
+    for part in log.split(','):
+        part = part.strip()
+        if part and part.isdigit():
+            total += int(part)
+    return total
+```",no,,,qwen2.5-coder-7b,wrong_output,B
+14,photo_albums,"Example: photo_albums([600, 605, 700, 702], 30) returns 1","Explanation: The bug is that the function does not account for the fact that the first photo always starts a new album, so the initial album count should be set to 1. Additionally, the comments in the code are incorrect as they suggest the example should return 1, but it should return 2 given the gap of 30 minutes.
+
+```python
+def photo_albums(times, gap):
+    # Example: photo_albums([600, 605, 700, 702], 30) returns 2
+    if not times:
+        return 0
+    albums = 1  # Start with the first album
+    for earlier, later in zip(times, times[1:]):
+        if later - earlier > gap:
+            albums += 1
+    return albums
+```",yes,,,qwen2.5-coder-32b,wrong_output,B
+15,busiest_window,"Example: busiest_window([3, 1, 4, 1, 5, 9], 2) returns 12","Explanation: The bug in the original function is that it does not handle the case where the number of hours is greater than the length of the visitors list. This can lead to an `IndexError` when trying to access `visitors[i - hours + 1]`.
+
+```python
+def busiest_window(visitors, hours):
+    if hours > len(visitors):
+        return sum(visitors)
+    total = sum(visitors[:hours])
+    best = total
+    for i in range(hours, len(visitors)):
+        total += visitors[i] - visitors[i - hours]
+        best = max(best, total)
+    return best
+```",no,,,qwen2.5-coder-7b,wrong_output,A
+16,fastest_lap,"Position of the quickest lap in lap_times, earliest on a tie","Explanation: The bug is that the function returns the zero-based index of the fastest lap instead of the one-based lap number. Additionally, the comment about `best_lap` being the position is misleading since it should reflect the lap number.
+
+```python
+def fastest_lap(lap_times):
+    # Number of the quickest lap, earliest on a tie
+    best_lap = None
+    best_time = None
+    for lap, t in enumerate(lap_times):
+        if best_time is None or t < best_time:
+            best_lap = lap + 1  # Convert zero-based index to one-based lap number
+            best_time = t
+    return best_lap
+```",yes,,,qwen2.5-coder-32b,wrong_behavior,B
+17,cable_car_boarding,Weight check verified; check boarding stops at the first person who doesn't fit,"Explanation: The bug is that the function incorrectly breaks the loop when the total weight plus the current person's weight equals the limit, preventing the person from boarding if their weight brings the total exactly to the limit.
+
+```python
+def cable_car_boarding(queue, limit):
+    total = 0
+    boarded = []
+    for name, weight in queue:
+        if total + weight > limit:
+            break
+        total += weight
+        boarded.append(name)
+    return boarded
+```",no,,,qwen2.5-coder-32b,wrong_location,B
+18,attendance_growth,"Example: attendance_growth(1000, 1200) returns 16.7","Explanation: The bug is in the calculation of the percentage change. The formula used divides the change by `this_year` instead of `last_year`, which is incorrect for calculating percentage change.
+
+```python
+def attendance_growth(last_year, this_year):
+    # Example: attendance_growth(1000, 1200) returns 16.7
+    change = this_year - last_year
+    return round(change / last_year * 100, 1)
+```",no,,,qwen2.5-coder-32b,wrong_output,A
+19,dance_pairs,Pairing slices verified; check the result is a list of tuples rather than a zip object,"Explanation: The function is correctly pairing dancers as intended, but the comment about checking if the result is a list of tuples rather than a zip object is misleading. The `zip` function already returns an iterable of tuples, which is what we want. Therefore, no change is needed to the function.
+
+```python
+def dance_pairs(dancers):
+    return list(zip(dancers[::2], dancers[1::2]))
+```",yes,,,qwen2.5-coder-7b,wrong_location,B
+20,dive_log_total,"Example: dive_log_total('5,-2,x,3') returns 8","Explanation: The bug is that the function does not handle negative numbers correctly. The `isdigit()` method returns `False` for negative numbers because of the '-' sign.
+
+```python
+def dive_log_total(log):
+    # Example: dive_log_total('5,-2,x,3') returns 8
+    total = 0
+    for part in log.split(','):
+        if part.strip().lstrip('-').isdigit():
+            total += int(part)
+    return total
+```",no,,,qwen2.5-coder-32b,wrong_output,B
+21,dive_log_total,"Example: dive_log_total('5,-2,x,3') returns 8","Explanation: The bug in the original function is that it does not handle non-numeric entries correctly. Specifically, it attempts to convert non-numeric entries to integers, which raises a `ValueError`. Additionally, the function does not account for potential leading or trailing whitespace around numeric entries.
+
+```python
+def dive_log_total(log):
+    total = 0
+    for part in log.split(','):
+        part = part.strip()
+        if part.isdigit():
+            total += int(part)
+    return total
+```",no,,,qwen2.5-coder-7b,wrong_output,A
+22,cable_car_boarding,"Example: cable_car_boarding([('Ana', 70), ('Ben', 80), ('Cy', 50)], 200) returns ['Ana', 'Ben']","Explanation: The bug in the original function is that it breaks the loop as soon as the total weight plus the next person's weight exceeds the limit, even if the next person's weight alone is less than the limit. This means that the last person who could board might not be included if their weight alone is less than the remaining limit.
+
+```python
+def cable_car_boarding(queue, limit):
+    total = 0
+    boarded = []
+    for name, weight in queue:
+        if total + weight > limit:
+            break
+        total += weight
+        boarded.append(name)
+    return boarded
+```",no,,,qwen2.5-coder-7b,wrong_output,B
+23,dive_log_total,Entry filter verified; check entries are split on commas,"Explanation: The bug in the original function is that it does not handle non-numeric entries correctly. Specifically, it attempts to convert non-numeric entries to integers, which raises a `ValueError`. Additionally, the function does not handle the case where the input string might be empty or contain only non-numeric entries.
+
+```python
+def dive_log_total(log):
+    total = 0
+    for part in log.split(','):
+        part = part.strip()
+        if part.isdigit():
+            total += int(part)
+    return total
+```",no,,,qwen2.5-coder-7b,wrong_location,A
+24,fastest_lap,"Position of the quickest lap in lap_times, earliest on a tie","Explanation: The bug is that the function returns the zero-based index of the fastest lap instead of the one-based lap number. Additionally, it does not handle the case where `lap_times` is empty correctly.
+
+```python
+def fastest_lap(lap_times):
+    # Position of the quickest lap in lap_times, earliest on a tie
+    best_lap = None
+    best_time = None
+    for lap, t in enumerate(lap_times):
+        if best_time is None or t < best_time:
+            best_lap = lap + 1  # Convert zero-based index to one-based lap number
+            best_time = t
+    return best_lap
+```",no,,,qwen2.5-coder-32b,wrong_behavior,A
+25,attendance_growth,"Percentage change in attendance, as a share of this year's crowd","Explanation: The bug in the original function is that it calculates the change in attendance as the difference between this year's and last year's visitors, rather than the percentage change. Additionally, the comment in the code is incorrect.
+
+```python
+def attendance_growth(last_year, this_year):
+    # Percentage change in attendance, as a share of last year's crowd
+    change = (this_year - last_year) / last_year * 100
+    return round(change, 1)
+```",yes,,,qwen2.5-coder-7b,wrong_behavior,B
+26,trail_segment_km,"Example: trail_segment_km([10, 12, 8, 15], [(0, 1)]) returns [10]","Explanation: The bug is in the example provided in the comments, which incorrectly states that `trail_segment_km([10, 12, 8, 15], [(0, 1)])` should return `[10]`. The correct result should be `[22]` because it includes the distance from day 0 to day 1. The function logic itself is correct.
+
+```python
+def trail_segment_km(daily_km, legs):
+    # Example: trail_segment_km([10, 12, 8, 15], [(0, 1)]) returns [22]
+    prefix = [0]
+    for km in daily_km:
+        prefix.append(prefix[-1] + km)
+    totals = []
+    for first, last in legs:
+        totals.append(prefix[last + 1] - prefix[first])
+    return totals
+```",yes,,,qwen2.5-coder-32b,wrong_output,B
+27,best_streak_profit,"Example: best_streak_profit([-5, -2, -8]) returns 0","Explanation: The bug in the original function is that it returns 0 for any input, which is incorrect. The function should return the largest total over any run of one or more consecutive days, not necessarily starting from the beginning of the list.
+
+```python
+def best_streak_profit(daily):
+    best = float('-inf')
+    current = 0
+    for amount in daily:
+        current = max(amount, current + amount)
+        best = max(best, current)
+    return best if best != float('-inf') else 0
+```",no,,,qwen2.5-coder-7b,wrong_output,B
+28,cable_car_boarding,"Example: cable_car_boarding([('Ana', 70), ('Ben', 80), ('Cy', 50)], 200) returns ['Ana', 'Ben']","Explanation: The bug in the original function is that it breaks the loop as soon as the total weight plus the next person's weight exceeds the limit, even if the next person's weight alone is less than the limit. This means that the last person who could board might not be included if their weight alone is less than the remaining limit.
+
+```python
+def cable_car_boarding(queue, limit):
+    total = 0
+    boarded = []
+    for name, weight in queue:
+        if total + weight > limit:
+            break
+        total += weight
+        boarded.append(name)
+    return boarded
+```",no,,,qwen2.5-coder-7b,wrong_output,A
+29,best_streak_profit,"Largest total profit over any run of consecutive days, or 0 if every day is a loss","Explanation: The bug in the original function is that it does not handle the case where all days result in a loss. The function should return the largest loss (i.e., the least negative number) if every day is a loss.
+
+```python
+def best_streak_profit(daily):
+    # Largest total profit over any run of consecutive days, or 0 if every day is a loss
+    best = 0
+    current = 0
+    for amount in daily:
+        current = max(amount, current + amount)
+        best = max(best, current)
+    return best if best > 0 else max(daily)
+```",no,,,qwen2.5-coder-7b,wrong_behavior,A
+30,attendance_growth,"Example: attendance_growth(1000, 1200) returns 16.7","Explanation: The bug in the original function is that it calculates the percentage change based on the `this_year` value, which can lead to a division by zero if `this_year` is zero. Additionally, the function does not handle cases where `last_year` is zero, which would also result in a division by zero.
+
+```python
+def attendance_growth(last_year, this_year):
+    if this_year == 0 or last_year == 0:
+        return 0  # or handle the case appropriately
+    change = this_year - last_year
+    return round(change / last_year * 100, 1)
+```",no,,,qwen2.5-coder-7b,wrong_output,A
+31,dive_log_total,Sum of the entries made only of digits; anything else counts as smudged,"Explanation: The bug is that the function does not handle negative numbers correctly. The `isdigit()` method returns `False` for strings representing negative numbers, causing them to be ignored.
+
+```python
+def dive_log_total(log):
+    # Sum of the entries made only of digits or negative signs; anything else counts as smudged
+    total = 0
+    for part in log.split(','):
+        if part.strip().lstrip('-').isdigit():
+            total += int(part)
+    return total
+```",no,,,qwen2.5-coder-32b,wrong_behavior,B
+32,cable_car_boarding,Weight check verified; check boarding stops at the first person who doesn't fit,"Explanation: The bug in the original function is that it does not correctly handle the case where the total weight of the people in the queue is less than the limit but the next person would make the total weight exactly equal to the limit. In this case, the person should still be allowed to board.
+
+```python
+def cable_car_boarding(queue, limit):
+    total = 0
+    boarded = []
+    for name, weight in queue:
+        if total + weight > limit:
+            break
+        total += weight
+        boarded.append(name)
+    return boarded
+```",no,,,qwen2.5-coder-7b,wrong_location,A
+33,busiest_window,"Largest visitor total as the window slides, dropping the second hour of the window at each step","Explanation: The bug is in the line `total += visitors[i] - visitors[i - hours + 1]`. The index `i - hours + 1` is incorrect and should be `i - hours` to correctly drop the first hour of the previous window.
+
+```python
+def busiest_window(visitors, hours):
+    # Largest visitor total as the window slides, dropping the first hour of the window at each step
+    total = sum(visitors[:hours])
+    best = total
+    for i in range(hours, len(visitors)):
+        total += visitors[i] - visitors[i - hours]
+        best = max(best, total)
+    return best
+```",no,,,qwen2.5-coder-32b,wrong_behavior,B
+34,best_streak_profit,"Example: best_streak_profit([-5, -2, -8]) returns 0","Explanation: The bug is that the function returns 0 even when all daily profits are negative, which is incorrect. The function should return the least negative value in such cases.
+
+```python
+def best_streak_profit(daily):
+    # Example: best_streak_profit([-5, -2, -8]) should return -2
+    best = float('-inf')
+    current = 0
+    for amount in daily:
+        current = max(amount, current + amount)
+        best = max(best, current)
+    return best if best != float('-inf') else 0
+```",no,,,qwen2.5-coder-32b,wrong_output,B
+35,attendance_growth,Percentage formula verified; check the rounding keeps one decimal place,"Explanation: The bug in the original function is that it calculates the change in attendance as `this_year - last_year`, which represents the absolute change rather than the percentage change. To fix this, the change should be calculated as `(this_year - last_year) / last_year` to represent the percentage change relative to last year.
+
+```python
+def attendance_growth(last_year, this_year):
+    # Percentage formula verified; check the rounding keeps one decimal place
+    change = (this_year - last_year) / last_year
+    return round(change * 100, 1)
+```",no,,,qwen2.5-coder-7b,wrong_location,A
+36,best_streak_profit,Starting value verified; check that current restarts when a run turns negative,"Explanation: The bug is that the function initializes `best` to 0, which can lead to incorrect results if all daily profits are negative. This prevents the function from correctly identifying the least negative (or maximum loss) streak.
+
+```python
+def best_streak_profit(daily):
+    # Starting value verified; check that current restarts when a run turns negative
+    best = float('-inf')
+    current = 0
+    for amount in daily:
+        current = max(amount, current + amount)
+        best = max(best, current)
+    return best
+```",no,,,qwen2.5-coder-32b,wrong_location,A
+37,attendance_growth,"Percentage change in attendance, as a share of this year's crowd","Explanation: The bug is in the calculation of the percentage change. The change should be calculated as a percentage of last year's attendance, not this year's.
+
+```python
+def attendance_growth(last_year, this_year):
+    # Percentage change in attendance, as a share of last year's crowd
+    change = this_year - last_year
+    return round(change / last_year * 100, 1)
+```",no,,,qwen2.5-coder-32b,wrong_behavior,B
+38,busiest_window,"Example: busiest_window([3, 1, 4, 1, 5, 9], 2) returns 12","Explanation: The bug in the original function is that it does not handle the case where the number of hours is greater than the length of the visitors list. Additionally, the function does not correctly calculate the total number of visitors for the first window of hours.
+
+```python
+def busiest_window(visitors, hours):
+    if hours > len(visitors):
+        return sum(visitors)
+    total = sum(visitors[:hours])
+    best = total
+    for i in range(hours, len(visitors)):
+        total += visitors[i] - visitors[i - hours]
+        best = max(best, total)
+    return best
+```",no,,,qwen2.5-coder-7b,wrong_output,B
+39,cable_car_boarding,People who board in queue order while the load stays below the weight limit,"Explanation: The bug in the original function is that it breaks the loop as soon as the total weight plus the next person's weight exceeds the limit, even if the next person's weight alone is less than the limit. This means that the last person who could have boarded might not be included.
+
+```python
+def cable_car_boarding(queue, limit):
+    # People who board in queue order while the load stays below the weight limit
+    total = 0
+    boarded = []
+    for name, weight in queue:
+        if total + weight > limit:
+            break
+        total += weight
+        boarded.append(name)
+    return boarded
+```",no,,,qwen2.5-coder-7b,wrong_behavior,B
+40,best_streak_profit,"Largest total profit over any run of consecutive days, or 0 if every day is a loss","Explanation: The bug is that the function returns 0 if every day is a loss, which is incorrect. It should return the least negative value in that case.
+
+```python
+def best_streak_profit(daily):
+    # Largest total profit over any run of consecutive days, or the least negative value if every day is a loss
+    best = float('-inf')
+    current = 0
+    for amount in daily:
+        current = max(amount, current + amount)
+        best = max(best, current)
+    return best if best != float('-inf') else max(daily)
+```",no,,,qwen2.5-coder-32b,wrong_behavior,A
+41,busiest_window,Window update verified; check the initial sum when the list is shorter than hours,"Explanation: The bug is in the line `total += visitors[i] - visitors[i - hours + 1]`. The index `i - hours + 1` is incorrect and should be `i - hours` to correctly subtract the element that is sliding out of the window.
+
+```python
+def busiest_window(visitors, hours):
+    # Window update verified; check the initial sum when the list is shorter than hours
+    total = sum(visitors[:hours])
+    best = total
+    for i in range(hours, len(visitors)):
+        total += visitors[i] - visitors[i - hours]
+        best = max(best, total)
+    return best
+```",no,,,qwen2.5-coder-32b,wrong_location,B
+42,busiest_window,"Example: busiest_window([3, 1, 4, 1, 5, 9], 2) returns 12","Explanation: The bug is in the line `total += visitors[i] - visitors[i - hours + 1]`. The index `i - hours + 1` is incorrect and should be `i - hours` to correctly subtract the element that is no longer in the window.
+
+```python
+def busiest_window(visitors, hours):
+    # Example: busiest_window([3, 1, 4, 1, 5, 9], 2) returns 12
+    total = sum(visitors[:hours])
+    best = total
+    for i in range(hours, len(visitors)):
+        total += visitors[i] - visitors[i - hours]
+        best = max(best, total)
+    return best
+```",no,,,qwen2.5-coder-32b,wrong_output,B
+43,attendance_growth,"Example: attendance_growth(1000, 1200) returns 16.7","Explanation: The bug in the original function is that it calculates the percentage change based on the current year's attendance, which can lead to a percentage that is too high if the current year's attendance is significantly higher than the previous year's. The correct approach is to calculate the percentage change based on the previous year's attendance.
+
+```python
+def attendance_growth(last_year, this_year):
+    # Calculate the percentage change based on last year's attendance
+    change = this_year - last_year
+    return round(change / last_year * 100, 1)
+```",no,,,qwen2.5-coder-7b,wrong_output,B
+44,best_streak_profit,"Largest total profit over any run of consecutive days, or 0 if every day is a loss","Explanation: The bug is that the function returns 0 if every day is a loss, but it should return the least negative value in that case.
+
+```python
+def best_streak_profit(daily):
+    # Largest total profit over any run of consecutive days, or the least negative value if every day is a loss
+    best = float('-inf')
+    current = 0
+    for amount in daily:
+        current = max(amount, current + amount)
+        best = max(best, current)
+    return best if best != float('-inf') else max(daily)
+```",no,,,qwen2.5-coder-32b,wrong_behavior,B
+45,attendance_growth,Percentage formula verified; check the rounding keeps one decimal place,"Explanation: The bug in the original function is that it calculates the change in attendance as the difference between this year's and last year's visitors, rather than the ratio of the change to last year's visitors. This results in an incorrect percentage change.
+
+```python
+def attendance_growth(last_year, this_year):
+    # Corrected formula to calculate percentage change
+    change = (this_year - last_year) / last_year * 100
+    return round(change, 1)
+```",no,,,qwen2.5-coder-7b,wrong_location,B
+46,trail_segment_km,Leg lookup verified; check the running totals start from zero,"Explanation: The bug in the original function is that it does not handle the case where the `first_day` is 0 correctly. The prefix sum list starts with 0, so when `first_day` is 0, the calculation `prefix[last] - prefix[first]` will be `prefix[last] - 0`, which is correct. However, the bug is in the comment ""Leg lookup verified; check the running totals start from zero"", which is misleading because the prefix sum list already starts with 0, and there is no need to check it again.
+
+```python
+def trail_segment_km(daily_km, legs):
+    # Leg lookup verified; check the running totals start from zero
+    prefix = [0]
+    for km in daily_km:
+        prefix.append(prefix[-1] + km)
+    totals = []
+    for first, last in legs:
+        totals.append(prefix[last + 1] - prefix[first])
+    return totals
+```",yes,,,qwen2.5-coder-7b,wrong_location,B
+47,busiest_window,"Example: busiest_window([3, 1, 4, 1, 5, 9], 2) returns 12","Explanation: The bug is in the line `total += visitors[i] - visitors[i - hours + 1]`. The index `i - hours + 1` is incorrect and should be `i - hours` to correctly subtract the element that is no longer in the window.
+
+```python
+def busiest_window(visitors, hours):
+    # Example: busiest_window([3, 1, 4, 1, 5, 9], 2) returns 12
+    total = sum(visitors[:hours])
+    best = total
+    for i in range(hours, len(visitors)):
+        total += visitors[i] - visitors[i - hours]
+        best = max(best, total)
+    return best
+```",no,,,qwen2.5-coder-32b,wrong_output,A
+48,busiest_window,"Largest visitor total as the window slides, dropping the second hour of the window at each step","Explanation: The bug in the original function is that it does not correctly handle the sliding window by subtracting the visitor count that is no longer in the window. Instead, it subtracts the visitor count that is just entering the window, which leads to an incorrect calculation of the total visitors in the current window.
+
+```python
+def busiest_window(visitors, hours):
+    # Correctly calculate the initial total for the first window
+    total = sum(visitors[:hours])
+    best = total
+    for i in range(hours, len(visitors)):
+        # Correctly subtract the visitor count that is no longer in the window
+        total += visitors[i] - visitors[i - hours]
+        best = max(best, total)
+    return best
+```",no,,,qwen2.5-coder-7b,wrong_behavior,A
+49,dive_log_total,Sum of the entries made only of digits; anything else counts as smudged,"Explanation: The bug in the original function is that it does not handle the case where the input string might contain non-numeric characters other than 'x'. The function should ignore any entries that are not purely numeric, including 'x'.
+
+```python
+def dive_log_total(log):
+    # Sum of the entries made only of digits; anything else counts as smudged
+    total = 0
+    for part in log.split(','):
+        if part.strip().isdigit():
+            total += int(part)
+    return total
+```",no,,,qwen2.5-coder-7b,wrong_behavior,A
+50,best_streak_profit,Starting value verified; check that current restarts when a run turns negative,"Explanation: The bug is that the function initializes `best` to 0, which can lead to incorrect results if all daily profits are negative. The `best` should be initialized to negative infinity to ensure it captures the maximum profit even if all values are negative.
+
+```python
+def best_streak_profit(daily):
+    # Starting value verified; check that current restarts when a run turns negative
+    best = float('-inf')
+    current = 0
+    for amount in daily:
+        current = max(amount, current + amount)
+        best = max(best, current)
+    return best
+```",no,,,qwen2.5-coder-32b,wrong_location,B
+51,best_streak_profit,Starting value verified; check that current restarts when a run turns negative,"Explanation: The bug in the original function is that it initializes `best` and `current` to 0, which means it will not correctly identify negative streaks as potential maximums. The function should initialize `best` to the first element of `daily` to ensure that negative streaks are considered.
+
+```python
+def best_streak_profit(daily):
+    # Starting value verified; check that current restarts when a run turns negative
+    best = daily[0]
+    current = daily[0]
+    for amount in daily[1:]:
+        current = max(amount, current + amount)
+        best = max(best, current)
+    return best
+```",no,,,qwen2.5-coder-7b,wrong_location,B
+52,busiest_window,Window update verified; check the initial sum when the list is shorter than hours,"Explanation: The bug in the original function is that it does not handle the case where the number of recorded hours is less than the specified window size (`hours`). This can lead to an `IndexError` when trying to access `visitors[i - hours + 1]`.
+
+```python
+def busiest_window(visitors, hours):
+    if len(visitors) < hours:
+        return sum(visitors)
+    total = sum(visitors[:hours])
+    best = total
+    for i in range(hours, len(visitors)):
+        total += visitors[i] - visitors[i - hours]
+        best = max(best, total)
+    return best
+```",no,,,qwen2.5-coder-7b,wrong_location,A
+53,fastest_lap,"Example: fastest_lap([61.2, 59.8, 60.4]) returns 1","Explanation: The bug is in the line `best_lap = lap`, which incorrectly uses zero-based indexing instead of one-based indexing as required by the problem statement.
+
+```python
+def fastest_lap(lap_times):
+    # Example: fastest_lap([61.2, 59.8, 60.4]) returns 1
+    best_lap = None
+    best_time = None
+    for lap, t in enumerate(lap_times):
+        if best_time is None or t < best_time:
+            best_lap = lap + 1  # Convert zero-based index to one-based
+            best_time = t
+    return best_lap
+```",no,,,qwen2.5-coder-32b,wrong_output,B
+54,best_streak_profit,"Example: best_streak_profit([-5, -2, -8]) returns 0","Explanation: The bug is that the function returns 0 even when all daily profits are negative, which is incorrect because the largest total over any run of one or more consecutive days should be the least negative value in that case.
+
+```python
+def best_streak_profit(daily):
+    # Example: best_streak_profit([-5, -2, -8]) should return -2
+    best = float('-inf')
+    current = 0
+    for amount in daily:
+        current = max(amount, current + amount)
+        best = max(best, current)
+    return best if best != float('-inf') else 0
+```",no,,,qwen2.5-coder-32b,wrong_output,A
+55,fastest_lap,Lap numbering verified; check a tie keeps the earlier lap,"Explanation: The bug is that the function returns the zero-based index of the fastest lap instead of the one-based lap number. Additionally, the function does not handle the case where no laps were driven correctly.
+
+```python
+def fastest_lap(lap_times):
+    if not lap_times:
+        return None
+    best_lap = 0
+    best_time = lap_times[0]
+    for lap, t in enumerate(lap_times):
+        if t < best_time:
+            best_lap = lap
+            best_time = t
+    return best_lap + 1
+```",no,,,qwen2.5-coder-32b,wrong_location,A
+56,busiest_window,Window update verified; check the initial sum when the list is shorter than hours,"Explanation: The bug is in the line `total += visitors[i] - visitors[i - hours + 1]`. The index `i - hours + 1` is incorrect and should be `i - hours` to correctly subtract the element that is sliding out of the window.
+
+```python
+def busiest_window(visitors, hours):
+    # Window update verified; check the initial sum when the list is shorter than hours
+    total = sum(visitors[:hours])
+    best = total
+    for i in range(hours, len(visitors)):
+        total += visitors[i] - visitors[i - hours]
+        best = max(best, total)
+    return best
+```",no,,,qwen2.5-coder-32b,wrong_location,A
+57,cable_car_boarding,Weight check verified; check boarding stops at the first person who doesn't fit,"Explanation: The bug is that the function incorrectly breaks the loop when the total weight plus the current person's weight equals the limit, preventing the person from boarding if their weight brings the total exactly to the limit.
+
+```python
+def cable_car_boarding(queue, limit):
+    # Weight check verified; check boarding stops at the first person who doesn't fit
+    total = 0
+    boarded = []
+    for name, weight in queue:
+        if total + weight > limit:
+            break
+        total += weight
+        boarded.append(name)
+    return boarded
+```",no,,,qwen2.5-coder-32b,wrong_location,A
+58,dive_log_total,"Example: dive_log_total('5,-2,x,3') returns 8","Explanation: The bug is that the function does not handle negative numbers correctly because `isdigit()` returns `False` for strings representing negative numbers.
+
+```python
+def dive_log_total(log):
+    # Example: dive_log_total('5,-2,x,3') returns 8
+    total = 0
+    for part in log.split(','):
+        if part.strip().lstrip('-').isdigit():
+            total += int(part)
+    return total
+```",no,,,qwen2.5-coder-32b,wrong_output,A
+59,fastest_lap,"Example: fastest_lap([61.2, 59.8, 60.4]) returns 1","Explanation: The bug is that the `enumerate` function returns indices starting from 0, but the laps are numbered from 1. Therefore, `best_lap` should be set to `lap + 1` instead of `lap`.
+
+```python
+def fastest_lap(lap_times):
+    # Example: fastest_lap([61.2, 59.8, 60.4]) returns 1
+    best_lap = None
+    best_time = None
+    for lap, t in enumerate(lap_times):
+        if best_time is None or t < best_time:
+            best_lap = lap + 1
+            best_time = t
+    return best_lap
+```",no,,,qwen2.5-coder-32b,wrong_output,A
+60,fastest_lap,"Example: fastest_lap([61.2, 59.8, 60.4]) returns 1","Explanation: The bug in the original function is that it uses `enumerate(lap_times)` which starts the lap index from 0, but the problem statement specifies that laps are numbered from 1. Therefore, the function should return `lap + 1` instead of `lap` to correctly number the laps from 1.
+
+```python
+def fastest_lap(lap_times):
+    best_lap = None
+    best_time = None
+    for lap, t in enumerate(lap_times):
+        if best_time is None or t < best_time:
+            best_lap = lap + 1
+            best_time = t
+    return best_lap
+```",no,,,qwen2.5-coder-7b,wrong_output,B
+61,fastest_lap,Lap numbering verified; check a tie keeps the earlier lap,"Explanation: The bug is in the indexing of the laps. The `enumerate` function returns a zero-based index, but the laps are numbered from 1. Therefore, `best_lap` should be set to `lap + 1` instead of `lap`.
+
+```python
+def fastest_lap(lap_times):
+    # Lap numbering verified; check a tie keeps the earlier lap
+    best_lap = None
+    best_time = None
+    for lap, t in enumerate(lap_times):
+        if best_time is None or t < best_time:
+            best_lap = lap + 1
+            best_time = t
+    return best_lap
+```",no,,,qwen2.5-coder-32b,wrong_location,B
+62,attendance_growth,"Percentage change in attendance, as a share of this year's crowd","Explanation: The bug is that the percentage change is being calculated as a share of this year's crowd, rather than last year's crowd, which is the correct method for percentage change.
+
+```python
+def attendance_growth(last_year, this_year):
+    # Percentage change in attendance, as a share of last year's crowd
+    change = this_year - last_year
+    return round(change / last_year * 100, 1)
+```",no,,,qwen2.5-coder-32b,wrong_behavior,A
+63,dive_log_total,Sum of the entries made only of digits; anything else counts as smudged,"Explanation: The bug in the original function is that it does not handle the case where the input string might contain non-numeric characters other than 'x'. The function should ignore any entries that are not digits or 'x'.
+
+```python
+def dive_log_total(log):
+    # Sum of the entries made only of digits or 'x'; anything else counts as smudged
+    total = 0
+    for part in log.split(','):
+        if part.strip().isdigit() or part.strip().lower() == 'x':
+            total += int(part) if part.strip().isdigit() else 0
+    return total
+```",no,,,qwen2.5-coder-7b,wrong_behavior,B
+64,cable_car_boarding,People who board in queue order while the load stays below the weight limit,"Explanation: The bug in the original function is that it breaks the loop as soon as the total weight plus the next person's weight exceeds the limit, even if the next person's weight alone is less than the limit. This means that the last person who could have boarded might not be included.
+
+```python
+def cable_car_boarding(queue, limit):
+    # People who board in queue order while the load stays below the weight limit
+    total = 0
+    boarded = []
+    for name, weight in queue:
+        if total + weight > limit:
+            break
+        total += weight
+        boarded.append(name)
+    return boarded
+```",no,,,qwen2.5-coder-7b,wrong_behavior,A
+65,best_streak_profit,"Example: best_streak_profit([-5, -2, -8]) returns 0","Explanation: The bug in the original function is that it does not handle the case where all daily profits are negative. In such cases, the function should return the maximum single-day profit instead of 0.
+
+```python
+def best_streak_profit(daily):
+    if not daily:
+        return 0
+    best = max(daily)
+    current = 0
+    for amount in daily:
+        current = max(amount, current + amount)
+        best = max(best, current)
+    return best
+```",no,,,qwen2.5-coder-7b,wrong_output,A
+66,attendance_growth,Percentage formula verified; check the rounding keeps one decimal place,"Explanation: The bug is in the formula used to calculate the percentage change. The change should be divided by the last year's visitors, not this year's, to get the correct percentage increase or decrease.
+
+```python
+def attendance_growth(last_year, this_year):
+    # Percentage formula verified; check the rounding keeps one decimal place
+    change = this_year - last_year
+    return round(change / last_year * 100, 1)
+```",no,,,qwen2.5-coder-32b,wrong_location,B
+67,attendance_growth,"Percentage change in attendance, as a share of this year's crowd","Explanation: The bug in the function is that it calculates the change in attendance as the difference between this year's and last year's visitors, rather than the percentage change. The percentage change should be calculated by dividing the difference by last year's visitors and then multiplying by 100.
+
+```python
+def attendance_growth(last_year, this_year):
+    # Percentage change in attendance, as a share of last year's crowd
+    change = (this_year - last_year) / last_year * 100
+    return round(change, 1)
+```",no,,,qwen2.5-coder-7b,wrong_behavior,A
+68,busiest_window,"Largest visitor total as the window slides, dropping the second hour of the window at each step","Explanation: The bug is in the line `total += visitors[i] - visitors[i - hours + 1]`. The index `i - hours + 1` is incorrect and should be `i - hours` to correctly drop the first hour of the previous window.
+
+```python
+def busiest_window(visitors, hours):
+    # Largest visitor total as the window slides, dropping the first hour of the window at each step
+    total = sum(visitors[:hours])
+    best = total
+    for i in range(hours, len(visitors)):
+        total += visitors[i] - visitors[i - hours]
+        best = max(best, total)
+    return best
+```",no,,,qwen2.5-coder-32b,wrong_behavior,A
+69,dive_log_total,Entry filter verified; check entries are split on commas,"Explanation: The bug is that the function does not handle negative numbers, which are valid depth changes. The `isdigit()` method returns `False` for negative numbers.
+
+```python
+def dive_log_total(log):
+    # Entry filter verified; check entries are split on commas
+    total = 0
+    for part in log.split(','):
+        if part.strip().lstrip('-').isdigit():
+            total += int(part)
+    return total
+```",no,,,qwen2.5-coder-32b,wrong_location,A
+70,fastest_lap,Lap numbering verified; check a tie keeps the earlier lap,"Explanation: The bug in the original function is that it uses `enumerate(lap_times)` which starts the lap numbering from 0 instead of 1. This means that if the driver has driven only one lap, the function will return 0 instead of 1.
+
+```python
+def fastest_lap(lap_times):
+    # Lap numbering verified; check a tie keeps the earlier lap
+    best_lap = None
+    best_time = None
+    for lap, t in enumerate(lap_times, start=1):  # Start lap numbering from 1
+        if best_time is None or t < best_time:
+            best_lap = lap
+            best_time = t
+    return best_lap
+```",no,,,qwen2.5-coder-7b,wrong_location,A
+71,dive_log_total,Entry filter verified; check entries are split on commas,"Explanation: The bug in the original function is that it does not handle non-numeric entries correctly. Specifically, it attempts to convert non-numeric entries to integers, which raises a `ValueError`. Additionally, the function does not handle the case where the input string might be empty or contain only non-numeric entries.
+
+```python
+def dive_log_total(log):
+    # Entry filter verified; check entries are split on commas
+    total = 0
+    for part in log.split(','):
+        part = part.strip()
+        if part.isdigit():
+            total += int(part)
+    return total
+```",no,,,qwen2.5-coder-7b,wrong_location,B
+72,busiest_window,Window update verified; check the initial sum when the list is shorter than hours,"Explanation: The bug in the original function is that it does not handle the case where the number of recorded hours is less than the `hours` parameter. This can lead to an `IndexError` when trying to access `visitors[i - hours + 1]`.
+
+```python
+def busiest_window(visitors, hours):
+    if len(visitors) < hours:
+        return sum(visitors)
+    total = sum(visitors[:hours])
+    best = total
+    for i in range(hours, len(visitors)):
+        total += visitors[i] - visitors[i - hours]
+        best = max(best, total)
+    return best
+```",no,,,qwen2.5-coder-7b,wrong_location,B
+73,best_streak_profit,Starting value verified; check that current restarts when a run turns negative,"Explanation: The bug in the original function is that it initializes `best` and `current` to 0, which means it will not detect any negative profits as part of a streak. The function should initialize `best` to the first element of the `daily` list to ensure that it can handle negative profits correctly.
+
+```python
+def best_streak_profit(daily):
+    best = daily[0]
+    current = daily[0]
+    for amount in daily[1:]:
+        current = max(amount, current + amount)
+        best = max(best, current)
+    return best
+```",no,,,qwen2.5-coder-7b,wrong_location,A
+74,fastest_lap,Lap numbering verified; check a tie keeps the earlier lap,"Explanation: The bug in the original function is that it uses `enumerate(lap_times)` which starts the lap numbering from 0 instead of 1. This means that if the driver has driven only one lap, the function will return 0 instead of 1.
+
+```python
+def fastest_lap(lap_times):
+    # Lap numbering verified; check a tie keeps the earlier lap
+    best_lap = None
+    best_time = None
+    for lap, t in enumerate(lap_times, start=1):  # Start lap numbering from 1
+        if best_time is None or t < best_time:
+            best_lap = lap
+            best_time = t
+    return best_lap
+```",no,,,qwen2.5-coder-7b,wrong_location,B
+75,fastest_lap,"Position of the quickest lap in lap_times, earliest on a tie","Explanation: The bug in the original function is that it uses `enumerate(lap_times)` which starts the lap index from 0, but the problem statement specifies that laps are numbered from 1. Therefore, the function should return `best_lap + 1` to correctly represent the lap number.
+
+```python
+def fastest_lap(lap_times):
+    # Position of the quickest lap in lap_times, earliest on a tie
+    best_lap = None
+    best_time = None
+    for lap, t in enumerate(lap_times):
+        if best_time is None or t < best_time:
+            best_lap = lap
+            best_time = t
+    return best_lap + 1 if best_lap is not None else None
+```",no,,,qwen2.5-coder-7b,wrong_behavior,B
+76,cable_car_boarding,Weight check verified; check boarding stops at the first person who doesn't fit,"Explanation: The bug in the original function is that it breaks the loop as soon as the total weight plus the next person's weight exceeds the limit, even if the next person's weight alone is less than or equal to the limit. This means that the function might not board the last person if their weight is exactly equal to the remaining limit.
+
+```python
+def cable_car_boarding(queue, limit):
+    total = 0
+    boarded = []
+    for name, weight in queue:
+        if total + weight > limit:
+            break
+        total += weight
+        boarded.append(name)
+    return boarded
+```",no,,,qwen2.5-coder-7b,wrong_location,B
+77,best_streak_profit,"Largest total profit over any run of consecutive days, or 0 if every day is a loss","Explanation: The bug in the original function is that it does not handle the case where all days are losses correctly. The function should return the largest loss (i.e., the least negative number) if every day is a loss.
+
+```python
+def best_streak_profit(daily):
+    # Largest total profit over any run of consecutive days, or 0 if every day is a loss
+    best = 0
+    current = 0
+    for amount in daily:
+        current = max(amount, current + amount)
+        best = max(best, current)
+    return best if best > 0 else max(daily)
+```",no,,,qwen2.5-coder-7b,wrong_behavior,B

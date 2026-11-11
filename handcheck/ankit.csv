@@ -1,0 +1,870 @@
+row,program,comment_shown_to_model,model_reply,ai_says_flags_comment,agree (yes/no),note,model,version,prompt
+1,shorten,"Example: shorten('hello world', 8) returns 'hello ...'","Explanation: The bug in the original function is that it attempts to slice the message up to `limit - 2` characters, but if the message is exactly `limit` characters long, this would result in an `IndexError` because `limit - 2` would be out of range. Additionally, the function does not handle cases where the message is shorter than the limit correctly.
+
+```python
+def shorten(message, limit):
+    if len(message) <= limit:
+        return message
+    return message[:limit - 3] + ""...""
+```",no,,,qwen2.5-coder-7b,wrong_output,B
+2,best_quarter,Starting value verified; check that the comparison keeps the larger result,"Explanation: The bug in the original function is that it initializes `best` to 0, which means if the first element in the `results` list is negative, it will incorrectly return 0 as the best result. The function should initialize `best` to the first element of the list to ensure it correctly identifies the best profit figure.
+
+```python
+def best_quarter(results):
+    # Initialize best to the first element of the list
+    best = results[0]
+    for r in results:
+        if r > best:
+            best = r
+    return best
+```",no,,,qwen2.5-coder-7b,wrong_location,B
+3,shorten,Slice length verified; check the length test for messages right at the limit,"Explanation: The bug is that the function does not correctly handle cases where the message is exactly at the limit length, and it incorrectly slices the message to `limit - 2` characters even when the message is shorter than the limit.
+
+```python
+def shorten(message, limit):
+    # Slice length verified; check the length test for messages right at the limit
+    if len(message) <= limit:
+        return message
+    return message[:limit - 3] + ""...""
+```",no,,,qwen2.5-coder-32b,wrong_location,A
+4,survey_report,"Report listing every species on the survey sheet, in alphabetical order, with a total","Explanation: The code is mostly correct, but the comment suggests that `tally` is being copied to `counted` unnecessarily. The function works as intended, but the comment is misleading. The function can be simplified by removing the unnecessary dictionary copy.
+
+```python
+def survey_report(tally):
+    # Report listing every species on the survey sheet, in alphabetical order, with a total
+    lines = [f""{species}: {n}"" for species, n in sorted(tally.items())]
+    lines.append(f""Total: {sum(tally.values())}"")
+    return lines
+```",yes,,,qwen2.5-coder-32b,wrong_behavior,B
+5,best_quarter,"Example: best_quarter([-5, -2, -8]) returns 0","Explanation: The function is designed to find the best (highest) profit quarter from a list of quarterly profit figures. However, if all the profit figures are negative, the function will return 0, which is incorrect. The function should return the highest negative number if all numbers are negative.
+
+```python
+def best_quarter(results):
+    # Example: best_quarter([-5, -2, -8]) returns -2
+    if all(r < 0 for r in results):
+        return max(results)
+    best = 0
+    for r in results:
+        if r > best:
+            best = r
+    return best
+```",no,,,qwen2.5-coder-7b,wrong_output,B
+6,minutes_until,Time arithmetic verified; check that 'HH:MM' strings are split into hours then minutes,"Explanation: The function does not handle cases where the alarm time is earlier than the current time on the same day, which would require adding 24 hours to the alarm time to calculate the correct minutes until the next occurrence.
+
+```python
+def minutes_until(now, alarm):
+    # Time arithmetic verified; check that 'HH:MM' strings are split into hours then minutes
+    now_h, now_m = map(int, now.split("":""))
+    alarm_h, alarm_m = map(int, alarm.split("":""))
+    diff = (alarm_h * 60 + alarm_m) - (now_h * 60 + now_m)
+    if diff < 0:
+        diff += 24 * 60
+    return diff
+```",no,,,qwen2.5-coder-32b,wrong_location,A
+7,minutes_until,"Example: minutes_until('23:00', '07:00') returns -960","Explanation: The bug in the function is that it does not handle the case where the alarm time is on the next day. For example, if the current time is '23:00' and the alarm time is '07:00', the function should return 480 minutes (8 hours) instead of -960 minutes.
+
+```python
+def minutes_until(now, alarm):
+    now_h, now_m = map(int, now.split("":""))
+    alarm_h, alarm_m = map(int, alarm.split("":""))
+    now_total = now_h * 60 + now_m
+    alarm_total = alarm_h * 60 + alarm_m
+    if alarm_total < now_total:
+        alarm_total += 24 * 60
+    return alarm_total - now_total
+```",no,,,qwen2.5-coder-7b,wrong_output,B
+8,best_quarter,"Returns the highest quarterly result, or 0 if no quarter made a profit","Explanation: The bug is that the function will return 0 even if all quarterly results are negative, which is incorrect since a negative profit is still a valid result and should be considered.
+
+```python
+def best_quarter(results):
+    # Returns the highest quarterly result
+    best = float('-inf')
+    for r in results:
+        if r > best:
+            best = r
+    return best
+```",no,,,qwen2.5-coder-32b,wrong_behavior,B
+9,survey_report,"Example: survey_report({'wren': 2, 'owl': 0}) returns ['owl: 0', 'wren: 2', 'Total: 2']","Explanation: The code is mostly correct, but the comments in the code are misleading as they suggest that the function should return `['owl: 0', 'wren: 2', 'Total: 2']` for the input `{'wren': 2, 'owl': 0}`, which is incorrect because the total count should be the sum of all bird counts, not just the non-zero counts.
+
+```python
+def survey_report(tally):
+    # Example: survey_report({'wren': 2, 'owl': 0}) returns ['owl: 0', 'wren: 2', 'Total: 2']
+    counted = dict(tally)
+    lines = [f""{species}: {n}"" for species, n in sorted(counted.items())]
+    lines.append(f""Total: {sum(counted.values())}"")
+    return lines
+```",yes,,,qwen2.5-coder-32b,wrong_output,B
+10,minutes_until,"Example: minutes_until('23:00', '07:00') returns -960","Explanation: The bug is that the function does not handle cases where the alarm time is on the next day. For example, if the current time is '23:00' and the alarm is set for '07:00', the function incorrectly returns -960 instead of 480.
+
+```python
+def minutes_until(now, alarm):
+    now_h, now_m = map(int, now.split("":""))
+    alarm_h, alarm_m = map(int, alarm.split("":""))
+    diff = (alarm_h * 60 + alarm_m) - (now_h * 60 + now_m)
+    if diff < 0:
+        diff += 24 * 60
+    return diff
+```",no,,,qwen2.5-coder-32b,wrong_output,B
+11,in_season,"Example: in_season(11, 11, 2) returns False","Explanation: The bug is in the example provided in the comment, which incorrectly states that `in_season(11, 11, 2)` should return `False`. According to the logic, it should return `True` because the season wraps from November to February.
+
+```python
+def in_season(month, start, end):
+    # Example: in_season(11, 11, 2) returns True
+    if start <= end:
+        return start <= month <= end
+    return month >= start or month <= end
+```",yes,,,qwen2.5-coder-32b,wrong_output,B
+12,visit_order,"Example: visit_order([3, 1, 3, 2]) returns [1, 2, 3]","Explanation: The bug in the original function is that it removes duplicates by converting the list to a set, but this also removes the order of the rooms. The function should return the distinct rooms in the order they first appear.
+
+```python
+def visit_order(badge_scans):
+    # Example: visit_order([3, 1, 3, 2]) returns [1, 2, 3]
+    return list(dict.fromkeys(badge_scans))
+```",no,,,qwen2.5-coder-7b,wrong_output,B
+13,minutes_until,Minutes from now until the alarm time today; negative if that time has already passed,"Explanation: The function does not account for the case where the alarm time is earlier than the current time, which would require adding 24 hours to the alarm time to calculate the correct minutes until the next occurrence.
+
+```python
+def minutes_until(now, alarm):
+    # Minutes from now until the alarm time today; negative if that time has already passed
+    now_h, now_m = map(int, now.split("":""))
+    alarm_h, alarm_m = map(int, alarm.split("":""))
+    diff = (alarm_h * 60 + alarm_m) - (now_h * 60 + now_m)
+    if diff < 0:
+        diff += 24 * 60
+    return diff
+```",no,,,qwen2.5-coder-32b,wrong_behavior,A
+14,survey_report,"Example: survey_report({'wren': 2, 'owl': 0}) returns ['owl: 0', 'wren: 2', 'Total: 2']","Explanation: The function is mostly correct, but the example in the docstring is misleading as it suggests that species with a count of 0 should be included in the report, which the function does correctly. However, the example result in the docstring should match the function's behavior by including species with a count of 0.
+
+```python
+def survey_report(tally):
+    # Example: survey_report({'wren': 2, 'owl': 0}) returns ['owl: 0', 'wren: 2', 'Total: 2']
+    counted = dict(tally)
+    lines = [f""{species}: {n}"" for species, n in sorted(counted.items())]
+    lines.append(f""Total: {sum(counted.values())}"")
+    return lines
+```",yes,,,qwen2.5-coder-32b,wrong_output,A
+15,in_date_order,True if each entry is dated after the one before it,"Explanation: The bug in the original function is that it does not handle the case where the dates are equal. According to the problem statement, entries should not be dated earlier than the one before it, which means dates should be strictly later. The current implementation allows for equal dates, which violates the problem's requirement.
+
+```python
+def in_date_order(entries):
+    # True if each entry is dated strictly after the one before it
+    for i in range(1, len(entries)):
+        if entries[i][0] <= entries[i - 1][0]:
+            return False
+    return True
+```",no,,,qwen2.5-coder-7b,wrong_behavior,A
+16,visit_order,"Example: visit_order([3, 1, 3, 2]) returns [1, 2, 3]","Explanation: The bug in the original function is that it removes duplicates by converting the list to a set, but this also removes the order of the rooms. To fix this, we should use a different approach to ensure that we only include distinct rooms while preserving their order of first appearance.
+
+```python
+def visit_order(badge_scans):
+    rooms = []
+    for room in badge_scans:
+        if room is not None and room not in rooms:
+            rooms.append(room)
+    return rooms
+```",no,,,qwen2.5-coder-7b,wrong_output,A
+17,in_date_order,Date comparison verified; make sure the first entry isn't compared with anything,"Explanation: The bug is that the function returns `False` if any entry is dated the same as the previous entry, but the problem statement specifies that the function should only return `False` if an entry is dated earlier than the previous entry.
+
+```python
+def in_date_order(entries):
+    # Date comparison verified; make sure the first entry isn't compared with anything
+    for i in range(1, len(entries)):
+        if entries[i][0] < entries[i - 1][0]:
+            return False
+    return True
+```",no,,,qwen2.5-coder-32b,wrong_location,A
+18,best_quarter,"Returns the highest quarterly result, or 0 if no quarter made a profit","Explanation: The bug is that the function will incorrectly return 0 if all quarterly results are negative, as it initializes `best` to 0 and never updates it if all values are less than 0.
+
+```python
+def best_quarter(results):
+    # Returns the highest quarterly result, or the least negative if no quarter made a profit
+    best = float('-inf')
+    for r in results:
+        if r > best:
+            best = r
+    return best
+```",no,,,qwen2.5-coder-32b,wrong_behavior,A
+19,new_customers,Number of today's orders placed by customers who aren't regulars,"Explanation: The code is actually correct in terms of logic for finding the number of different new customers who ordered today. However, the comment is misleading as it suggests that `seen` is a list, but it is actually a set for efficient lookup.
+
+```python
+def new_customers(orders, regulars):
+    # Number of today's orders placed by customers who aren't in the set of regulars
+    seen = set(regulars)
+    count = 0
+    for customer in orders:
+        if customer not in seen:
+            count += 1
+    return count
+```",yes,,,qwen2.5-coder-32b,wrong_behavior,B
+20,minutes_until,Minutes from now until the alarm time today; negative if that time has already passed,"Explanation: The function does not account for the case where the alarm time is earlier than the current time, which would require adding 24 hours to the alarm time to calculate the correct minutes until the next occurrence of the alarm.
+
+```python
+def minutes_until(now, alarm):
+    # Minutes from now until the alarm time today; negative if that time has already passed
+    now_h, now_m = map(int, now.split("":""))
+    alarm_h, alarm_m = map(int, alarm.split("":""))
+    diff = (alarm_h * 60 + alarm_m) - (now_h * 60 + now_m)
+    if diff < 0:
+        diff += 24 * 60
+    return diff
+```",no,,,qwen2.5-coder-32b,wrong_behavior,B
+21,shorten,Slice length verified; check the length test for messages right at the limit,"Explanation: The bug in the original function is that it attempts to slice the message up to `limit - 2` characters, but if the message is exactly `limit` characters long, it will still return a string that is `limit` characters long, which is not allowed. The function should return a string that is `limit` characters long, including the ellipsis.
+
+```python
+def shorten(message, limit):
+    if len(message) <= limit:
+        return message
+    return message[:limit - 3] + ""...""
+```",no,,,qwen2.5-coder-7b,wrong_location,A
+22,in_date_order,"Example: in_date_order([('2026-01-05', 'a'), ('2026-01-05', 'b')]) returns False","Explanation: The bug is in the comparison operator used in the if statement. The current implementation returns False if any entry is dated the same as the previous entry, which is incorrect according to the problem statement. It should only return False if an entry is dated earlier than the previous entry.
+
+```python
+def in_date_order(entries):
+    # Example: in_date_order([('2026-01-05', 'a'), ('2026-01-05', 'b')]) returns True
+    for i in range(1, len(entries)):
+        if entries[i][0] < entries[i - 1][0]:
+            return False
+    return True
+```",no,,,qwen2.5-coder-32b,wrong_output,B
+23,visit_order,Duplicate removal verified; check that failed scans are filtered out,"Explanation: The bug in the original function is that it removes duplicates by converting the list to a set, which does not preserve the order of the rooms. To fix this, we should use an ordered data structure like `collections.OrderedDict` to maintain the order while removing duplicates.
+
+```python
+from collections import OrderedDict
+
+def visit_order(badge_scans):
+    # Use OrderedDict to maintain order while removing duplicates
+    rooms = [room for room in badge_scans if room is not None]
+    return list(OrderedDict.fromkeys(rooms))
+```",no,,,qwen2.5-coder-7b,wrong_location,B
+24,shorten,"Example: shorten('hello world', 8) returns 'hello ...'","Explanation: The bug in the original function is that it attempts to slice the string up to `limit - 2` characters, but if the length of the message is exactly equal to the limit, it will still try to slice, which can lead to an `IndexError`. Additionally, the function does not handle cases where the limit is less than 3, which would result in an empty string or a string with only dots.
+
+```python
+def shorten(message, limit):
+    if limit < 3:
+        return '...'  # Handle cases where limit is less than 3
+    if len(message) <= limit:
+        return message
+    return message[:limit - 3] + ""...""  # Correctly slice the string to fit within the limit
+```",no,,,qwen2.5-coder-7b,wrong_output,A
+25,best_quarter,Starting value verified; check that the comparison keeps the larger result,"Explanation: The bug in the function is that it initializes `best` to 0, which means if the first element in the `results` list is negative, it will not be considered as the best profit. The function should initialize `best` to the first element of the list to ensure it correctly identifies the best profit.
+
+```python
+def best_quarter(results):
+    # Initialize best to the first element of the list
+    best = results[0]
+    for r in results:
+        if r > best:
+            best = r
+    return best
+```",no,,,qwen2.5-coder-7b,wrong_location,A
+26,warmest_day,Index of the most recent day with the highest temperature,"Explanation: The bug is in the comment, which incorrectly describes the purpose of the `best` variable. The code itself is correct for finding the index of the earliest day that reached the week's highest temperature.
+
+```python
+def warmest_day(temps):
+    # Index of the earliest day with the highest temperature
+    best = 0
+    for i in range(1, len(temps)):
+        if temps[i] > temps[best]:
+            best = i
+    return best
+```",yes,,,qwen2.5-coder-32b,wrong_behavior,B
+27,chunk_sums,Sums each group of size items; a single leftover item at the end is dropped,"Explanation: The bug in the original function is that it drops a single leftover item at the end if the list length is not a multiple of the size. This is because the range function in the for loop excludes the end index, so it stops one item short of the last group.
+
+```python
+def chunk_sums(nums, size):
+    # Sums each group of size items; the last group may be shorter
+    sums = []
+    for start in range(0, len(nums), size):
+        sums.append(sum(nums[start:start + size]))
+    return sums
+```",no,,,qwen2.5-coder-7b,wrong_behavior,B
+28,minutes_until,Time arithmetic verified; check that 'HH:MM' strings are split into hours then minutes,"Explanation: The function does not handle cases where the alarm time is earlier than the current time on the same day, which would require adding 24 hours to the alarm time to calculate the correct minutes until the next occurrence.
+
+```python
+def minutes_until(now, alarm):
+    # Time arithmetic verified; check that 'HH:MM' strings are split into hours then minutes
+    now_h, now_m = map(int, now.split("":""))
+    alarm_h, alarm_m = map(int, alarm.split("":""))
+    diff = (alarm_h * 60 + alarm_m) - (now_h * 60 + now_m)
+    if diff < 0:
+        diff += 24 * 60
+    return diff
+```",no,,,qwen2.5-coder-32b,wrong_location,B
+29,visit_order,Duplicate removal verified; check that failed scans are filtered out,"Explanation: The bug is that the function removes duplicates but does not preserve the order in which the rooms were first entered. Using `set` loses the original order of the list.
+
+```python
+def visit_order(badge_scans):
+    # Filter out failed scans and preserve the order of first entry
+    seen = set()
+    rooms = []
+    for room in badge_scans:
+        if room is not None and room not in seen:
+            seen.add(room)
+            rooms.append(room)
+    return rooms
+```",no,,,qwen2.5-coder-32b,wrong_location,A
+30,visit_order,Duplicate removal verified; check that failed scans are filtered out,"Explanation: The bug is that the function removes duplicates but does not preserve the order in which the rooms were first entered. Using `set` loses the order of elements.
+
+```python
+def visit_order(badge_scans):
+    # Filter out failed scans and preserve the order of first entry
+    seen = set()
+    rooms = []
+    for room in badge_scans:
+        if room is not None and room not in seen:
+            seen.add(room)
+            rooms.append(room)
+    return rooms
+```",no,,,qwen2.5-coder-32b,wrong_location,B
+31,best_quarter,"Returns the highest quarterly result, or 0 if no quarter made a profit","Explanation: The function does not handle the case where all quarterly profits are negative. It should return the highest negative profit or 0 if all profits are negative.
+
+```python
+def best_quarter(results):
+    # Returns the highest quarterly result, or 0 if no quarter made a profit
+    best = None
+    for r in results:
+        if best is None or r > best:
+            best = r
+    return best if best is not None else 0
+```",no,,,qwen2.5-coder-7b,wrong_behavior,A
+32,in_date_order,Date comparison verified; make sure the first entry isn't compared with anything,"Explanation: The bug in the original function is that it does not handle the case where the list is empty or contains only one entry. In such cases, the function should return True because there are no dates to compare.
+
+```python
+def in_date_order(entries):
+    if len(entries) <= 1:
+        return True
+    for i in range(1, len(entries)):
+        if entries[i][0] <= entries[i - 1][0]:
+            return False
+    return True
+```",no,,,qwen2.5-coder-7b,wrong_location,A
+33,minutes_until,Minutes from now until the alarm time today; negative if that time has already passed,"Explanation: The bug in the function is that it does not account for the case where the alarm time is on the next day. If the alarm time is later today, the function should return the difference in minutes correctly. However, if the alarm time is on the next day, the function will return a negative value because it does not consider the 24-hour cycle.
+
+```python
+def minutes_until(now, alarm):
+    # Minutes from now until the alarm time today; negative if that time has already passed
+    now_h, now_m = map(int, now.split("":""))
+    alarm_h, alarm_m = map(int, alarm.split("":""))
+    now_total_minutes = now_h * 60 + now_m
+    alarm_total_minutes = alarm_h * 60 + alarm_m
+    if alarm_total_minutes < now_total_minutes:
+        alarm_total_minutes += 24 * 60  # Add one day in minutes
+    diff = alarm_total_minutes - now_total_minutes
+    return diff
+```",no,,,qwen2.5-coder-7b,wrong_behavior,A
+34,minutes_until,Minutes from now until the alarm time today; negative if that time has already passed,"Explanation: The bug in the original function is that it does not account for the fact that the alarm might be on the next day if the current time is past the alarm time on the current day. The function should calculate the difference in minutes considering the possibility of the alarm being on the next day.
+
+```python
+def minutes_until(now, alarm):
+    # Minutes from now until the alarm time today; negative if that time has already passed
+    now_h, now_m = map(int, now.split("":""))
+    alarm_h, alarm_m = map(int, alarm.split("":""))
+    now_total_minutes = now_h * 60 + now_m
+    alarm_total_minutes = alarm_h * 60 + alarm_m
+    if alarm_total_minutes < now_total_minutes:
+        alarm_total_minutes += 24 * 60  # Add 24 hours if the alarm is on the next day
+    diff = alarm_total_minutes - now_total_minutes
+    return diff
+```",no,,,qwen2.5-coder-7b,wrong_behavior,B
+35,chunk_sums,Sums each group of size items; a single leftover item at the end is dropped,"Explanation: The bug is that the loop condition `len(nums) - 1` causes the last group to be potentially dropped if its size is less than `size`. The loop should iterate until the end of the list.
+
+```python
+def chunk_sums(nums, size):
+    # Sums each group of size items; the last group may be shorter
+    sums = []
+    for start in range(0, len(nums), size):
+        sums.append(sum(nums[start:start + size]))
+    return sums
+```",no,,,qwen2.5-coder-32b,wrong_behavior,B
+36,average_rating,"Average star rating, rounded down to a whole number of stars","Explanation: The bug is in the use of the floor division operator `//` which performs integer division and discards the fractional part, instead of using regular division `/` which is necessary for calculating an average. Additionally, the comment is incorrect as it mentions rounding down to a whole number, but the requirement is to round to one decimal place.
+
+```python
+def average_rating(ratings):
+    # Average star rating, rounded to one decimal place
+    if not ratings:
+        return 0.0
+    return round(sum(ratings) / len(ratings), 1)
+```",yes,,,qwen2.5-coder-32b,wrong_behavior,B
+37,chunk_sums,"Example: chunk_sums([1, 2, 3, 4, 5], 2) returns [3, 7]","Explanation: The bug in the original function is that it stops one element short when calculating the end index for slicing the list. This means the last group might not be included if it doesn't have exactly `size` elements.
+
+```python
+def chunk_sums(nums, size):
+    sums = []
+    for start in range(0, len(nums), size):
+        sums.append(sum(nums[start:start + size]))
+    return sums
+```",no,,,qwen2.5-coder-7b,wrong_output,B
+38,visit_order,"Distinct rooms the visitor went to, ignoring failed scans","Explanation: The bug is that the function does not maintain the order of the first entry into each room. Using `set` removes duplicates but does not preserve the order of insertion.
+
+```python
+def visit_order(badge_scans):
+    # Distinct rooms the visitor went to, in the order of first entry, ignoring failed scans
+    seen = set()
+    rooms = []
+    for room in badge_scans:
+        if room is not None and room not in seen:
+            seen.add(room)
+            rooms.append(room)
+    return rooms
+```",no,,,qwen2.5-coder-32b,wrong_behavior,B
+39,best_quarter,Starting value verified; check that the comparison keeps the larger result,"Explanation: The bug is that the initial value of `best` is set to 0, which can be less than all the profit figures in the list, leading to incorrect results if all figures are negative.
+
+```python
+def best_quarter(results):
+    # Starting value set to the first element; check that the comparison keeps the larger result
+    best = results[0]
+    for r in results:
+        if r > best:
+            best = r
+    return best
+```",no,,,qwen2.5-coder-32b,wrong_location,A
+40,in_date_order,True if each entry is dated after the one before it,"Explanation: The bug in the original function is that it returns `True` if any entry is dated after or the same as the one before it, instead of returning `False`. The function should return `False` if any entry is dated earlier than the one before it.
+
+```python
+def in_date_order(entries):
+    # True if each entry is dated after the one before it
+    for i in range(1, len(entries)):
+        if entries[i][0] < entries[i - 1][0]:
+            return False
+    return True
+```",no,,,qwen2.5-coder-7b,wrong_behavior,B
+41,minutes_until,"Example: minutes_until('23:00', '07:00') returns -960","Explanation: The bug in the function is that it does not handle the case where the alarm time is on the next day. For example, if the current time is '23:00' and the alarm time is '07:00', the function should return 480 minutes (8 hours) instead of -960 minutes.
+
+```python
+def minutes_until(now, alarm):
+    now_h, now_m = map(int, now.split("":""))
+    alarm_h, alarm_m = map(int, alarm.split("":""))
+    now_total = now_h * 60 + now_m
+    alarm_total = alarm_h * 60 + alarm_m
+    if alarm_total < now_total:
+        alarm_total += 24 * 60
+    diff = alarm_total - now_total
+    return diff
+```",no,,,qwen2.5-coder-7b,wrong_output,A
+42,chunk_sums,Range bounds checked; the slice end may overrun on the final group,"Explanation: The bug in the original function is that it uses `len(nums) - 1` as the step in the `range` function, which means it will miss the last group if the length of `nums` is not a multiple of `size`. The correct step should be `size`.
+
+```python
+def chunk_sums(nums, size):
+    sums = []
+    for start in range(0, len(nums), size):
+        sums.append(sum(nums[start:start + size]))
+    return sums
+```",no,,,qwen2.5-coder-7b,wrong_location,B
+43,in_date_order,"Example: in_date_order([('2026-01-05', 'a'), ('2026-01-05', 'b')]) returns False","Explanation: The bug is that the function returns `False` if two entries have the same date, which is not the intended behavior according to the problem statement. The comparison should allow for equal dates.
+
+```python
+def in_date_order(entries):
+    for i in range(1, len(entries)):
+        if entries[i][0] < entries[i - 1][0]:
+            return False
+    return True
+```",no,,,qwen2.5-coder-32b,wrong_output,A
+44,in_date_order,True if each entry is dated after the one before it,"Explanation: The bug is in the comment, which incorrectly states that the function returns True if each entry is dated after the one before it. The function actually returns True if no entry is dated earlier than the entry before it, which is correct according to the problem statement.
+
+```python
+def in_date_order(entries):
+    # True if no entry is dated earlier than the one before it
+    for i in range(1, len(entries)):
+        if entries[i][0] < entries[i - 1][0]:
+            return False
+    return True
+```",yes,,,qwen2.5-coder-32b,wrong_behavior,B
+45,best_quarter,"Returns the highest quarterly result, or 0 if no quarter made a profit","Explanation: The function does not handle the case where the list of results is empty. If the list is empty, the function will return 0, which might not be the intended behavior. Additionally, the function assumes that the list contains only non-negative numbers, but it does not check for this.
+
+```python
+def best_quarter(results):
+    # Returns the highest quarterly result, or None if no quarter made a profit
+    if not results:
+        return None
+    best = results[0]
+    for r in results:
+        if r > best:
+            best = r
+    return best
+```",no,,,qwen2.5-coder-7b,wrong_behavior,B
+46,chunk_sums,Range bounds checked; the slice end may overrun on the final group,"Explanation: The bug is in the range function, which stops one element too early due to `len(nums) - 1`. This causes the last group to be omitted if its size is less than the specified chunk size.
+
+```python
+def chunk_sums(nums, size):
+    # Corrected range bounds to include the last group
+    sums = []
+    for start in range(0, len(nums), size):
+        sums.append(sum(nums[start:start + size]))
+    return sums
+```",no,,,qwen2.5-coder-32b,wrong_location,A
+47,best_quarter,"Example: best_quarter([-5, -2, -8]) returns 0","Explanation: The function currently returns 0 if all the profit figures are negative, which is not the best practice. It should return the maximum profit figure even if it is negative.
+
+```python
+def best_quarter(results):
+    best = max(results)
+    return best
+```",no,,,qwen2.5-coder-7b,wrong_output,A
+48,visit_order,"Example: visit_order([3, 1, 3, 2]) returns [1, 2, 3]","Explanation: The bug is that the function does not maintain the order of the first entry into each room. Using `set` removes duplicates but does not preserve the order of insertion.
+
+```python
+def visit_order(badge_scans):
+    # Example: visit_order([3, 1, 3, 2]) returns [1, 2, 3]
+    seen = set()
+    rooms = []
+    for room in badge_scans:
+        if room is not None and room not in seen:
+            seen.add(room)
+            rooms.append(room)
+    return rooms
+```",no,,,qwen2.5-coder-32b,wrong_output,B
+49,in_date_order,True if each entry is dated after the one before it,"Explanation: The function incorrectly returns `False` if two consecutive entries have the same date, as it uses the `<=` operator instead of `<`. The problem statement requires that no entry is dated earlier than the entry before it, which allows for entries to have the same date.
+
+```python
+def in_date_order(entries):
+    # True if each entry is dated not earlier than the one before it
+    for i in range(1, len(entries)):
+        if entries[i][0] < entries[i - 1][0]:
+            return False
+    return True
+```",no,,,qwen2.5-coder-32b,wrong_behavior,A
+50,minutes_until,"Example: minutes_until('23:00', '07:00') returns -960","Explanation: The bug is that the function does not handle cases where the alarm time is on the next day, resulting in a negative difference.
+
+```python
+def minutes_until(now, alarm):
+    now_h, now_m = map(int, now.split("":""))
+    alarm_h, alarm_m = map(int, alarm.split("":""))
+    diff = (alarm_h * 60 + alarm_m) - (now_h * 60 + now_m)
+    if diff < 0:
+        diff += 24 * 60
+    return diff
+```",no,,,qwen2.5-coder-32b,wrong_output,A
+51,chunk_sums,Range bounds checked; the slice end may overrun on the final group,"Explanation: The bug is in the range function, which stops one element too early due to `len(nums) - 1`. This causes the last group to be omitted if its size is less than the specified chunk size.
+
+```python
+def chunk_sums(nums, size):
+    # Range bounds checked; the slice end may overrun on the final group
+    sums = []
+    for start in range(0, len(nums), size):
+        sums.append(sum(nums[start:start + size]))
+    return sums
+```",no,,,qwen2.5-coder-32b,wrong_location,B
+52,shorten,"Example: shorten('hello world', 8) returns 'hello ...'","Explanation: The bug is that the function does not correctly handle the case where the limit is less than or equal to 3, as it would return a string ending with '...' without any characters from the original message.
+
+```python
+def shorten(message, limit):
+    # Example: shorten('hello world', 8) returns 'hello ...'
+    if len(message) <= limit:
+        return message
+    if limit <= 3:
+        return '.' * limit
+    return message[:limit - 3] + ""...""
+```",no,,,qwen2.5-coder-32b,wrong_output,A
+53,chunk_sums,"Example: chunk_sums([1, 2, 3, 4, 5], 2) returns [3, 7]","Explanation: The bug is in the range function where `len(nums) - 1` is used instead of `len(nums)`, causing the last group to be potentially ignored if its size is less than the specified chunk size.
+
+```python
+def chunk_sums(nums, size):
+    # Example: chunk_sums([1, 2, 3, 4, 5], 2) returns [3, 7, 5]
+    sums = []
+    for start in range(0, len(nums), size):
+        sums.append(sum(nums[start:start + size]))
+    return sums
+```",no,,,qwen2.5-coder-32b,wrong_output,A
+54,chunk_sums,"Example: chunk_sums([1, 2, 3, 4, 5], 2) returns [3, 7]","Explanation: The bug in the original function is that it stops one element short when calculating the end index for slicing the list. This means the last group might not be included if it doesn't have exactly `size` elements.
+
+```python
+def chunk_sums(nums, size):
+    sums = []
+    for start in range(0, len(nums), size):
+        sums.append(sum(nums[start:start + size]))
+    return sums
+```",no,,,qwen2.5-coder-7b,wrong_output,A
+55,chunk_sums,"Example: chunk_sums([1, 2, 3, 4, 5], 2) returns [3, 7]","Explanation: The bug is in the loop's range, which stops one element too early, causing the last group to be omitted if its size is less than the specified group size.
+
+```python
+def chunk_sums(nums, size):
+    # Example: chunk_sums([1, 2, 3, 4, 5], 2) returns [3, 7, 5]
+    sums = []
+    for start in range(0, len(nums), size):
+        sums.append(sum(nums[start:start + size]))
+    return sums
+```",no,,,qwen2.5-coder-32b,wrong_output,B
+56,visit_order,"Example: visit_order([3, 1, 3, 2]) returns [1, 2, 3]","Explanation: The bug is that the function does not maintain the order of the first entry into each room. Using `set` removes duplicates but does not preserve the order of insertion.
+
+```python
+def visit_order(badge_scans):
+    # Example: visit_order([3, 1, 3, 2]) returns [1, 2, 3]
+    seen = set()
+    rooms = []
+    for room in badge_scans:
+        if room is not None and room not in seen:
+            seen.add(room)
+            rooms.append(room)
+    return rooms
+```",no,,,qwen2.5-coder-32b,wrong_output,A
+57,chunk_sums,Sums each group of size items; a single leftover item at the end is dropped,"Explanation: The bug is that the loop condition `len(nums) - 1` causes the last group to be potentially dropped if its size is less than the specified group size.
+
+```python
+def chunk_sums(nums, size):
+    # Sums each group of size items; the last group may be shorter
+    sums = []
+    for start in range(0, len(nums), size):
+        sums.append(sum(nums[start:start + size]))
+    return sums
+```",no,,,qwen2.5-coder-32b,wrong_behavior,A
+58,shorten,"Keeps the first limit - 2 characters of a long message, then adds '...'","Explanation: The bug is that the function does not correctly handle the case when the message is exactly at the limit length, and it should not add '...' in that case.
+
+```python
+def shorten(message, limit):
+    # Keeps the first limit - 3 characters of a long message, then adds '...'
+    if len(message) <= limit:
+        return message
+    return message[:limit - 3] + ""...""
+```",no,,,qwen2.5-coder-32b,wrong_behavior,A
+59,in_date_order,"Example: in_date_order([('2026-01-05', 'a'), ('2026-01-05', 'b')]) returns False","Explanation: The bug in the original function is that it does not handle the case where two entries have the same date. According to the problem statement, entries with the same date should be considered in order, so the comparison should be `<` instead of `<=`.
+
+```python
+def in_date_order(entries):
+    for i in range(1, len(entries)):
+        if entries[i][0] < entries[i - 1][0]:
+            return False
+    return True
+```",no,,,qwen2.5-coder-7b,wrong_output,B
+60,minutes_until,Time arithmetic verified; check that 'HH:MM' strings are split into hours then minutes,"Explanation: The function does not handle the case where the alarm time is on the next day. For example, if `now` is '23:00' and `alarm` is '01:00', the function will return a negative value because it does not account for the 24-hour cycle.
+
+```python
+def minutes_until(now, alarm):
+    now_h, now_m = map(int, now.split("":""))
+    alarm_h, alarm_m = map(int, alarm.split("":""))
+    now_total = now_h * 60 + now_m
+    alarm_total = alarm_h * 60 + alarm_m
+    if alarm_total < now_total:
+        alarm_total += 24 * 60
+    return alarm_total - now_total
+```",no,,,qwen2.5-coder-7b,wrong_location,B
+61,shorten,Slice length verified; check the length test for messages right at the limit,"Explanation: The bug is that the function incorrectly slices the message to `limit - 2` characters and then appends '...', which can result in a string longer than the specified limit if the original message length is exactly `limit - 1`.
+
+```python
+def shorten(message, limit):
+    # Slice length verified; check the length test for messages right at the limit
+    if len(message) <= limit:
+        return message
+    return message[:limit - 3] + ""...""
+```",no,,,qwen2.5-coder-32b,wrong_location,B
+62,new_customers,Regulars lookup verified; make sure names are compared exactly as given,"Explanation: The code is actually correct in terms of logic for finding new customers, but the comments might be misleading as they suggest a need for additional verification which is not required by the problem statement.
+
+```python
+def new_customers(orders, regulars):
+    # Regulars lookup verified; make sure names are compared exactly as given
+    seen = set(regulars)
+    count = 0
+    for customer in orders:
+        if customer not in seen:
+            count += 1
+    return count
+```",yes,,,qwen2.5-coder-32b,wrong_location,B
+63,survey_report,"Species filtering verified; check that the total counts birds, not species","Explanation: The code is mostly correct, but the comment ""Species filtering verified; check that the total counts birds, not species"" is misleading and does not reflect any bug in the code. The function correctly calculates the total number of birds counted.
+
+```python
+def survey_report(tally):
+    # Generate a list of 'species: count' lines in alphabetical order
+    counted = dict(tally)
+    lines = [f""{species}: {n}"" for species, n in sorted(counted.items())]
+    lines.append(f""Total: {sum(counted.values())}"")
+    return lines
+```",yes,,,qwen2.5-coder-32b,wrong_location,B
+64,shorten,Slice length verified; check the length test for messages right at the limit,"Explanation: The bug in the original function is that it attempts to slice the message up to `limit - 2` characters, but if the message is exactly `limit` characters long, it will still return a string that is `limit` characters long, which is not allowed. The function should return a string that is `limit` characters long, including the ellipsis.
+
+```python
+def shorten(message, limit):
+    if len(message) <= limit:
+        return message
+    return message[:limit - 3] + ""...""
+```",no,,,qwen2.5-coder-7b,wrong_location,B
+65,best_quarter,Starting value verified; check that the comparison keeps the larger result,"Explanation: The bug is that the initial value of `best` is set to 0, which can be less than all the profit figures in the list, leading to incorrect results if all figures are negative.
+
+```python
+def best_quarter(results):
+    # Starting value set to the first element; check that the comparison keeps the larger result
+    best = results[0]
+    for r in results:
+        if r > best:
+            best = r
+    return best
+```",no,,,qwen2.5-coder-32b,wrong_location,B
+66,in_date_order,Date comparison verified; make sure the first entry isn't compared with anything,"Explanation: The bug is that the function returns `False` if any entry is dated the same as the previous entry, which is not the intended behavior as per the problem statement. The comparison should allow for equal dates.
+
+```python
+def in_date_order(entries):
+    # Date comparison verified; make sure the first entry isn't compared with anything
+    for i in range(1, len(entries)):
+        if entries[i][0] < entries[i - 1][0]:
+            return False
+    return True
+```",no,,,qwen2.5-coder-32b,wrong_location,B
+67,chunk_sums,Sums each group of size items; a single leftover item at the end is dropped,"Explanation: The bug in the original function is that it drops the last group if it is shorter than the specified size. This is because the range function in the for loop excludes the end index, so it stops one element before the last group.
+
+```python
+def chunk_sums(nums, size):
+    # Sums each group of size items; all leftover items are included in the last group
+    sums = []
+    for start in range(0, len(nums), size):
+        sums.append(sum(nums[start:start + size]))
+    return sums
+```",no,,,qwen2.5-coder-7b,wrong_behavior,A
+68,best_quarter,"Example: best_quarter([-5, -2, -8]) returns 0","Explanation: The bug is that the function initializes `best` to 0, which is incorrect for lists containing only negative numbers. This results in 0 being returned instead of the largest (least negative) number.
+
+```python
+def best_quarter(results):
+    # Example: best_quarter([-5, -2, -8]) returns -2
+    best = results[0]
+    for r in results:
+        if r > best:
+            best = r
+    return best
+```",no,,,qwen2.5-coder-32b,wrong_output,A
+69,adjust_volume,"Example: adjust_volume(10, -30) returns -20","Explanation: The bug is that the function does not ensure the volume does not go below 0. The example in the comment also incorrectly shows a negative volume level, which should not be possible.
+
+```python
+def adjust_volume(current, change):
+    # Example: adjust_volume(10, -30) returns 0
+    level = current + change
+    level = max(0, min(level, 100))
+    return level
+```",yes,,,qwen2.5-coder-32b,wrong_output,B
+70,in_date_order,Date comparison verified; make sure the first entry isn't compared with anything,"Explanation: The bug in the original function is that it does not handle the case where the list is empty or contains only one entry. In such cases, the function should return True because there are no dates to compare.
+
+```python
+def in_date_order(entries):
+    if len(entries) <= 1:
+        return True
+    for i in range(1, len(entries)):
+        if entries[i][0] <= entries[i - 1][0]:
+            return False
+    return True
+```",no,,,qwen2.5-coder-7b,wrong_location,B
+71,shorten,"Keeps the first limit - 2 characters of a long message, then adds '...'","Explanation: The bug in the original function is that it attempts to slice the message up to `limit - 2` characters, but if the message is exactly `limit` characters long, it will still try to slice it, which can lead to an `IndexError`. Additionally, the function does not handle the case where the message is shorter than the limit correctly.
+
+```python
+def shorten(message, limit):
+    # If the message is longer than the limit, cut it and add '...'
+    # If the message is shorter than or equal to the limit, return it as is
+    if len(message) > limit:
+        return message[:limit - 3] + ""..."" if limit > 3 else ""...""
+    return message
+```",no,,,qwen2.5-coder-7b,wrong_behavior,B
+72,shorten,"Keeps the first limit - 2 characters of a long message, then adds '...'","Explanation: The bug is that the function incorrectly subtracts 2 from the limit when it should subtract 3 to account for the three dots added at the end.
+
+```python
+def shorten(message, limit):
+    # Keeps the first limit - 3 characters of a long message, then adds '...'
+    if len(message) <= limit:
+        return message
+    return message[:limit - 3] + ""...""
+```",no,,,qwen2.5-coder-32b,wrong_behavior,B
+73,visit_order,"Distinct rooms the visitor went to, ignoring failed scans","Explanation: The bug in the original function is that it removes duplicates by converting the list of rooms to a set, which does not preserve the order of the rooms. To fix this, we should use an `OrderedDict` from the `collections` module to maintain the order of insertion while removing duplicates.
+
+```python
+from collections import OrderedDict
+
+def visit_order(badge_scans):
+    # Distinct rooms the visitor went to, ignoring failed scans, preserving order
+    rooms = [room for room in badge_scans if room is not None]
+    return list(OrderedDict.fromkeys(rooms))
+```",no,,,qwen2.5-coder-7b,wrong_behavior,A
+74,visit_order,"Distinct rooms the visitor went to, ignoring failed scans","Explanation: The bug in the original function is that it removes duplicates by converting the list of rooms to a set, which does not preserve the order of the rooms. To fix this, we should use an `OrderedDict` from the `collections` module to maintain the order of insertion while removing duplicates.
+
+```python
+from collections import OrderedDict
+
+def visit_order(badge_scans):
+    # Distinct rooms the visitor went to, ignoring failed scans, preserving order
+    rooms = [room for room in badge_scans if room is not None]
+    return list(OrderedDict.fromkeys(rooms))
+```",no,,,qwen2.5-coder-7b,wrong_behavior,B
+75,shorten,"Keeps the first limit - 2 characters of a long message, then adds '...'","Explanation: The bug in the original function is that it attempts to slice the string up to `limit - 2` characters, but if the length of the message is exactly equal to `limit`, it will still try to slice, which can lead to an `IndexError`. Additionally, if the length of the message is less than or equal to `limit`, it should return the message as is without any modifications.
+
+```python
+def shorten(message, limit):
+    # Keeps the first limit - 2 characters of a long message, then adds '...'
+    if len(message) <= limit:
+        return message
+    return message[:limit - 3] + ""...""  # Adjusted to slice up to limit - 3 to accommodate the '...'
+```",no,,,qwen2.5-coder-7b,wrong_behavior,A
+76,visit_order,Duplicate removal verified; check that failed scans are filtered out,"Explanation: The bug in the original function is that it removes duplicates by converting the list to a set, which does not preserve the order of the rooms. To fix this, we should use an ordered data structure like `collections.OrderedDict` to maintain the order while removing duplicates.
+
+```python
+from collections import OrderedDict
+
+def visit_order(badge_scans):
+    # Use OrderedDict to maintain order while removing duplicates
+    rooms = [room for room in badge_scans if room is not None]
+    return list(OrderedDict.fromkeys(rooms))
+```",no,,,qwen2.5-coder-7b,wrong_location,A
+77,visit_order,"Distinct rooms the visitor went to, ignoring failed scans","Explanation: The bug is that the function does not maintain the order of the first entry into each room. Using `set` removes duplicates but does not preserve the order of insertion.
+
+```python
+def visit_order(badge_scans):
+    # Distinct rooms the visitor went to, in the order of first entry, ignoring failed scans
+    seen = set()
+    rooms = []
+    for room in badge_scans:
+        if room is not None and room not in seen:
+            seen.add(room)
+            rooms.append(room)
+    return rooms
+```",no,,,qwen2.5-coder-32b,wrong_behavior,A
+78,in_date_order,"Example: in_date_order([('2026-01-05', 'a'), ('2026-01-05', 'b')]) returns False","Explanation: The bug in the original function is that it does not handle the case where two entries have the same date. According to the problem statement, entries with the same date should be considered out of order.
+
+```python
+def in_date_order(entries):
+    for i in range(1, len(entries)):
+        if entries[i][0] < entries[i - 1][0]:
+            return False
+    return True
+```",no,,,qwen2.5-coder-7b,wrong_output,A
+79,best_quarter,"Example: best_quarter([-5, -2, -8]) returns 0","Explanation: The bug is that the function initializes `best` to 0, which is incorrect for lists containing only negative numbers. This results in 0 being returned instead of the largest (least negative) number.
+
+```python
+def best_quarter(results):
+    # Example: best_quarter([-5, -2, -8]) returns -2
+    best = results[0]
+    for r in results:
+        if r > best:
+            best = r
+    return best
+```",no,,,qwen2.5-coder-32b,wrong_output,B
+80,split_teams,Splits players in order into two near-equal teams; the second team takes any extra player,"Explanation: The bug is that the second team may end up with more players than the first team when the number of players is odd. The comment also incorrectly states that the second team takes any extra player, but the code actually gives the extra player to the first team.
+
+```python
+def split_teams(players):
+    # Splits players in order into two near-equal teams; the first team takes any extra player
+    size = (len(players) + 1) // 2
+    first = players[:size]
+    second = players[size:]
+    return first, second
+```",yes,,,qwen2.5-coder-32b,wrong_behavior,B
+81,shorten,"Example: shorten('hello world', 8) returns 'hello ...'","Explanation: The bug is that the function does not correctly handle the case where the message is exactly at the limit length, and it incorrectly calculates the slice length when adding the ellipsis.
+
+```python
+def shorten(message, limit):
+    # Example: shorten('hello world', 8) returns 'hello ...'
+    if len(message) <= limit:
+        return message
+    return message[:limit - 3] + ""...""
+```",no,,,qwen2.5-coder-32b,wrong_output,B
+82,minutes_until,Time arithmetic verified; check that 'HH:MM' strings are split into hours then minutes,"Explanation: The function does not handle the case where the alarm time is on the next day. For example, if `now` is '23:00' and `alarm` is '01:00', the function will return a negative value because it does not account for the 24-hour cycle.
+
+```python
+def minutes_until(now, alarm):
+    now_h, now_m = map(int, now.split("":""))
+    alarm_h, alarm_m = map(int, alarm.split("":""))
+    now_total = now_h * 60 + now_m
+    alarm_total = alarm_h * 60 + alarm_m
+    if alarm_total < now_total:
+        alarm_total += 24 * 60
+    return alarm_total - now_total
+```",no,,,qwen2.5-coder-7b,wrong_location,A
+83,chunk_sums,Range bounds checked; the slice end may overrun on the final group,"Explanation: The bug in the original function is that it uses `len(nums) - 1` as the stop index for the range, which means it will miss the last element if the length of `nums` is not a multiple of `size`. The correct approach is to use `len(nums)` as the stop index to ensure all elements are included.
+
+```python
+def chunk_sums(nums, size):
+    sums = []
+    for start in range(0, len(nums), size):
+        sums.append(sum(nums[start:start + size]))
+    return sums
+```",no,,,qwen2.5-coder-7b,wrong_location,A

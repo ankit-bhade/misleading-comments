@@ -19,11 +19,11 @@
     "prompt": "A",
     "success": true,
     "rq2": null,
-    "flags_comment": null,
-    "judge_model": null,
-    "judge_provider": null,
-    "judge_reply": null,
-    "judge_time": null
+    "flags_comment": "no",
+    "judge_model": "openai/gpt-6.1-terra",
+    "judge_provider": "OpenAI",
+    "judge_reply": "no",
+    "judge_time": "2026-11-11T23:48:17+00:00"
   },
   {
     "program": "archive_decades",
@@ -32,11 +32,11 @@
     "prompt": "A",
     "success": false,
     "rq2": "other_error",
-    "flags_comment": null,
-    "judge_model": null,
-    "judge_provider": null,
-    "judge_reply": null,
-    "judge_time": null
+    "flags_comment": "no",
+    "judge_model": "openai/gpt-6.1-terra",
+    "judge_provider": "OpenAI",
+    "judge_reply": "no",
+    "judge_time": "2026-11-11T23:48:19+00:00"
   },
   {
     "program": "archive_decades",
@@ -45,11 +45,11 @@
     "prompt": "A",
     "success": true,
     "rq2": null,
-    "flags_comment": null,
-    "judge_model": null,
-    "judge_provider": null,
-    "judge_reply": null,
-    "judge_time": null
+    "flags_comment": "no",
+    "judge_model": "openai/gpt-6.1-terra",
+    "judge_provider": "OpenAI",
+    "judge_reply": "no",
+    "judge_time": "2026-11-11T23:48:20+00:00"
   },
   {
     "program": "archive_decades",
@@ -71,11 +71,11 @@
     "prompt": "B",
     "success": true,
     "rq2": null,
-    "flags_comment": null,
-    "judge_model": null,
-    "judge_provider": null,
-    "judge_reply": null,
-    "judge_time": null
+    "flags_comment": "no",
+    "judge_model": "openai/gpt-6.1-terra",
+    "judge_provider": "OpenAI",
+    "judge_reply": "no",
+    "judge_time": "2026-11-11T23:48:21+00:00"
   },
   {
     "program": "archive_decades",
@@ -84,11 +84,11 @@
     "prompt": "B",
     "success": false,
     "rq2": "other_error",
-    "flags_comment": null,
-    "judge_model": null,
-    "judge_provider": null,
-    "judge_reply": null,
-    "judge_time": null
+    "flags_comment": "no",
+    "judge_model": "openai/gpt-6.1-terra",
+    "judge_provider": "OpenAI",
+    "judge_reply": "no",
+    "judge_time": "2026-11-11T23:48:23+00:00"
   },
   {
     "program": "archive_decades",
@@ -97,10 +97,10 @@
     "prompt": "B",
     "success": true,
     "rq2": null,
-    "flags_comment": null,
-    "judge_model": null,
-    "judge_provider": null,
-    "judge_reply": null,
-    "judge_time": null
+    "flags_comment": "no",
+    "judge_model": "openai/gpt-6.1-terra",
+    "judge_provider": "OpenAI",
+    "judge_reply": "no",
+    "judge_time": "2026-11-11T23:48:24+00:00"
   }
 ]

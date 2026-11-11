@@ -19,11 +19,11 @@
     "prompt": "A",
     "success": true,
     "rq2": null,
-    "flags_comment": null,
-    "judge_model": null,
-    "judge_provider": null,
-    "judge_reply": null,
-    "judge_time": null
+    "flags_comment": "no",
+    "judge_model": "openai/gpt-6.1-terra",
+    "judge_provider": "OpenAI",
+    "judge_reply": "no",
+    "judge_time": "2026-11-11T23:49:29+00:00"
   },
   {
     "program": "merge_heats",
@@ -32,11 +32,11 @@
     "prompt": "A",
     "success": true,
     "rq2": null,
-    "flags_comment": null,
-    "judge_model": null,
-    "judge_provider": null,
-    "judge_reply": null,
-    "judge_time": null
+    "flags_comment": "no",
+    "judge_model": "openai/gpt-6.1-terra",
+    "judge_provider": "OpenAI",
+    "judge_reply": "no",
+    "judge_time": "2026-11-11T23:49:30+00:00"
   },
   {
     "program": "merge_heats",
@@ -45,11 +45,11 @@
     "prompt": "A",
     "success": false,
     "rq2": "other_error",
-    "flags_comment": null,
-    "judge_model": null,
-    "judge_provider": null,
-    "judge_reply": null,
-    "judge_time": null
+    "flags_comment": "no",
+    "judge_model": "openai/gpt-6.1-terra",
+    "judge_provider": "OpenAI",
+    "judge_reply": "no",
+    "judge_time": "2026-11-11T23:49:31+00:00"
   },
   {
     "program": "merge_heats",
@@ -71,11 +71,11 @@
     "prompt": "B",
     "success": true,
     "rq2": null,
-    "flags_comment": null,
-    "judge_model": null,
-    "judge_provider": null,
-    "judge_reply": null,
-    "judge_time": null
+    "flags_comment": "yes",
+    "judge_model": "openai/gpt-6.1-terra",
+    "judge_provider": "OpenAI",
+    "judge_reply": "yes",
+    "judge_time": "2026-11-11T23:49:33+00:00"
   },
   {
     "program": "merge_heats",
@@ -84,11 +84,11 @@
     "prompt": "B",
     "success": true,
     "rq2": null,
-    "flags_comment": null,
-    "judge_model": null,
-    "judge_provider": null,
-    "judge_reply": null,
-    "judge_time": null
+    "flags_comment": "no",
+    "judge_model": "openai/gpt-6.1-terra",
+    "judge_provider": "OpenAI",
+    "judge_reply": "no",
+    "judge_time": "2026-11-11T23:49:34+00:00"
   },
   {
     "program": "merge_heats",
@@ -97,10 +97,10 @@
     "prompt": "B",
     "success": true,
     "rq2": null,
-    "flags_comment": null,
-    "judge_model": null,
-    "judge_provider": null,
-    "judge_reply": null,
-    "judge_time": null
+    "flags_comment": "no",
+    "judge_model": "openai/gpt-6.1-terra",
+    "judge_provider": "OpenAI",
+    "judge_reply": "no",
+    "judge_time": "2026-11-11T23:49:35+00:00"
   }
 ]

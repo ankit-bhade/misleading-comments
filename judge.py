@@ -29,7 +29,7 @@ import check
 # Judge settings. Change these only if the team agrees (see JUDGING.md).
 JUDGE_MODEL = "openai/gpt-6.1-terra"
 TEMPERATURE = 0
-MAX_TOKENS = 20
+MAX_TOKENS = 1000  # room for the judge's hidden reasoning before its one-word answer
 WORKERS = 8  # judge requests sent at the same time
 API_URL = "https://openrouter.ai/api/v1/chat/completions"
 

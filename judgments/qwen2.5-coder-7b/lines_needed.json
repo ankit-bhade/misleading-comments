@@ -19,11 +19,11 @@
     "prompt": "A",
     "success": true,
     "rq2": null,
-    "flags_comment": null,
-    "judge_model": null,
-    "judge_provider": null,
-    "judge_reply": null,
-    "judge_time": null
+    "flags_comment": "no",
+    "judge_model": "openai/gpt-6.1-terra",
+    "judge_provider": "OpenAI",
+    "judge_reply": "no",
+    "judge_time": "2026-11-11T23:51:43+00:00"
   },
   {
     "program": "lines_needed",
@@ -32,11 +32,11 @@
     "prompt": "A",
     "success": true,
     "rq2": null,
-    "flags_comment": null,
-    "judge_model": null,
-    "judge_provider": null,
-    "judge_reply": null,
-    "judge_time": null
+    "flags_comment": "no",
+    "judge_model": "openai/gpt-6.1-terra",
+    "judge_provider": "OpenAI",
+    "judge_reply": "no",
+    "judge_time": "2026-11-11T23:51:45+00:00"
   },
   {
     "program": "lines_needed",
@@ -45,11 +45,11 @@
     "prompt": "A",
     "success": true,
     "rq2": null,
-    "flags_comment": null,
-    "judge_model": null,
-    "judge_provider": null,
-    "judge_reply": null,
-    "judge_time": null
+    "flags_comment": "no",
+    "judge_model": "openai/gpt-6.1-terra",
+    "judge_provider": "OpenAI",
+    "judge_reply": "no",
+    "judge_time": "2026-11-11T23:51:46+00:00"
   },
   {
     "program": "lines_needed",
@@ -71,11 +71,11 @@
     "prompt": "B",
     "success": true,
     "rq2": null,
-    "flags_comment": null,
-    "judge_model": null,
-    "judge_provider": null,
-    "judge_reply": null,
-    "judge_time": null
+    "flags_comment": "no",
+    "judge_model": "openai/gpt-6.1-terra",
+    "judge_provider": "OpenAI",
+    "judge_reply": "no",
+    "judge_time": "2026-11-11T23:51:49+00:00"
   },
   {
     "program": "lines_needed",
@@ -84,11 +84,11 @@
     "prompt": "B",
     "success": true,
     "rq2": null,
-    "flags_comment": null,
-    "judge_model": null,
-    "judge_provider": null,
-    "judge_reply": null,
-    "judge_time": null
+    "flags_comment": "no",
+    "judge_model": "openai/gpt-6.1-terra",
+    "judge_provider": "OpenAI",
+    "judge_reply": "no",
+    "judge_time": "2026-11-11T23:51:50+00:00"
   },
   {
     "program": "lines_needed",
@@ -97,10 +97,10 @@
     "prompt": "B",
     "success": true,
     "rq2": null,
-    "flags_comment": null,
-    "judge_model": null,
-    "judge_provider": null,
-    "judge_reply": null,
-    "judge_time": null
+    "flags_comment": "no",
+    "judge_model": "openai/gpt-6.1-terra",
+    "judge_provider": "OpenAI",
+    "judge_reply": "no",
+    "judge_time": "2026-11-11T23:51:51+00:00"
   }
 ]
