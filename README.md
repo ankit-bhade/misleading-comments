@@ -22,3 +22,6 @@ Open your AI coding tool in the repo and say: "Read GENERATING.md and make my 27
 
 ## Running the model on your programs
 We run the 7B model on Google Colab with `colab_run.ipynb`, and the 32B model on Kaggle with `kaggle_run.ipynb`. Steps are in `EXPERIMENT.md`. Results go in `results/`; commit and push them.
+
+## Labeling the replies (RQ2 and RQ3)
+Rules are in `JUDGING.md`. `python3 judge.py` labels every reply into `judgments/`. `python3 handcheck.py` then builds a sheet per person in `handcheck/` to verify the AI judge.
