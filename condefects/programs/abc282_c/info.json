@@ -1,15 +1,15 @@
 {
   "task": "abc282_c",
   "author": "Arnav",
-  "generated_by": "",
-  "problem": "",
-  "bug_type": "",
-  "bug_description": "",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Read N and a string S of length N with an even number of double quotes. Replace every comma that is outside the quoted parts (between the 1st and 2nd quote, the 3rd and 4th, and so on) with a period, and print the result.",
+  "bug_type": "other",
+  "bug_description": "Replaces commas when the quote count is odd (inside quotes) instead of even (outside).",
   "comments": {
-    "accurate": "",
-    "wrong_behavior": "",
-    "wrong_location": "",
-    "wrong_output": ""
+    "accurate": "Tracks whether we're inside quotes and turns the commas outside them into periods",
+    "wrong_behavior": "Tracks quote parity and turns the commas inside quoted text into periods",
+    "wrong_location": "Quote tracking verified; check the result is rebuilt from the modified list, not the original string",
+    "wrong_output": "Example: input '3\\na,b' prints a,b"
   },
   "source": {
     "dataset": "ConDefects",

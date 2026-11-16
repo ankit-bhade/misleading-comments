@@ -1,0 +1,14 @@
+# Groups numbers joined by marks and prints each group's labels in reverse text order
+N, M = map(int, input().split())
+p = list(map(int, input().split())) if M > 0 else []
+
+graph = ""
+for i in range(1, N+1):
+    node = str(i)
+    graph += node + ("v" if i in p else ",")
+
+result = []
+for subgraph in graph.split(","):
+    result += sorted(subgraph.split("v"), reverse=True)
+
+print(*result)

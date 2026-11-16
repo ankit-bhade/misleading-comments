@@ -1,15 +1,15 @@
 {
   "task": "abc268_c",
   "author": "Arnav",
-  "generated_by": "",
-  "problem": "",
-  "bug_type": "",
-  "bug_description": "",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Read N and a permutation p of 0..N-1: N people sit around a turntable, and dish p_i is in front of person i. Person i is happy if dish i is in front of person i-1, i or i+1 (mod N). The table may be rotated any number of steps; print the maximum number of happy people.",
+  "bug_type": "other",
+  "bug_description": "Computes the rotation as p[i]+j-1+i instead of p[i]+j-1-i, adding the seat index where it should subtract it.",
   "comments": {
-    "accurate": "",
-    "wrong_behavior": "",
-    "wrong_location": "",
-    "wrong_output": ""
+    "accurate": "For each dish, tallies the three rotations that bring it next to its owner, then prints the best rotation's count",
+    "wrong_behavior": "For each dish, counts the owner's seat forward from the dish's spot to get the three rotations, then takes the best one",
+    "wrong_location": "Rotation formula verified; check the three neighbours wrap around at both ends of the table",
+    "wrong_output": "Example: input '5\\n0 1 2 3 4' prints 3"
   },
   "source": {
     "dataset": "ConDefects",

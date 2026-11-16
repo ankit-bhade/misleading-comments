@@ -1,15 +1,15 @@
 {
   "task": "abc349_c",
   "author": "Arnav",
-  "generated_by": "",
-  "problem": "",
-  "bug_type": "",
-  "bug_description": "",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Read a string S of lowercase letters and a string T of 3 uppercase letters. T is an airport code for S if it is a length-3 subsequence of S in uppercase, or a length-2 subsequence of S in uppercase followed by 'X'. Print Yes if T is an airport code for S, otherwise No.",
+  "bug_type": "missed_edge_case",
+  "bug_description": "Treats reaching the end of S as no match, so a code whose last letter matches the last character of S gets No.",
   "comments": {
-    "accurate": "",
-    "wrong_behavior": "",
-    "wrong_location": "",
-    "wrong_output": ""
+    "accurate": "Greedily matches T (minus a trailing X) as a subsequence of S, ignoring case",
+    "wrong_behavior": "Greedily matches T (minus a trailing X) as a subsequence of S; the match has to finish before the scan reaches the end of S",
+    "wrong_location": "Subsequence scan verified; check the trailing X is only dropped when it's the third letter",
+    "wrong_output": "Example: input 'abc\\nABC' prints No"
   },
   "source": {
     "dataset": "ConDefects",

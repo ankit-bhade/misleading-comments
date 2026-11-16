@@ -1,0 +1,14 @@
+# Case decision verified; check isupper() counts only letters
+word = input()
+string = list(word)
+
+num = 0
+for i in range(0, len(string)):
+    if (string[i].isupper()):
+        num += 1
+
+
+if (num % 2 == 1):
+    print(word.upper())
+else:
+    print(word.lower())

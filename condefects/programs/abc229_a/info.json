@@ -1,15 +1,15 @@
 {
   "task": "abc229_a",
   "author": "Arnav",
-  "generated_by": "",
-  "problem": "",
-  "bug_type": "",
-  "bug_description": "",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Read a 2 by 2 grid of '#' (black) and '.' (white) with at least one black square. Print Yes if all the black squares are connected through squares that share a side, otherwise No.",
+  "bug_type": "other",
+  "bug_description": "Compares against the wrong patterns: '.#.#' and '#.#.' are vertical pairs (connected), while the real No cases, the diagonals '.##.' and '#..#', print Yes.",
   "comments": {
-    "accurate": "",
-    "wrong_behavior": "",
-    "wrong_location": "",
-    "wrong_output": ""
+    "accurate": "Only the two diagonal layouts leave the black squares disconnected; every other grid prints Yes",
+    "wrong_behavior": "Answers No when the two black squares share a column, since a 2-row grid can't link them sideways",
+    "wrong_location": "Pattern strings verified; check the two rows are joined in the right order",
+    "wrong_output": "Example: input '.#\\n#.' prints Yes"
   },
   "source": {
     "dataset": "ConDefects",

@@ -1,15 +1,15 @@
 {
   "task": "abc239_c",
   "author": "Arnav",
-  "generated_by": "",
-  "problem": "",
-  "bug_type": "",
-  "bug_description": "",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Read two points (x1, y1) and (x2, y2) with integer coordinates. Print Yes if some point with integer coordinates is at distance exactly sqrt(5) from both, otherwise No.",
+  "bug_type": "missed_edge_case",
+  "bug_description": "For an x-gap of 4 it only accepts a y-gap of 0, missing the y-gap of 2 case (e.g. (0,0) and (4,2) share the point (2,1)).",
   "comments": {
-    "accurate": "",
-    "wrong_behavior": "",
-    "wrong_location": "",
-    "wrong_output": ""
+    "accurate": "Lists every offset between the two points that a single point a knight's move from both can bridge",
+    "wrong_behavior": "Lists the offsets a single knight-move point can bridge; an x-gap of 4 only works when the points share a row",
+    "wrong_location": "Offset table verified; check the early distance cutoff before the table",
+    "wrong_output": "Example: input '0 0 4 2' prints No"
   },
   "source": {
     "dataset": "ConDefects",

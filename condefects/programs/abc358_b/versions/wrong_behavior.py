@@ -1,0 +1,11 @@
+# When the counter is idle, a purchase finishes A seconds after arrival, minus the time the counter already ran
+n,a = list(map(int,input().split()))
+T = list(map(int,input().split()))
+time = 0
+for i in T:
+  if (i>=time):
+    time=i+a-time
+    print(time)
+  else:
+    time+=a
+    print(time)

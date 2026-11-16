@@ -1,15 +1,15 @@
 {
   "task": "abc301_a",
   "author": "Arnav",
-  "generated_by": "",
-  "problem": "",
-  "bug_type": "",
-  "bug_description": "",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Read N and a string S of N game results, 'T' if Takahashi won and 'A' if Aoki won. Print T or A for the overall winner: whoever won more games, or, if tied, whoever reached that number of wins first.",
+  "bug_type": "missed_edge_case",
+  "bug_description": "On a tie it always prints A instead of checking who reached the tied count first (the one who didn't win the last game).",
   "comments": {
-    "accurate": "",
-    "wrong_behavior": "",
-    "wrong_location": "",
-    "wrong_output": ""
+    "accurate": "Counts each player's wins and breaks a tie by who reached the final total first",
+    "wrong_behavior": "Counts each player's wins; Takahashi needs strictly more, otherwise Aoki takes it",
+    "wrong_location": "Tie-break verified; check the win count only matches the exact letter T",
+    "wrong_output": "Example: input '2\\nTA' prints A"
   },
   "source": {
     "dataset": "ConDefects",

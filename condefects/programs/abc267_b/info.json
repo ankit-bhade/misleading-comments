@@ -1,15 +1,15 @@
 {
   "task": "abc267_b",
   "author": "Arnav",
-  "generated_by": "",
-  "problem": "",
-  "bug_type": "",
-  "bug_description": "",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Read a string S of 10 characters, where character i is 1 if bowling pin i is standing and 0 if it is knocked down. The pins form 7 columns, left to right: {7}, {4}, {2, 8}, {1, 5}, {3, 9}, {6}, {10}. Print Yes if pin 1 is down and there are two columns with a standing pin that have a column with every pin down between them; otherwise No.",
+  "bug_type": "other",
+  "bug_description": "Compares S[0] with the integer 1 instead of the string \"1\", so the head-pin check never triggers and a standing pin 1 can still count as a split.",
   "comments": {
-    "accurate": "",
-    "wrong_behavior": "",
-    "wrong_location": "",
-    "wrong_output": ""
+    "accurate": "Marks which columns still have a pin up and reports a split only when the head pin is down",
+    "wrong_behavior": "Marks which columns still have a pin up and reports a split from the column pattern alone",
+    "wrong_location": "Head-pin check verified; check the pin-to-column mapping for pins 5 and 9",
+    "wrong_output": "Example: input '1000000001' prints Yes"
   },
   "source": {
     "dataset": "ConDefects",

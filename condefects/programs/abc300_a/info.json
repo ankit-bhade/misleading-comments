@@ -1,15 +1,15 @@
 {
   "task": "abc300_a",
   "author": "Arnav",
-  "generated_by": "",
-  "problem": "",
-  "bug_type": "",
-  "bug_description": "",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Read N, A, B and N choices C_1..C_N, exactly one of which equals A + B. Print the number (from 1) of that choice.",
+  "bug_type": "off_by_one",
+  "bug_description": "Prints the 0-based index i instead of i + 1.",
   "comments": {
-    "accurate": "",
-    "wrong_behavior": "",
-    "wrong_location": "",
-    "wrong_output": ""
+    "accurate": "Finds the choice equal to A+B and prints its 1-based number",
+    "wrong_behavior": "Finds the choice equal to A+B and prints its position in the list",
+    "wrong_location": "Answer numbering verified; check the loop stops after the first match",
+    "wrong_output": "Example: input '3 1 2\\n2 3 4' prints 1"
   },
   "source": {
     "dataset": "ConDefects",

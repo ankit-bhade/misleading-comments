@@ -1,15 +1,15 @@
 {
   "task": "abc344_a",
   "author": "Arnav",
-  "generated_by": "",
-  "problem": "",
-  "bug_type": "",
-  "bug_description": "",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Read a string of lowercase letters with exactly two '|' characters. Remove both '|' and every character between them, and print the result.",
+  "bug_type": "off_by_one",
+  "bug_description": "end already points one past the second bar, so slicing to end+1 also removes the character right after it.",
   "comments": {
-    "accurate": "",
-    "wrong_behavior": "",
-    "wrong_location": "",
-    "wrong_output": ""
+    "accurate": "Cuts out the two bars and the text between them",
+    "wrong_behavior": "Cuts out the two bars, the text between them and the character just after the closing bar",
+    "wrong_location": "Slice bounds verified; check the adjacent-bars case, where replace removes every bar",
+    "wrong_output": "Example: input 'a|b|cd' prints ad"
   },
   "source": {
     "dataset": "ConDefects",

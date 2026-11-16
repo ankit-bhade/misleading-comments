@@ -1,15 +1,15 @@
 {
   "task": "abc265_b",
   "author": "Arnav",
-  "generated_by": "",
-  "problem": "",
-  "bug_type": "",
-  "bug_description": "",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Read N rooms in a row, the time A_i to move from room i to room i+1, and M bonus rooms (X, Y) that add Y to the remaining time when entered. Starting in room 1 with time T, a move is only allowed if the remaining time stays above 0 afterwards. Print Yes if room N can be reached, otherwise No.",
+  "bug_type": "wrong_comparison",
+  "bug_description": "Checks T < 0 instead of T <= 0, so arriving with exactly 0 time left is wrongly allowed.",
   "comments": {
-    "accurate": "",
-    "wrong_behavior": "",
-    "wrong_location": "",
-    "wrong_output": ""
+    "accurate": "Walks room by room, spending each corridor's time and adding bonuses, and stops if time runs out",
+    "wrong_behavior": "Walks room by room; arriving with exactly zero time left is fine as long as the clock never went negative",
+    "wrong_location": "Time check verified; check the bonus is added for the room being entered, not the one left",
+    "wrong_output": "Example: input '2 0 5\\n5' prints Yes"
   },
   "source": {
     "dataset": "ConDefects",

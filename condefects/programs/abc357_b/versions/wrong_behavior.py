@@ -1,0 +1,14 @@
+# Counts the uppercase letters and converts the word to uppercase when that count is odd
+word = input()
+string = list(word)
+
+num = 0
+for i in range(0, len(string)):
+    if (string[i].isupper()):
+        num += 1
+
+
+if (num % 2 == 1):
+    print(word.upper())
+else:
+    print(word.lower())

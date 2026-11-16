@@ -1,15 +1,15 @@
 {
   "task": "abc303_b",
   "author": "Arnav",
-  "generated_by": "",
-  "problem": "",
-  "bug_type": "",
-  "bug_description": "",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Read N people and M photos, each a left-to-right ordering of all N people. Print how many pairs of people never stood next to each other in any photo, as an integer.",
+  "bug_type": "other",
+  "bug_description": "Uses / instead of //, so the count is printed as a float (e.g. 1.0).",
   "comments": {
-    "accurate": "",
-    "wrong_behavior": "",
-    "wrong_location": "",
-    "wrong_output": ""
+    "accurate": "Marks every pair that stood side by side in some photo and counts the unmarked pairs",
+    "wrong_behavior": "Counts never-adjacent pairs in both orders and divides by 2 with true division",
+    "wrong_location": "Pair counting verified; check the diagonal is subtracted only once per person",
+    "wrong_output": "Example: input '3 1\\n1 2 3' prints 1.0"
   },
   "source": {
     "dataset": "ConDefects",

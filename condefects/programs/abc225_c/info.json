@@ -1,15 +1,15 @@
 {
   "task": "abc225_c",
   "author": "Arnav",
-  "generated_by": "",
-  "problem": "",
-  "bug_type": "",
-  "bug_description": "",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Read an N by M matrix B. A calendar grid has 7 columns and very many rows, and the cell in row i, column j (both from 1) holds (i-1)*7 + j. Print Yes if B is exactly some N by M rectangle cut out of that grid, otherwise No.",
+  "bug_type": "other",
+  "bug_description": "The first check rejects any value whose remainder mod 7 is larger than its column in B, so valid blocks that don't start in calendar column 1 get No; it should only reject a multiple of 7 that isn't in B's last column.",
   "comments": {
-    "accurate": "",
-    "wrong_behavior": "",
-    "wrong_location": "",
-    "wrong_output": ""
+    "accurate": "Checks that B is an unwrapped N by M block of the 7-column calendar: rows step by 7, columns by 1, and no week wraps",
+    "wrong_behavior": "Requires each value's weekday position to fit within its column of B, then compares B with the calendar block built from its first value",
+    "wrong_location": "Week-wrap check verified; check the expected block starts from B's top-left value",
+    "wrong_output": "Example: input '1 2\\n2 3' prints No"
   },
   "source": {
     "dataset": "ConDefects",

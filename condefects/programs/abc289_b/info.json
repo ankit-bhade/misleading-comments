@@ -1,15 +1,15 @@
 {
   "task": "abc289_b",
   "author": "Arnav",
-  "generated_by": "",
-  "problem": "",
-  "bug_type": "",
-  "bug_description": "",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Read N and M marks a_1 < ... < a_M. The numbers 1 to N are written in order, with a mark between a_i and a_i + 1. Each maximal group of numbers joined by marks is read in reverse; the groups are read left to right. Print the order in which 1 to N are read.",
+  "bug_type": "other",
+  "bug_description": "Sorts each group's numbers as strings, so with numbers 10 and above '9' comes before '10' in reverse order.",
   "comments": {
-    "accurate": "",
-    "wrong_behavior": "",
-    "wrong_location": "",
-    "wrong_output": ""
+    "accurate": "Groups numbers joined by marks and prints each group from largest to smallest",
+    "wrong_behavior": "Groups numbers joined by marks and prints each group's labels in reverse text order",
+    "wrong_location": "Group sorting verified; check the separator added after the last number N",
+    "wrong_output": "Example: input '10 1\\n9' prints 1 2 3 4 5 6 7 8 9 10"
   },
   "source": {
     "dataset": "ConDefects",
