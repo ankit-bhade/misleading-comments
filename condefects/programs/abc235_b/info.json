@@ -1,0 +1,25 @@
+{
+  "task": "abc235_b",
+  "author": "Arnav",
+  "generated_by": "",
+  "problem": "",
+  "bug_type": "",
+  "bug_description": "",
+  "comments": {
+    "accurate": "",
+    "wrong_behavior": "",
+    "wrong_location": "",
+    "wrong_output": ""
+  },
+  "source": {
+    "dataset": "ConDefects",
+    "condefects_id": "44832943",
+    "url": "https://atcoder.jp/contests/abc235/tasks/abc235_b",
+    "difficulty": 20,
+    "contest_date": "2022-01-15",
+    "buggy_line": "ans = 0",
+    "fixed_line": "ans = H[0]",
+    "tests": 5,
+    "buggy_fails": 1
+  }
+}

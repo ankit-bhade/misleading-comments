@@ -1,0 +1,25 @@
+{
+  "task": "abc333_b",
+  "author": "Seung Wook",
+  "generated_by": "",
+  "problem": "",
+  "bug_type": "",
+  "bug_description": "",
+  "comments": {
+    "accurate": "",
+    "wrong_behavior": "",
+    "wrong_location": "",
+    "wrong_output": ""
+  },
+  "source": {
+    "dataset": "ConDefects",
+    "condefects_id": "54487746",
+    "url": "https://atcoder.jp/contests/abc333/tasks/abc333_b",
+    "difficulty": 89,
+    "contest_date": "2023-12-16",
+    "buggy_line": "K = \"ABCDEABCDE\"",
+    "fixed_line": "K = \"ABCDEAEDCBA\"",
+    "tests": 18,
+    "buggy_fails": 6
+  }
+}

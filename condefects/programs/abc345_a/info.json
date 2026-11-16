@@ -1,0 +1,25 @@
+{
+  "task": "abc345_a",
+  "author": "Ankit",
+  "generated_by": "",
+  "problem": "",
+  "bug_type": "",
+  "bug_description": "",
+  "comments": {
+    "accurate": "",
+    "wrong_behavior": "",
+    "wrong_location": "",
+    "wrong_output": ""
+  },
+  "source": {
+    "dataset": "ConDefects",
+    "condefects_id": "54946927",
+    "url": "https://atcoder.jp/contests/abc345/tasks/abc345_a",
+    "difficulty": 41,
+    "contest_date": "2024-03-16",
+    "buggy_line": "if \"<\" in S and \"=\" in S:",
+    "fixed_line": "if \"<\" in S and \"=\" in S and \">\" == S[-1]:",
+    "tests": 25,
+    "buggy_fails": 1
+  }
+}

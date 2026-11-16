@@ -1,0 +1,25 @@
+{
+  "task": "abc318_a",
+  "author": "Kushal",
+  "generated_by": "",
+  "problem": "",
+  "bug_type": "",
+  "bug_description": "",
+  "comments": {
+    "accurate": "",
+    "wrong_behavior": "",
+    "wrong_location": "",
+    "wrong_output": ""
+  },
+  "source": {
+    "dataset": "ConDefects",
+    "condefects_id": "46049626",
+    "url": "https://atcoder.jp/contests/abc318/tasks/abc318_a",
+    "difficulty": 14,
+    "contest_date": "2023-09-02",
+    "buggy_line": "M = M + P * count",
+    "fixed_line": "M = M + P",
+    "tests": 18,
+    "buggy_fails": 11
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "task": "abc276_c",
+  "author": "Seung Wook",
+  "generated_by": "",
+  "problem": "",
+  "bug_type": "",
+  "bug_description": "",
+  "comments": {
+    "accurate": "",
+    "wrong_behavior": "",
+    "wrong_location": "",
+    "wrong_output": ""
+  },
+  "source": {
+    "dataset": "ConDefects",
+    "condefects_id": "52142770",
+    "url": "https://atcoder.jp/contests/abc276/tasks/abc276_c",
+    "difficulty": 389,
+    "contest_date": "2022-11-05",
+    "buggy_line": "R = P[r - 1 :]",
+    "fixed_line": "R = P[l + 1 :]",
+    "tests": 12,
+    "buggy_fails": 9
+  }
+}

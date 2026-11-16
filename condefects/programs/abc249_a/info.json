@@ -1,0 +1,25 @@
+{
+  "task": "abc249_a",
+  "author": "Kushal",
+  "generated_by": "",
+  "problem": "",
+  "bug_type": "",
+  "bug_description": "",
+  "comments": {
+    "accurate": "",
+    "wrong_behavior": "",
+    "wrong_location": "",
+    "wrong_output": ""
+  },
+  "source": {
+    "dataset": "ConDefects",
+    "condefects_id": "45778141",
+    "url": "https://atcoder.jp/contests/abc249/tasks/abc249_a",
+    "difficulty": 103,
+    "contest_date": "2022-04-23",
+    "buggy_line": "z -= x // (d + f) * (d + f)",
+    "fixed_line": "x -= x // (d + f) * (d + f)",
+    "tests": 14,
+    "buggy_fails": 1
+  }
+}

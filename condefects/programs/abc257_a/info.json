@@ -1,0 +1,25 @@
+{
+  "task": "abc257_a",
+  "author": "Seung Wook",
+  "generated_by": "",
+  "problem": "",
+  "bug_type": "",
+  "bug_description": "",
+  "comments": {
+    "accurate": "",
+    "wrong_behavior": "",
+    "wrong_location": "",
+    "wrong_output": ""
+  },
+  "source": {
+    "dataset": "ConDefects",
+    "condefects_id": "46189766",
+    "url": "https://atcoder.jp/contests/abc257/tasks/abc257_a",
+    "difficulty": 22,
+    "contest_date": "2022-06-25",
+    "buggy_line": "print(ascii_uppercase[X // N - 1])",
+    "fixed_line": "print(ascii_uppercase[(X - 1) // N])",
+    "tests": 10,
+    "buggy_fails": 5
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "task": "abc356_c",
+  "author": "Kushal",
+  "generated_by": "",
+  "problem": "",
+  "bug_type": "",
+  "bug_description": "",
+  "comments": {
+    "accurate": "",
+    "wrong_behavior": "",
+    "wrong_location": "",
+    "wrong_output": ""
+  },
+  "source": {
+    "dataset": "ConDefects",
+    "condefects_id": "55144138",
+    "url": "https://atcoder.jp/contests/abc356/tasks/abc356_c",
+    "difficulty": 568,
+    "contest_date": "2024-06-01",
+    "buggy_line": "for bit in range(1, 1<<N):",
+    "fixed_line": "for bit in range(1<<N):",
+    "tests": 52,
+    "buggy_fails": 13
+  }
+}

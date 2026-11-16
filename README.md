@@ -25,3 +25,9 @@ We run the 7B model on Google Colab with `colab_run.ipynb`, and the 32B model on
 
 ## Labeling the replies (RQ2 and RQ3)
 Rules are in `JUDGING.md`. `python3 judge.py` labels every reply into `judgments/`. `python3 handcheck.py` then builds a sheet per person in `handcheck/` to verify the AI judge.
+
+## Part 2: ConDefects (real bugs)
+120 real bugs from AtCoder contests, 30 per person, in `condefects/programs/`. Open your AI coding tool in the repo and say: "Read condefects/COMMENTING.md and fill in my 30 ConDefects programs. My name is ___." Then run them like the main set, with `DATASET = "condefects"` in the notebooks. Details in `condefects/README.md`.
+
+## Results tables
+`python3 analyze.py` (main set) or `python3 analyze.py condefects` writes the RQ1-RQ3 tables to `analysis/`.

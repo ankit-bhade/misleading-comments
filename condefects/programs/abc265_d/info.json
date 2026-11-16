@@ -1,0 +1,25 @@
+{
+  "task": "abc265_d",
+  "author": "Kushal",
+  "generated_by": "",
+  "problem": "",
+  "bug_type": "",
+  "bug_description": "",
+  "comments": {
+    "accurate": "",
+    "wrong_behavior": "",
+    "wrong_location": "",
+    "wrong_output": ""
+  },
+  "source": {
+    "dataset": "ConDefects",
+    "condefects_id": "45075464",
+    "url": "https://atcoder.jp/contests/abc265/tasks/abc265_d",
+    "difficulty": 727,
+    "contest_date": "2022-08-21",
+    "buggy_line": "if w>=N or asum[w]-a!=R : continue",
+    "fixed_line": "if w>N or asum[w]-a!=R : continue",
+    "tests": 6,
+    "buggy_fails": 1
+  }
+}

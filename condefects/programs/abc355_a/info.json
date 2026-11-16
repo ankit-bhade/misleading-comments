@@ -1,0 +1,25 @@
+{
+  "task": "abc355_a",
+  "author": "Ankit",
+  "generated_by": "",
+  "problem": "",
+  "bug_type": "",
+  "bug_description": "",
+  "comments": {
+    "accurate": "",
+    "wrong_behavior": "",
+    "wrong_location": "",
+    "wrong_output": ""
+  },
+  "source": {
+    "dataset": "ConDefects",
+    "condefects_id": "54910949",
+    "url": "https://atcoder.jp/contests/abc355/tasks/abc355_a",
+    "difficulty": 12,
+    "contest_date": "2024-05-25",
+    "buggy_line": "elif A + B == 4:",
+    "fixed_line": "elif A + B == 4 and A != B:",
+    "tests": 12,
+    "buggy_fails": 1
+  }
+}

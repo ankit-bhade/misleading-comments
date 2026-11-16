@@ -1,0 +1,25 @@
+{
+  "task": "abc322_b",
+  "author": "Ankit",
+  "generated_by": "",
+  "problem": "",
+  "bug_type": "",
+  "bug_description": "",
+  "comments": {
+    "accurate": "",
+    "wrong_behavior": "",
+    "wrong_location": "",
+    "wrong_output": ""
+  },
+  "source": {
+    "dataset": "ConDefects",
+    "condefects_id": "46194153",
+    "url": "https://atcoder.jp/contests/abc322/tasks/abc322_b",
+    "difficulty": 54,
+    "contest_date": "2023-09-30",
+    "buggy_line": "if T == S:",
+    "fixed_line": "if T[:N] == S and T[-N:] == S:",
+    "tests": 24,
+    "buggy_fails": 6
+  }
+}

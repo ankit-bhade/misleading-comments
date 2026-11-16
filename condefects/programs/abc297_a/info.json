@@ -1,0 +1,25 @@
+{
+  "task": "abc297_a",
+  "author": "Seung Wook",
+  "generated_by": "",
+  "problem": "",
+  "bug_type": "",
+  "bug_description": "",
+  "comments": {
+    "accurate": "",
+    "wrong_behavior": "",
+    "wrong_location": "",
+    "wrong_output": ""
+  },
+  "source": {
+    "dataset": "ConDefects",
+    "condefects_id": "45577188",
+    "url": "https://atcoder.jp/contests/abc297/tasks/abc297_a",
+    "difficulty": 16,
+    "contest_date": "2023-04-09",
+    "buggy_line": "s = -10000",
+    "fixed_line": "s = -1e10",
+    "tests": 15,
+    "buggy_fails": 8
+  }
+}

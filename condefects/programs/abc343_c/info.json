@@ -1,0 +1,25 @@
+{
+  "task": "abc343_c",
+  "author": "Kushal",
+  "generated_by": "",
+  "problem": "",
+  "bug_type": "",
+  "bug_description": "",
+  "comments": {
+    "accurate": "",
+    "wrong_behavior": "",
+    "wrong_location": "",
+    "wrong_output": ""
+  },
+  "source": {
+    "dataset": "ConDefects",
+    "condefects_id": "55032181",
+    "url": "https://atcoder.jp/contests/abc343/tasks/abc343_c",
+    "difficulty": 220,
+    "contest_date": "2024-03-02",
+    "buggy_line": "x_max = int(pow(N+1, 1/3))",
+    "fixed_line": "x_max = round(pow(N+1, 1/3))",
+    "tests": 32,
+    "buggy_fails": 3
+  }
+}

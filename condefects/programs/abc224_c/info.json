@@ -1,0 +1,25 @@
+{
+  "task": "abc224_c",
+  "author": "Arnav",
+  "generated_by": "",
+  "problem": "",
+  "bug_type": "",
+  "bug_description": "",
+  "comments": {
+    "accurate": "",
+    "wrong_behavior": "",
+    "wrong_location": "",
+    "wrong_output": ""
+  },
+  "source": {
+    "dataset": "ConDefects",
+    "condefects_id": "44477761",
+    "url": "https://atcoder.jp/contests/abc224/tasks/abc224_c",
+    "difficulty": 301,
+    "contest_date": "2021-10-23",
+    "buggy_line": "if (XY[k][1]-XY[i][1])*(XY[j][0]-XY[i][0])!=(XY[j][0]-XY[i][0])*(XY[k][0]-XY[i][0]):",
+    "fixed_line": "if (XY[k][1]-XY[i][1])*(XY[j][0]-XY[i][0])!=(XY[j][1]-XY[i][1])*(XY[k][0]-XY[i][0]):",
+    "tests": 8,
+    "buggy_fails": 4
+  }
+}

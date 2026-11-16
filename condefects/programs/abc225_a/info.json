@@ -1,0 +1,25 @@
+{
+  "task": "abc225_a",
+  "author": "Kushal",
+  "generated_by": "",
+  "problem": "",
+  "bug_type": "",
+  "bug_description": "",
+  "comments": {
+    "accurate": "",
+    "wrong_behavior": "",
+    "wrong_location": "",
+    "wrong_output": ""
+  },
+  "source": {
+    "dataset": "ConDefects",
+    "condefects_id": "44428733",
+    "url": "https://atcoder.jp/contests/abc225/tasks/abc225_a",
+    "difficulty": 12,
+    "contest_date": "2021-10-30",
+    "buggy_line": "if S[0] == S[1] or S[0] == S[2] or S[1] == S[2]:",
+    "fixed_line": "elif S[0] == S[1] or S[0] == S[2] or S[1] == S[2]:",
+    "tests": 10,
+    "buggy_fails": 2
+  }
+}

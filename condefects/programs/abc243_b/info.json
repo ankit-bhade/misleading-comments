@@ -1,0 +1,25 @@
+{
+  "task": "abc243_b",
+  "author": "Kushal",
+  "generated_by": "",
+  "problem": "",
+  "bug_type": "",
+  "bug_description": "",
+  "comments": {
+    "accurate": "",
+    "wrong_behavior": "",
+    "wrong_location": "",
+    "wrong_output": ""
+  },
+  "source": {
+    "dataset": "ConDefects",
+    "condefects_id": "44827583",
+    "url": "https://atcoder.jp/contests/abc243/tasks/abc243_b",
+    "difficulty": 26,
+    "contest_date": "2022-03-12",
+    "buggy_line": "if a[i] == b[j]:",
+    "fixed_line": "if i!=j and a[i] == b[j]:",
+    "tests": 11,
+    "buggy_fails": 10
+  }
+}

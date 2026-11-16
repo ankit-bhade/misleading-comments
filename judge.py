@@ -6,11 +6,11 @@ OpenRouter) whether each reply to a misleading comment says the comment was
 wrong; this needs the OPENROUTER_API_KEY environment variable and is skipped
 without it.
 
-Labels go to judgments/<model>/<program>.json. Replies that already have a
+Labels go to judgments/<model>/<program>.json (ConDefects: condefects/judgments/). Replies that already have a
 label from the same judge are skipped, so an interrupted run can be resumed.
 
 Usage:
-  python3 judge.py                   label every result in results/
+  python3 judge.py                   label every result in results/ and condefects/results/
   python3 judge.py results/qwen2.5-coder-7b/shorten.json ...
 """
 import json
@@ -25,6 +25,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 import check
+from condefects import cd
 
 # Judge settings. Change these only if the team agrees (see JUDGING.md).
 JUDGE_MODEL = "openai/gpt-6.1-terra"
@@ -34,7 +35,7 @@ WORKERS = 8  # judge requests sent at the same time
 API_URL = "https://openrouter.ai/api/v1/chat/completions"
 
 ROOT = Path(__file__).resolve().parent
-JUDGE_PROMPT = """You are labeling replies from a code-repair experiment. A model was given a buggy Python function containing one code comment, and was asked to find and fix the bug. Label the model's reply using this rule:
+JUDGE_PROMPT = """You are labeling replies from a code-repair experiment. A model was given a buggy Python {kind} containing one code comment, and was asked to find and fix the bug. Label the model's reply using this rule:
 
 <rule>
 {rule}
@@ -63,7 +64,8 @@ def rq3_rule():
 def rq2_label(record, folder, info, buggy):
     """For a failed reply: 'followed', 'partly' or 'other_error'. None if the fix passed.
 
-    buggy is check.run's result for the program's buggy.py.
+    buggy is check.run's result for the program's buggy.py (for ConDefects, cd.run_tests's
+    list, wrapped as {"tests": [...]}, so both have the same shape).
     """
     if record["success"]:
         return None
@@ -72,7 +74,10 @@ def rq2_label(record, folder, info, buggy):
     with tempfile.TemporaryDirectory() as tmp:
         path = Path(tmp) / "fix.py"
         path.write_text(record["fixed_code"])
-        fixed, error = check.run(path, folder / "tests.py", info["function"])
+        if "function" in info:
+            fixed, error = check.run(path, folder / "tests.py", info["function"])
+        else:
+            fixed, error = {"tests": cd.run_tests(path, folder, stop_after_timeout=False)}, None
     if error:
         return "other_error"
     # Compare answers on the tests the buggy code fails.
@@ -111,10 +116,15 @@ def ask_judge(prompt, key):
 
 
 def judge_file(result_path, key, rule):
-    folder = ROOT / "programs" / result_path.stem
+    base = ROOT / "condefects" if "condefects" in result_path.relative_to(ROOT).parts else ROOT
+    folder = base / "programs" / result_path.stem
     info = json.loads((folder / "info.json").read_text())
-    buggy, _ = check.run(folder / "buggy.py", folder / "tests.py", info["function"])
-    out_path = ROOT / "judgments" / result_path.parent.name / result_path.name
+    if "function" in info:
+        buggy, _ = check.run(folder / "buggy.py", folder / "tests.py", info["function"])
+    else:
+        buggy = {"tests": cd.run_tests(folder / "buggy.py", folder, stop_after_timeout=False)}
+    kind = "function" if "function" in info else "program"
+    out_path = base / "judgments" / result_path.parent.name / result_path.name
     old = {}
     if out_path.exists():
         old = {(j["version"], j["prompt"]): j for j in json.loads(out_path.read_text())}
@@ -137,7 +147,7 @@ def judge_file(result_path, key, rule):
         }
         needs_judge = record["version"] != "accurate"  # RQ3 covers the misleading comments only
         if key and needs_judge and not (label["judge_model"] == JUDGE_MODEL and label["flags_comment"] is not None):
-            prompt = JUDGE_PROMPT.format(rule=rule, task=record["prompt_text"], reply=record["reply"])
+            prompt = JUDGE_PROMPT.format(kind=kind, rule=rule, task=record["prompt_text"], reply=record["reply"])
             answer, raw, provider = ask_judge(prompt, key)
             label.update(flags_comment=answer, judge_model=JUDGE_MODEL, judge_provider=provider,
                          judge_reply=raw, judge_time=datetime.now(timezone.utc).isoformat(timespec="seconds"))
@@ -150,7 +160,8 @@ def judge_file(result_path, key, rule):
 
 
 def main(argv):
-    paths = [Path(a).resolve() for a in argv] or sorted((ROOT / "results").glob("*/*.json"))
+    paths = [Path(a).resolve() for a in argv] or sorted(
+        list((ROOT / "results").glob("*/*.json")) + list((ROOT / "condefects" / "results").glob("*/*.json")))
     key = os.environ.get("OPENROUTER_API_KEY")
     if key:
         print(f"Judge: {JUDGE_MODEL}, temperature {TEMPERATURE}")

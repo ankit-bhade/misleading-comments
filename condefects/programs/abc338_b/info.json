@@ -1,0 +1,25 @@
+{
+  "task": "abc338_b",
+  "author": "Arnav",
+  "generated_by": "",
+  "problem": "",
+  "bug_type": "",
+  "bug_description": "",
+  "comments": {
+    "accurate": "",
+    "wrong_behavior": "",
+    "wrong_location": "",
+    "wrong_output": ""
+  },
+  "source": {
+    "dataset": "ConDefects",
+    "condefects_id": "54399591",
+    "url": "https://atcoder.jp/contests/abc338/tasks/abc338_b",
+    "difficulty": 48,
+    "contest_date": "2024-01-27",
+    "buggy_line": "for i in range(len(S)-1):",
+    "fixed_line": "for i in range(len(S)):",
+    "tests": 11,
+    "buggy_fails": 3
+  }
+}

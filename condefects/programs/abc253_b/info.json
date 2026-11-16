@@ -1,0 +1,25 @@
+{
+  "task": "abc253_b",
+  "author": "Ankit",
+  "generated_by": "",
+  "problem": "",
+  "bug_type": "",
+  "bug_description": "",
+  "comments": {
+    "accurate": "",
+    "wrong_behavior": "",
+    "wrong_location": "",
+    "wrong_output": ""
+  },
+  "source": {
+    "dataset": "ConDefects",
+    "condefects_id": "45785764",
+    "url": "https://atcoder.jp/contests/abc253/tasks/abc253_b",
+    "difficulty": 57,
+    "contest_date": "2022-05-28",
+    "buggy_line": "hirai = abs(o[0][0]- o[1][0]) + abs(o[1][0]-o[1][1])",
+    "fixed_line": "hirai = abs(o[0][0]- o[1][0]) + abs(o[0][1]-o[1][1])",
+    "tests": 13,
+    "buggy_fails": 12
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "task": "abc230_b",
+  "author": "Seung Wook",
+  "generated_by": "",
+  "problem": "",
+  "bug_type": "",
+  "bug_description": "",
+  "comments": {
+    "accurate": "",
+    "wrong_behavior": "",
+    "wrong_location": "",
+    "wrong_output": ""
+  },
+  "source": {
+    "dataset": "ConDefects",
+    "condefects_id": "44392053",
+    "url": "https://atcoder.jp/contests/abc230/tasks/abc230_b",
+    "difficulty": 37,
+    "contest_date": "2021-12-03",
+    "buggy_line": "T  = \"oox\" * 10**5",
+    "fixed_line": "T  = \"oxx\" * 10**5",
+    "tests": 16,
+    "buggy_fails": 6
+  }
+}

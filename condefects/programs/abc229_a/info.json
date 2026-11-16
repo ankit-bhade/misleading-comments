@@ -1,0 +1,25 @@
+{
+  "task": "abc229_a",
+  "author": "Arnav",
+  "generated_by": "",
+  "problem": "",
+  "bug_type": "",
+  "bug_description": "",
+  "comments": {
+    "accurate": "",
+    "wrong_behavior": "",
+    "wrong_location": "",
+    "wrong_output": ""
+  },
+  "source": {
+    "dataset": "ConDefects",
+    "condefects_id": "44625287",
+    "url": "https://atcoder.jp/contests/abc229/tasks/abc229_a",
+    "difficulty": 24,
+    "contest_date": "2021-11-27",
+    "buggy_line": "if S == '.#.#' or S == '#.#.' :",
+    "fixed_line": "if S == '.##.' or S == '#..#' :",
+    "tests": 13,
+    "buggy_fails": 5
+  }
+}

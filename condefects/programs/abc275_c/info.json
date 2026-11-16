@@ -1,0 +1,25 @@
+{
+  "task": "abc275_c",
+  "author": "Kushal",
+  "generated_by": "",
+  "problem": "",
+  "bug_type": "",
+  "bug_description": "",
+  "comments": {
+    "accurate": "",
+    "wrong_behavior": "",
+    "wrong_location": "",
+    "wrong_output": ""
+  },
+  "source": {
+    "dataset": "ConDefects",
+    "condefects_id": "44917428",
+    "url": "https://atcoder.jp/contests/abc275/tasks/abc275_c",
+    "difficulty": 760,
+    "contest_date": "2022-10-29",
+    "buggy_line": "if s[i+k+1][j]==\"#\" and s[i][j+k+1]==\"#\" and s[i+1][j+2*(k+1)]==\"#\" and s[i+2*(k+1)][j+k+1]==\"#\":",
+    "fixed_line": "if s[i+k+1][j]==\"#\" and s[i][j+k+1]==\"#\" and s[i+k+1][j+2*(k+1)]==\"#\" and s[i+2*(k+1)][j+k+1]==\"#\":",
+    "tests": 15,
+    "buggy_fails": 7
+  }
+}

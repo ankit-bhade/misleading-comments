@@ -1,0 +1,25 @@
+{
+  "task": "abc331_b",
+  "author": "Seung Wook",
+  "generated_by": "",
+  "problem": "",
+  "bug_type": "",
+  "bug_description": "",
+  "comments": {
+    "accurate": "",
+    "wrong_behavior": "",
+    "wrong_location": "",
+    "wrong_output": ""
+  },
+  "source": {
+    "dataset": "ConDefects",
+    "condefects_id": "54769953",
+    "url": "https://atcoder.jp/contests/abc331/tasks/abc331_b",
+    "difficulty": 182,
+    "contest_date": "2023-12-02",
+    "buggy_line": "if i+j+l>=n:",
+    "fixed_line": "if 6*i+8*j+12*k>=n:",
+    "tests": 25,
+    "buggy_fails": 25
+  }
+}

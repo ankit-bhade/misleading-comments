@@ -1,0 +1,25 @@
+{
+  "task": "abc223_a",
+  "author": "Ankit",
+  "generated_by": "",
+  "problem": "",
+  "bug_type": "",
+  "bug_description": "",
+  "comments": {
+    "accurate": "",
+    "wrong_behavior": "",
+    "wrong_location": "",
+    "wrong_output": ""
+  },
+  "source": {
+    "dataset": "ConDefects",
+    "condefects_id": "45813374",
+    "url": "https://atcoder.jp/contests/abc223/tasks/abc223_a",
+    "difficulty": 6,
+    "contest_date": "2021-10-17",
+    "buggy_line": "if n<100:",
+    "fixed_line": "if n<100 or n%100!=0:",
+    "tests": 14,
+    "buggy_fails": 4
+  }
+}

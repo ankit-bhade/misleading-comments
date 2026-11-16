@@ -1,0 +1,25 @@
+{
+  "task": "abc330_c",
+  "author": "Kushal",
+  "generated_by": "",
+  "problem": "",
+  "bug_type": "",
+  "bug_description": "",
+  "comments": {
+    "accurate": "",
+    "wrong_behavior": "",
+    "wrong_location": "",
+    "wrong_output": ""
+  },
+  "source": {
+    "dataset": "ConDefects",
+    "condefects_id": "54910018",
+    "url": "https://atcoder.jp/contests/abc330/tasks/abc330_c",
+    "difficulty": 519,
+    "contest_date": "2023-11-25",
+    "buggy_line": "res = min(res, abs(x**2 + y**2 - d))",
+    "fixed_line": "res = min(res, abs(x**2 + i**2 - d))",
+    "tests": 10,
+    "buggy_fails": 1
+  }
+}

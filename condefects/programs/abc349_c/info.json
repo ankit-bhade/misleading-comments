@@ -1,0 +1,25 @@
+{
+  "task": "abc349_c",
+  "author": "Arnav",
+  "generated_by": "",
+  "problem": "",
+  "bug_type": "",
+  "bug_description": "",
+  "comments": {
+    "accurate": "",
+    "wrong_behavior": "",
+    "wrong_location": "",
+    "wrong_output": ""
+  },
+  "source": {
+    "dataset": "ConDefects",
+    "condefects_id": "54901128",
+    "url": "https://atcoder.jp/contests/abc349/tasks/abc349_c",
+    "difficulty": 219,
+    "contest_date": "2024-04-13",
+    "buggy_line": "if j == len(S):",
+    "fixed_line": "if j == len(S) and S[-1] != T[-1]:",
+    "tests": 41,
+    "buggy_fails": 2
+  }
+}

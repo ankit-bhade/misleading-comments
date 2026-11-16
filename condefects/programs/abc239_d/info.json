@@ -1,0 +1,25 @@
+{
+  "task": "abc239_d",
+  "author": "Seung Wook",
+  "generated_by": "",
+  "problem": "",
+  "bug_type": "",
+  "bug_description": "",
+  "comments": {
+    "accurate": "",
+    "wrong_behavior": "",
+    "wrong_location": "",
+    "wrong_output": ""
+  },
+  "source": {
+    "dataset": "ConDefects",
+    "condefects_id": "52953499",
+    "url": "https://atcoder.jp/contests/abc239/tasks/abc239_d",
+    "difficulty": 252,
+    "contest_date": "2022-02-19",
+    "buggy_line": "setx=set(prime(100))",
+    "fixed_line": "setx=set(prime(200))",
+    "tests": 33,
+    "buggy_fails": 8
+  }
+}

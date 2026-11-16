@@ -1,0 +1,25 @@
+{
+  "task": "abc319_a",
+  "author": "Ankit",
+  "generated_by": "",
+  "problem": "",
+  "bug_type": "",
+  "bug_description": "",
+  "comments": {
+    "accurate": "",
+    "wrong_behavior": "",
+    "wrong_location": "",
+    "wrong_output": ""
+  },
+  "source": {
+    "dataset": "ConDefects",
+    "condefects_id": "45795437",
+    "url": "https://atcoder.jp/contests/abc319/tasks/abc319_a",
+    "difficulty": 10,
+    "contest_date": "2023-09-09",
+    "buggy_line": "if s==\"marinara\":",
+    "fixed_line": "if s==\"mnbvmar\":",
+    "tests": 12,
+    "buggy_fails": 1
+  }
+}

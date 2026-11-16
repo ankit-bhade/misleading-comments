@@ -1,0 +1,25 @@
+{
+  "task": "abc277_b",
+  "author": "Seung Wook",
+  "generated_by": "",
+  "problem": "",
+  "bug_type": "",
+  "bug_description": "",
+  "comments": {
+    "accurate": "",
+    "wrong_behavior": "",
+    "wrong_location": "",
+    "wrong_output": ""
+  },
+  "source": {
+    "dataset": "ConDefects",
+    "condefects_id": "46214171",
+    "url": "https://atcoder.jp/contests/abc277/tasks/abc277_b",
+    "difficulty": 60,
+    "contest_date": "2022-11-12",
+    "buggy_line": "if not s[0] in one or not s[1] in two or not s in spawned:",
+    "fixed_line": "if not s[0] in one or not s[1] in two or s in spawned:",
+    "tests": 19,
+    "buggy_fails": 7
+  }
+}

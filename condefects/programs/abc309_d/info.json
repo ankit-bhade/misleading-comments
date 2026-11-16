@@ -1,0 +1,25 @@
+{
+  "task": "abc309_d",
+  "author": "Kushal",
+  "generated_by": "",
+  "problem": "",
+  "bug_type": "",
+  "bug_description": "",
+  "comments": {
+    "accurate": "",
+    "wrong_behavior": "",
+    "wrong_location": "",
+    "wrong_output": ""
+  },
+  "source": {
+    "dataset": "ConDefects",
+    "condefects_id": "46051654",
+    "url": "https://atcoder.jp/contests/abc309/tasks/abc309_d",
+    "difficulty": 621,
+    "contest_date": "2023-07-08",
+    "buggy_line": "q.append(0)",
+    "fixed_line": "q.append(s)",
+    "tests": 15,
+    "buggy_fails": 4
+  }
+}

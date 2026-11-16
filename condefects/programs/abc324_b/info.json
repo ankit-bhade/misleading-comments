@@ -1,0 +1,25 @@
+{
+  "task": "abc324_b",
+  "author": "Ankit",
+  "generated_by": "",
+  "problem": "",
+  "bug_type": "",
+  "bug_description": "",
+  "comments": {
+    "accurate": "",
+    "wrong_behavior": "",
+    "wrong_location": "",
+    "wrong_output": ""
+  },
+  "source": {
+    "dataset": "ConDefects",
+    "condefects_id": "54903435",
+    "url": "https://atcoder.jp/contests/abc324/tasks/abc324_b",
+    "difficulty": 91,
+    "contest_date": "2023-10-14",
+    "buggy_line": "print(\"Yes\" if n == 0 else \"No\")",
+    "fixed_line": "print(\"Yes\" if n == 1 else \"No\")",
+    "tests": 23,
+    "buggy_fails": 14
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "task": "abc360_b",
+  "author": "Seung Wook",
+  "generated_by": "",
+  "problem": "",
+  "bug_type": "",
+  "bug_description": "",
+  "comments": {
+    "accurate": "",
+    "wrong_behavior": "",
+    "wrong_location": "",
+    "wrong_output": ""
+  },
+  "source": {
+    "dataset": "ConDefects",
+    "condefects_id": "55142362",
+    "url": "https://atcoder.jp/contests/abc360/tasks/abc360_b",
+    "difficulty": 78,
+    "contest_date": "2024-06-30",
+    "buggy_line": "ss[-1] += \" \" * (len(s) % w)",
+    "fixed_line": "ss[-1] += \" \" * (w - len(s) % w)",
+    "tests": 29,
+    "buggy_fails": 2
+  }
+}

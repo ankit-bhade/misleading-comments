@@ -1,0 +1,25 @@
+{
+  "task": "abc234_a",
+  "author": "Seung Wook",
+  "generated_by": "",
+  "problem": "",
+  "bug_type": "",
+  "bug_description": "",
+  "comments": {
+    "accurate": "",
+    "wrong_behavior": "",
+    "wrong_location": "",
+    "wrong_output": ""
+  },
+  "source": {
+    "dataset": "ConDefects",
+    "condefects_id": "44890153",
+    "url": "https://atcoder.jp/contests/abc234/tasks/abc234_a",
+    "difficulty": 7,
+    "contest_date": "2022-01-08",
+    "buggy_line": "print((f(f(t)+t)+f(f(t))))",
+    "fixed_line": "print(f(f(f(t)+t)+f(f(t))))",
+    "tests": 14,
+    "buggy_fails": 14
+  }
+}

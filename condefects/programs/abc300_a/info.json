@@ -1,0 +1,25 @@
+{
+  "task": "abc300_a",
+  "author": "Arnav",
+  "generated_by": "",
+  "problem": "",
+  "bug_type": "",
+  "bug_description": "",
+  "comments": {
+    "accurate": "",
+    "wrong_behavior": "",
+    "wrong_location": "",
+    "wrong_output": ""
+  },
+  "source": {
+    "dataset": "ConDefects",
+    "condefects_id": "46003187",
+    "url": "https://atcoder.jp/contests/abc300/tasks/abc300_a",
+    "difficulty": 8,
+    "contest_date": "2023-04-29",
+    "buggy_line": "print(i)",
+    "fixed_line": "print(i+1)",
+    "tests": 14,
+    "buggy_fails": 14
+  }
+}

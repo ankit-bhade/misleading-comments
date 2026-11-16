@@ -1,0 +1,25 @@
+{
+  "task": "abc296_c",
+  "author": "Kushal",
+  "generated_by": "",
+  "problem": "",
+  "bug_type": "",
+  "bug_description": "",
+  "comments": {
+    "accurate": "",
+    "wrong_behavior": "",
+    "wrong_location": "",
+    "wrong_output": ""
+  },
+  "source": {
+    "dataset": "ConDefects",
+    "condefects_id": "46012599",
+    "url": "https://atcoder.jp/contests/abc296/tasks/abc296_c",
+    "difficulty": 162,
+    "contest_date": "2023-04-01",
+    "buggy_line": "if X-a in Aset:",
+    "fixed_line": "if a + X in Aset:",
+    "tests": 5,
+    "buggy_fails": 4
+  }
+}

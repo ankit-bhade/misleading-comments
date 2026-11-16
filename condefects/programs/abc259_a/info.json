@@ -1,0 +1,25 @@
+{
+  "task": "abc259_a",
+  "author": "Kushal",
+  "generated_by": "",
+  "problem": "",
+  "bug_type": "",
+  "bug_description": "",
+  "comments": {
+    "accurate": "",
+    "wrong_behavior": "",
+    "wrong_location": "",
+    "wrong_output": ""
+  },
+  "source": {
+    "dataset": "ConDefects",
+    "condefects_id": "46054994",
+    "url": "https://atcoder.jp/contests/abc259/tasks/abc259_a",
+    "difficulty": 34,
+    "contest_date": "2022-07-09",
+    "buggy_line": "print(T + (X - M) * D)",
+    "fixed_line": "print(T - (X - M) * D)",
+    "tests": 13,
+    "buggy_fails": 8
+  }
+}

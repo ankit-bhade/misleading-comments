@@ -1,0 +1,25 @@
+{
+  "task": "abc314_a",
+  "author": "Ankit",
+  "generated_by": "",
+  "problem": "",
+  "bug_type": "",
+  "bug_description": "",
+  "comments": {
+    "accurate": "",
+    "wrong_behavior": "",
+    "wrong_location": "",
+    "wrong_output": ""
+  },
+  "source": {
+    "dataset": "ConDefects",
+    "condefects_id": "46027498",
+    "url": "https://atcoder.jp/contests/abc314/tasks/abc314_a",
+    "difficulty": 30,
+    "contest_date": "2023-08-12",
+    "buggy_line": "for i in range(int(input())):",
+    "fixed_line": "for i in range(int(input())+2):",
+    "tests": 8,
+    "buggy_fails": 8
+  }
+}

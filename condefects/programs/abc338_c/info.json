@@ -1,0 +1,25 @@
+{
+  "task": "abc338_c",
+  "author": "Kushal",
+  "generated_by": "",
+  "problem": "",
+  "bug_type": "",
+  "bug_description": "",
+  "comments": {
+    "accurate": "",
+    "wrong_behavior": "",
+    "wrong_location": "",
+    "wrong_output": ""
+  },
+  "source": {
+    "dataset": "ConDefects",
+    "condefects_id": "54491236",
+    "url": "https://atcoder.jp/contests/abc338/tasks/abc338_c",
+    "difficulty": 513,
+    "contest_date": "2024-01-27",
+    "buggy_line": "y=min((q[i]-x*a[i])//b[i],x)",
+    "fixed_line": "y=min((q[i]-x*a[i])//b[i],y)",
+    "tests": 16,
+    "buggy_fails": 10
+  }
+}

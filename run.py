@@ -6,6 +6,7 @@ results/<model>/<program>.json.
 
 Usage:
   python3 run.py programs/foo [programs/bar ...]
+  python3 run.py condefects/programs/abc280_c ...   (ConDefects: results go to condefects/results/)
 """
 import json
 import re
@@ -18,6 +19,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 import check
+from condefects import cd
 
 # Experiment settings. Change these only if the team agrees (see EXPERIMENT.md).
 MODEL = "qwen2.5-coder:7b-instruct-q4_K_M"  # kaggle_run.ipynb switches this to the 32B build
@@ -29,6 +31,7 @@ OLLAMA_URL = "http://localhost:11434/api/chat"
 
 ROOT = Path(__file__).resolve().parent
 PROMPTS = {"A": ROOT / "prompts" / "prompt_a.txt", "B": ROOT / "prompts" / "prompt_b.txt"}
+CD_PROMPTS = {"A": ROOT / "condefects" / "prompts" / "prompt_a.txt", "B": ROOT / "condefects" / "prompts" / "prompt_b.txt"}
 CODE_BLOCK = re.compile(r"```(?:python|py)?[ \t]*\n(.*?)```", re.DOTALL)
 
 
@@ -52,9 +55,15 @@ def ask_model(prompt):
         sys.exit("Can't reach Ollama. Open the Ollama app (or run `ollama serve`) and try again.")
 
 
-def results_dir():
-    """Where this model's results go, e.g. results/qwen2.5-coder-7b."""
-    return ROOT / "results" / MODEL.split("-instruct")[0].replace(":", "-")
+def is_condefects(folder):
+    """ConDefects programs are whole scripts with AtCoder's input/output test files."""
+    return (Path(folder) / "tests").is_dir()
+
+
+def results_dir(dataset="main"):
+    """Where this model's results go, e.g. results/qwen2.5-coder-7b or condefects/results/qwen2.5-coder-7b."""
+    base = ROOT / "condefects" / "results" if dataset == "condefects" else ROOT / "results"
+    return base / MODEL.split("-instruct")[0].replace(":", "-")
 
 
 def machine_info():
@@ -85,12 +94,15 @@ def split_reply(reply):
 
 
 def grade(code, folder, func):
-    """Return (tests_passed, tests_total, error) for a fixed function."""
+    """Return (tests_passed, tests_total, error) for a fixed function (or ConDefects program)."""
     if code is None:
         return 0, None, "no code block in reply"
     with tempfile.TemporaryDirectory() as tmp:
         path = Path(tmp) / "fix.py"
         path.write_text(code)
+        if is_condefects(folder):
+            tests = cd.run_tests(path, folder)
+            return sum(1 for t in tests if t[3]), len(tests), None
         result, error = check.run(path, folder / "tests.py", func)
     if error:
         return 0, None, error
@@ -99,23 +111,25 @@ def grade(code, folder, func):
 
 
 def run_program(folder):
-    problems, _ = check.check(folder)
+    condefects = is_condefects(folder)
+    problems, _ = cd.check_folder(folder) if condefects else check.check(folder)
     if problems:
-        print(f"SKIP  {folder.name}: fails check.py; run python3 check.py {folder} first")
+        checker = "condefects/cd.py" if condefects else "check.py"
+        print(f"SKIP  {folder.name}: fails {checker}; run python3 {checker} {folder} first")
         return False
     check.write_versions(folder)
     ollama_version, gpu = machine_info()
 
     info = json.loads((folder / "info.json").read_text())
     records = []
-    for prompt_id, template_path in PROMPTS.items():
+    for prompt_id, template_path in (CD_PROMPTS if condefects else PROMPTS).items():
         template = template_path.read_text()
         for version, code in check.versions(folder).items():
             prompt = template.replace("{problem}", info["problem"]).replace("{code}", code.rstrip())
             print(f"  {folder.name}  prompt {prompt_id}  {version:<15}", end="", flush=True)
             reply = ask_model(prompt)
             fixed_code, explanation = split_reply(reply)
-            passed, total, error = grade(fixed_code, folder, info["function"])
+            passed, total, error = grade(fixed_code, folder, info.get("function"))
             success = error is None and passed == total
             print("PASS" if success else "FAIL")
             records.append({
@@ -142,7 +156,7 @@ def run_program(folder):
                 "error": error,
             })
 
-    out_dir = results_dir()
+    out_dir = results_dir("condefects" if condefects else "main")
     out_dir.mkdir(parents=True, exist_ok=True)
     out_path = out_dir / f"{folder.name}.json"
     out_path.write_text(json.dumps(records, indent=2) + "\n")

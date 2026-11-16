@@ -1,0 +1,25 @@
+{
+  "task": "abc264_a",
+  "author": "Seung Wook",
+  "generated_by": "",
+  "problem": "",
+  "bug_type": "",
+  "bug_description": "",
+  "comments": {
+    "accurate": "",
+    "wrong_behavior": "",
+    "wrong_location": "",
+    "wrong_output": ""
+  },
+  "source": {
+    "dataset": "ConDefects",
+    "condefects_id": "45803747",
+    "url": "https://atcoder.jp/contests/abc264/tasks/abc264_a",
+    "difficulty": 8,
+    "contest_date": "2022-08-13",
+    "buggy_line": "print(s[L+1:R+1])",
+    "fixed_line": "print(s[L-1:R])",
+    "tests": 31,
+    "buggy_fails": 31
+  }
+}

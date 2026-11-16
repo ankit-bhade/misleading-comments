@@ -1,0 +1,25 @@
+{
+  "task": "abc244_b",
+  "author": "Seung Wook",
+  "generated_by": "",
+  "problem": "",
+  "bug_type": "",
+  "bug_description": "",
+  "comments": {
+    "accurate": "",
+    "wrong_behavior": "",
+    "wrong_location": "",
+    "wrong_output": ""
+  },
+  "source": {
+    "dataset": "ConDefects",
+    "condefects_id": "45713633",
+    "url": "https://atcoder.jp/contests/abc244/tasks/abc244_b",
+    "difficulty": 30,
+    "contest_date": "2022-03-20",
+    "buggy_line": "self.dx, self.dy = self.y, -self.dx",
+    "fixed_line": "self.dx, self.dy = self.dy, -self.dx",
+    "tests": 13,
+    "buggy_fails": 9
+  }
+}

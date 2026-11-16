@@ -1,0 +1,25 @@
+{
+  "task": "abc238_a",
+  "author": "Kushal",
+  "generated_by": "",
+  "problem": "",
+  "bug_type": "",
+  "bug_description": "",
+  "comments": {
+    "accurate": "",
+    "wrong_behavior": "",
+    "wrong_location": "",
+    "wrong_output": ""
+  },
+  "source": {
+    "dataset": "ConDefects",
+    "condefects_id": "45663153",
+    "url": "https://atcoder.jp/contests/abc238/tasks/abc238_a",
+    "difficulty": 26,
+    "contest_date": "2022-02-05",
+    "buggy_line": "if n == 2 or n == 3:",
+    "fixed_line": "if n == 2 or n == 3 or n == 4:",
+    "tests": 14,
+    "buggy_fails": 1
+  }
+}

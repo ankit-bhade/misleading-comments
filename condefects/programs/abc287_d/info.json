@@ -1,0 +1,25 @@
+{
+  "task": "abc287_d",
+  "author": "Ankit",
+  "generated_by": "",
+  "problem": "",
+  "bug_type": "",
+  "bug_description": "",
+  "comments": {
+    "accurate": "",
+    "wrong_behavior": "",
+    "wrong_location": "",
+    "wrong_output": ""
+  },
+  "source": {
+    "dataset": "ConDefects",
+    "condefects_id": "45533288",
+    "url": "https://atcoder.jp/contests/abc287/tasks/abc287_d",
+    "difficulty": 796,
+    "contest_date": "2023-01-28",
+    "buggy_line": "print('Yes' if chk and N - M + i >= ind else 'No')",
+    "fixed_line": "print('Yes' if chk and i >= ind else 'No')",
+    "tests": 23,
+    "buggy_fails": 5
+  }
+}

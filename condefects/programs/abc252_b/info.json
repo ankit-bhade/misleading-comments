@@ -1,0 +1,25 @@
+{
+  "task": "abc252_b",
+  "author": "Arnav",
+  "generated_by": "",
+  "problem": "",
+  "bug_type": "",
+  "bug_description": "",
+  "comments": {
+    "accurate": "",
+    "wrong_behavior": "",
+    "wrong_location": "",
+    "wrong_output": ""
+  },
+  "source": {
+    "dataset": "ConDefects",
+    "condefects_id": "45103207",
+    "url": "https://atcoder.jp/contests/abc252/tasks/abc252_b",
+    "difficulty": 42,
+    "contest_date": "2022-05-21",
+    "buggy_line": "D[A[i]].add(i)",
+    "fixed_line": "D[A[i]].add(i+1)",
+    "tests": 20,
+    "buggy_fails": 9
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "task": "abc326_c",
+  "author": "Ankit",
+  "generated_by": "",
+  "problem": "",
+  "bug_type": "",
+  "bug_description": "",
+  "comments": {
+    "accurate": "",
+    "wrong_behavior": "",
+    "wrong_location": "",
+    "wrong_output": ""
+  },
+  "source": {
+    "dataset": "ConDefects",
+    "condefects_id": "54687593",
+    "url": "https://atcoder.jp/contests/abc326/tasks/abc326_c",
+    "difficulty": 292,
+    "contest_date": "2023-10-28",
+    "buggy_line": "for i in range(n-1):",
+    "fixed_line": "for i in range(n):",
+    "tests": 8,
+    "buggy_fails": 2
+  }
+}

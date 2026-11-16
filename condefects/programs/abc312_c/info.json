@@ -1,0 +1,25 @@
+{
+  "task": "abc312_c",
+  "author": "Seung Wook",
+  "generated_by": "",
+  "problem": "",
+  "bug_type": "",
+  "bug_description": "",
+  "comments": {
+    "accurate": "",
+    "wrong_behavior": "",
+    "wrong_location": "",
+    "wrong_output": ""
+  },
+  "source": {
+    "dataset": "ConDefects",
+    "condefects_id": "46056572",
+    "url": "https://atcoder.jp/contests/abc312/tasks/abc312_c",
+    "difficulty": 727,
+    "contest_date": "2023-07-29",
+    "buggy_line": "print(bisect(10 ** 9, -1, solve))",
+    "fixed_line": "print(bisect(10 ** 9 + 1, -1, solve))",
+    "tests": 11,
+    "buggy_fails": 1
+  }
+}

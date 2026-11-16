@@ -1,0 +1,25 @@
+{
+  "task": "abc280_c",
+  "author": "Kushal",
+  "generated_by": "",
+  "problem": "",
+  "bug_type": "",
+  "bug_description": "",
+  "comments": {
+    "accurate": "",
+    "wrong_behavior": "",
+    "wrong_location": "",
+    "wrong_output": ""
+  },
+  "source": {
+    "dataset": "ConDefects",
+    "condefects_id": "46198348",
+    "url": "https://atcoder.jp/contests/abc280/tasks/abc280_c",
+    "difficulty": 64,
+    "contest_date": "2022-12-03",
+    "buggy_line": "print(1)",
+    "fixed_line": "print(len(t))",
+    "tests": 5,
+    "buggy_fails": 2
+  }
+}

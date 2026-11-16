@@ -1,0 +1,25 @@
+{
+  "task": "abc344_a",
+  "author": "Arnav",
+  "generated_by": "",
+  "problem": "",
+  "bug_type": "",
+  "bug_description": "",
+  "comments": {
+    "accurate": "",
+    "wrong_behavior": "",
+    "wrong_location": "",
+    "wrong_output": ""
+  },
+  "source": {
+    "dataset": "ConDefects",
+    "condefects_id": "54865781",
+    "url": "https://atcoder.jp/contests/abc344/tasks/abc344_a",
+    "difficulty": 20,
+    "contest_date": "2024-03-09",
+    "buggy_line": "if not(start == (end - 2)): string = string.replace(string[start:end+1], \"\")",
+    "fixed_line": "if not(start == (end - 2)): string = string.replace(string[start:end], \"\")",
+    "tests": 14,
+    "buggy_fails": 3
+  }
+}

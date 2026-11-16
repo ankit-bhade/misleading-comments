@@ -6,7 +6,8 @@ judge labeled yes, since yes is rare. Run after judge.py. Writes
 handcheck/<first name>.csv, and won't overwrite a sheet someone has started.
 
 Usage:
-  python3 handcheck.py
+  python3 handcheck.py               our programs: handcheck/<name>.csv
+  python3 handcheck.py condefects    ConDefects: condefects/handcheck/<name>.csv
 """
 import csv
 import json
@@ -24,59 +25,71 @@ SAMPLE = {
     "Seung Wook": ["fastest_lap", "cable_car_boarding", "best_streak_profit", "attendance_growth", "busiest_window",
                    "dive_log_total"],
 }
+# ConDefects: 6 random programs per person, drawn 2026-11-15 (random.Random("2026-<name>").sample) before any results.
+SAMPLE_CONDEFECTS = {
+    "Ankit": ["abc272_b", "abc310_a", "abc319_a", "abc324_b", "abc342_b", "abc354_a"],
+    "Arnav": ["abc235_b", "abc268_c", "abc308_a", "abc319_b", "abc357_b", "abc358_b"],
+    "Kushal": ["abc250_d", "abc275_c", "abc305_a", "abc309_d", "abc318_a", "abc356_c"],
+    "Seung Wook": ["abc230_b", "abc240_a", "abc264_a", "abc313_b", "abc326_a", "abc331_b"],
+}
 COLUMNS = ["row", "program", "comment_shown_to_model", "model_reply", "ai_says_flags_comment",
            "agree (yes/no)", "note", "model", "version", "prompt"]
 
 
-def sheet_rows(person):
+def sheet_rows(person, base, sample):
     """Rows for one person: their sample, plus their other replies the judge labeled yes."""
     rows = []
-    for folder in sorted((ROOT / "programs").iterdir()):
+    for folder in sorted((base / "programs").iterdir()):
         if not folder.is_dir():
             continue
         info = json.loads((folder / "info.json").read_text())
         if info["author"].strip() != person:
             continue
         for model in MODELS:
-            results = {(r["version"], r["prompt"]): r
-                       for r in json.loads((ROOT / "results" / model / f"{folder.name}.json").read_text())}
-            judged_path = ROOT / "judgments" / model / f"{folder.name}.json"
+            result_path = base / "results" / model / f"{folder.name}.json"
+            if not result_path.exists():
+                sys.exit(f"No results yet for {result_path.relative_to(ROOT)}. Run both models first, then judge.py.")
+            results = {(r["version"], r["prompt"]): r for r in json.loads(result_path.read_text())}
+            judged_path = base / "judgments" / model / f"{folder.name}.json"
             judged = json.loads(judged_path.read_text()) if judged_path.exists() else []
             for label in judged:
                 if label["version"] == "accurate":
                     continue
                 if label["flags_comment"] is None:
                     sys.exit(f"{judged_path.relative_to(ROOT)} has replies without a judge label. Run judge.py first.")
-                if folder.name in SAMPLE[person] or label["flags_comment"] == "yes":
+                if folder.name in sample[person] or label["flags_comment"] == "yes":
                     result = results[(label["version"], label["prompt"])]
                     rows.append([folder.name, info["comments"][label["version"]], result["reply"],
                                  label["flags_comment"], "", "", model, label["version"], label["prompt"]])
-            if not judged and folder.name in SAMPLE[person]:
+            if not judged and folder.name in sample[person]:
                 sys.exit(f"No judge labels for {model}/{folder.name}. Run judge.py first.")
     random.Random(2026).shuffle(rows)  # mixed order, so models and comment kinds aren't grouped
     return rows
 
 
-def main():
-    out_dir = ROOT / "handcheck"
+def main(argv):
+    condefects = argv[:1] == ["condefects"]
+    base = ROOT / "condefects" if condefects else ROOT
+    sample = SAMPLE_CONDEFECTS if condefects else SAMPLE
+    out_dir = base / "handcheck"
     out_dir.mkdir(exist_ok=True)
-    for person in SAMPLE:
+    for person in sample:
         path = out_dir / f"{person.split()[0].lower()}.csv"
         if path.exists():
             with open(path, newline="") as f:
                 if any(row["agree (yes/no)"].strip() for row in csv.DictReader(f)):
                     print(f"SKIP  {path.relative_to(ROOT)}: already being filled in")
                     continue
-        rows = sheet_rows(person)
+        rows = sheet_rows(person, base, sample)
         with open(path, "w", newline="") as f:
             writer = csv.writer(f)
             writer.writerow(COLUMNS)
             for i, row in enumerate(rows, 1):
                 writer.writerow([i] + row)
-        extra = len(rows) - 12 * len(SAMPLE[person])
+        extra = len(rows) - 12 * len(sample[person])
         print(f"WROTE {path.relative_to(ROOT)}: {len(rows)} rows ({extra} extra yes rows)")
     return 0
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    sys.exit(main(sys.argv[1:]))

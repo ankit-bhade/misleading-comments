@@ -1,0 +1,25 @@
+{
+  "task": "abc260_b",
+  "author": "Seung Wook",
+  "generated_by": "",
+  "problem": "",
+  "bug_type": "",
+  "bug_description": "",
+  "comments": {
+    "accurate": "",
+    "wrong_behavior": "",
+    "wrong_location": "",
+    "wrong_output": ""
+  },
+  "source": {
+    "dataset": "ConDefects",
+    "condefects_id": "53041244",
+    "url": "https://atcoder.jp/contests/abc260/tasks/abc260_b",
+    "difficulty": 195,
+    "contest_date": "2022-07-17",
+    "buggy_line": "print(*ans, sep='\\n')",
+    "fixed_line": "print(*sorted(ans), sep='\\n')",
+    "tests": 30,
+    "buggy_fails": 3
+  }
+}

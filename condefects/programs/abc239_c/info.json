@@ -1,0 +1,25 @@
+{
+  "task": "abc239_c",
+  "author": "Arnav",
+  "generated_by": "",
+  "problem": "",
+  "bug_type": "",
+  "bug_description": "",
+  "comments": {
+    "accurate": "",
+    "wrong_behavior": "",
+    "wrong_location": "",
+    "wrong_output": ""
+  },
+  "source": {
+    "dataset": "ConDefects",
+    "condefects_id": "44818357",
+    "url": "https://atcoder.jp/contests/abc239/tasks/abc239_c",
+    "difficulty": 198,
+    "contest_date": "2022-02-19",
+    "buggy_line": "elif abs(x1 - x2) == 4 and abs(y1 - y2) == 0:",
+    "fixed_line": "elif abs(x1 - x2) == 4 and abs(y1 - y2) in [0, 2]:",
+    "tests": 20,
+    "buggy_fails": 1
+  }
+}

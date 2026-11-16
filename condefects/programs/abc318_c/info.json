@@ -1,0 +1,25 @@
+{
+  "task": "abc318_c",
+  "author": "Seung Wook",
+  "generated_by": "",
+  "problem": "",
+  "bug_type": "",
+  "bug_description": "",
+  "comments": {
+    "accurate": "",
+    "wrong_behavior": "",
+    "wrong_location": "",
+    "wrong_output": ""
+  },
+  "source": {
+    "dataset": "ConDefects",
+    "condefects_id": "45939362",
+    "url": "https://atcoder.jp/contests/abc318/tasks/abc318_c",
+    "difficulty": 400,
+    "contest_date": "2023-09-02",
+    "buggy_line": "ans+=min(p,sum(f[d*i:d*(i+1)+1]))",
+    "fixed_line": "ans+=min(p,sum(f[d*i:d*(i+1)]))",
+    "tests": 8,
+    "buggy_fails": 2
+  }
+}

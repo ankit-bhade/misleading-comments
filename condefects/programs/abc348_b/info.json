@@ -1,0 +1,25 @@
+{
+  "task": "abc348_b",
+  "author": "Ankit",
+  "generated_by": "",
+  "problem": "",
+  "bug_type": "",
+  "bug_description": "",
+  "comments": {
+    "accurate": "",
+    "wrong_behavior": "",
+    "wrong_location": "",
+    "wrong_output": ""
+  },
+  "source": {
+    "dataset": "ConDefects",
+    "condefects_id": "55140212",
+    "url": "https://atcoder.jp/contests/abc348/tasks/abc348_b",
+    "difficulty": 79,
+    "contest_date": "2024-04-06",
+    "buggy_line": "if dn<d:",
+    "fixed_line": "if dn>d:",
+    "tests": 22,
+    "buggy_fails": 22
+  }
+}

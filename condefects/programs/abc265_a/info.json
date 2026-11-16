@@ -1,0 +1,25 @@
+{
+  "task": "abc265_a",
+  "author": "Ankit",
+  "generated_by": "",
+  "problem": "",
+  "bug_type": "",
+  "bug_description": "",
+  "comments": {
+    "accurate": "",
+    "wrong_behavior": "",
+    "wrong_location": "",
+    "wrong_output": ""
+  },
+  "source": {
+    "dataset": "ConDefects",
+    "condefects_id": "45840285",
+    "url": "https://atcoder.jp/contests/abc265/tasks/abc265_a",
+    "difficulty": 18,
+    "contest_date": "2022-08-21",
+    "buggy_line": "print(n/3 * y + n%3 * x)",
+    "fixed_line": "print(n//3 * y + n%3 * x)",
+    "tests": 11,
+    "buggy_fails": 7
+  }
+}

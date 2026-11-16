@@ -1,0 +1,25 @@
+{
+  "task": "abc352_a",
+  "author": "Ankit",
+  "generated_by": "",
+  "problem": "",
+  "bug_type": "",
+  "bug_description": "",
+  "comments": {
+    "accurate": "",
+    "wrong_behavior": "",
+    "wrong_location": "",
+    "wrong_output": ""
+  },
+  "source": {
+    "dataset": "ConDefects",
+    "condefects_id": "54917636",
+    "url": "https://atcoder.jp/contests/abc352/tasks/abc352_a",
+    "difficulty": 14,
+    "contest_date": "2024-05-04",
+    "buggy_line": "print(\"Yes\" if x < z < y else \"No\")",
+    "fixed_line": "print(\"Yes\" if x < z < y or y < z < x else \"No\")",
+    "tests": 12,
+    "buggy_fails": 2
+  }
+}

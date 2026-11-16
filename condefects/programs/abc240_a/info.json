@@ -1,0 +1,25 @@
+{
+  "task": "abc240_a",
+  "author": "Seung Wook",
+  "generated_by": "",
+  "problem": "",
+  "bug_type": "",
+  "bug_description": "",
+  "comments": {
+    "accurate": "",
+    "wrong_behavior": "",
+    "wrong_location": "",
+    "wrong_output": ""
+  },
+  "source": {
+    "dataset": "ConDefects",
+    "condefects_id": "45439558",
+    "url": "https://atcoder.jp/contests/abc240/tasks/abc240_a",
+    "difficulty": 7,
+    "contest_date": "2022-02-20",
+    "buggy_line": "if b - a or b - a == 9:",
+    "fixed_line": "if b - a == 1 or b - a == 9:",
+    "tests": 16,
+    "buggy_fails": 6
+  }
+}

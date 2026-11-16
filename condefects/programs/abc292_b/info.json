@@ -1,0 +1,25 @@
+{
+  "task": "abc292_b",
+  "author": "Arnav",
+  "generated_by": "",
+  "problem": "",
+  "bug_type": "",
+  "bug_description": "",
+  "comments": {
+    "accurate": "",
+    "wrong_behavior": "",
+    "wrong_location": "",
+    "wrong_output": ""
+  },
+  "source": {
+    "dataset": "ConDefects",
+    "condefects_id": "44986856",
+    "url": "https://atcoder.jp/contests/abc292/tasks/abc292_b",
+    "difficulty": 39,
+    "contest_date": "2023-03-04",
+    "buggy_line": "if cards[x] == 2:",
+    "fixed_line": "if cards[x] >= 2:",
+    "tests": 17,
+    "buggy_fails": 6
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "task": "abc338_a",
+  "author": "Seung Wook",
+  "generated_by": "",
+  "problem": "",
+  "bug_type": "",
+  "bug_description": "",
+  "comments": {
+    "accurate": "",
+    "wrong_behavior": "",
+    "wrong_location": "",
+    "wrong_output": ""
+  },
+  "source": {
+    "dataset": "ConDefects",
+    "condefects_id": "54630438",
+    "url": "https://atcoder.jp/contests/abc338/tasks/abc338_a",
+    "difficulty": 21,
+    "contest_date": "2024-01-27",
+    "buggy_line": "if C.isupper() and D.islower() or len(S) == 1:",
+    "fixed_line": "if C.isupper() and (len(S) == 1 or D.islower()):",
+    "tests": 19,
+    "buggy_fails": 1
+  }
+}

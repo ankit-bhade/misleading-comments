@@ -1,0 +1,25 @@
+{
+  "task": "abc225_c",
+  "author": "Arnav",
+  "generated_by": "",
+  "problem": "",
+  "bug_type": "",
+  "bug_description": "",
+  "comments": {
+    "accurate": "",
+    "wrong_behavior": "",
+    "wrong_location": "",
+    "wrong_output": ""
+  },
+  "source": {
+    "dataset": "ConDefects",
+    "condefects_id": "45469943",
+    "url": "https://atcoder.jp/contests/abc225/tasks/abc225_c",
+    "difficulty": 326,
+    "contest_date": "2021-10-30",
+    "buggy_line": "if B[i][j] % 7 > j + 1:",
+    "fixed_line": "if B[i][j] % 7 == 0 and j != M - 1:",
+    "tests": 14,
+    "buggy_fails": 3
+  }
+}

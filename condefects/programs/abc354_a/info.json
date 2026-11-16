@@ -1,0 +1,25 @@
+{
+  "task": "abc354_a",
+  "author": "Ankit",
+  "generated_by": "",
+  "problem": "",
+  "bug_type": "",
+  "bug_description": "",
+  "comments": {
+    "accurate": "",
+    "wrong_behavior": "",
+    "wrong_location": "",
+    "wrong_output": ""
+  },
+  "source": {
+    "dataset": "ConDefects",
+    "condefects_id": "54981846",
+    "url": "https://atcoder.jp/contests/abc354/tasks/abc354_a",
+    "difficulty": 21,
+    "contest_date": "2024-05-18",
+    "buggy_line": "for i in range(H):",
+    "fixed_line": "for i in range(H + 1):",
+    "tests": 24,
+    "buggy_fails": 1
+  }
+}

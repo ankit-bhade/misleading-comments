@@ -1,0 +1,25 @@
+{
+  "task": "abc232_d",
+  "author": "Ankit",
+  "generated_by": "",
+  "problem": "",
+  "bug_type": "",
+  "bug_description": "",
+  "comments": {
+    "accurate": "",
+    "wrong_behavior": "",
+    "wrong_location": "",
+    "wrong_output": ""
+  },
+  "source": {
+    "dataset": "ConDefects",
+    "condefects_id": "44805380",
+    "url": "https://atcoder.jp/contests/abc232/tasks/abc232_d",
+    "difficulty": 539,
+    "contest_date": "2021-12-19",
+    "buggy_line": "s[i][j] == 0",
+    "fixed_line": "s[i][j] = 0",
+    "tests": 20,
+    "buggy_fails": 13
+  }
+}

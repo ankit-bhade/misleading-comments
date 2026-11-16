@@ -1,0 +1,25 @@
+{
+  "task": "abc250_d",
+  "author": "Kushal",
+  "generated_by": "",
+  "problem": "",
+  "bug_type": "",
+  "bug_description": "",
+  "comments": {
+    "accurate": "",
+    "wrong_behavior": "",
+    "wrong_location": "",
+    "wrong_output": ""
+  },
+  "source": {
+    "dataset": "ConDefects",
+    "condefects_id": "45700046",
+    "url": "https://atcoder.jp/contests/abc250/tasks/abc250_d",
+    "difficulty": 797,
+    "contest_date": "2022-05-08",
+    "buggy_line": "Alist = Eratosthenes(10**3)",
+    "fixed_line": "Alist = Eratosthenes(10**6)",
+    "tests": 20,
+    "buggy_fails": 15
+  }
+}

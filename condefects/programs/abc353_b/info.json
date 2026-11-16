@@ -1,0 +1,25 @@
+{
+  "task": "abc353_b",
+  "author": "Ankit",
+  "generated_by": "",
+  "problem": "",
+  "bug_type": "",
+  "bug_description": "",
+  "comments": {
+    "accurate": "",
+    "wrong_behavior": "",
+    "wrong_location": "",
+    "wrong_output": ""
+  },
+  "source": {
+    "dataset": "ConDefects",
+    "condefects_id": "54945668",
+    "url": "https://atcoder.jp/contests/abc353/tasks/abc353_b",
+    "difficulty": 51,
+    "contest_date": "2024-05-11",
+    "buggy_line": "if seat_count != 0:",
+    "fixed_line": "if seat_count != 0 and seat_count != k:",
+    "tests": 15,
+    "buggy_fails": 3
+  }
+}

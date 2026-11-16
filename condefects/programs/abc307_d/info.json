@@ -1,0 +1,25 @@
+{
+  "task": "abc307_d",
+  "author": "Seung Wook",
+  "generated_by": "",
+  "problem": "",
+  "bug_type": "",
+  "bug_description": "",
+  "comments": {
+    "accurate": "",
+    "wrong_behavior": "",
+    "wrong_location": "",
+    "wrong_output": ""
+  },
+  "source": {
+    "dataset": "ConDefects",
+    "condefects_id": "45446603",
+    "url": "https://atcoder.jp/contests/abc307/tasks/abc307_d",
+    "difficulty": 666,
+    "contest_date": "2023-06-24",
+    "buggy_line": "sakuzyo.append(i)",
+    "fixed_line": "sakuzyo.append(len(ans))",
+    "tests": 28,
+    "buggy_fails": 6
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "task": "abc315_a",
+  "author": "Ankit",
+  "generated_by": "",
+  "problem": "",
+  "bug_type": "",
+  "bug_description": "",
+  "comments": {
+    "accurate": "",
+    "wrong_behavior": "",
+    "wrong_location": "",
+    "wrong_output": ""
+  },
+  "source": {
+    "dataset": "ConDefects",
+    "condefects_id": "46129092",
+    "url": "https://atcoder.jp/contests/abc315/tasks/abc315_a",
+    "difficulty": 12,
+    "contest_date": "2023-08-19",
+    "buggy_line": "result = input_str.replace('a', '').replace('e', '').replace('o', '')",
+    "fixed_line": "result = input_str.replace('a', '').replace('e', '').replace('i', '').replace('o', '').replace('u', '')",
+    "tests": 12,
+    "buggy_fails": 7
+  }
+}

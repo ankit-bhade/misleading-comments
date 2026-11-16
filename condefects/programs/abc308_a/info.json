@@ -1,0 +1,25 @@
+{
+  "task": "abc308_a",
+  "author": "Arnav",
+  "generated_by": "",
+  "problem": "",
+  "bug_type": "",
+  "bug_description": "",
+  "comments": {
+    "accurate": "",
+    "wrong_behavior": "",
+    "wrong_location": "",
+    "wrong_output": ""
+  },
+  "source": {
+    "dataset": "ConDefects",
+    "condefects_id": "46170943",
+    "url": "https://atcoder.jp/contests/abc308/tasks/abc308_a",
+    "difficulty": 16,
+    "contest_date": "2023-07-01",
+    "buggy_line": "if s==ss and s[0] >100 and s[-1]<675:",
+    "fixed_line": "if s==ss and s[0]>=100 and s[-1]<=675:",
+    "tests": 20,
+    "buggy_fails": 2
+  }
+}

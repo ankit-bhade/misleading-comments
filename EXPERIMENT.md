@@ -9,6 +9,8 @@ Run **your own 30 programs** (3 pilot + 27 new) on both models:
 
 Each program gets **8 runs per model**: 4 comment versions × 2 prompts.
 
+**Part 2, ConDefects (real bugs):** the same two runs on your 30 programs in `condefects/programs/`, after their comments are written (`condefects/COMMENTING.md`). In step 5 of each notebook, set `DATASET = "condefects"` as well as `AUTHOR`. Results go to `condefects/results/` instead of `results/`; add the files from `results.zip` there. Everything else below is the same.
+
 Laptops are too slow for this (an 8 GB Mac took over 10 minutes for one prompt), so we use free cloud GPUs.
 
 ## 7B: run on Google Colab
@@ -45,6 +47,8 @@ For each program, the script:
 4. saves everything to `results/qwen2.5-coder-7b/<program>.json` (or `results/qwen2.5-coder-32b/` for the 32B)
 
 Then commit and push your `results/` files. Don't edit them by hand.
+
+ConDefects programs (`condefects/programs/`, anything with a `tests/` folder) are whole AtCoder scripts, so `run.py` uses `condefects/cd.py` to check them, the prompts in `condefects/prompts/` (same as ours, with "program" instead of "function"), and AtCoder's input/output tests: a fix passes a test if it prints the same answer, ignoring spacing. Their results go to `condefects/results/<model>/`.
 
 ## Settings
 Set in `run.py`, the same for everyone:
@@ -86,4 +90,4 @@ One JSON file per program, containing a list of 8 results. Each result has:
 
 **Success rule:** the fix must keep the same function name and pass all tests. A reply with no code block, a renamed function, or code that crashes counts as a failure.
 
-Judging RQ2 (did a wrong fix do what the comment claimed?) and RQ3 (did the model notice the comment was wrong?) is done later by reading `fixed_code` and `explanation`. That's why the full reply is saved.
+Judging RQ2 (did a wrong fix do what the comment claimed?) and RQ3 (did the model notice the comment was wrong?) is done later by `judge.py` (see `JUDGING.md`). That's why the full reply is saved. `python3 analyze.py` (or `python3 analyze.py condefects`) then makes the RQ1-RQ3 tables in `analysis/`.

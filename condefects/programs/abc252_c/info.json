@@ -1,0 +1,25 @@
+{
+  "task": "abc252_c",
+  "author": "Ankit",
+  "generated_by": "",
+  "problem": "",
+  "bug_type": "",
+  "bug_description": "",
+  "comments": {
+    "accurate": "",
+    "wrong_behavior": "",
+    "wrong_location": "",
+    "wrong_output": ""
+  },
+  "source": {
+    "dataset": "ConDefects",
+    "condefects_id": "45002861",
+    "url": "https://atcoder.jp/contests/abc252/tasks/abc252_c",
+    "difficulty": 441,
+    "contest_date": "2022-05-21",
+    "buggy_line": "time[s_x].append(i+(count[s_x][x]-1)*10)",
+    "fixed_line": "time[s_x].append(x+(count[s_x][x]-1)*10)",
+    "tests": 32,
+    "buggy_fails": 29
+  }
+}

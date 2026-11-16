@@ -1,0 +1,25 @@
+{
+  "task": "abc287_a",
+  "author": "Arnav",
+  "generated_by": "",
+  "problem": "",
+  "bug_type": "",
+  "bug_description": "",
+  "comments": {
+    "accurate": "",
+    "wrong_behavior": "",
+    "wrong_location": "",
+    "wrong_output": ""
+  },
+  "source": {
+    "dataset": "ConDefects",
+    "condefects_id": "45662090",
+    "url": "https://atcoder.jp/contests/abc287/tasks/abc287_a",
+    "difficulty": 11,
+    "contest_date": "2023-01-28",
+    "buggy_line": "if result >= n // 2:",
+    "fixed_line": "if result > n // 2:",
+    "tests": 14,
+    "buggy_fails": 4
+  }
+}

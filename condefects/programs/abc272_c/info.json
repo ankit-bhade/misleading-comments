@@ -1,0 +1,25 @@
+{
+  "task": "abc272_c",
+  "author": "Arnav",
+  "generated_by": "",
+  "problem": "",
+  "bug_type": "",
+  "bug_description": "",
+  "comments": {
+    "accurate": "",
+    "wrong_behavior": "",
+    "wrong_location": "",
+    "wrong_output": ""
+  },
+  "source": {
+    "dataset": "ConDefects",
+    "condefects_id": "45973568",
+    "url": "https://atcoder.jp/contests/abc272/tasks/abc272_c",
+    "difficulty": 167,
+    "contest_date": "2022-10-08",
+    "buggy_line": "print(max(odd[-1] + even[-1], odd[-1] + odd[-2], even[-1] + even[-2], -1))",
+    "fixed_line": "print(max(odd[-1] + odd[-2], even[-1] + even[-2], -1))",
+    "tests": 7,
+    "buggy_fails": 5
+  }
+}

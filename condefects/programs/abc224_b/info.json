@@ -1,0 +1,25 @@
+{
+  "task": "abc224_b",
+  "author": "Arnav",
+  "generated_by": "",
+  "problem": "",
+  "bug_type": "",
+  "bug_description": "",
+  "comments": {
+    "accurate": "",
+    "wrong_behavior": "",
+    "wrong_location": "",
+    "wrong_output": ""
+  },
+  "source": {
+    "dataset": "ConDefects",
+    "condefects_id": "45096470",
+    "url": "https://atcoder.jp/contests/abc224/tasks/abc224_b",
+    "difficulty": 81,
+    "contest_date": "2021-10-23",
+    "buggy_line": "if A[h][w] + A[i][j] < A[i][w] + A[h][j] : flag = False",
+    "fixed_line": "if A[h][w] + A[i][j] > A[i][w] + A[h][j] : flag = False",
+    "tests": 30,
+    "buggy_fails": 21
+  }
+}

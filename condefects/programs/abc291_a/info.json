@@ -1,0 +1,25 @@
+{
+  "task": "abc291_a",
+  "author": "Kushal",
+  "generated_by": "",
+  "problem": "",
+  "bug_type": "",
+  "bug_description": "",
+  "comments": {
+    "accurate": "",
+    "wrong_behavior": "",
+    "wrong_location": "",
+    "wrong_output": ""
+  },
+  "source": {
+    "dataset": "ConDefects",
+    "condefects_id": "45508180",
+    "url": "https://atcoder.jp/contests/abc291/tasks/abc291_a",
+    "difficulty": 8,
+    "contest_date": "2023-02-26",
+    "buggy_line": "if 'A' < S[i] < 'Z':",
+    "fixed_line": "if 'A' <= S[i] <= 'Z':",
+    "tests": 18,
+    "buggy_fails": 3
+  }
+}

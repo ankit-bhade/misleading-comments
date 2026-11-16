@@ -1,0 +1,25 @@
+{
+  "task": "abc289_b",
+  "author": "Arnav",
+  "generated_by": "",
+  "problem": "",
+  "bug_type": "",
+  "bug_description": "",
+  "comments": {
+    "accurate": "",
+    "wrong_behavior": "",
+    "wrong_location": "",
+    "wrong_output": ""
+  },
+  "source": {
+    "dataset": "ConDefects",
+    "condefects_id": "44836694",
+    "url": "https://atcoder.jp/contests/abc289/tasks/abc289_b",
+    "difficulty": 225,
+    "contest_date": "2023-02-11",
+    "buggy_line": "result += sorted(subgraph.split(\"v\"), reverse=True)",
+    "fixed_line": "result += sorted(list(map(int, subgraph.split(\"v\"))), reverse=True) if len(subgraph) > 0 else []",
+    "tests": 16,
+    "buggy_fails": 8
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "task": "abc302_a",
+  "author": "Seung Wook",
+  "generated_by": "",
+  "problem": "",
+  "bug_type": "",
+  "bug_description": "",
+  "comments": {
+    "accurate": "",
+    "wrong_behavior": "",
+    "wrong_location": "",
+    "wrong_output": ""
+  },
+  "source": {
+    "dataset": "ConDefects",
+    "condefects_id": "45783782",
+    "url": "https://atcoder.jp/contests/abc302/tasks/abc302_a",
+    "difficulty": 24,
+    "contest_date": "2023-05-20",
+    "buggy_line": "print(int(A/B))",
+    "fixed_line": "print(int((A+B-1)//B))",
+    "tests": 15,
+    "buggy_fails": 2
+  }
+}

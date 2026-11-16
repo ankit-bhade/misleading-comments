@@ -1,0 +1,25 @@
+{
+  "task": "abc284_c",
+  "author": "Kushal",
+  "generated_by": "",
+  "problem": "",
+  "bug_type": "",
+  "bug_description": "",
+  "comments": {
+    "accurate": "",
+    "wrong_behavior": "",
+    "wrong_location": "",
+    "wrong_output": ""
+  },
+  "source": {
+    "dataset": "ConDefects",
+    "condefects_id": "54471713",
+    "url": "https://atcoder.jp/contests/abc284/tasks/abc284_c",
+    "difficulty": 193,
+    "contest_date": "2023-01-07",
+    "buggy_line": "for j in G[i]:",
+    "fixed_line": "for j in G[x]:",
+    "tests": 20,
+    "buggy_fails": 14
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "task": "abc290_c",
+  "author": "Arnav",
+  "generated_by": "",
+  "problem": "",
+  "bug_type": "",
+  "bug_description": "",
+  "comments": {
+    "accurate": "",
+    "wrong_behavior": "",
+    "wrong_location": "",
+    "wrong_output": ""
+  },
+  "source": {
+    "dataset": "ConDefects",
+    "condefects_id": "46128954",
+    "url": "https://atcoder.jp/contests/abc290/tasks/abc290_c",
+    "difficulty": 225,
+    "contest_date": "2023-02-19",
+    "buggy_line": "if p==i:",
+    "fixed_line": "if p==a[i]:",
+    "tests": 22,
+    "buggy_fails": 12
+  }
+}

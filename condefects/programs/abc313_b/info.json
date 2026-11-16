@@ -1,0 +1,25 @@
+{
+  "task": "abc313_b",
+  "author": "Seung Wook",
+  "generated_by": "",
+  "problem": "",
+  "bug_type": "",
+  "bug_description": "",
+  "comments": {
+    "accurate": "",
+    "wrong_behavior": "",
+    "wrong_location": "",
+    "wrong_output": ""
+  },
+  "source": {
+    "dataset": "ConDefects",
+    "condefects_id": "46182815",
+    "url": "https://atcoder.jp/contests/abc313/tasks/abc313_b",
+    "difficulty": 213,
+    "contest_date": "2023-08-05",
+    "buggy_line": "print(flag.index(1))",
+    "fixed_line": "print(flag.index(1)+1)",
+    "tests": 26,
+    "buggy_fails": 12
+  }
+}

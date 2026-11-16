@@ -1,0 +1,25 @@
+{
+  "task": "abc310_a",
+  "author": "Ankit",
+  "generated_by": "",
+  "problem": "",
+  "bug_type": "",
+  "bug_description": "",
+  "comments": {
+    "accurate": "",
+    "wrong_behavior": "",
+    "wrong_location": "",
+    "wrong_output": ""
+  },
+  "source": {
+    "dataset": "ConDefects",
+    "condefects_id": "45785883",
+    "url": "https://atcoder.jp/contests/abc310/tasks/abc310_a",
+    "difficulty": 23,
+    "contest_date": "2023-07-15",
+    "buggy_line": "b = min([p - q + a[i] for i in range(n)])",
+    "fixed_line": "b = min([q + a[i] for i in range(n)])",
+    "tests": 15,
+    "buggy_fails": 12
+  }
+}

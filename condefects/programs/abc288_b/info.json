@@ -1,0 +1,25 @@
+{
+  "task": "abc288_b",
+  "author": "Seung Wook",
+  "generated_by": "",
+  "problem": "",
+  "bug_type": "",
+  "bug_description": "",
+  "comments": {
+    "accurate": "",
+    "wrong_behavior": "",
+    "wrong_location": "",
+    "wrong_output": ""
+  },
+  "source": {
+    "dataset": "ConDefects",
+    "condefects_id": "44592257",
+    "url": "https://atcoder.jp/contests/abc288/tasks/abc288_b",
+    "difficulty": 44,
+    "contest_date": "2023-02-04",
+    "buggy_line": "s = [input() for _ in range(n)]",
+    "fixed_line": "s = [input() for _ in range(k)]",
+    "tests": 19,
+    "buggy_fails": 11
+  }
+}

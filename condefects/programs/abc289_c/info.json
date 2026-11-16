@@ -1,0 +1,25 @@
+{
+  "task": "abc289_c",
+  "author": "Arnav",
+  "generated_by": "",
+  "problem": "",
+  "bug_type": "",
+  "bug_description": "",
+  "comments": {
+    "accurate": "",
+    "wrong_behavior": "",
+    "wrong_location": "",
+    "wrong_output": ""
+  },
+  "source": {
+    "dataset": "ConDefects",
+    "condefects_id": "45332649",
+    "url": "https://atcoder.jp/contests/abc289/tasks/abc289_c",
+    "difficulty": 396,
+    "contest_date": "2023-02-11",
+    "buggy_line": "if bin(cur).count('1') == m:",
+    "fixed_line": "if bin(cur).count('1') == n:",
+    "tests": 26,
+    "buggy_fails": 4
+  }
+}
