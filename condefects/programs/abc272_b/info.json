@@ -1,15 +1,15 @@
 {
   "task": "abc272_b",
   "author": "Ankit",
-  "generated_by": "",
-  "problem": "",
-  "bug_type": "",
-  "bug_description": "",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Read N people (numbered 1 to N) and M parties, each given as the list of people who attended. Print Yes if every pair of people attended at least one party together, otherwise No.",
+  "bug_type": "other",
+  "bug_description": "The else is indented under the if inside the party loop instead of under the for, so it prints No as soon as one party lacks the pair rather than only when no party has both.",
   "comments": {
-    "accurate": "",
-    "wrong_behavior": "",
-    "wrong_location": "",
-    "wrong_output": ""
+    "accurate": "For every pair of people, checks that some party had both of them",
+    "wrong_behavior": "Checks each pair against the parties in order and answers No at the first party that's missing them",
+    "wrong_location": "Party loop verified; check that the pair generation includes person N",
+    "wrong_output": "Example: input '3 2\\n2 1 2\\n3 1 2 3' prints No"
   },
   "source": {
     "dataset": "ConDefects",

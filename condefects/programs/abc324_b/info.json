@@ -1,15 +1,15 @@
 {
   "task": "abc324_b",
   "author": "Ankit",
-  "generated_by": "",
-  "problem": "",
-  "bug_type": "",
-  "bug_description": "",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Read a positive integer N (up to 10^18). Print Yes if N = 2^x * 3^y for some non-negative integers x and y, otherwise No.",
+  "bug_type": "other",
+  "bug_description": "After dividing out all 3s and 2s it checks n == 0 instead of n == 1, so it always prints No.",
   "comments": {
-    "accurate": "",
-    "wrong_behavior": "",
-    "wrong_location": "",
-    "wrong_output": ""
+    "accurate": "Divides out every factor of 3 and 2 and checks that nothing else is left",
+    "wrong_behavior": "Strips all factors of 3 and 2; only a number that reduces to zero is accepted",
+    "wrong_location": "Final check verified; check the loop order, since 2s are removed after 3s",
+    "wrong_output": "Example: input '12' prints No"
   },
   "source": {
     "dataset": "ConDefects",

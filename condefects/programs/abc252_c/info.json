@@ -1,15 +1,15 @@
 {
   "task": "abc252_c",
   "author": "Ankit",
-  "generated_by": "",
-  "problem": "",
-  "bug_type": "",
-  "bug_description": "",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Read N reels, each a string of the 10 digits in some order. Pressing reel i's button t seconds after the start stops it on character (t mod 10) of its string, counting from 0, and at most one button can be pressed per second. Print the minimum time needed to stop all reels showing the same digit.",
+  "bug_type": "other",
+  "bug_description": "Records the reel index i instead of the digit's position x when computing stop times.",
   "comments": {
-    "accurate": "",
-    "wrong_behavior": "",
-    "wrong_location": "",
-    "wrong_output": ""
+    "accurate": "For each digit, finds when the last reel can be stopped on it (one press per second) and prints the best digit's time",
+    "wrong_behavior": "Reels are pressed in input order, so each stop time starts at the reel's index plus 10 s per earlier clash",
+    "wrong_location": "Stop-time formula verified; check the clash counts are kept separately for each digit",
+    "wrong_output": "Example: input '2\\n4823019576\\n5017349286' prints 1"
   },
   "source": {
     "dataset": "ConDefects",

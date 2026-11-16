@@ -1,0 +1,16 @@
+# Example: input '3 7\nabc\nabcxabc' prints 1
+num = list(map(int ,input().split(" ")))
+N = num[0]
+M = num[1]
+S = input()
+T = input()
+
+
+if T == S:
+  print(0)
+elif T[:N] == S:
+  print(1)
+elif T[-N:] == S:
+  print(2)
+else:
+  print(3)

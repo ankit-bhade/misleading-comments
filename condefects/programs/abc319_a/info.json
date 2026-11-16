@@ -1,15 +1,15 @@
 {
   "task": "abc319_a",
   "author": "Ankit",
-  "generated_by": "",
-  "problem": "",
-  "bug_type": "",
-  "bug_description": "",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Read one of these AtCoder usernames and print its rating: tourist 3858, ksun48 3679, Benq 3658, Um_nik 3648, apiad 3638, Stonefeang 3630, ecnerwala 3613, mnbvmar 3555, newbiedmy 3516, semiexp 3481.",
+  "bug_type": "other",
+  "bug_description": "Checks for the name 'marinara' instead of 'mnbvmar', so mnbvmar prints nothing.",
   "comments": {
-    "accurate": "",
-    "wrong_behavior": "",
-    "wrong_location": "",
-    "wrong_output": ""
+    "accurate": "Prints the rating of one of the top-10 AtCoder players, looked up by username",
+    "wrong_behavior": "Exact, case-sensitive match on the username; a name not in the table prints nothing",
+    "wrong_location": "Rating table verified against the ranking; check the input for trailing spaces",
+    "wrong_output": "Example: input 'mnbvmar' prints nothing"
   },
   "source": {
     "dataset": "ConDefects",

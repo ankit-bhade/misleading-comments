@@ -1,0 +1,14 @@
+# Slides a window over K+1 consecutive X-blocks (filling the K dots between them) and keeps the longest span
+s=input()
+k=int(input())
+s=s.split(".")
+l=[0]
+ans=0
+for i in s:
+  l.append(l[-1]+len(i))
+if len(s)-1>k:
+  for i in range(len(s)-k-1):
+    ans=max(ans,l[i+k+1]-l[i]+k)
+else:
+  ans=l[-1]+len(s)-1
+print(ans)

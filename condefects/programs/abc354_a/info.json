@@ -1,15 +1,15 @@
 {
   "task": "abc354_a",
   "author": "Ankit",
-  "generated_by": "",
-  "problem": "",
-  "bug_type": "",
-  "bug_description": "",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Read Takahashi's height H. A plant is 0 cm tall on day 0 and grows 2^i cm during the night of day i. Print the first day on whose morning the plant is strictly taller than H.",
+  "bug_type": "off_by_one",
+  "bug_description": "The loop runs over range(H) instead of range(H + 1), so for H = 1 it ends before day 2 and prints nothing.",
   "comments": {
-    "accurate": "",
-    "wrong_behavior": "",
-    "wrong_location": "",
-    "wrong_output": ""
+    "accurate": "Adds each night's growth and prints the first morning the plant is taller than H",
+    "wrong_behavior": "Tries at most H days, since the plant's growth doubles every night",
+    "wrong_location": "Day loop verified; check that the day printed is i + 1 rather than i",
+    "wrong_output": "Example: input '1' prints nothing"
   },
   "source": {
     "dataset": "ConDefects",

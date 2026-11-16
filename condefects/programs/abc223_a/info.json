@@ -1,15 +1,15 @@
 {
   "task": "abc223_a",
   "author": "Ankit",
-  "generated_by": "",
-  "problem": "",
-  "bug_type": "",
-  "bug_description": "",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Read an amount X (0 to 1000). A purse holds one or more 100-yen coins and nothing else; print Yes if its total could be exactly X yen, otherwise No.",
+  "bug_type": "other",
+  "bug_description": "Only checks that X is at least 100, so amounts that aren't a multiple of 100 (like 250) get Yes.",
   "comments": {
-    "accurate": "",
-    "wrong_behavior": "",
-    "wrong_location": "",
-    "wrong_output": ""
+    "accurate": "Checks whether X yen can be made from one or more 100-yen coins",
+    "wrong_behavior": "Any amount from 100 yen up is possible, since the purse holds at least one 100-yen coin",
+    "wrong_location": "Coin condition verified; check that the input is read as an integer, not a string",
+    "wrong_output": "Example: input '250' prints Yes"
   },
   "source": {
     "dataset": "ConDefects",

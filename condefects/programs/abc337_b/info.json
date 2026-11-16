@@ -1,15 +1,15 @@
 {
   "task": "abc337_b",
   "author": "Ankit",
-  "generated_by": "",
-  "problem": "",
-  "bug_type": "",
-  "bug_description": "",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Read a string S of the letters A, B and C. Print Yes if S is some A's, then some B's, then some C's (each part may be empty), otherwise No.",
+  "bug_type": "missed_edge_case",
+  "bug_description": "Only allows moving to the very next letter, so strings that skip the B part, like 'AACC', get No.",
   "comments": {
-    "accurate": "",
-    "wrong_behavior": "",
-    "wrong_location": "",
-    "wrong_output": ""
+    "accurate": "Checks that the letters never go backwards: A's, then B's, then C's",
+    "wrong_behavior": "Letters must step through A, B, C in order without skipping a letter",
+    "wrong_location": "Letter transitions verified; check the starting letter when S begins with B or C",
+    "wrong_output": "Example: input 'AACC' prints No"
   },
   "source": {
     "dataset": "ConDefects",

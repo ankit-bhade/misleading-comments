@@ -1,15 +1,15 @@
 {
   "task": "abc308_b",
   "author": "Ankit",
-  "generated_by": "",
-  "problem": "",
-  "bug_type": "",
-  "bug_description": "",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Read N plate colors, then M color names D_1..D_M, then prices P_0, P_1..P_M: a plate of color D_i costs P_i yen and any other color costs P_0 yen. Print the total price of the N plates.",
+  "bug_type": "other",
+  "bug_description": "For a color not in the price list it prints P_0 instead of adding P_0 to the total.",
   "comments": {
-    "accurate": "",
-    "wrong_behavior": "",
-    "wrong_location": "",
-    "wrong_output": ""
+    "accurate": "Sums the plate prices, using the default price for colors not in the list",
+    "wrong_behavior": "Lists the default price for each unlisted plate, then prints the total of the listed ones",
+    "wrong_location": "Default price handled; check that the color map pairs D_1 with P_1, not P_0",
+    "wrong_output": "Example: input '2 1\\nred blue\\nred\\n100 300' prints 100 300"
   },
   "source": {
     "dataset": "ConDefects",

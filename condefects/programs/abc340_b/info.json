@@ -1,15 +1,15 @@
 {
   "task": "abc340_b",
   "author": "Ankit",
-  "generated_by": "",
-  "problem": "",
-  "bug_type": "",
-  "bug_description": "",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Read Q queries on an initially empty list: '1 x' appends x to the end, and '2 k' prints the k-th value from the end. Print the answers to the type-2 queries, one per line.",
+  "bug_type": "other",
+  "bug_description": "Appends the query type (always 1) instead of the value x.",
   "comments": {
-    "accurate": "",
-    "wrong_behavior": "",
-    "wrong_location": "",
-    "wrong_output": ""
+    "accurate": "Processes append and k-th-from-the-end queries on a growing list",
+    "wrong_behavior": "Type-1 queries record their first field; type-2 queries print the k-th recorded value from the end",
+    "wrong_location": "Append step verified; check the negative index when k equals the list length",
+    "wrong_output": "Example: input '3\\n1 20\\n1 30\\n2 1' prints 1"
   },
   "source": {
     "dataset": "ConDefects",

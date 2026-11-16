@@ -1,15 +1,15 @@
 {
   "task": "abc345_a",
   "author": "Ankit",
-  "generated_by": "",
-  "problem": "",
-  "bug_type": "",
-  "bug_description": "",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Read a string S of '<', '=' and '>'. Print Yes if S is one '<', then one or more '=', then one '>', otherwise No.",
+  "bug_type": "other",
+  "bug_description": "Only checks that S contains '<' and '=' and has as many '<' as '>', not their order, so strings like '>==<' get Yes.",
   "comments": {
-    "accurate": "",
-    "wrong_behavior": "",
-    "wrong_location": "",
-    "wrong_output": ""
+    "accurate": "Checks that S is '<', then one or more '=', then '>'",
+    "wrong_behavior": "Accepts any string with '=' in it whose '<' and '>' arrowheads are balanced",
+    "wrong_location": "Arrow pattern check verified; check that the input is stripped of its newline",
+    "wrong_output": "Example: input '>==<' prints Yes"
   },
   "source": {
     "dataset": "ConDefects",

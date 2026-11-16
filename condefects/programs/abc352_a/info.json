@@ -1,15 +1,15 @@
 {
   "task": "abc352_a",
   "author": "Ankit",
-  "generated_by": "",
-  "problem": "",
-  "bug_type": "",
-  "bug_description": "",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Stations 1 to N lie on a line; one train runs from 1 to N stopping at every station, another from N to 1. Read N, X, Y and Z (X, Y, Z distinct) and print Yes if a trip from station X to station Y stops at station Z, otherwise No.",
+  "bug_type": "missed_edge_case",
+  "bug_description": "Only handles trips with X < Y; trips toward station 1 always get No.",
   "comments": {
-    "accurate": "",
-    "wrong_behavior": "",
-    "wrong_location": "",
-    "wrong_output": ""
+    "accurate": "Checks whether station Z lies between X and Y on the trip",
+    "wrong_behavior": "Yes only when Z comes after X and before Y in station order",
+    "wrong_location": "Between check verified; check that all four numbers are read from one line",
+    "wrong_output": "Example: input '8 6 2 4' prints No"
   },
   "source": {
     "dataset": "ConDefects",

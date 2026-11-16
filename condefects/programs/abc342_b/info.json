@@ -1,15 +1,15 @@
 {
   "task": "abc342_b",
   "author": "Ankit",
-  "generated_by": "",
-  "problem": "",
-  "bug_type": "",
-  "bug_description": "",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Read N people standing in a line, given as P_1..P_N where P_i is the person at position i from the front, then Q queries of two person numbers A and B. For each query, print whichever of the two people stands further to the front.",
+  "bug_type": "other",
+  "bug_description": "Marks position j as ahead of position i instead of person P[j] ahead of person P[i], so it answers as if person k stood at position k.",
   "comments": {
-    "accurate": "",
-    "wrong_behavior": "",
-    "wrong_location": "",
-    "wrong_output": ""
+    "accurate": "Answers each query with whichever of the two people is closer to the front of the line",
+    "wrong_behavior": "Person numbers follow the line order, so the smaller number is always further to the front",
+    "wrong_location": "Ahead-of table verified; check that the query numbers are converted to 0-based indices",
+    "wrong_output": "Example: input '3\\n3 1 2\\n1\\n1 3' prints 1"
   },
   "source": {
     "dataset": "ConDefects",

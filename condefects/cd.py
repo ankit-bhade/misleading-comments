@@ -127,6 +127,8 @@ def check_folder(folder):
             problems.append("wrong_output: the input must be a quoted Python string, e.g. '3 4\\n1 2 3'")
         else:
             claimed = match.group(2).strip()
+            if claimed == "nothing":  # "prints nothing" = empty output
+                claimed = ""
             got_bad, err_bad = run_input(folder / "buggy.py", stdin + "\n")
             got_good, err_good = run_input(folder / "correct.py", stdin + "\n")
             if err_bad or not same_output(got_bad, claimed):

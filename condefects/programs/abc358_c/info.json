@@ -1,15 +1,15 @@
 {
   "task": "abc358_c",
   "author": "Ankit",
-  "generated_by": "",
-  "problem": "",
-  "bug_type": "",
-  "bug_description": "",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Read N stands and M flavors as N strings of 'o' and 'x' (the j-th character of string i is 'o' if stand i sells flavor j). Print the minimum number of stands to visit to get every flavor.",
+  "bug_type": "other",
+  "bug_description": "`exist[j] == True` compares instead of assigning, so no flavor is ever marked and the answer is always N.",
   "comments": {
-    "accurate": "",
-    "wrong_behavior": "",
-    "wrong_location": "",
-    "wrong_output": ""
+    "accurate": "Tries every subset of stands and keeps the smallest one that covers all flavors",
+    "wrong_behavior": "Visits every stand, since any of them may be the only seller of some flavor",
+    "wrong_location": "Flavor marking verified; check the bit test that picks which stands are in the subset",
+    "wrong_output": "Example: input '2 2\\noo\\nxo' prints 2"
   },
   "source": {
     "dataset": "ConDefects",

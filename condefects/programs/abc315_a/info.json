@@ -1,15 +1,15 @@
 {
   "task": "abc315_a",
   "author": "Ankit",
-  "generated_by": "",
-  "problem": "",
-  "bug_type": "",
-  "bug_description": "",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Read a lowercase string S and print it with every vowel (a, e, i, o, u) removed.",
+  "bug_type": "other",
+  "bug_description": "Only removes a, e and o; i and u stay in.",
   "comments": {
-    "accurate": "",
-    "wrong_behavior": "",
-    "wrong_location": "",
-    "wrong_output": ""
+    "accurate": "Removes every vowel from the input string",
+    "wrong_behavior": "Removes the open vowels a, e and o, keeping i and u",
+    "wrong_location": "Vowel removal verified; check that the trailing newline is stripped from the input",
+    "wrong_output": "Example: input 'minute' prints minut"
   },
   "source": {
     "dataset": "ConDefects",

@@ -1,15 +1,15 @@
 {
   "task": "abc265_a",
   "author": "Ankit",
-  "generated_by": "",
-  "problem": "",
-  "bug_type": "",
-  "bug_description": "",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Read X, Y and N. Apples cost X yen each, or Y yen for a pack of three. Print, as an integer, the minimum cost of buying exactly N apples.",
+  "bug_type": "other",
+  "bug_description": "Uses / instead of //, so the number of packs is a fraction and the cost is printed as a float.",
   "comments": {
-    "accurate": "",
-    "wrong_behavior": "",
-    "wrong_location": "",
-    "wrong_output": ""
+    "accurate": "Buys as many 3-apple packs as possible when they're cheaper, and single apples for the rest",
+    "wrong_behavior": "When packs are cheaper, charges the pack rate per apple (Y/3) plus single prices for the leftover apples",
+    "wrong_location": "Pack arithmetic verified; check the price comparison when three singles cost exactly a pack",
+    "wrong_output": "Example: input '10 25 6' prints 50.0"
   },
   "source": {
     "dataset": "ConDefects",

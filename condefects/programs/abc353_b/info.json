@@ -1,15 +1,15 @@
 {
   "task": "abc353_b",
   "author": "Ankit",
-  "generated_by": "",
-  "problem": "",
-  "bug_type": "",
-  "bug_description": "",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "A ride has K seats and N groups wait in a queue, each with at most K people. Repeatedly: if the front group doesn't fit in the empty seats, the ride starts and all K seats are empty again; otherwise the group boards. When the queue is empty, the ride starts one last time. Print how many times the ride starts.",
+  "bug_type": "missed_edge_case",
+  "bug_description": "The final start is counted whenever seats aren't 0, but seats are reset to K right after a ride that filled up exactly, so that start is counted twice.",
   "comments": {
-    "accurate": "",
-    "wrong_behavior": "",
-    "wrong_location": "",
-    "wrong_output": ""
+    "accurate": "Simulates the boarding queue and counts how many times the ride starts",
+    "wrong_behavior": "Counts every start during boarding, then always one more for the final run once the queue is empty",
+    "wrong_location": "Final departure check verified; check the case where a group is bigger than the seats left",
+    "wrong_output": "Example: input '2 5\\n2 3' prints 2"
   },
   "source": {
     "dataset": "ConDefects",

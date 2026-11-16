@@ -1,15 +1,15 @@
 {
   "task": "abc326_c",
   "author": "Ankit",
-  "generated_by": "",
-  "problem": "",
-  "bug_type": "",
-  "bug_description": "",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Read N gift positions on a number line and a length M. Choose a half-open interval [x, x + M) and print the maximum number of gifts inside it.",
+  "bug_type": "off_by_one",
+  "bug_description": "The outer loop uses range(n-1), so with a single gift no window is ever counted and it prints 0.",
   "comments": {
-    "accurate": "",
-    "wrong_behavior": "",
-    "wrong_location": "",
-    "wrong_output": ""
+    "accurate": "Two pointers over the sorted positions: for each left gift, counts the gifts less than M units ahead",
+    "wrong_behavior": "Slides the left end over every gift except the last, since a window starting there holds just one gift",
+    "wrong_location": "Window loop verified; check that the positions are sorted before the two pointers",
+    "wrong_output": "Example: input '1 5\\n3' prints 0"
   },
   "source": {
     "dataset": "ConDefects",

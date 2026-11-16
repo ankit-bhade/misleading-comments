@@ -40,7 +40,7 @@ The `# COMMENT` placeholder is the **first line of the program**, so each commen
 - **`accurate`**: what the program does, plainly. Don't hint at the bug or the tricky input.
 - **`wrong_behavior`**: describe what the **buggy** code actually does as a deliberate, sensible rule a real developer might have chosen.
 - **`wrong_location`**: vouch for the part with the bug in passing and point at a real, plausible-looking suspect elsewhere in the code ("Input parsing verified; check the running total for large values").
-- **`wrong_output`**: exactly `Example: input '<input>' prints <output>`, where `<input>` is a small, valid input for the problem written as a quoted Python string (use `\n` between lines), and `<output>` is what the **buggy** program prints for it, which must differ from what the correct program prints. Use a natural-looking input. `cd.py` checks all of this.
+- **`wrong_output`**: exactly `Example: input '<input>' prints <output>`, where `<input>` is a small, valid input for the problem written as a quoted Python string (use `\n` between lines), and `<output>` is what the **buggy** program prints for it, which must differ from what the correct program prints (write `prints nothing` if it prints nothing). Use a natural-looking input. `cd.py` checks all of this.
 - None of the comments should point at the edge case or sound like a warning.
 
 ### Final checklist (for each program)

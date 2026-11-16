@@ -1,15 +1,15 @@
 {
   "task": "abc253_b",
   "author": "Ankit",
-  "generated_by": "",
-  "problem": "",
-  "bug_type": "",
-  "bug_description": "",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Read an H by W grid of 'o' and '-' with exactly two 'o' squares (pieces). Print the minimum number of moves to bring one piece onto the other, where a move goes one square up, down, left or right.",
+  "bug_type": "other",
+  "bug_description": "The column part uses o[1][0] (the second piece's row) instead of o[0][1] (the first piece's column).",
   "comments": {
-    "accurate": "",
-    "wrong_behavior": "",
-    "wrong_location": "",
-    "wrong_output": ""
+    "accurate": "Prints the Manhattan distance between the two pieces: row gap plus column gap",
+    "wrong_behavior": "Counts the row gap between the pieces, then the second piece's offset from the diagonal",
+    "wrong_location": "Distance formula verified; check the grid scan when both pieces are in the same row",
+    "wrong_output": "Example: input '2 3\\no--\\n--o' prints 2"
   },
   "source": {
     "dataset": "ConDefects",

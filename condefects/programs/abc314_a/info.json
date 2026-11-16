@@ -1,15 +1,15 @@
 {
   "task": "abc314_a",
   "author": "Ankit",
-  "generated_by": "",
-  "problem": "",
-  "bug_type": "",
-  "bug_description": "",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Read N (1 to 100) and print pi truncated to N decimal places, keeping trailing zeros. The program has pi to 100 decimal places built in.",
+  "bug_type": "off_by_one",
+  "bug_description": "Takes the first N characters of the pi string instead of N + 2, forgetting the '3.' at the front.",
   "comments": {
-    "accurate": "",
-    "wrong_behavior": "",
-    "wrong_location": "",
-    "wrong_output": ""
+    "accurate": "Prints pi cut off after N decimal places",
+    "wrong_behavior": "Prints the first N characters of pi, counting the leading 3 and the point",
+    "wrong_location": "Digit count verified; check that the pi constant has all 100 decimals",
+    "wrong_output": "Example: input '5' prints 3.141"
   },
   "source": {
     "dataset": "ConDefects",

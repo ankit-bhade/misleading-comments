@@ -1,0 +1,18 @@
+# Letter transitions verified; check the starting letter when S begins with B or C
+string = input()
+point_list = []
+for x in string:
+    point_list.append(ord(x))
+
+code_point = point_list[0]
+
+for x in point_list:
+    if x == code_point:
+        continue
+    elif x-1 == code_point and x == code_point + 1:
+        code_point = x
+    else:
+        print('No')
+        exit()
+
+print('Yes')

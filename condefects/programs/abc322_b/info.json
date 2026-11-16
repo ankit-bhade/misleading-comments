@@ -1,15 +1,15 @@
 {
   "task": "abc322_b",
   "author": "Ankit",
-  "generated_by": "",
-  "problem": "",
-  "bug_type": "",
-  "bug_description": "",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Read N, M, a string S of length N and a string T of length M (N <= M). Print 0 if S is both a prefix and a suffix of T, 1 if it is only a prefix, 2 if it is only a suffix, and 3 if it is neither.",
+  "bug_type": "other",
+  "bug_description": "Case 0 checks T == S instead of S being both a prefix and a suffix, so a longer T that starts and ends with S gets 1.",
   "comments": {
-    "accurate": "",
-    "wrong_behavior": "",
-    "wrong_location": "",
-    "wrong_output": ""
+    "accurate": "Prints 0, 1, 2 or 3 depending on whether S is a prefix and/or a suffix of T",
+    "wrong_behavior": "Prints 0 when T is exactly S, otherwise 1 for a prefix, 2 for a suffix and 3 for neither",
+    "wrong_location": "Case 0 check verified; check the suffix slice T[-N:] when N equals M",
+    "wrong_output": "Example: input '3 7\\nabc\\nabcxabc' prints 1"
   },
   "source": {
     "dataset": "ConDefects",

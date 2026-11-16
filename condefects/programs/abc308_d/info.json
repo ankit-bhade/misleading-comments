@@ -1,15 +1,15 @@
 {
   "task": "abc308_d",
   "author": "Ankit",
-  "generated_by": "",
-  "problem": "",
-  "bug_type": "",
-  "bug_description": "",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Read an H by W grid of lowercase letters. Print Yes if there is a path from the top-left to the bottom-right cell, moving between side-adjacent cells, whose letters read s, n, u, k, e, s, n, u, k, e, ... in order; otherwise print No.",
+  "bug_type": "other",
+  "bug_description": "The final check tests grid[h][w] (a letter, always truthy) instead of the visited flag bool[h][w], so any grid starting with 's' gets Yes.",
   "comments": {
-    "accurate": "",
-    "wrong_behavior": "",
-    "wrong_location": "",
-    "wrong_output": ""
+    "accurate": "Searches from the top-left following s-n-u-k-e in a cycle and checks whether the bottom-right is reached",
+    "wrong_behavior": "The search marks the reachable cells; any maze whose start cell is 's' is accepted",
+    "wrong_location": "Final reachability check verified; check that the letter map wraps from e back to s",
+    "wrong_output": "Example: input '2 3\\nsna\\nxyz' prints Yes"
   },
   "source": {
     "dataset": "ConDefects",

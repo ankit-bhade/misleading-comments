@@ -1,15 +1,15 @@
 {
   "task": "abc355_a",
   "author": "Ankit",
-  "generated_by": "",
-  "problem": "",
-  "bug_type": "",
-  "bug_description": "",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Exactly one of persons 1, 2 and 3 ate the cake. One witness says person A didn't, another says person B didn't. Print the culprit's number if these two statements leave only one possibility, otherwise -1.",
+  "bug_type": "missed_edge_case",
+  "bug_description": "A + B == 4 also matches A = B = 2, which leaves two suspects, but it prints 2.",
   "comments": {
-    "accurate": "",
-    "wrong_behavior": "",
-    "wrong_location": "",
-    "wrong_output": ""
+    "accurate": "Prints the only suspect neither witness ruled out, or -1 if that's ambiguous",
+    "wrong_behavior": "Maps the sum of the two cleared suspects to the remaining one (3 to 3, 4 to 2, 5 to 1)",
+    "wrong_location": "Sum lookup verified; check that the answers print as numbers, not quoted strings",
+    "wrong_output": "Example: input '2 2' prints 2"
   },
   "source": {
     "dataset": "ConDefects",
