@@ -8,17 +8,20 @@ real rest of the program (buggy or fixed version, whichever is closer), and
 whether it reproduces the exact buggy or fixed line.
 
 Our own 120 programs were written this semester, so no model has seen them:
-their scores show what "not memorized" looks like. A ConDefects program counts
-as likely memorized if it scores above every one of our programs.
+their scores show what "not memorized" looks like. We compare the two groups:
+if the model had memorized ConDefects, it would continue those programs more
+closely than ours (median similarity, exact fixed/buggy line reproduced).
 
 Run it on Colab (7B) or Kaggle (32B) after Ollama is running:
   python3 condefects/memorize.py                                   7B
   python3 condefects/memorize.py qwen2.5-coder:32b-instruct-q4_K_M 32B
 Saves condefects/memorization/<model>.json. Programs already done are skipped.
+  python3 condefects/memorize.py summary                           compare the groups in the saved files
 """
 import difflib
 import json
 import re
+import statistics
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -106,18 +109,25 @@ def main():
 
 
 def summary(records):
+    """Compare the two datasets as groups. (Per-program flags don't work: short
+    remainders are easy to guess, so some of our never-seen programs already
+    score 1.00.) If the model had memorized ConDefects, it would continue those
+    programs more closely than ours."""
     best = lambda r: max(r["similarity_to_buggy_rest"], r["similarity_to_fixed_rest"])
-    main_scores = [best(r) for r in records if r["dataset"] == "main"]
-    if not main_scores:
-        return
-    cutoff = max(main_scores)
-    cd = [r for r in records if r["dataset"] == "condefects"]
-    flagged = [r["program"] for r in cd if best(r) > cutoff]
-    print(f"\nOur programs (never public): similarity up to {cutoff:.2f}")
-    print(f"ConDefects above that: {len(flagged)} of {len(cd)}: {', '.join(flagged) or 'none'}")
+    print(f"\n{'':<24}{'programs':>9}{'median similarity':>19}{'exact fixed line':>18}{'exact buggy line':>18}")
+    for dataset, label in [("condefects", "ConDefects (public)"), ("main", "Ours (never public)")]:
+        rs = [r for r in records if r["dataset"] == dataset]
+        if rs:
+            print(f"{label:<24}{len(rs):>9}{statistics.median(best(r) for r in rs):>19.2f}"
+                  f"{sum(r['reproduces_fixed_line'] for r in rs):>18}{sum(r['reproduces_buggy_line'] for r in rs):>18}")
 
 
 if __name__ == "__main__":
+    if sys.argv[1:] == ["summary"]:  # python3 condefects/memorize.py summary: summarize the saved files
+        for path in sorted((HERE / "memorization").glob("*.json")):
+            print(path.stem, end="")
+            summary(json.loads(path.read_text()))
+        sys.exit()
     if len(sys.argv) > 1:
         run.MODEL = sys.argv[1]
     main()
