@@ -32,7 +32,7 @@ The same experiment as our main set, on real bugs instead of AI-written ones. [C
 - `wrong_output` comments look like `Example: input '3 4\n1 2 3' prints 2`.
 
 ## Memorization check
-These programs are public, so the models may have seen them in training. `memorize.py` shows each model every program (ours and ConDefects) only up to just before the buggy line, and asks it to write the rest, so we see whether it recalls the buggy line, the fixed line, or the rest of the program. Our programs are new, so their scores show what "not memorized" looks like; ConDefects programs scoring above all of ours are likely memorized, and we report the results with and without them. Run it once per model, after Ollama is running in the notebook: `!python3 condefects/memorize.py {run.MODEL}` (a few minutes on 7B, about half an hour on 32B).
+These programs are public, so the models may have seen them in training. `memorize.py` shows each model every program (ours and ConDefects) only up to just before the buggy line, and asks it to write the rest, so we see whether it recalls the buggy line, the fixed line, or the rest of the program. Our programs are new, so their scores show what "not memorized" looks like; ConDefects programs scoring above all of ours are likely memorized, and we report the results with and without them. One person runs it once per model, with step 8 of `colab_run.ipynb` (7B, a few minutes) and `kaggle_run.ipynb` (32B, about half an hour); everyone else skips that step.
 
 ## Labeling and analysis
 Same as the main set (`JUDGING.md`): `judge.py` labels these results too, `python3 handcheck.py condefects` builds the hand-check sheets (6 random programs per person, drawn before any results), and `python3 analyze.py condefects` makes the tables.
