@@ -1,0 +1,9 @@
+# Prints the slice of "atcoder" that starts two places after L and ends just after R
+def func():
+    L, R = list(map(int, input().split()))
+
+    s = "atcoder"
+    print(s[L+1:R+1])
+
+if __name__ == '__main__':
+    func()

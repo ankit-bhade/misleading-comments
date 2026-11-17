@@ -1,15 +1,15 @@
 {
   "task": "abc288_b",
   "author": "Seung Wook",
-  "generated_by": "",
-  "problem": "",
-  "bug_type": "",
-  "bug_description": "",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Read N handles listed in ranking order (1st place first) and K; print the handles of the top K participants in dictionary order, one per line.",
+  "bug_type": "other",
+  "bug_description": "Reads all N handles and sorts them before taking K, instead of taking the top K by rank and then sorting.",
   "comments": {
-    "accurate": "",
-    "wrong_behavior": "",
-    "wrong_location": "",
-    "wrong_output": ""
+    "accurate": "Prints the handles of the top K ranked participants in dictionary order",
+    "wrong_behavior": "Sorts every handle in dictionary order and prints the first K of them",
+    "wrong_location": "Input reading verified; check the output loop prints exactly K handles",
+    "wrong_output": "Example: input '3 2\\ncarol\\nbob\\nalice' prints alice bob"
   },
   "source": {
     "dataset": "ConDefects",

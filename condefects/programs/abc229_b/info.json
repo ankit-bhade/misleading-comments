@@ -1,15 +1,15 @@
 {
   "task": "abc229_b",
   "author": "Seung Wook",
-  "generated_by": "",
-  "problem": "",
-  "bug_type": "",
-  "bug_description": "",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Read two positive integers A and B. Print Hard if adding them in decimal produces a carry at any digit position, otherwise print Easy.",
+  "bug_type": "off_by_one",
+  "bug_description": "The digit loop runs range(1, n) instead of range(1, n+1), so the n-th digit from the right (the leading digit of the shorter number) is never checked for a carry.",
   "comments": {
-    "accurate": "",
-    "wrong_behavior": "",
-    "wrong_location": "",
-    "wrong_output": ""
+    "accurate": "Checks each digit position the two numbers share for a carry when adding A and B",
+    "wrong_behavior": "Checks the lower shared digit positions of A and B for a carry",
+    "wrong_location": "Digit loop verified; check that the digits are read from the right end of each string",
+    "wrong_output": "Example: input '58 61' prints Easy"
   },
   "source": {
     "dataset": "ConDefects",

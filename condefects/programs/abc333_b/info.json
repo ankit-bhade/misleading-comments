@@ -1,15 +1,15 @@
 {
   "task": "abc333_b",
   "author": "Seung Wook",
-  "generated_by": "",
-  "problem": "",
-  "bug_type": "",
-  "bug_description": "",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "The vertices of a regular pentagon are A, B, C, D and E. Given two segments as two-letter strings S and T (each naming two different vertices), print Yes if the two segments have the same length, otherwise No.",
+  "bug_type": "other",
+  "bug_description": "The lookup string ABCDEABCDE only holds adjacent pairs in one direction, so a side written backwards (like BA or ED) is treated as a diagonal.",
   "comments": {
-    "accurate": "",
-    "wrong_behavior": "",
-    "wrong_location": "",
-    "wrong_output": ""
+    "accurate": "Checks whether each segment is a side or a diagonal of the pentagon and prints Yes if both are the same kind",
+    "wrong_behavior": "A segment is a side when its letters appear next to each other in ABCDEABCDE, otherwise a diagonal",
+    "wrong_location": "Side lookup verified; check that the two input lines are read without trailing whitespace",
+    "wrong_output": "Example: input 'ED\\nAC' prints Yes"
   },
   "source": {
     "dataset": "ConDefects",

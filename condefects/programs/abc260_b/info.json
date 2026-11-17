@@ -1,15 +1,15 @@
 {
   "task": "abc260_b",
   "author": "Seung Wook",
-  "generated_by": "",
-  "problem": "",
-  "bug_type": "",
-  "bug_description": "",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Read N applicants' math and English scores and X, Y, Z. Accept the X best in math, then the Y best in English among the rest, then the Z best by total among the rest, always breaking ties by the smaller applicant number; print the accepted applicant numbers in ascending order, one per line.",
+  "bug_type": "other",
+  "bug_description": "Prints the set of accepted numbers in set iteration order instead of sorted, which is out of order once numbers reach the set's table size.",
   "comments": {
-    "accurate": "",
-    "wrong_behavior": "",
-    "wrong_location": "",
-    "wrong_output": ""
+    "accurate": "Admits applicants by math, then English, then total score, and prints their numbers in increasing order",
+    "wrong_behavior": "Admits applicants by math, then English, then total score, and prints the collected set of numbers",
+    "wrong_location": "Output order verified; check the tie-breaking by applicant number in the three selection loops",
+    "wrong_output": "Example: input '8 2 0 0\\n90 10 20 30 40 50 60 95\\n0 0 0 0 0 0 0 0' prints 8 1"
   },
   "source": {
     "dataset": "ConDefects",

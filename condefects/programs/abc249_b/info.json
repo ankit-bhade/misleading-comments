@@ -1,15 +1,15 @@
 {
   "task": "abc249_b",
   "author": "Seung Wook",
-  "generated_by": "",
-  "problem": "",
-  "bug_type": "",
-  "bug_description": "",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Read a string S of English letters. Print Yes if it contains at least one uppercase letter, at least one lowercase letter, and no letter appears twice; otherwise print No.",
+  "bug_type": "other",
+  "bug_description": "Compares the set of characters itself to len(S) instead of len(set(S)), which is never equal, so the program always prints No.",
   "comments": {
-    "accurate": "",
-    "wrong_behavior": "",
-    "wrong_location": "",
-    "wrong_output": ""
+    "accurate": "Checks that S has both upper- and lowercase letters and all its characters are distinct",
+    "wrong_behavior": "Checks S for mixed case and compares its set of characters directly against len(S) to reject repeated letters",
+    "wrong_location": "Distinctness test verified; check the case tests for strings with no letters of one case",
+    "wrong_output": "Example: input 'AtCoder' prints No"
   },
   "source": {
     "dataset": "ConDefects",

@@ -1,15 +1,15 @@
 {
   "task": "abc312_c",
   "author": "Seung Wook",
-  "generated_by": "",
-  "problem": "",
-  "bug_type": "",
-  "bug_description": "",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "N sellers will each sell an apple for A_i yen or more, and M buyers will each buy one for B_i yen or less. Print the smallest integer X such that the number of sellers willing to sell at X is at least the number of buyers willing to buy at X.",
+  "bug_type": "off_by_one",
+  "bug_description": "The binary search's upper bound is 10^9 instead of 10^9 + 1, so when the answer is 10^9 + 1 it prints 10^9.",
   "comments": {
-    "accurate": "",
-    "wrong_behavior": "",
-    "wrong_location": "",
-    "wrong_output": ""
+    "accurate": "Binary searches for the lowest price where willing sellers are at least as many as willing buyers",
+    "wrong_behavior": "Binary searches prices up to 10^9, the largest possible price in the input, for the first where sellers keep up with buyers",
+    "wrong_location": "Search range verified; check the seller and buyer counts at each price, which rely on the sorted lists",
+    "wrong_output": "Example: input '1 2\\n100\\n1000000000 1000000000' prints 1000000000"
   },
   "source": {
     "dataset": "ConDefects",

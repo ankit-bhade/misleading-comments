@@ -1,15 +1,15 @@
 {
   "task": "abc338_a",
   "author": "Seung Wook",
-  "generated_by": "",
-  "problem": "",
-  "bug_type": "",
-  "bug_description": "",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Read a non-empty string of English letters. Print Yes if its first character is uppercase and all the other characters are lowercase, otherwise No.",
+  "bug_type": "other",
+  "bug_description": "Operator precedence makes `or len(S) == 1` skip the uppercase check, so a single lowercase letter gets Yes.",
   "comments": {
-    "accurate": "",
-    "wrong_behavior": "",
-    "wrong_location": "",
-    "wrong_output": ""
+    "accurate": "Prints Yes when the first letter is uppercase and the rest are all lowercase",
+    "wrong_behavior": "Prints Yes for an uppercase letter followed by lowercase ones, or for any single-letter string",
+    "wrong_location": "Case checks verified; check the slice S[1:], which should leave out only the first character",
+    "wrong_output": "Example: input 'x' prints Yes"
   },
   "source": {
     "dataset": "ConDefects",

@@ -1,15 +1,15 @@
 {
   "task": "abc277_b",
   "author": "Seung Wook",
-  "generated_by": "",
-  "problem": "",
-  "bug_type": "",
-  "bug_description": "",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Read N two-character strings. Print Yes if every string starts with one of H, D, C, S, its second character is one of A, 2-9, T, J, Q, K, and no two strings are the same; otherwise print No.",
+  "bug_type": "other",
+  "bug_description": "The duplicate test is negated (not s in spawned), so every new card is rejected and the answer is No whenever the cards are valid and distinct.",
   "comments": {
-    "accurate": "",
-    "wrong_behavior": "",
-    "wrong_location": "",
-    "wrong_output": ""
+    "accurate": "Checks that every card has a valid suit and rank and that no card appears twice",
+    "wrong_behavior": "Checks that every card has a valid suit and rank and is one of the cards already seen",
+    "wrong_location": "Card condition verified; check that the rank list covers every allowed rank character",
+    "wrong_output": "Example: input '2\\nH3\\nDA' prints No"
   },
   "source": {
     "dataset": "ConDefects",

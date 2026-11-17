@@ -1,15 +1,15 @@
 {
   "task": "abc240_a",
   "author": "Seung Wook",
-  "generated_by": "",
-  "problem": "",
-  "bug_type": "",
-  "bug_description": "",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Ten points numbered 1 to 10 are placed around a circle in order, so 10 is next to 1. Read a and b (1 <= a < b <= 10) and print Yes if they are directly connected neighbours, otherwise No.",
+  "bug_type": "other",
+  "bug_description": "The first condition is just 'b - a' (always truthy since a < b) instead of 'b - a == 1', so every pair prints Yes.",
   "comments": {
-    "accurate": "",
-    "wrong_behavior": "",
-    "wrong_location": "",
-    "wrong_output": ""
+    "accurate": "Prints Yes when a and b are adjacent around the 10-point circle",
+    "wrong_behavior": "Prints Yes whenever b differs from a, or when the pair wraps around from 10 to 1",
+    "wrong_location": "Adjacency condition verified; check that a and b are parsed as integers",
+    "wrong_output": "Example: input '2 5' prints Yes"
   },
   "source": {
     "dataset": "ConDefects",

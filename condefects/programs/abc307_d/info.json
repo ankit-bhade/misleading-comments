@@ -1,15 +1,15 @@
 {
   "task": "abc307_d",
   "author": "Seung Wook",
-  "generated_by": "",
-  "problem": "",
-  "bug_type": "",
-  "bug_description": "",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Read a string of lowercase letters, '(' and ')'. While possible, delete a contiguous substring that starts with '(' and ends with ')' and has no other parentheses inside; print the string that remains (it does not depend on the order of deletions).",
+  "bug_type": "other",
+  "bug_description": "The stack stores the index i in the input instead of the current length of the output, so after an earlier deletion a later ')' cuts the output at the wrong place.",
   "comments": {
-    "accurate": "",
-    "wrong_behavior": "",
-    "wrong_location": "",
-    "wrong_output": ""
+    "accurate": "Repeatedly removes innermost parenthesized groups and prints what is left",
+    "wrong_behavior": "Pushes the input position of each '(' so a matching ')' can cut the output back to where that group began",
+    "wrong_location": "Stack positions verified; check that unmatched ')' characters are still kept in the output",
+    "wrong_output": "Example: input '6\\n(a)(b)' prints (b"
   },
   "source": {
     "dataset": "ConDefects",

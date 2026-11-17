@@ -1,15 +1,15 @@
 {
   "task": "abc239_d",
   "author": "Seung Wook",
-  "generated_by": "",
-  "problem": "",
-  "bug_type": "",
-  "bug_description": "",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Takahashi picks an integer from A to B, then Aoki, knowing it, picks one from C to D; Aoki wins if the sum is prime, otherwise Takahashi wins. Read A B C D (each at most 100) and print the winner, Takahashi or Aoki, assuming both play optimally.",
+  "bug_type": "other",
+  "bug_description": "The prime table only goes up to 100, but sums can reach 200, so primes like 101 or 103 are missed and Takahashi is wrongly declared the winner.",
   "comments": {
-    "accurate": "",
-    "wrong_behavior": "",
-    "wrong_location": "",
-    "wrong_output": ""
+    "accurate": "Takahashi wins if some choice of his leaves Aoki no prime sum, using a precomputed table of primes",
+    "wrong_behavior": "Takahashi wins if some choice of his leaves Aoki no prime sum, checked against the primes up to 100",
+    "wrong_location": "Prime table verified; check the early exit in the inner loop over Aoki's choices",
+    "wrong_output": "Example: input '50 52 50 52' prints Takahashi"
   },
   "source": {
     "dataset": "ConDefects",

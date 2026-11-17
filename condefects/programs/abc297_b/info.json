@@ -1,15 +1,15 @@
 {
   "task": "abc297_b",
   "author": "Seung Wook",
-  "generated_by": "",
-  "problem": "",
-  "bug_type": "",
-  "bug_description": "",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Read an 8-character string with one K, one Q, two R, two B and two N. Print Yes if the two B's are at positions of different parity and the K is between the two R's; otherwise print No.",
+  "bug_type": "other",
+  "bug_description": "Operator precedence: firstB+secondB % 2 computes firstB + (secondB % 2), so B's on the same parity are accepted unless the first B is at index 0.",
   "comments": {
-    "accurate": "",
-    "wrong_behavior": "",
-    "wrong_location": "",
-    "wrong_output": ""
+    "accurate": "Checks the Chess960 rules: bishops on opposite-coloured squares and the king between the rooks",
+    "wrong_behavior": "Checks the king is between the rooks; a bishop pair is rejected only when the first bishop starts the row and the second sits on an even index",
+    "wrong_location": "Bishop parity check verified; check the rook split, which assumes the first R comes before the K",
+    "wrong_output": "Example: input 'RBNBKQNR' prints Yes"
   },
   "source": {
     "dataset": "ConDefects",

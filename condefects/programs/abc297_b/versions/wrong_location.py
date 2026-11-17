@@ -1,0 +1,20 @@
+# Bishop parity check verified; check the rook split, which assumes the first R comes before the K
+def main():
+    s = input()
+    slist = list(s)
+
+    if not "K" in s.split("R")[1]:
+        print("No")
+        return
+
+    firstB = s.index("B")
+    secondB = s.rindex("B")
+
+    if firstB+secondB % 2 == 0:
+        print("No")
+        return
+
+    print("Yes")
+
+if __name__ == "__main__":
+    main()

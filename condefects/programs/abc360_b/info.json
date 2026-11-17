@@ -1,15 +1,15 @@
 {
   "task": "abc360_b",
   "author": "Seung Wook",
-  "generated_by": "",
-  "problem": "",
-  "bug_type": "",
-  "bug_description": "",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Given strings S and T, print Yes if there are integers c and w with 1 <= c <= w < |S| such that, when S is cut into pieces of w characters from the start, the c-th characters of the pieces that have at least c characters, read in order, spell T; otherwise print No.",
+  "bug_type": "other",
+  "bug_description": "The last row is padded with len(s) % w spaces instead of w - len(s) % w, so it can stay shorter than w and zip drops the later columns.",
   "comments": {
-    "accurate": "",
-    "wrong_behavior": "",
-    "wrong_location": "",
-    "wrong_output": ""
+    "accurate": "Tries every width w, cuts S into rows of w characters and checks whether any column reads T",
+    "wrong_behavior": "Cuts S into rows of each width w, pads the last row with len(S) % w spaces, and checks whether any column reads T",
+    "wrong_location": "Row padding verified; check the range of widths, which stops before len(S)",
+    "wrong_output": "Example: input 'abcdefg cf' prints No"
   },
   "source": {
     "dataset": "ConDefects",

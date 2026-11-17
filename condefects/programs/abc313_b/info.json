@@ -1,15 +1,15 @@
 {
   "task": "abc313_b",
   "author": "Seung Wook",
-  "generated_by": "",
-  "problem": "",
-  "bug_type": "",
-  "bug_description": "",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "There are N programmers numbered 1 to N and M facts saying programmer A is stronger than programmer B; strength is a consistent total order. Print the number of the strongest programmer if the facts determine them uniquely, otherwise -1.",
+  "bug_type": "off_by_one",
+  "bug_description": "Prints the 0-based list index of the strongest programmer instead of their 1-based number.",
   "comments": {
-    "accurate": "",
-    "wrong_behavior": "",
-    "wrong_location": "",
-    "wrong_output": ""
+    "accurate": "Prints the number of the only programmer nobody beats, or -1 if that is not unique",
+    "wrong_behavior": "Prints the list index of the only programmer nobody beats, or -1 if there isn't exactly one",
+    "wrong_location": "Output verified; check the M input lines, where A and B could be swapped when marking who was beaten",
+    "wrong_output": "Example: input '4 3\\n2 1\\n2 3\\n2 4' prints 1"
   },
   "source": {
     "dataset": "ConDefects",

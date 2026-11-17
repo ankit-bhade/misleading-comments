@@ -1,15 +1,15 @@
 {
   "task": "abc230_b",
   "author": "Seung Wook",
-  "generated_by": "",
-  "problem": "",
-  "bug_type": "",
-  "bug_description": "",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Let T be the string 'oxx' repeated 100000 times. Read a string S of 'o' and 'x' (length 1 to 10) and print Yes if S appears as a contiguous substring of T, otherwise No.",
+  "bug_type": "other",
+  "bug_description": "The repeated pattern is built as 'oox' instead of 'oxx', so substrings of the real pattern such as 'xxo' are not found.",
   "comments": {
-    "accurate": "",
-    "wrong_behavior": "",
-    "wrong_location": "",
-    "wrong_output": ""
+    "accurate": "Checks whether S occurs inside the long periodic string T by direct search",
+    "wrong_behavior": "Checks whether S occurs inside T, the pattern 'oox' repeated, by direct search",
+    "wrong_location": "Pattern string verified; check that find's -1 result is compared correctly",
+    "wrong_output": "Example: input 'xxo' prints No"
   },
   "source": {
     "dataset": "ConDefects",

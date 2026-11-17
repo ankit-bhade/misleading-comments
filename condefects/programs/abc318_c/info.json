@@ -1,15 +1,15 @@
 {
   "task": "abc318_c",
   "author": "Seung Wook",
-  "generated_by": "",
-  "problem": "",
-  "bug_type": "",
-  "bug_description": "",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "A trip lasts N days and the regular fare on day i is F_i. One-day passes are sold only in batches of D for P yen per batch, and each pass covers any single day; print the minimum total cost (passes may be left unused).",
+  "bug_type": "off_by_one",
+  "bug_description": "The slice f[d*i:d*(i+1)+1] takes D+1 fares per group, so each batch is compared against one extra day that is also counted in the next group.",
   "comments": {
-    "accurate": "",
-    "wrong_behavior": "",
-    "wrong_location": "",
-    "wrong_output": ""
+    "accurate": "Sorts fares high to low and buys a batch for each group of D days when P is cheaper than their fares",
+    "wrong_behavior": "Sorts fares high to low; each group of D days is priced together with the next day's fare, and a batch is bought when P is cheaper",
+    "wrong_location": "Group slicing verified; check the loop condition d*i<n, which might skip the last partial group",
+    "wrong_output": "Example: input '4 2 10\\n5 4 3 2' prints 15"
   },
   "source": {
     "dataset": "ConDefects",

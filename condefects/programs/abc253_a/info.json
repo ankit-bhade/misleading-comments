@@ -1,15 +1,15 @@
 {
   "task": "abc253_a",
   "author": "Seung Wook",
-  "generated_by": "",
-  "problem": "",
-  "bug_type": "",
-  "bug_description": "",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Read three integers a, b, c. Print Yes if b is the median of the three (it lies between a and c, inclusive), otherwise No.",
+  "bug_type": "other",
+  "bug_description": "Checks whether b equals the integer average (a+c)//2 instead of whether b lies between a and c.",
   "comments": {
-    "accurate": "",
-    "wrong_behavior": "",
-    "wrong_location": "",
-    "wrong_output": ""
+    "accurate": "Checks whether b lies between a and c",
+    "wrong_behavior": "Checks whether b sits at the midpoint of a and c, using integer division",
+    "wrong_location": "Middle-value test verified; check the input parsing for values on separate lines",
+    "wrong_output": "Example: input '1 3 9' prints No"
   },
   "source": {
     "dataset": "ConDefects",

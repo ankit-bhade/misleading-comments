@@ -1,15 +1,15 @@
 {
   "task": "abc302_a",
   "author": "Seung Wook",
-  "generated_by": "",
-  "problem": "",
-  "bug_type": "",
-  "bug_description": "",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Read A and B (each up to 10^18). Each attack lowers an enemy's stamina A by B; print the minimum number of attacks needed to bring the stamina to 0 or below.",
+  "bug_type": "other",
+  "bug_description": "When A is divisible by B it uses float division A/B, which loses precision for large values.",
   "comments": {
-    "accurate": "",
-    "wrong_behavior": "",
-    "wrong_location": "",
-    "wrong_output": ""
+    "accurate": "Prints the number of attacks needed, A divided by B rounded up",
+    "wrong_behavior": "Prints A/B by true division when it divides evenly, otherwise the integer quotient plus one",
+    "wrong_location": "Division branches verified; check the input parsing of the two numbers",
+    "wrong_output": "Example: input '123456789012345678 1' prints 123456789012345680"
   },
   "source": {
     "dataset": "ConDefects",

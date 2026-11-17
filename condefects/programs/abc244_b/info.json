@@ -1,15 +1,15 @@
 {
   "task": "abc244_b",
   "author": "Seung Wook",
-  "generated_by": "",
-  "problem": "",
-  "bug_type": "",
-  "bug_description": "",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "A robot starts at (0, 0) facing the positive x direction, with positive y pointing up (north). Read N and a string T of 'S' and 'R': 'S' moves it one step forward and 'R' turns it 90 degrees clockwise (east to south to west to north). Print its final x and y.",
+  "bug_type": "other",
+  "bug_description": "rotate() uses the current position self.y instead of the direction self.dy when computing the new dx, so turns after the robot has moved in y go the wrong way.",
   "comments": {
-    "accurate": "",
-    "wrong_behavior": "",
-    "wrong_location": "",
-    "wrong_output": ""
+    "accurate": "Tracks the robot's position and heading, turning the heading 90 degrees clockwise on each R",
+    "wrong_behavior": "Tracks the robot; each R turns it clockwise and re-aims it based on how far it has drifted along y",
+    "wrong_location": "Rotation verified; check that move adds the heading to the position in the right order",
+    "wrong_output": "Example: input '6\\nSRSSRS' prints -1 -2"
   },
   "source": {
     "dataset": "ConDefects",

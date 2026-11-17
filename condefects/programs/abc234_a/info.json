@@ -1,15 +1,15 @@
 {
   "task": "abc234_a",
   "author": "Seung Wook",
-  "generated_by": "",
-  "problem": "",
-  "bug_type": "",
-  "bug_description": "",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Let f(x) = x^2 + 2x + 3. Read an integer t (0 to 10) and print f(f(f(t)+t) + f(f(t))).",
+  "bug_type": "other",
+  "bug_description": "The outermost call to f is missing, so the program prints the inner argument f(f(t)+t)+f(f(t)) instead of f applied to it.",
   "comments": {
-    "accurate": "",
-    "wrong_behavior": "",
-    "wrong_location": "",
-    "wrong_output": ""
+    "accurate": "Evaluates the nested expression f(f(f(t)+t) + f(f(t))) with f(x) = x^2 + 2x + 3",
+    "wrong_behavior": "Evaluates f(f(t)+t) + f(f(t)), the combined value of the two nested branches of f",
+    "wrong_location": "Nesting of the final expression verified; check the polynomial in f for the 2x term",
+    "wrong_output": "Example: input '2' prints 344"
   },
   "source": {
     "dataset": "ConDefects",
