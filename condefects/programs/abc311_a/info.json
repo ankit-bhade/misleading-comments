@@ -1,15 +1,15 @@
 {
   "task": "abc311_a",
   "author": "Kushal",
-  "generated_by": "",
-  "problem": "",
-  "bug_type": "",
-  "bug_description": "",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Read N and a string S of A, B and C that contains each letter at least once. Print how many characters must be read from the left until A, B and C have all appeared.",
+  "bug_type": "off_by_one",
+  "bug_description": "Loops over range(N) instead of range(N+1), so when the last character completes the set the loop ends before printing.",
   "comments": {
-    "accurate": "",
-    "wrong_behavior": "",
-    "wrong_location": "",
-    "wrong_output": ""
+    "accurate": "Prints how many leading characters of S are needed to see A, B and C",
+    "wrong_behavior": "Prints the count of characters read once A, B and C have appeared, checked before each new character",
+    "wrong_location": "Loop length verified; check that letters other than A, B and C still advance the count",
+    "wrong_output": "Example: input '3\\nCAB' prints nothing"
   },
   "source": {
     "dataset": "ConDefects",

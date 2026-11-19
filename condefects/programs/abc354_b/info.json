@@ -1,15 +1,15 @@
 {
   "task": "abc354_b",
   "author": "Kushal",
-  "generated_by": "",
-  "problem": "",
-  "bug_type": "",
-  "bug_description": "",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Read N users, each with a name and a rating. Number the users 0 to N-1 in dictionary order of their names; the winner is the user numbered (sum of all ratings) mod N. Print the winner's name.",
+  "bug_type": "other",
+  "bug_description": "S.sort() is inside the input loop, so the names are sorted together with empty placeholders while reading and later names land in the wrong slots.",
   "comments": {
-    "accurate": "",
-    "wrong_behavior": "",
-    "wrong_location": "",
-    "wrong_output": ""
+    "accurate": "Sorts the names and prints the one at position (total rating mod N)",
+    "wrong_behavior": "Keeps the names sorted as they are read and prints the one at position (total rating mod N)",
+    "wrong_location": "Name sorting verified; check that the ratings are converted to int before summing",
+    "wrong_output": "Example: input '3\\nsnuke 2\\naoki 1\\ntakahashi 1' prints aoki"
   },
   "source": {
     "dataset": "ConDefects",

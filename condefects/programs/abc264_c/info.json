@@ -1,15 +1,15 @@
 {
   "task": "abc264_c",
   "author": "Kushal",
-  "generated_by": "",
-  "problem": "",
-  "bug_type": "",
-  "bug_description": "",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Read an H1 x W1 matrix A and an H2 x W2 matrix B. Print Yes if B can be obtained by deleting some rows and some columns of A, otherwise No.",
+  "bug_type": "other",
+  "bug_description": "after.append(after_row) sits outside the kept-row check, so a deleted row still adds the previous row again to the reduced matrix.",
   "comments": {
-    "accurate": "",
-    "wrong_behavior": "",
-    "wrong_location": "",
-    "wrong_output": ""
+    "accurate": "Tries every choice of kept rows and columns and checks whether the reduced A equals B",
+    "wrong_behavior": "Tries every choice of kept rows and columns, carrying the last kept row forward in place of a deleted one",
+    "wrong_location": "Row assembly verified; check that the column bitmask indexes columns from the left",
+    "wrong_output": "Example: input '2 2\\n1 2\\n3 4\\n1 1\\n4' prints No"
   },
   "source": {
     "dataset": "ConDefects",

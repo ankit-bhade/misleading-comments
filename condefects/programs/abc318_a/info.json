@@ -1,15 +1,15 @@
 {
   "task": "abc318_a",
   "author": "Kushal",
-  "generated_by": "",
-  "problem": "",
-  "bug_type": "",
-  "bug_description": "",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Read N, M and P. Full moons happen on day M and then every P days after that. Print how many full-moon days fall in days 1 to N.",
+  "bug_type": "other",
+  "bug_description": "Advances the next full moon by P * count instead of P, so the gap keeps growing.",
   "comments": {
-    "accurate": "",
-    "wrong_behavior": "",
-    "wrong_location": "",
-    "wrong_output": ""
+    "accurate": "Counts the full-moon days from day 1 to day N, stepping P days between full moons",
+    "wrong_behavior": "Counts full-moon days up to day N, with the gap growing by P after each full moon",
+    "wrong_location": "Next-moon update verified; check that day N itself is included in the range",
+    "wrong_output": "Example: input '20 2 4' prints 3"
   },
   "source": {
     "dataset": "ConDefects",

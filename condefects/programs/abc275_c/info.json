@@ -1,15 +1,15 @@
 {
   "task": "abc275_c",
   "author": "Kushal",
-  "generated_by": "",
-  "problem": "",
-  "bug_type": "",
-  "bug_description": "",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Read a 9 x 9 grid where '#' is a pawn and '.' is empty. Print how many squares, including tilted ones, have a pawn on all four of their corners.",
+  "bug_type": "other",
+  "bug_description": "In the 45-degree diamond check the right corner's row is i+1 instead of i+k+1, so diamonds larger than the smallest are tested at the wrong cell.",
   "comments": {
-    "accurate": "",
-    "wrong_behavior": "",
-    "wrong_location": "",
-    "wrong_output": ""
+    "accurate": "Counts squares of every size and tilt whose four corners all hold pawns",
+    "wrong_behavior": "Counts squares with pawns on all four corners, checking each diamond's right corner one row below its top corner",
+    "wrong_location": "Diamond corner offsets verified; check the hard-coded corners of the largest tilted squares",
+    "wrong_output": "Example: input '.........\\n..#......\\n.........\\n#...#....\\n.........\\n..#......\\n.........\\n.........\\n.........' prints 0"
   },
   "source": {
     "dataset": "ConDefects",

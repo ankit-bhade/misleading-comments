@@ -1,15 +1,15 @@
 {
   "task": "abc332_a",
   "author": "Kushal",
-  "generated_by": "",
-  "problem": "",
-  "bug_type": "",
-  "bug_description": "",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Read N, S, K and N lines of price P_i and quantity Q_i. Shipping is free if the total price is at least S and costs K otherwise. Print the total price plus shipping.",
+  "bug_type": "wrong_comparison",
+  "bug_description": "Uses amount > s instead of amount >= s, so a total of exactly S is still charged shipping.",
   "comments": {
-    "accurate": "",
-    "wrong_behavior": "",
-    "wrong_location": "",
-    "wrong_output": ""
+    "accurate": "Prints the order total, adding the K shipping fee unless the total reaches S",
+    "wrong_behavior": "Prints the order total, adding the K shipping fee unless the total is over S",
+    "wrong_location": "Shipping threshold verified; check that the products are summed over all N items",
+    "wrong_output": "Example: input '1 1500 300\\n500 3' prints 1800"
   },
   "source": {
     "dataset": "ConDefects",

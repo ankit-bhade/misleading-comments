@@ -1,15 +1,15 @@
 {
   "task": "abc330_c",
   "author": "Kushal",
-  "generated_by": "",
-  "problem": "",
-  "bug_type": "",
-  "bug_description": "",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Read a positive integer D (up to 2 * 10^12) and print the minimum of |x^2 + y^2 - D| over non-negative integers x and y.",
+  "bug_type": "other",
+  "bug_description": "Inside the loop over nearby candidates i it still uses y, so only y = floor(sqrt(D - x^2)) is tried and y + 1 is never considered.",
   "comments": {
-    "accurate": "",
-    "wrong_behavior": "",
-    "wrong_location": "",
-    "wrong_output": ""
+    "accurate": "Tries each x up to sqrt(D) and the y values near sqrt(D - x^2) to minimise |x^2 + y^2 - D|",
+    "wrong_behavior": "Tries each x up to sqrt(D) with y = floor(sqrt(D - x^2)) to minimise |x^2 + y^2 - D|",
+    "wrong_location": "Inner candidate loop verified; check that the x range reaches int(d**.5) for large D",
+    "wrong_output": "Example: input '7' prints 2"
   },
   "source": {
     "dataset": "ConDefects",

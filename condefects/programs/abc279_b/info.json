@@ -1,15 +1,15 @@
 {
   "task": "abc279_b",
   "author": "Kushal",
-  "generated_by": "",
-  "problem": "",
-  "bug_type": "",
-  "bug_description": "",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Read strings S and T and print Yes if T appears as a contiguous substring of S, otherwise No.",
+  "bug_type": "off_by_one",
+  "bug_description": "Loops over range(n-m) instead of range(n-m+1), so T is never checked at the very end of S.",
   "comments": {
-    "accurate": "",
-    "wrong_behavior": "",
-    "wrong_location": "",
-    "wrong_output": ""
+    "accurate": "Checks whether T occurs as a contiguous substring of S",
+    "wrong_behavior": "Checks whether T occurs in S at a start offset below len(S) - len(T)",
+    "wrong_location": "Window range verified; check the equal-length case compares the full strings",
+    "wrong_output": "Example: input 'abcde\\nde' prints No"
   },
   "source": {
     "dataset": "ConDefects",

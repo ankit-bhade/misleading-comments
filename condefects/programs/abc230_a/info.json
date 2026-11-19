@@ -1,15 +1,15 @@
 {
   "task": "abc230_a",
   "author": "Kushal",
-  "generated_by": "",
-  "problem": "",
-  "bug_type": "",
-  "bug_description": "",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "AtCoder Grand Contests are named AGC001, AGC002, ... in order, except that the number 042 was skipped. Read N (1 to 53) and print the name of the N-th contest with a three-digit number.",
+  "bug_type": "wrong_comparison",
+  "bug_description": "Uses N > 42 instead of N >= 42, so the 42nd contest is named AGC042 instead of AGC043.",
   "comments": {
-    "accurate": "",
-    "wrong_behavior": "",
-    "wrong_location": "",
-    "wrong_output": ""
+    "accurate": "Builds the name of the N-th AGC, skipping the retired number 42 and zero-padding to three digits",
+    "wrong_behavior": "Builds the name of the N-th AGC, shifting numbers after 42 up by one and zero-padding to three digits",
+    "wrong_location": "Skip check for 42 verified; check the zero-padding for two-digit contest numbers",
+    "wrong_output": "Example: input '42' prints AGC042"
   },
   "source": {
     "dataset": "ConDefects",

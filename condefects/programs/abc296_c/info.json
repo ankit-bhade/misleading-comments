@@ -1,15 +1,15 @@
 {
   "task": "abc296_c",
   "author": "Kushal",
-  "generated_by": "",
-  "problem": "",
-  "bug_type": "",
-  "bug_description": "",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Read N, X and N integers A. Print Yes if there are indices i and j (possibly equal) with A_i - A_j = X, otherwise No.",
+  "bug_type": "other",
+  "bug_description": "Looks up X - a instead of a + X, which tests for two values summing to X rather than differing by X.",
   "comments": {
-    "accurate": "",
-    "wrong_behavior": "",
-    "wrong_location": "",
-    "wrong_output": ""
+    "accurate": "Checks with a set whether some A_i minus some A_j equals X",
+    "wrong_behavior": "Checks with a set whether two of the values add up to X",
+    "wrong_location": "Set lookup verified; check that the early break leaves ok set correctly",
+    "wrong_output": "Example: input '3 5\\n2 7 10' prints No"
   },
   "source": {
     "dataset": "ConDefects",

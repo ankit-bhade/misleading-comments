@@ -1,15 +1,15 @@
 {
   "task": "abc280_c",
   "author": "Kushal",
-  "generated_by": "",
-  "problem": "",
-  "bug_type": "",
-  "bug_description": "",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "String T is string S with one lowercase letter inserted somewhere. Read S and T and print the 1-based position in T of an inserted letter (any valid position if there are several).",
+  "bug_type": "missed_edge_case",
+  "bug_description": "When S matches the start of T completely (the letter was added at the end), it prints 1 instead of len(T).",
   "comments": {
-    "accurate": "",
-    "wrong_behavior": "",
-    "wrong_location": "",
-    "wrong_output": ""
+    "accurate": "Prints the position in T of the inserted letter, found at the first mismatch with S",
+    "wrong_behavior": "Prints the first position where S and T differ, defaulting to 1 when no difference is found",
+    "wrong_location": "Fallback output verified; check the loop index against T's length when S is shorter",
+    "wrong_output": "Example: input 'atcoder\\natcoderx' prints 1"
   },
   "source": {
     "dataset": "ConDefects",

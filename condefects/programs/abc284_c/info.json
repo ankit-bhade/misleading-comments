@@ -1,15 +1,15 @@
 {
   "task": "abc284_c",
   "author": "Kushal",
-  "generated_by": "",
-  "problem": "",
-  "bug_type": "",
-  "bug_description": "",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Read an undirected graph with N vertices and M edges and print its number of connected components.",
+  "bug_type": "other",
+  "bug_description": "The search loops over G[i] (the start vertex) instead of G[x] (the popped vertex), so only direct neighbours of the start vertex are reached.",
   "comments": {
-    "accurate": "",
-    "wrong_behavior": "",
-    "wrong_location": "",
-    "wrong_output": ""
+    "accurate": "Counts connected components with an iterative depth-first search",
+    "wrong_behavior": "Counts groups formed by each unvisited vertex together with its direct neighbours",
+    "wrong_location": "Neighbour loop verified; check that edges are stored with 0-based vertex numbers",
+    "wrong_output": "Example: input '3 2\\n1 2\\n2 3' prints 2"
   },
   "source": {
     "dataset": "ConDefects",

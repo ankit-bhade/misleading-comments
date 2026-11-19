@@ -1,15 +1,15 @@
 {
   "task": "abc259_a",
   "author": "Kushal",
-  "generated_by": "",
-  "problem": "",
-  "bug_type": "",
-  "bug_description": "",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Takahashi grew D cm every year from birth until age X and then stopped growing. Read N M X T D, where T is his height at age N (N >= X), and print his height at age M (M <= N).",
+  "bug_type": "other",
+  "bug_description": "Uses T + (X - M) * D instead of T - (X - M) * D, adding the remaining growth instead of subtracting it.",
   "comments": {
-    "accurate": "",
-    "wrong_behavior": "",
-    "wrong_location": "",
-    "wrong_output": ""
+    "accurate": "Prints the height at age M by working back from the final height T",
+    "wrong_behavior": "Prints the height at age M as T plus the growth from age M up to X",
+    "wrong_location": "Growth formula verified; check the M >= X branch for ages after growth stopped",
+    "wrong_output": "Example: input '10 5 8 160 4' prints 172"
   },
   "source": {
     "dataset": "ConDefects",

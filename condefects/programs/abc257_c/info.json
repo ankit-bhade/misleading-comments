@@ -1,15 +1,15 @@
 {
   "task": "abc257_c",
   "author": "Kushal",
-  "generated_by": "",
-  "problem": "",
-  "bug_type": "",
-  "bug_description": "",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "There are N people, each a child (0 in S) or an adult (1 in S), with weights W. For a real threshold X, a person is predicted to be an adult if their weight is at least X and a child otherwise. Print the maximum number of correct predictions over all X.",
+  "bug_type": "other",
+  "bug_description": "Compares the weight with the next person's whole (weight, label) tuple instead of its weight, so the count is also taken between two people of equal weight.",
   "comments": {
-    "accurate": "",
-    "wrong_behavior": "",
-    "wrong_location": "",
-    "wrong_output": ""
+    "accurate": "Sweeps a threshold through the sorted weights and keeps the best count of correct predictions",
+    "wrong_behavior": "Sweeps a threshold through the sorted people one at a time and keeps the best count of correct predictions",
+    "wrong_location": "Weight-group check verified; check the starting count of adults before the sweep",
+    "wrong_output": "Example: input '3\\n101\\n5 5 5' prints 3"
   },
   "source": {
     "dataset": "ConDefects",

@@ -1,15 +1,15 @@
 {
   "task": "abc243_b",
   "author": "Kushal",
-  "generated_by": "",
-  "problem": "",
-  "bug_type": "",
-  "bug_description": "",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Read N and two sequences A and B of N integers (the values within each sequence are distinct). Print two lines: the number of positions i with A_i = B_i, and the number of pairs of different positions i and j with A_i = B_j.",
+  "bug_type": "other",
+  "bug_description": "The second count does not require i != j, so matches at the same position are counted again.",
   "comments": {
-    "accurate": "",
-    "wrong_behavior": "",
-    "wrong_location": "",
-    "wrong_output": ""
+    "accurate": "Prints the count of same-position matches, then the count of matches at different positions",
+    "wrong_behavior": "Prints the count of same-position matches, then the count of all value matches between A and B",
+    "wrong_location": "Pair-count loop verified; check that the first loop compares A and B at the same index",
+    "wrong_output": "Example: input '3\\n1 2 3\\n4 2 5' prints 1 1"
   },
   "source": {
     "dataset": "ConDefects",

@@ -1,15 +1,15 @@
 {
   "task": "abc275_b",
   "author": "Kushal",
-  "generated_by": "",
-  "problem": "",
-  "bug_type": "",
-  "bug_description": "",
+  "generated_by": "Claude Opus 5.5 (Claude Code)",
+  "problem": "Read six non-negative integers A, B, C, D, E, F (each up to 10^18) and print the remainder of A*B*C - D*E*F when divided by 998244353.",
+  "bug_type": "missed_edge_case",
+  "bug_description": "The final difference is not reduced modulo 998244353, so it prints a negative number when D*E*F mod p is larger than A*B*C mod p.",
   "comments": {
-    "accurate": "",
-    "wrong_behavior": "",
-    "wrong_location": "",
-    "wrong_output": ""
+    "accurate": "Prints the difference of the two products reduced modulo 998244353",
+    "wrong_behavior": "Prints the difference of the two products, each reduced modulo 998244353",
+    "wrong_location": "Final subtraction verified; check the order of the chained % mod reductions",
+    "wrong_output": "Example: input '1 1 1 2 2 2' prints -7"
   },
   "source": {
     "dataset": "ConDefects",
