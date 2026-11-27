@@ -11,12 +11,16 @@
 
 \settopmatter{printacmref=false}
 \setcopyright{none}
+% Lets a paragraph with long code words stretch slightly instead of overflowing.
+\setlength{\emergencystretch}{1.5em}
 
 \newcommand{\wb}{\textsf{wrong\_behavior}}
 \newcommand{\wl}{\textsf{wrong\_location}}
 \newcommand{\wo}{\textsf{wrong\_output}}
 \newcommand{\acc}{\textsf{accurate}}
 \newcommand{\cd}{ConDefects}
+% A comment quoted on its own line in the case studies.
+\newcommand{\casecomment}[1]{\par\smallskip\noindent\hspace*{1em}\parbox{\dimexpr\columnwidth-1em\relax}{\raggedright\small\texttt{\# #1}}\par\smallskip\noindent\ignorespaces}
 
 \begin{document}
 
@@ -359,11 +363,27 @@ Model & Dataset & Similarity & Fixed line & Buggy line \\
 
 If the models had memorized the \cd{} programs, they would continue them more closely than our never-seen programs. Table~\ref{tab:memo} shows the opposite: median similarity is lower for \cd{} (0.44 vs.\ 0.59 for 7B and 0.44 vs.\ 0.52 for 32B), and the exact fixed line is reproduced no more often. The exact buggy line appears somewhat more often for 7B (11 vs.\ 6 programs) but not for 32B (10 vs.\ 12); these counts are small. We find no sign of memorization. Our programs are likely easier to continue because they were written in a clean, predictable style with descriptive names, whereas contest code is terse and idiosyncratic.
 
+\subsection{Case Studies}
+\label{sec:cases}
+Three replies on our programs show the patterns behind these numbers. We chose the clearest example of each pattern; each one behaves the same under both prompts unless noted.
+
+\paragraph{The wrong-location comment moves the fix.} \texttt{sprouts\_per\_column} receives a seed tray as a list of rows of booleans and should count the sprouted seeds in each column. Its loop runs over \texttt{range(len(tray))}, the number of rows, instead of the number of columns. With the accurate comment, 7B finds this under both prompts and loops over \texttt{len(tray[0])}. With the wrong-location comment
+\casecomment{Column loop checked; the sprout test may miss cells stored as 1 instead of True}
+it keeps the loop and changes the sprout test to \texttt{row[c] is True}, explaining that cells stored as \texttt{1} should not count. The loop bug survives, and the ``fixed'' code gives the buggy code's answers on every test the buggy code fails. The comment did more than distract the model: it supplied a plausible bug, and the model fixed that one instead.
+
+\paragraph{Flagging is not fixing.} In \texttt{chapter\_lengths}, each chapter is taken to end on the next chapter's first page instead of the page before it, so every chapter but the last is one page too long. The wrong-location comment reads
+\casecomment{Chapter ends verified; check the length formula end - start + 1}
+Under Prompt~B, 32B replies that ``the bug is in the comment'', which suggests ``that the ends are verified, which they are not'', concludes that ``the code itself is correct'', and returns the code unchanged with a rewritten comment. The judge rightly counts this as flagging the comment, and the model's suspicion even points at the real problem, but the bug remains. (32B fails this program under every comment, including the accurate one, so here the comment did not cause the failure; the example shows only that noticing a false comment does not lead to a fix.)
+
+\paragraph{A false example acts as a failing test.} \texttt{archive\_decades} should count the calendar decades from the earliest to the latest recording, but computes \texttt{(last - first) // 10 + 1}, which counts ten-year spans: 1975 to 1984 gives 1 instead of 2. With the accurate comment, 7B fails under both prompts, returning the formula unchanged (Prompt~A) or adding a special case (Prompt~B). With the wrong-output comment
+\casecomment{Example: archive\_decades([1975, 1984]) returns 1}
+it rewrites the formula as \texttt{last // 10 - first // 10 + 1} and passes every test under both prompts, although its fix returns 2 for that very input and so contradicts the example. The example's value is wrong, but its input is exactly a case where the code misbehaves, and that input appears to be what the model uses.
+
 % ---------------------------------------------------------------------------
 \section{Discussion}
 \label{sec:discussion}
 
-\paragraph{Where a comment points matters more than whether it is true.} The two location-related comments behave in opposite ways. The wrong-location comment points \emph{away} from the bug and is the only kind that significantly hurts. The wrong-output comment is also false (its ``expected'' value is the buggy output), yet it slightly helps, plausibly because its example names exactly an input on which the code misbehaves and so acts like a failing test case. The wrong-behavior comment, which endorses the bug without pointing anywhere, sits between the two. This suggests that, for these models, comments matter mostly as a guide to \emph{where to look}.
+\paragraph{Where a comment points matters more than whether it is true.} The two location-related comments behave in opposite ways. The wrong-location comment points \emph{away} from the bug and is the only kind that significantly hurts. The wrong-output comment is also false (its ``expected'' value is the buggy output), yet it slightly helps, plausibly because its example names exactly an input on which the code misbehaves and so acts like a failing test case (Section~\ref{sec:cases}). The wrong-behavior comment, which endorses the bug without pointing anywhere, sits between the two. This suggests that, for these models, comments matter mostly as a guide to \emph{where to look}.
 
 \paragraph{Robustness without awareness.} The 32B model is barely affected by any misleading comment, yet almost never says that a comment is wrong. Its robustness seems to come from reading the code and problem description well enough that the comment rarely matters, not from checking the comment against the code. A model that trusts comments this much remains vulnerable when the code alone is not enough, which is the situation in which a well-aimed misleading comment, or a stale one, would do the most harm.
 
