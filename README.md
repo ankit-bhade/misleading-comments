@@ -46,6 +46,7 @@ The full tables are in [`analysis/main.md`](analysis/main.md) and [`analysis/con
 | `handcheck/`, `condefects/handcheck/` | Human verification sheets for the AI judge's RQ3 labels |
 | `condefects/memorization/` | Memorization-check replies and scores |
 | `analysis/` | Final tables (`main.md`, `condefects.md`) and slide charts (`charts/`) |
+| `report/` | The final report: LaTeX source (`main.tex`, ACM format), `references.bib` and `figures/`. Compile with pdfLaTeX and BibTeX, e.g. by uploading the folder to Overleaf |
 | `colab_run.ipynb`, `kaggle_run.ipynb` | Notebooks we used to run the models (7B on a Colab T4, 32B on Kaggle 2×T4) |
 
 **Scripts.** Each script's docstring explains how to use it.
